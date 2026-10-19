@@ -13,7 +13,7 @@ export class HxTabPanel extends HxElement {
         css`
             :host {
                 display: block;
-                border-radius: calc(var(--hx-radius) - 2px);
+                border-radius: var(--hx-radius-control);
                 outline: none;
             }
             :host([hidden]) {

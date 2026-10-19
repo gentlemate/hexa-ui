@@ -1,12 +1,14 @@
-import { css, html } from "lit";
+import { css, html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
+import type { IconNode } from "lucide";
 import { HxElement } from "../../hx-element.js";
+import "../icon/hx-icon.js";
 
 export type HxButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "destructive";
-export type HxButtonSize = "sm" | "md" | "lg";
+export type HxButtonIconPlacement = "left" | "right";
 
 const base =
-    "inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50";
+    "inline-flex h-button cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-control text-sm font-medium outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<HxButtonVariant, string> = {
     primary: "bg-primary text-primary-foreground hover:bg-primary/90",
@@ -16,22 +18,11 @@ const variants: Record<HxButtonVariant, string> = {
     destructive: "bg-destructive text-white hover:bg-destructive/90",
 };
 
-const sizes: Record<HxButtonSize, string> = {
-    sm: "h-8 px-3 text-xs",
-    md: "h-9 px-4 text-sm",
-    lg: "h-11 px-6 text-base",
-};
-
-const squareSizes: Record<HxButtonSize, string> = {
-    sm: "size-8 text-xs",
-    md: "size-9 text-sm",
-    lg: "size-11 text-base",
-};
-
 /**
  * @element hx-button
  * @slot - The button label (text, icon…).
  * @csspart base - The inner `<button>` element.
+ * @csspart icon - The `hx-icon` rendered from the `icon` property.
  *
  * `focusTarget` is the inner `<button>`, which receives the focus (used by `hx-tooltip` to describe it).
  */
@@ -49,10 +40,11 @@ export class HxButton extends HxElement {
     ];
 
     @property({ reflect: true }) variant: HxButtonVariant = "primary";
-    @property({ reflect: true }) size: HxButtonSize = "md";
     @property() type: "button" | "submit" | "reset" = "button";
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) square = false;
+    @property({ attribute: false }) icon?: IconNode;
+    @property({ attribute: "icon-placement", reflect: true }) iconPlacement: HxButtonIconPlacement = "left";
 
     @query("button") focusTarget!: HTMLButtonElement;
 
@@ -68,13 +60,16 @@ export class HxButton extends HxElement {
     }
 
     override render() {
+        const icon = this.icon ? html`<hx-icon part="icon" .icon=${this.icon}></hx-icon>` : nothing;
         return html`<button
             part="base"
-            class="${base} ${variants[this.variant]} ${(this.square ? squareSizes : sizes)[this.size]}"
+            class="${base} ${variants[this.variant]} ${this.square ? "aspect-square" : "px-button"}"
             type="button"
             ?disabled=${this.disabled}
         >
-            <slot></slot>
+            ${this.iconPlacement === "left" ? icon : nothing}<slot></slot>${
+                this.iconPlacement === "right" ? icon : nothing
+            }
         </button>`;
     }
 }

@@ -7,8 +7,8 @@ export type HxCardVariant = "default" | "outline" | "ghost";
 type HxCardSlot = "header" | "title" | "description" | "action" | "footer";
 
 const variants: Record<HxCardVariant, string> = {
-    default: "bg-card text-card-foreground border border-border shadow-sm",
-    outline: "bg-background text-foreground border border-border shadow-sm",
+    default: "bg-card text-card-foreground ring-(length:--hx-border-width) ring-foreground/10",
+    outline: "bg-background text-foreground ring-(length:--hx-border-width) ring-foreground/10",
     ghost: "",
 };
 
@@ -58,10 +58,10 @@ export class HxCard extends HxElement {
         const hasHeader = has("header") || has("title") || has("description") || has("action");
         return html`<div
             part="base"
-            class="${variants[this.variant]} flex flex-col gap-6 rounded-xl py-6"
+            class="${variants[this.variant]} rounded-card gap-card py-card flex flex-col"
             @slotchange=${this.onSlotChange}
         >
-            <div part="header" class="${hasHeader ? "" : "hidden"} px-6">
+            <div part="header" class="${hasHeader ? "" : "hidden"} px-card">
                 <slot name="header">
                     <div class="flex items-start gap-4">
                         <div class="flex flex-1 flex-col gap-1.5">
@@ -76,8 +76,8 @@ export class HxCard extends HxElement {
                     </div>
                 </slot>
             </div>
-            <div part="content" class="px-6 text-sm"><slot></slot></div>
-            <div part="footer" class="${has("footer") ? "flex" : "hidden"} items-center gap-2 px-6">
+            <div part="content" class="px-card text-sm"><slot></slot></div>
+            <div part="footer" class="${has("footer") ? "flex" : "hidden"} px-card items-center gap-2">
                 <slot name="footer"></slot>
             </div>
         </div>`;

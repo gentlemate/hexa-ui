@@ -2,7 +2,7 @@ import { css, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { Moon, Sun } from "lucide";
 import { HxElement } from "../../hx-element.js";
-import type { HxButtonSize, HxButtonVariant } from "../button/hx-button.js";
+import type { HxButtonVariant } from "../button/hx-button.js";
 import "../button/hx-button.js";
 import "../icon/hx-icon.js";
 
@@ -26,7 +26,6 @@ export class HxColorModeButton extends HxElement {
     ];
 
     @property({ reflect: true }) variant: HxButtonVariant = "outline";
-    @property({ reflect: true }) size: HxButtonSize = "md";
 
     @state() private mode: HxColorMode = "light";
 
@@ -69,7 +68,7 @@ export class HxColorModeButton extends HxElement {
 
     override render() {
         const label = `Switch to ${this.mode === "dark" ? "light" : "dark"} mode`;
-        return html`<hx-button square variant=${this.variant} size=${this.size} title=${label} @click=${this.toggle}>
+        return html`<hx-button square variant=${this.variant} title=${label} @click=${this.toggle}>
             <hx-icon .icon=${this.mode === "dark" ? Sun : Moon} size="20" label=${label}></hx-icon>
         </hx-button>`;
     }

@@ -9,14 +9,14 @@ import type { HxTabsDirection, HxTabsVariant } from "./hx-tabs.js";
 
 const variants: Record<HxTabsVariant, { selected: string; idle: string } & Record<HxTabsDirection, string>> = {
     default: {
-        horizontal: "justify-center rounded-md border border-transparent px-2 py-1",
-        vertical: "justify-start rounded-md border border-transparent px-2 py-1",
+        horizontal: "justify-center rounded-control border border-transparent h-tab gap-2 px-tab",
+        vertical: "justify-start rounded-control border border-transparent h-tab gap-2 px-tab",
         selected: "bg-background text-foreground shadow-sm",
         idle: "hover:text-foreground",
     },
     secondary: {
-        horizontal: "justify-center -mb-px border-b-2 px-3 py-2",
-        vertical: "justify-start -ml-px border-l-2 px-3 py-2",
+        horizontal: "justify-center -mb-(--hx-border-width) border-b-2 h-tabs gap-2 px-tab",
+        vertical: "justify-start -ml-(--hx-border-width) border-l-2 h-tabs gap-2 px-tab",
         selected: "border-primary text-foreground",
         idle: "border-transparent text-muted-foreground hover:text-foreground",
     },
@@ -79,7 +79,7 @@ export class HxTab extends HxElement {
             part="base"
             class="${variant[this.direction]} ${
                 this.selected ? variant.selected : variant.idle
-            } inline-flex flex-1 cursor-pointer items-center gap-1.5 text-sm font-medium whitespace-nowrap transition-[color,box-shadow]"
+            } inline-flex flex-1 cursor-pointer items-center text-sm font-medium whitespace-nowrap transition-[color,box-shadow]"
         >
             ${this.iconPlacement === "left" ? icon : nothing}<slot></slot>${
                 this.iconPlacement === "right" ? icon : nothing

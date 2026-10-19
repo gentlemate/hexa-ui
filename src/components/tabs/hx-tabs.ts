@@ -11,8 +11,8 @@ export type HxTabsDirection = "horizontal" | "vertical";
 
 const variants: Record<HxTabsVariant, Record<HxTabsDirection, string>> = {
     default: {
-        horizontal: "h-9 rounded-lg bg-muted p-[3px] text-muted-foreground",
-        vertical: "rounded-lg bg-muted p-[3px] text-muted-foreground",
+        horizontal: "rounded-control-lg bg-muted p-tabs text-muted-foreground",
+        vertical: "rounded-control-lg bg-muted p-tabs text-muted-foreground",
     },
     secondary: {
         horizontal: "border-b border-border",

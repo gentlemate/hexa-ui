@@ -5,7 +5,6 @@ import { HxElement } from "../../hx-element.js";
 import "../icon/hx-icon.js";
 
 export type HxBadgeVariant = "primary" | "secondary" | "outline" | "destructive";
-export type HxBadgeSize = "sm" | "md" | "lg";
 export type HxBadgeIconPlacement = "left" | "right";
 
 const variants: Record<HxBadgeVariant, string> = {
@@ -14,14 +13,6 @@ const variants: Record<HxBadgeVariant, string> = {
     outline: "border-border text-foreground",
     destructive: "border-transparent bg-destructive text-white",
 };
-
-const sizes: Record<HxBadgeSize, string> = {
-    sm: "px-1.5 py-px text-[0.625rem]",
-    md: "px-2 py-0.5 text-xs",
-    lg: "px-2.5 py-1 text-sm",
-};
-
-const iconSizes: Record<HxBadgeSize, number> = { sm: 10, md: 12, lg: 14 };
 
 /**
  * @element hx-badge
@@ -41,19 +32,14 @@ export class HxBadge extends HxElement {
     ];
 
     @property({ reflect: true }) variant: HxBadgeVariant = "primary";
-    @property({ reflect: true }) size: HxBadgeSize = "md";
     @property({ attribute: false }) icon?: IconNode;
     @property({ attribute: "icon-placement", reflect: true }) iconPlacement: HxBadgeIconPlacement = "left";
 
     override render() {
-        const icon = this.icon
-            ? html`<hx-icon part="icon" .icon=${this.icon} size=${iconSizes[this.size]}></hx-icon>`
-            : nothing;
+        const icon = this.icon ? html`<hx-icon part="icon" .icon=${this.icon} size="12"></hx-icon>` : nothing;
         return html`<span
             part="base"
-            class="${variants[this.variant]} ${
-                sizes[this.size]
-            } inline-flex shrink-0 items-center justify-center gap-1 rounded-full border font-medium whitespace-nowrap"
+            class="${variants[this.variant]} h-badge px-badge inline-flex shrink-0 items-center justify-center gap-1 rounded-full border text-xs font-medium whitespace-nowrap"
         >
             ${this.iconPlacement === "left" ? icon : nothing}<slot></slot>${
                 this.iconPlacement === "right" ? icon : nothing

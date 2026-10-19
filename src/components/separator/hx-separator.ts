@@ -15,14 +15,14 @@ export class HxSeparator extends HxElement {
             :host {
                 display: block;
                 flex-shrink: 0;
-                height: 1px;
+                height: var(--hx-border-width);
                 width: 100%;
                 background: var(--hx-border);
             }
             :host([direction="vertical"]) {
                 align-self: stretch;
                 height: auto;
-                width: 1px;
+                width: var(--hx-border-width);
             }
         `,
     ];

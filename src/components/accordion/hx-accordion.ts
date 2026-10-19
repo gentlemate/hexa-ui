@@ -10,7 +10,7 @@ export type HxAccordionTrigger = "click" | "hover";
 
 const variants: Record<HxAccordionVariant, string> = {
     default: "",
-    secondary: "overflow-hidden rounded-lg bg-secondary",
+    secondary: "overflow-hidden rounded-card bg-secondary",
 };
 
 /**

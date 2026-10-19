@@ -18,8 +18,39 @@
     --color-input: var(--hx-input);
     --color-ring: var(--hx-ring);
 
-    --radius-sm: calc(var(--hx-radius) - 4px);
-    --radius-md: calc(var(--hx-radius) - 2px);
-    --radius-lg: var(--hx-radius);
-    --radius-xl: calc(var(--hx-radius) + 4px);
+    --default-border-width: var(--hx-border-width);
+    --border-width-2: calc(var(--hx-border-width) * 2);
+
+    --radius-*: initial;
+    --radius-control-sm: calc(var(--hx-radius-control) - 0.125rem);
+    --radius-control: var(--hx-radius-control);
+    --radius-control-lg: calc(var(--hx-radius-control) + 0.125rem);
+    --radius-card: var(--hx-radius-card);
+    --radius-popover-sm: calc(var(--hx-radius-popover) - var(--hx-spacing-popover));
+    --radius-popover: var(--hx-radius-popover);
+    --radius-popover-lg: calc(var(--hx-radius-popover) + var(--hx-spacing-popover));
+
+    --height-button: var(--hx-height-button);
+    --spacing-button: var(--hx-spacing-button);
+    --height-input: var(--hx-height-input);
+    --spacing-input: var(--hx-spacing-input);
+    --size-checkbox: var(--hx-size-checkbox);
+    --size-switch: var(--hx-size-switch);
+    --height-switch: var(--hx-size-switch);
+    --width-switch: calc(var(--hx-size-switch) * 2);
+    --spacing-switch: var(--hx-spacing-switch);
+    --height-badge: var(--hx-height-badge);
+    --spacing-badge: var(--hx-spacing-badge);
+    --height-tabs: var(--hx-height-tabs);
+    --spacing-tabs: var(--hx-spacing-tabs);
+    --height-tab: calc(var(--hx-height-tabs) - var(--hx-spacing-tabs) * 2);
+    --spacing-tab: var(--hx-spacing-tab);
+    --spacing-accordion: var(--hx-spacing-accordion);
+    --spacing-card: var(--hx-spacing-card);
+    --spacing-popover: var(--hx-spacing-popover);
+    --spacing-tooltip: var(--hx-spacing-tooltip);
+    --height-menu-item: var(--hx-height-menu-item);
+    --spacing-menu-item: var(--hx-spacing-menu-item);
+
+    --font-sans: var(--hx-font-sans);
 }

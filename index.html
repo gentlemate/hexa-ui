@@ -4,371 +4,337 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Hexa UI</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" />
         <link rel="stylesheet" href="/tokens.css" />
         <link rel="stylesheet" href="/demo.css" />
     </head>
     <body class="bg-background text-foreground mx-auto my-12 max-w-lg font-sans">
         <hx-color-mode-button></hx-color-mode-button>
 
-        <hx-separator></hx-separator>
-
-        <section>
-            <h2 class="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">Icon</h2>
-            <div class="flex flex-wrap items-center gap-4">
-                <hx-icon data-icon="Search"></hx-icon>
-                <hx-icon data-icon="Heart" size="20"></hx-icon>
-                <hx-icon data-icon="Settings" size="24" stroke-width="1.5"></hx-icon>
-                <hx-icon data-icon="CircleAlert" size="24" class="text-destructive"></hx-icon>
-            </div>
-        </section>
-
-        <hx-separator></hx-separator>
-
-        <section>
-            <h2 class="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">Button</h2>
-            <div class="flex flex-wrap gap-3">
-                <hx-button>Primary</hx-button>
-                <hx-button variant="secondary">Secondary</hx-button>
-                <hx-button variant="outline">Outline</hx-button>
-                <hx-button variant="ghost">Ghost</hx-button>
-                <hx-button variant="destructive">Delete</hx-button>
-            </div>
-            <div class="mt-3 flex flex-wrap items-center gap-3">
-                <hx-button size="sm">Small</hx-button>
-                <hx-button size="md">Medium</hx-button>
-                <hx-button size="lg">Large</hx-button>
-            </div>
-            <div class="mt-3 flex flex-wrap items-center gap-3">
-                <hx-button><hx-icon data-icon="Plus"></hx-icon>Add</hx-button>
-                <hx-button variant="outline"><hx-icon data-icon="Download"></hx-icon>Download</hx-button>
-                <hx-button variant="destructive"><hx-icon data-icon="Trash2"></hx-icon>Delete</hx-button>
-            </div>
-            <div class="mt-3 flex flex-wrap items-center gap-3">
-                <hx-button square><hx-icon data-icon="Plus" size="20"></hx-icon></hx-button>
-                <hx-button variant="outline" square><hx-icon data-icon="Download" size="20"></hx-icon></hx-button>
-                <hx-button variant="destructive" square><hx-icon data-icon="Trash2" size="20"></hx-icon></hx-button>
-            </div>
-        </section>
-
-        <hx-separator></hx-separator>
-
-        <section>
-            <h2 class="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">Badge</h2>
-            <div class="flex flex-wrap items-center gap-3">
-                <hx-badge>Primary</hx-badge>
-                <hx-badge variant="secondary">Secondary</hx-badge>
-                <hx-badge variant="outline">Outline</hx-badge>
-                <hx-badge variant="destructive">Destructive</hx-badge>
-            </div>
-            <div class="mt-3 flex flex-wrap items-center gap-3">
-                <hx-badge size="sm">Small</hx-badge>
-                <hx-badge size="md">Medium</hx-badge>
-                <hx-badge size="lg">Large</hx-badge>
-            </div>
-            <div class="mt-3 flex flex-wrap items-center gap-3">
-                <hx-badge data-icon="Heart">Favorite</hx-badge>
-                <hx-badge variant="outline" data-icon="Settings">Settings</hx-badge>
-                <hx-badge variant="destructive" data-icon="CircleAlert" icon-placement="right">Error</hx-badge>
-            </div>
-        </section>
-
-        <hx-separator></hx-separator>
-
-        <section>
-            <h2 class="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">Input</h2>
-            <div class="flex flex-col gap-3">
-                <hx-input label="Email" type="email" placeholder="you@example.com"></hx-input>
-                <hx-input label="Password" type="password" hint="Should not be disclosed."></hx-input>
-                <hx-input label="Login" value="admin" error="This login is already used." required></hx-input>
-                <hx-input label="Disabled" disabled></hx-input>
-            </div>
-        </section>
-
-        <hx-separator></hx-separator>
-
-        <section>
-            <h2 class="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">Textarea</h2>
-            <div class="flex flex-col gap-3">
-                <hx-textarea label="Bio" placeholder="Tell us about yourself" hint="Max 500 characters."></hx-textarea>
-                <hx-textarea label="Comment" error="This field is required." required></hx-textarea>
-                <hx-textarea label="Disabled" disabled></hx-textarea>
-            </div>
-        </section>
-
-        <hx-separator></hx-separator>
-
-        <section>
-            <h2 class="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">Checkbox</h2>
-            <div class="flex flex-col gap-3">
-                <hx-checkbox>Default</hx-checkbox>
-                <hx-checkbox checked>Checked</hx-checkbox>
-                <hx-checkbox indeterminate>Indeterminate</hx-checkbox>
-                <hx-checkbox disabled>Disabled</hx-checkbox>
-                <hx-checkbox checked disabled>Checked and disabled</hx-checkbox>
-            </div>
-        </section>
-
-        <hx-separator></hx-separator>
-
-        <section>
-            <h2 class="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">Switch</h2>
-            <div class="flex flex-col gap-3">
-                <hx-switch>Default</hx-switch>
-                <hx-switch checked>Checked</hx-switch>
-                <hx-switch disabled>Disabled</hx-switch>
-            </div>
-            <div class="mt-3 flex flex-wrap items-center gap-4">
-                <hx-switch size="sm">Small</hx-switch>
-                <hx-switch>Medium</hx-switch>
-                <hx-switch size="lg">Large</hx-switch>
-            </div>
-        </section>
-
-        <hx-separator></hx-separator>
-
-        <section>
-            <h2 class="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">Card</h2>
-            <div class="flex flex-col gap-4">
-                <hx-card>
-                    <span slot="title">Create project</span>
-                    <span slot="description">Create a new project in one click.</span>
-                    <hx-badge slot="action" variant="secondary">New</hx-badge>
-                    <hx-input label="Name"></hx-input>
-                    <hx-button slot="footer" variant="outline">Create</hx-button>
-                </hx-card>
-                <hx-card>
-                    <div slot="header" class="flex items-center gap-3">
-                        <div class="bg-muted flex size-10 items-center justify-center rounded-full">
-                            <hx-icon data-icon="Settings" size="20"></hx-icon>
-                        </div>
-                        <div>
-                            <div class="font-semibold">Custom header</div>
-                            <div class="text-muted-foreground text-sm">Any content in the header slot.</div>
-                        </div>
+        <hx-accordion type="multiple" class="mt-6">
+            <hx-accordion-item value="icon">
+                <span slot="title">Icon</span>
+                <div class="text-foreground">
+                    <div class="flex flex-wrap items-center gap-4">
+                        <hx-icon data-icon="Search"></hx-icon>
+                        <hx-icon data-icon="Heart" size="20"></hx-icon>
+                        <hx-icon data-icon="Settings" size="24" stroke-width="1.5"></hx-icon>
+                        <hx-icon data-icon="CircleAlert" size="24" class="text-destructive"></hx-icon>
                     </div>
-                    The header slot replaces the title, description and action layout.
-                </hx-card>
-                <hx-card>Default card with content only.</hx-card>
-                <hx-card variant="outline">Outline card with content only.</hx-card>
-                <hx-card variant="ghost">Ghost card with content only.</hx-card>
-            </div>
-        </section>
+                </div>
+            </hx-accordion-item>
 
-        <hx-separator></hx-separator>
+            <hx-accordion-item value="button">
+                <span slot="title">Button</span>
+                <div class="text-foreground">
+                    <div class="flex flex-wrap gap-3">
+                        <hx-button>Primary</hx-button>
+                        <hx-button variant="secondary">Secondary</hx-button>
+                        <hx-button variant="outline">Outline</hx-button>
+                        <hx-button variant="ghost">Ghost</hx-button>
+                        <hx-button variant="destructive">Delete</hx-button>
+                    </div>
+                    <div class="mt-3 flex flex-wrap items-center gap-3">
+                        <hx-button data-icon="Plus">Add</hx-button>
+                        <hx-button variant="outline" data-icon="Download">Download</hx-button>
+                        <hx-button variant="destructive" data-icon="Trash2">Delete</hx-button>
+                    </div>
+                    <div class="mt-3 flex flex-wrap items-center gap-3">
+                        <hx-button square><hx-icon data-icon="Plus" size="20"></hx-icon></hx-button>
+                        <hx-button variant="outline" square
+                            ><hx-icon data-icon="Download" size="20"></hx-icon
+                        ></hx-button>
+                        <hx-button variant="destructive" square
+                            ><hx-icon data-icon="Trash2" size="20"></hx-icon
+                        ></hx-button>
+                    </div>
+                </div>
+            </hx-accordion-item>
 
-        <section>
-            <h2 class="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">Tabs</h2>
-            <div class="grid grid-cols-[1fr_auto_1fr] gap-y-4">
-                <hx-tabs value="account">
-                    <hx-tab value="account">Account</hx-tab>
-                    <hx-tab value="password">Password</hx-tab>
-                    <hx-tab value="billing" disabled>Billing</hx-tab>
-                    <hx-tab-panel value="account">Account</hx-tab-panel>
-                    <hx-tab-panel value="password">Password</hx-tab-panel>
-                    <hx-tab-panel value="billing">Billing</hx-tab-panel>
-                </hx-tabs>
-                <hx-separator direction="vertical"></hx-separator>
-                <hx-tabs value="account" direction="vertical">
-                    <hx-tab value="account">Account</hx-tab>
-                    <hx-tab value="password">Password</hx-tab>
-                    <hx-tab value="billing" disabled>Billing</hx-tab>
-                    <hx-tab-panel value="account">Account</hx-tab-panel>
-                    <hx-tab-panel value="password">Password</hx-tab-panel>
-                    <hx-tab-panel value="billing">Billing</hx-tab-panel>
-                </hx-tabs>
+            <hx-accordion-item value="badge">
+                <span slot="title">Badge</span>
+                <div class="text-foreground">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <hx-badge>Primary</hx-badge>
+                        <hx-badge variant="secondary">Secondary</hx-badge>
+                        <hx-badge variant="outline">Outline</hx-badge>
+                        <hx-badge variant="destructive">Destructive</hx-badge>
+                    </div>
+                    <div class="mt-3 flex flex-wrap items-center gap-3">
+                        <hx-badge data-icon="Heart">Favorite</hx-badge>
+                        <hx-badge variant="outline" data-icon="Settings">Settings</hx-badge>
+                        <hx-badge variant="destructive" data-icon="CircleAlert" icon-placement="right">Error</hx-badge>
+                    </div>
+                </div>
+            </hx-accordion-item>
 
-                <hx-tabs variant="secondary" value="overview">
-                    <hx-tab value="overview">Overview</hx-tab>
-                    <hx-tab value="analytics">Analytics</hx-tab>
-                    <hx-tab value="reports" disabled>Reports</hx-tab>
-                    <hx-tab-panel value="overview">Overview</hx-tab-panel>
-                    <hx-tab-panel value="analytics">Analytics</hx-tab-panel>
-                    <hx-tab-panel value="reports">Reports</hx-tab-panel>
-                </hx-tabs>
-                <hx-separator direction="vertical"></hx-separator>
-                <hx-tabs variant="secondary" value="overview" direction="vertical">
-                    <hx-tab value="overview">Overview</hx-tab>
-                    <hx-tab value="analytics">Analytics</hx-tab>
-                    <hx-tab value="reports" disabled>Reports</hx-tab>
-                    <hx-tab-panel value="overview">Overview</hx-tab-panel>
-                    <hx-tab-panel value="analytics">Analytics</hx-tab-panel>
-                    <hx-tab-panel value="reports">Reports</hx-tab-panel>
-                </hx-tabs>
-            </div>
+            <hx-accordion-item value="input">
+                <span slot="title">Input</span>
+                <div class="text-foreground">
+                    <div class="flex flex-col gap-3">
+                        <hx-input label="Email" type="email" placeholder="you@example.com"></hx-input>
+                        <hx-input label="Password" type="password" hint="Should not be disclosed."></hx-input>
+                        <hx-input label="Login" value="admin" error="This login is already used." required></hx-input>
+                        <hx-input label="Disabled" disabled></hx-input>
+                    </div>
+                </div>
+            </hx-accordion-item>
 
-            <div class="col-span-3 mt-4 flex flex-col gap-4">
-                <hx-tabs value="account">
-                    <hx-tab value="account" data-icon="User">Account</hx-tab>
-                    <hx-tab value="password" data-icon="Lock">Password</hx-tab>
-                    <hx-tab value="billing" data-icon="CreditCard" disabled>Billing</hx-tab>
-                    <hx-tab-panel value="account">Account</hx-tab-panel>
-                    <hx-tab-panel value="password">Password</hx-tab-panel>
-                    <hx-tab-panel value="billing">Billing</hx-tab-panel>
-                </hx-tabs>
-                <hx-tabs value="account">
-                    <hx-tab value="account" data-icon="User" icon-placement="right">Account</hx-tab>
-                    <hx-tab value="password" data-icon="Lock" icon-placement="right">Password</hx-tab>
-                    <hx-tab value="billing" data-icon="CreditCard" icon-placement="right" disabled>Billing</hx-tab>
-                    <hx-tab-panel value="account">Account</hx-tab-panel>
-                    <hx-tab-panel value="password">Password</hx-tab-panel>
-                    <hx-tab-panel value="billing">Billing</hx-tab-panel>
-                </hx-tabs>
-                <hx-tabs variant="secondary" value="overview" direction="vertical">
-                    <hx-tab value="overview" data-icon="House">Overview</hx-tab>
-                    <hx-tab value="analytics" data-icon="ChartLine">Analytics</hx-tab>
-                    <hx-tab value="reports" data-icon="FileText" disabled>Reports</hx-tab>
-                    <hx-tab-panel value="overview">Overview</hx-tab-panel>
-                    <hx-tab-panel value="analytics">Analytics</hx-tab-panel>
-                    <hx-tab-panel value="reports">Reports</hx-tab-panel>
-                </hx-tabs>
-            </div>
-        </section>
+            <hx-accordion-item value="textarea">
+                <span slot="title">Textarea</span>
+                <div class="text-foreground">
+                    <div class="flex flex-col gap-3">
+                        <hx-textarea
+                            label="Bio"
+                            placeholder="Tell us about yourself"
+                            hint="Max 500 characters."
+                        ></hx-textarea>
+                        <hx-textarea label="Comment" error="This field is required." required></hx-textarea>
+                        <hx-textarea label="Disabled" disabled></hx-textarea>
+                    </div>
+                </div>
+            </hx-accordion-item>
 
-        <hx-separator></hx-separator>
+            <hx-accordion-item value="checkbox">
+                <span slot="title">Checkbox</span>
+                <div class="text-foreground">
+                    <div class="flex flex-col gap-3">
+                        <hx-checkbox>Default</hx-checkbox>
+                        <hx-checkbox checked>Checked</hx-checkbox>
+                        <hx-checkbox indeterminate>Indeterminate</hx-checkbox>
+                        <hx-checkbox disabled>Disabled</hx-checkbox>
+                        <hx-checkbox checked disabled>Checked and disabled</hx-checkbox>
+                    </div>
+                </div>
+            </hx-accordion-item>
 
-        <section>
-            <h2 class="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">Accordion</h2>
-            <hx-accordion collapsible>
-                <hx-accordion-item value="shipping">
-                    <span slot="title">What are your shipping options?</span>
-                    We offer standard (5-7 days), express (2-3 days) and overnight shipping.
-                </hx-accordion-item>
-                <hx-accordion-item value="returns">
-                    <span slot="title">What is your return policy?</span>
-                    Returns are accepted within 30 days of purchase, in their original packaging.
-                </hx-accordion-item>
-                <hx-accordion-item value="support" disabled>
-                    <span slot="title">How can I contact support?</span>
-                    Reach us by email or chat, 24/7.
-                </hx-accordion-item>
-            </hx-accordion>
-            <hx-accordion collapsible variant="secondary" class="mt-4">
-                <hx-accordion-item value="shipping">
-                    <span slot="title">What are your shipping options?</span>
-                    We offer standard (5-7 days), express (2-3 days) and overnight shipping.
-                </hx-accordion-item>
-                <hx-accordion-item value="returns">
-                    <span slot="title">What is your return policy?</span>
-                    Returns are accepted within 30 days of purchase, in their original packaging.
-                </hx-accordion-item>
-                <hx-accordion-item value="support" disabled>
-                    <span slot="title">How can I contact support?</span>
-                    Reach us by email or chat, 24/7.
-                </hx-accordion-item>
-            </hx-accordion>
-            <hx-accordion collapsible class="mt-4">
-                <hx-accordion-item value="shipping" data-icon="Package">
-                    <span slot="title">What are your shipping options?</span>
-                    We offer standard (5-7 days), express (2-3 days) and overnight shipping.
-                </hx-accordion-item>
-                <hx-accordion-item value="returns" data-icon="Undo2">
-                    <span slot="title">What is your return policy?</span>
-                    Returns are accepted within 30 days of purchase, in their original packaging.
-                </hx-accordion-item>
-                <hx-accordion-item value="support" disabled data-icon="Headset">
-                    <span slot="title">How can I contact support?</span>
-                    Reach us by email or chat, 24/7.
-                </hx-accordion-item>
-            </hx-accordion>
-        </section>
+            <hx-accordion-item value="switch">
+                <span slot="title">Switch</span>
+                <div class="text-foreground">
+                    <div class="flex flex-col gap-3">
+                        <hx-switch>Default</hx-switch>
+                        <hx-switch checked>Checked</hx-switch>
+                        <hx-switch disabled>Disabled</hx-switch>
+                    </div>
+                </div>
+            </hx-accordion-item>
 
-        <hx-separator></hx-separator>
+            <hx-accordion-item value="card">
+                <span slot="title">Card</span>
+                <div class="text-foreground">
+                    <div class="flex flex-col gap-4">
+                        <hx-card>
+                            <span slot="title">Create project</span>
+                            <span slot="description">Create a new project in one click.</span>
+                            <hx-badge slot="action" variant="secondary">New</hx-badge>
+                            <hx-input label="Name"></hx-input>
+                            <hx-button slot="footer" variant="outline">Create</hx-button>
+                        </hx-card>
+                        <hx-card>
+                            <div slot="header" class="flex items-center gap-3">
+                                <hx-skeleton circle class="size-10"></hx-skeleton>
+                                <div class="flex flex-1 flex-col gap-2">
+                                    <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                                    <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+                                </div>
+                            </div>
+                            The header slot replaces the title, description and action layout.
+                        </hx-card>
+                        <hx-card>Default card with content only.</hx-card>
+                        <hx-card variant="outline">Outline card with content only.</hx-card>
+                        <hx-card variant="ghost">Ghost card with content only.</hx-card>
+                    </div>
+                </div>
+            </hx-accordion-item>
 
-        <section>
-            <h2 class="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">Tooltip</h2>
-            <div class="flex flex-wrap items-center gap-3">
-                <hx-tooltip content="Default">
-                    <hx-button variant="outline">Hover me</hx-button>
-                </hx-tooltip>
-                <hx-tooltip content="Bottom" placement="bottom">
-                    <hx-button variant="outline">Bottom</hx-button>
-                </hx-tooltip>
-                <hx-tooltip content="Left" placement="left">
-                    <hx-button variant="outline">Left</hx-button>
-                </hx-tooltip>
-                <hx-tooltip content="Right" placement="right">
-                    <hx-button variant="outline">Right</hx-button>
-                </hx-tooltip>
-                <hx-tooltip content="No arrow" without-arrow>
-                    <hx-button variant="outline">Without arrow</hx-button>
-                </hx-tooltip>
-            </div>
-        </section>
+            <hx-accordion-item value="tabs">
+                <span slot="title">Tabs</span>
+                <div class="text-foreground">
+                    <div class="flex flex-col gap-6">
+                        <hx-tabs value="account">
+                            <hx-tab value="account">Account</hx-tab>
+                            <hx-tab value="password">Password</hx-tab>
+                            <hx-tab value="billing" disabled>Billing</hx-tab>
+                            <hx-tab-panel value="account">Account</hx-tab-panel>
+                            <hx-tab-panel value="password">Password</hx-tab-panel>
+                            <hx-tab-panel value="billing">Billing</hx-tab-panel>
+                        </hx-tabs>
+                        <hx-tabs value="account" direction="vertical">
+                            <hx-tab value="account">Account</hx-tab>
+                            <hx-tab value="password">Password</hx-tab>
+                            <hx-tab value="billing" disabled>Billing</hx-tab>
+                            <hx-tab-panel value="account">Account</hx-tab-panel>
+                            <hx-tab-panel value="password">Password</hx-tab-panel>
+                            <hx-tab-panel value="billing">Billing</hx-tab-panel>
+                        </hx-tabs>
+                        <hx-tabs variant="secondary" value="overview">
+                            <hx-tab value="overview">Overview</hx-tab>
+                            <hx-tab value="analytics">Analytics</hx-tab>
+                            <hx-tab value="reports" disabled>Reports</hx-tab>
+                            <hx-tab-panel value="overview">Overview</hx-tab-panel>
+                            <hx-tab-panel value="analytics">Analytics</hx-tab-panel>
+                            <hx-tab-panel value="reports">Reports</hx-tab-panel>
+                        </hx-tabs>
+                        <hx-tabs variant="secondary" value="overview" direction="vertical">
+                            <hx-tab value="overview" data-icon="House">Overview</hx-tab>
+                            <hx-tab value="analytics" data-icon="ChartLine">Analytics</hx-tab>
+                            <hx-tab value="reports" data-icon="FileText" disabled>Reports</hx-tab>
+                            <hx-tab-panel value="overview">Overview</hx-tab-panel>
+                            <hx-tab-panel value="analytics">Analytics</hx-tab-panel>
+                            <hx-tab-panel value="reports">Reports</hx-tab-panel>
+                        </hx-tabs>
+                    </div>
+                </div>
+            </hx-accordion-item>
 
-        <hx-separator></hx-separator>
+            <hx-accordion-item value="accordion">
+                <span slot="title">Accordion</span>
+                <div class="text-foreground">
+                    <hx-accordion collapsible>
+                        <hx-accordion-item value="shipping">
+                            <span slot="title">What are your shipping options?</span>
+                            We offer standard (5-7 days), express (2-3 days) and overnight shipping.
+                        </hx-accordion-item>
+                        <hx-accordion-item value="returns">
+                            <span slot="title">What is your return policy?</span>
+                            Returns are accepted within 30 days of purchase, in their original packaging.
+                        </hx-accordion-item>
+                        <hx-accordion-item value="support" disabled>
+                            <span slot="title">How can I contact support?</span>
+                            Reach us by email or chat, 24/7.
+                        </hx-accordion-item>
+                    </hx-accordion>
+                    <hx-accordion collapsible variant="secondary" class="mt-4">
+                        <hx-accordion-item value="shipping">
+                            <span slot="title">What are your shipping options?</span>
+                            We offer standard (5-7 days), express (2-3 days) and overnight shipping.
+                        </hx-accordion-item>
+                        <hx-accordion-item value="returns">
+                            <span slot="title">What is your return policy?</span>
+                            Returns are accepted within 30 days of purchase, in their original packaging.
+                        </hx-accordion-item>
+                        <hx-accordion-item value="support" disabled>
+                            <span slot="title">How can I contact support?</span>
+                            Reach us by email or chat, 24/7.
+                        </hx-accordion-item>
+                    </hx-accordion>
+                    <hx-accordion collapsible class="mt-4">
+                        <hx-accordion-item value="shipping" data-icon="Package">
+                            <span slot="title">What are your shipping options?</span>
+                            We offer standard (5-7 days), express (2-3 days) and overnight shipping.
+                        </hx-accordion-item>
+                        <hx-accordion-item value="returns" data-icon="Undo2">
+                            <span slot="title">What is your return policy?</span>
+                            Returns are accepted within 30 days of purchase, in their original packaging.
+                        </hx-accordion-item>
+                        <hx-accordion-item value="support" disabled data-icon="Headset">
+                            <span slot="title">How can I contact support?</span>
+                            Reach us by email or chat, 24/7.
+                        </hx-accordion-item>
+                    </hx-accordion>
+                </div>
+            </hx-accordion-item>
 
-        <section>
-            <h2 class="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">Dropdown menu</h2>
-            <div class="flex flex-wrap items-center gap-3">
-                <hx-dropdown-menu>
-                    <hx-button slot="trigger" variant="outline">Menu</hx-button>
-                    <hx-menu-group label="Account">
-                        <hx-menu-item value="profile" data-icon="User">Profile</hx-menu-item>
-                        <hx-menu-item value="billing" data-icon="CreditCard" disabled>Billing</hx-menu-item>
-                        <hx-menu-item value="settings" data-icon="Settings">Settings</hx-menu-item>
-                    </hx-menu-group>
-                    <hx-separator></hx-separator>
-                    <hx-menu-item value="delete" variant="destructive" data-icon="Trash2">Delete</hx-menu-item>
-                </hx-dropdown-menu>
+            <hx-accordion-item value="tooltip">
+                <span slot="title">Tooltip</span>
+                <div class="text-foreground">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <hx-tooltip content="Default">
+                            <hx-button variant="outline">Hover me</hx-button>
+                        </hx-tooltip>
+                        <hx-tooltip content="Bottom" placement="bottom">
+                            <hx-button variant="outline">Bottom</hx-button>
+                        </hx-tooltip>
+                        <hx-tooltip content="Left" placement="left">
+                            <hx-button variant="outline">Left</hx-button>
+                        </hx-tooltip>
+                        <hx-tooltip content="Right" placement="right">
+                            <hx-button variant="outline">Right</hx-button>
+                        </hx-tooltip>
+                        <hx-tooltip content="No arrow" without-arrow>
+                            <hx-button variant="outline">Without arrow</hx-button>
+                        </hx-tooltip>
+                    </div>
+                </div>
+            </hx-accordion-item>
 
-                <hx-dropdown-menu>
-                    <hx-button slot="trigger" variant="outline">Checkboxes</hx-button>
-                    <hx-menu-item type="checkbox" value="status-bar" checked>Show status bar</hx-menu-item>
-                    <hx-menu-item type="checkbox" value="activity-bar">Show activity bar</hx-menu-item>
-                    <hx-menu-item type="checkbox" value="panel" disabled>Show panel</hx-menu-item>
-                </hx-dropdown-menu>
-
-                <hx-dropdown-menu>
-                    <hx-button slot="trigger" variant="outline">Radio group</hx-button>
-                    <hx-menu-group label="Panel position">
-                        <hx-menu-item type="radio" value="top" checked>Top</hx-menu-item>
-                        <hx-menu-item type="radio" value="bottom">Bottom</hx-menu-item>
-                        <hx-menu-item type="radio" value="right">Right</hx-menu-item>
-                    </hx-menu-group>
-                </hx-dropdown-menu>
-
-                <hx-dropdown-menu>
-                    <hx-button slot="trigger" variant="outline">Submenus</hx-button>
-                    <hx-menu-item value="new">New file</hx-menu-item>
-                    <hx-menu-item>
-                        Share
-                        <hx-menu slot="submenu">
-                            <hx-menu-item value="email">Email</hx-menu-item>
-                            <hx-menu-item value="message">Message</hx-menu-item>
+            <hx-accordion-item value="dropdown-menu">
+                <span slot="title">Dropdown menu</span>
+                <div class="text-foreground">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <hx-dropdown-menu>
+                            <hx-button slot="trigger" variant="outline">Menu</hx-button>
+                            <hx-menu-group label="Account">
+                                <hx-menu-item value="profile" data-icon="User">Profile</hx-menu-item>
+                                <hx-menu-item value="billing" data-icon="CreditCard" disabled>Billing</hx-menu-item>
+                                <hx-menu-item value="settings" data-icon="Settings">Settings</hx-menu-item>
+                            </hx-menu-group>
                             <hx-separator></hx-separator>
+                            <hx-menu-item value="delete" variant="destructive" data-icon="Trash2">Delete</hx-menu-item>
+                        </hx-dropdown-menu>
+
+                        <hx-dropdown-menu>
+                            <hx-button slot="trigger" variant="outline">Checkboxes</hx-button>
+                            <hx-menu-item type="checkbox" value="status-bar" checked>Show status bar</hx-menu-item>
+                            <hx-menu-item type="checkbox" value="activity-bar">Show activity bar</hx-menu-item>
+                            <hx-menu-item type="checkbox" value="panel" disabled>Show panel</hx-menu-item>
+                        </hx-dropdown-menu>
+
+                        <hx-dropdown-menu>
+                            <hx-button slot="trigger" variant="outline">Radio group</hx-button>
+                            <hx-menu-group label="Panel position">
+                                <hx-menu-item type="radio" value="top" checked>Top</hx-menu-item>
+                                <hx-menu-item type="radio" value="bottom">Bottom</hx-menu-item>
+                                <hx-menu-item type="radio" value="right">Right</hx-menu-item>
+                            </hx-menu-group>
+                        </hx-dropdown-menu>
+
+                        <hx-dropdown-menu>
+                            <hx-button slot="trigger" variant="outline">Submenus</hx-button>
+                            <hx-menu-item value="new">New file</hx-menu-item>
                             <hx-menu-item>
-                                More
+                                Share
                                 <hx-menu slot="submenu">
-                                    <hx-menu-item value="link">Copy link</hx-menu-item>
-                                    <hx-menu-item value="embed">Embed</hx-menu-item>
+                                    <hx-menu-item value="email">Email</hx-menu-item>
+                                    <hx-menu-item value="message">Message</hx-menu-item>
+                                    <hx-separator></hx-separator>
+                                    <hx-menu-item>
+                                        More
+                                        <hx-menu slot="submenu">
+                                            <hx-menu-item value="link">Copy link</hx-menu-item>
+                                            <hx-menu-item value="embed">Embed</hx-menu-item>
+                                        </hx-menu>
+                                    </hx-menu-item>
                                 </hx-menu>
                             </hx-menu-item>
-                        </hx-menu>
-                    </hx-menu-item>
-                    <hx-menu-item value="download" data-icon="Download">Download</hx-menu-item>
-                </hx-dropdown-menu>
+                            <hx-menu-item value="download" data-icon="Download">Download</hx-menu-item>
+                        </hx-dropdown-menu>
 
-                <hx-dropdown-menu placement="top-start">
-                    <hx-button slot="trigger" variant="outline">Top</hx-button>
-                    <hx-menu-item value="profile">Profile</hx-menu-item>
-                    <hx-menu-item value="settings">Settings</hx-menu-item>
-                </hx-dropdown-menu>
-            </div>
-        </section>
-
-        <hx-separator></hx-separator>
-
-        <section>
-            <h2 class="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">Skeleton</h2>
-            <div class="flex w-full items-center gap-4">
-                <hx-skeleton circle class="size-12"></hx-skeleton>
-                <div class="flex flex-1 flex-col gap-2">
-                    <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
-                    <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+                        <hx-dropdown-menu placement="top-start">
+                            <hx-button slot="trigger" variant="outline">Top</hx-button>
+                            <hx-menu-item value="profile">Profile</hx-menu-item>
+                            <hx-menu-item value="settings">Settings</hx-menu-item>
+                        </hx-dropdown-menu>
+                    </div>
                 </div>
-            </div>
-            <hx-skeleton class="mt-4 h-32 w-full rounded-xl"></hx-skeleton>
-        </section>
+            </hx-accordion-item>
+
+            <hx-accordion-item value="skeleton">
+                <span slot="title">Skeleton</span>
+                <div class="text-foreground">
+                    <div class="flex w-full items-center gap-4">
+                        <hx-skeleton circle class="size-12"></hx-skeleton>
+                        <div class="flex flex-1 flex-col gap-2">
+                            <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                            <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+                        </div>
+                    </div>
+                    <hx-skeleton class="rounded-card mt-4 h-32 w-full"></hx-skeleton>
+                </div>
+            </hx-accordion-item>
+        </hx-accordion>
 
         <script type="module" src="/src/index.ts"></script>
         <script type="module">
@@ -383,7 +349,6 @@
                 Headset,
                 Heart,
                 House,
-                Lock,
                 Package,
                 Plus,
                 Search,
@@ -401,7 +366,6 @@
                 Headset,
                 Heart,
                 House,
-                Lock,
                 Package,
                 Plus,
                 Search,

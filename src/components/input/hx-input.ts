@@ -59,7 +59,7 @@ export class HxInput extends HxElement {
                 <input
                     id="control"
                     part="control"
-                    class="border-input bg-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 h-9 w-full rounded-md border px-3 shadow-xs outline-none focus-visible:ring-[3px] disabled:opacity-50"
+                    class="border-input bg-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 rounded-control h-input px-input w-full border shadow-xs outline-none focus-visible:ring-[3px] disabled:opacity-50"
                     .value=${this.value}
                     type=${this.type}
                     placeholder=${ifDefined(this.placeholder || undefined)}

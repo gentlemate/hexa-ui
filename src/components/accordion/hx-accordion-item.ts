@@ -5,9 +5,9 @@ import { HxElement } from "../../hx-element.js";
 import "../icon/hx-icon.js";
 import type { HxAccordionTrigger, HxAccordionVariant } from "./hx-accordion.js";
 
-const variants: Record<HxAccordionVariant, { trigger: string; hover: string; content: string; separator: string }> = {
-    default: { trigger: "px-4", hover: "hover:bg-card hover:text-card-foreground", content: "px-4", separator: "" },
-    secondary: { trigger: "px-4", hover: "hover:bg-accent", content: "px-4", separator: "mx-4" },
+const variants: Record<HxAccordionVariant, { hover: string; separator: string }> = {
+    default: { hover: "hover:bg-card hover:text-card-foreground", separator: "" },
+    secondary: { hover: "hover:bg-accent", separator: "mx-accordion" },
 };
 
 /**
@@ -78,9 +78,9 @@ export class HxAccordionItem extends HxElement {
                     aria-expanded=${this.open}
                     aria-controls="content"
                     ?disabled=${this.disabled}
-                    class="${variant.trigger} ${
+                    class="${
                         this.trigger === "click" ? `${variant.hover} cursor-pointer` : ""
-                    } focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 py-3 text-left text-sm font-medium transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50"
+                    } focus-visible:ring-ring/50 p-accordion flex flex-1 items-start justify-between gap-4 text-left text-sm font-medium transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50"
                     @click=${this.toggle}
                 >
                     <span class="flex items-start gap-2">
@@ -112,10 +112,10 @@ export class HxAccordionItem extends HxElement {
                 } grid text-sm transition-[grid-template-rows] duration-200"
             >
                 <div class="overflow-hidden">
-                    <div class="${variant.content} text-muted-foreground pt-1 pb-3"><slot></slot></div>
+                    <div class="text-muted-foreground p-accordion"><slot></slot></div>
                 </div>
             </div>
-            <div part="separator" class="${variant.separator} bg-border h-px"></div>
+            <div part="separator" class="${variant.separator} bg-border h-(--hx-border-width)"></div>
         </div>`;
     }
 }

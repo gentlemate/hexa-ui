@@ -62,7 +62,7 @@ export class HxTextarea extends HxElement {
                 <textarea
                     id="control"
                     part="control"
-                    class="border-input bg-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 min-h-16 w-full resize-y rounded-md border px-3 py-2 shadow-xs outline-none focus-visible:ring-[3px] disabled:opacity-50"
+                    class="border-input bg-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 rounded-control px-input min-h-16 w-full resize-y border py-2 shadow-xs outline-none focus-visible:ring-[3px] disabled:opacity-50"
                     .value=${this.value}
                     rows=${this.rows}
                     placeholder=${ifDefined(this.placeholder || undefined)}

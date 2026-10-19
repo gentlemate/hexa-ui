@@ -14,7 +14,7 @@ export class HxSkeleton extends HxElement {
             :host {
                 display: block;
                 flex-shrink: 0;
-                border-radius: calc(var(--hx-radius) - 2px);
+                border-radius: var(--hx-radius-control);
             }
             :host([circle]) {
                 border-radius: 9999px;

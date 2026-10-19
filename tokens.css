@@ -17,7 +17,46 @@
     --hx-border: oklch(0.922 0 0);
     --hx-input: oklch(0.922 0 0);
     --hx-ring: oklch(0.708 0 0);
-    --hx-radius: 0.625rem;
+
+    --hx-border-width: 1px;
+    --hx-radius-control: 0.5rem;
+    --hx-radius-card: 0.75rem;
+    --hx-radius-popover: 0.5rem;
+
+    --hx-height-control: 2.5rem;
+    --hx-spacing-control: 0.75rem;
+    --hx-spacing-card: 1.25rem;
+    --hx-spacing-popover: 0.25rem;
+
+    /* button */
+    --hx-height-button: var(--hx-height-control);
+    --hx-spacing-button: var(--hx-spacing-control);
+    /* input */
+    --hx-height-input: var(--hx-height-control);
+    --hx-spacing-input: var(--hx-spacing-control);
+    /* checkbox */
+    --hx-size-checkbox: 1rem;
+    /* switch */
+    --hx-size-switch: 1.25rem;
+    --hx-spacing-switch: 1px;
+    /* badge */
+    --hx-height-badge: 1.5rem;
+    --hx-spacing-badge: 0.5rem;
+    /* tabs */
+    --hx-height-tabs: var(--hx-height-control);
+    --hx-spacing-tabs: 0.25rem;
+    --hx-spacing-tab: var(--hx-spacing-control);
+    /* accordion */
+    --hx-spacing-accordion: 1rem;
+    /* tooltip */
+    --hx-spacing-tooltip: 0.75rem;
+    /* dropdown-menu */
+    --hx-height-menu-item: 2rem;
+    --hx-spacing-menu-item: 0.5rem;
+    /* separator */
+    --hx-spacing-separator: 1rem;
+
+    --hx-font-sans: "Outfit", system-ui, sans-serif;
 }
 
 .dark {
@@ -43,14 +82,14 @@
 
 @layer base {
     hx-separator {
-        margin-block: 1rem;
+        margin-block: var(--hx-spacing-separator);
     }
     hx-separator[direction="vertical"] {
         margin-block: 0;
-        margin-inline: 1rem;
+        margin-inline: var(--hx-spacing-separator);
     }
     :where(hx-menu, hx-dropdown-menu) > hx-separator {
         width: auto;
-        margin: 0.25rem -0.25rem;
+        margin: var(--hx-spacing-popover) calc(var(--hx-spacing-popover) * -1);
     }
 }

@@ -152,7 +152,7 @@ export class HxTooltip extends HxOverlayElement {
                 popover="manual"
                 role="tooltip"
                 data-state=${this.open ? "open" : "closed"}
-                class="bg-foreground text-background animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 inset-auto m-0 w-fit max-w-xs overflow-visible rounded-md border-0 px-3 py-1.5 text-xs text-balance"
+                class="bg-foreground text-background animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-popover px-tooltip inset-auto m-0 w-fit max-w-xs overflow-visible border-0 py-1.5 text-xs text-balance"
             >
                 <slot name="content" @slotchange=${this.describe}>${this.content}</slot>
                 ${
