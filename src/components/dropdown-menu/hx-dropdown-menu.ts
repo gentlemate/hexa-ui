@@ -9,7 +9,7 @@ export type HxDropdownMenuPlacement = HxMenuPlacement;
 /**
  * @element hx-dropdown-menu
  * @slot trigger - The element that opens the menu (e.g. an `hx-button`).
- * @slot - The `hx-menu-item`, `hx-menu-group` and `hx-separator` elements.
+ * @slot - The `hx-menu-item`, `hx-menu-group` and `hx-menu-separator` elements.
  * @fires hx-show - The menu is about to open. Cancelable.
  * @fires hx-after-show - The menu is open and its enter animation finished.
  * @fires hx-hide - The menu is about to close. Cancelable.

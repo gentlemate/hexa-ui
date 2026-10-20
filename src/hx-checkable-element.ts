@@ -17,7 +17,7 @@ export abstract class HxCheckableElement extends HxElement {
             :host {
                 display: inline-flex;
                 align-items: center;
-                gap: 0.5rem;
+                gap: 0.75rem;
                 cursor: pointer;
                 user-select: none;
                 outline: none;

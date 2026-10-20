@@ -16,7 +16,7 @@ const submenuDelay = 100;
 
 /**
  * @element hx-menu
- * @slot - The `hx-menu-item`, `hx-menu-group` and `hx-separator` elements.
+ * @slot - The `hx-menu-item`, `hx-menu-group` and `hx-menu-separator` elements.
  * @fires hx-after-show - The menu is open and its enter animation finished.
  * @fires hx-after-hide - The menu is closed and its exit animation finished.
  * @csspart popup - The menu panel.

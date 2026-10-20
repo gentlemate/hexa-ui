@@ -79,7 +79,7 @@ export class HxTab extends HxElement {
             part="base"
             class="${variant[this.direction]} ${
                 this.selected ? variant.selected : variant.idle
-            } inline-flex flex-1 cursor-pointer items-center text-sm font-medium whitespace-nowrap transition-[color,box-shadow]"
+            } inline-flex flex-1 cursor-pointer items-center whitespace-nowrap transition-[color,box-shadow]"
         >
             ${this.iconPlacement === "left" ? icon : nothing}<slot></slot>${
                 this.iconPlacement === "right" ? icon : nothing

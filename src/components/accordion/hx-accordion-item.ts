@@ -80,7 +80,7 @@ export class HxAccordionItem extends HxElement {
                     ?disabled=${this.disabled}
                     class="${
                         this.trigger === "click" ? `${variant.hover} cursor-pointer` : ""
-                    } focus-visible:ring-ring/50 p-accordion flex flex-1 items-start justify-between gap-4 text-left text-sm font-medium transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50"
+                    } focus-visible:ring-ring/50 p-accordion flex flex-1 items-start justify-between gap-4 text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50"
                     @click=${this.toggle}
                 >
                     <span class="flex items-start gap-2">
@@ -109,7 +109,7 @@ export class HxAccordionItem extends HxElement {
                 ?inert=${!this.open}
                 class="${
                     this.open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                } grid text-sm transition-[grid-template-rows] duration-200"
+                } grid transition-[grid-template-rows] duration-200"
             >
                 <div class="overflow-hidden">
                     <div class="text-muted-foreground p-accordion"><slot></slot></div>

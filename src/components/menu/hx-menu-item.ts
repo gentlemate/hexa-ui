@@ -146,7 +146,7 @@ export class HxMenuItem extends HxElement {
             part="base"
             class="${
                 this.type === "normal" ? "" : "pl-8"
-            } rounded-popover-sm min-h-menu-item px-menu-item relative flex cursor-default items-center gap-2 text-sm select-none"
+            } rounded-popover-sm min-h-menu-item px-menu-item relative flex cursor-default items-center gap-2 select-none"
         >
             ${this.renderIndicator()}
             ${

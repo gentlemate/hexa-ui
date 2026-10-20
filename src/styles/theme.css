@@ -53,4 +53,12 @@
     --spacing-menu-item: var(--hx-spacing-menu-item);
 
     --font-sans: var(--hx-font-sans);
+
+    --text-*: initial;
+    --text-sm: var(--hx-text-sm);
+    --text-sm--line-height: var(--hx-leading-sm);
+    --text-base: var(--hx-text-base);
+    --text-base--line-height: var(--hx-leading-base);
+    --text-lg: var(--hx-text-lg);
+    --text-lg--line-height: var(--hx-leading-lg);
 }

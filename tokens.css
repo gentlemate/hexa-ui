@@ -35,7 +35,7 @@
     --hx-height-input: var(--hx-height-control);
     --hx-spacing-input: var(--hx-spacing-control);
     /* checkbox */
-    --hx-size-checkbox: 1rem;
+    --hx-size-checkbox: 1.25rem;
     /* switch */
     --hx-size-switch: 1.25rem;
     --hx-spacing-switch: 1px;
@@ -57,6 +57,13 @@
     --hx-spacing-separator: 1rem;
 
     --hx-font-sans: "Outfit", system-ui, sans-serif;
+
+    --hx-text-sm: 0.875rem;
+    --hx-leading-sm: calc(1.25 / 0.875);
+    --hx-text-base: 1rem;
+    --hx-leading-base: calc(1.5 / 1);
+    --hx-text-lg: 1.125rem;
+    --hx-leading-lg: calc(1.75 / 1.125);
 }
 
 .dark {

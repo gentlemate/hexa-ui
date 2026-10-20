@@ -65,10 +65,10 @@ export class HxCard extends HxElement {
                 <slot name="header">
                     <div class="flex items-start gap-4">
                         <div class="flex flex-1 flex-col gap-1.5">
-                            <div class="${has("title") ? "" : "hidden"} leading-none font-semibold">
+                            <div class="${has("title") ? "" : "hidden"} text-lg leading-none font-medium">
                                 <slot name="title"></slot>
                             </div>
-                            <div class="${has("description") ? "" : "hidden"} text-muted-foreground text-sm">
+                            <div class="${has("description") ? "" : "hidden"} text-muted-foreground">
                                 <slot name="description"></slot>
                             </div>
                         </div>
@@ -76,7 +76,7 @@ export class HxCard extends HxElement {
                     </div>
                 </slot>
             </div>
-            <div part="content" class="px-card text-sm"><slot></slot></div>
+            <div part="content" class="px-card"><slot></slot></div>
             <div part="footer" class="${has("footer") ? "flex" : "hidden"} px-card items-center gap-2">
                 <slot name="footer"></slot>
             </div>

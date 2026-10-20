@@ -39,7 +39,7 @@ export class HxBadge extends HxElement {
         const icon = this.icon ? html`<hx-icon part="icon" .icon=${this.icon} size="12"></hx-icon>` : nothing;
         return html`<span
             part="base"
-            class="${variants[this.variant]} h-badge px-badge inline-flex shrink-0 items-center justify-center gap-1 rounded-full border text-xs font-medium whitespace-nowrap"
+            class="${variants[this.variant]} h-badge px-badge inline-flex shrink-0 items-center justify-center gap-1 rounded-full border text-sm whitespace-nowrap"
         >
             ${this.iconPlacement === "left" ? icon : nothing}<slot></slot>${
                 this.iconPlacement === "right" ? icon : nothing

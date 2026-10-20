@@ -32,7 +32,7 @@ export class HxSwitch extends HxCheckableElement {
                     } bg-background size-switch rounded-full shadow-sm transition-transform"
                 ></span>
             </span>
-            <span part="label" class="text-foreground text-sm leading-none font-medium"><slot></slot></span>`;
+            <span part="label" class="text-foreground leading-none"><slot></slot></span>`;
     }
 }
 

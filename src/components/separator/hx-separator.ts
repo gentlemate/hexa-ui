@@ -17,10 +17,13 @@ export class HxSeparator extends HxElement {
                 flex-shrink: 0;
                 height: var(--hx-border-width);
                 width: 100%;
+                margin-block: var(--hx-spacing-separator);
                 background: var(--hx-border);
             }
             :host([direction="vertical"]) {
                 align-self: stretch;
+                margin-block: 0;
+                margin-inline: var(--hx-spacing-separator);
                 height: auto;
                 width: var(--hx-border-width);
             }

@@ -37,7 +37,7 @@ export class HxMenuGroup extends HxElement {
                     ? html`<div
                           part="label"
                           aria-hidden="true"
-                          class="text-muted-foreground px-2 py-1.5 text-xs font-medium"
+                          class="text-muted-foreground px-2 py-1.5 text-sm font-medium"
                       >
                           ${this.label}
                       </div>`

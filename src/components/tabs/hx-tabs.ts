@@ -22,7 +22,7 @@ const variants: Record<HxTabsVariant, Record<HxTabsDirection, string>> = {
 
 const directions: Record<HxTabsDirection, { nav: string; body: string }> = {
     horizontal: { nav: "auto-cols-fr grid-flow-col", body: "mt-2" },
-    vertical: { nav: "auto-rows-fr grid-flow-row", body: "ml-4 min-w-0 flex-1" },
+    vertical: { nav: "auto-rows-fr grid-flow-row", body: "ml-2 min-w-0 flex-1" },
 };
 
 /**

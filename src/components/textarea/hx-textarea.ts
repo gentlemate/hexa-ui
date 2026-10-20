@@ -47,10 +47,10 @@ export class HxTextarea extends HxElement {
 
     override render() {
         return html`
-            <div class="text-foreground flex flex-col gap-1.5 text-sm">
+            <div class="text-foreground flex flex-col gap-1.5">
                 ${
                     this.label
-                        ? html`<label for="control" class="font-medium"
+                        ? html`<label for="control"
                               >${this.label}${
                                   this.required
                                       ? html`<span class="text-destructive ml-0.5" aria-hidden="true">*</span>`
@@ -74,9 +74,9 @@ export class HxTextarea extends HxElement {
                 ></textarea>
                 ${
                     this.error
-                        ? html`<p class="text-destructive text-xs" role="alert">${this.error}</p>`
+                        ? html`<p class="text-destructive text-sm" role="alert">${this.error}</p>`
                         : this.hint
-                          ? html`<p class="text-muted-foreground text-xs">${this.hint}</p>`
+                          ? html`<p class="text-muted-foreground text-sm">${this.hint}</p>`
                           : nothing
                 }
             </div>

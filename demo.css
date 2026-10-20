@@ -1,3 +1,10 @@
 @import "tailwindcss" source(none);
 @import "./src/styles/theme.css";
 @source "./index.html";
+
+@layer base {
+    body {
+        font-size: var(--hx-text-base);
+        line-height: var(--hx-leading-base);
+    }
+}

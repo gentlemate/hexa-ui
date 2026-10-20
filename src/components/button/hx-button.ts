@@ -8,7 +8,7 @@ export type HxButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "d
 export type HxButtonIconPlacement = "left" | "right";
 
 const base =
-    "inline-flex h-button cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-control text-sm font-medium outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50";
+    "inline-flex h-button cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-control outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<HxButtonVariant, string> = {
     primary: "bg-primary text-primary-foreground hover:bg-primary/90",

@@ -43,7 +43,7 @@ export class HxLabel extends HxElement {
     }
 
     override render() {
-        return html`<label part="base" class="text-foreground text-sm leading-none font-medium select-none">
+        return html`<label part="base" class="text-foreground leading-none select-none">
             <slot></slot>${
                 this.required ? html`<span class="text-destructive ml-0.5" aria-hidden="true">*</span>` : nothing
             }

@@ -2,3 +2,10 @@
 
 @import "tw-animate-css";
 @import "./theme.css";
+
+@layer base {
+    :host {
+        font-size: var(--hx-text-base);
+        line-height: var(--hx-leading-base);
+    }
+}
