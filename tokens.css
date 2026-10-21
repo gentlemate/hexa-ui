@@ -22,11 +22,14 @@
     --hx-radius-control: 0.5rem;
     --hx-radius-card: 0.75rem;
     --hx-radius-popover: 0.5rem;
+    --hx-radius-menu-item: 0.25rem;
 
     --hx-height-control: 2.5rem;
     --hx-spacing-control: 0.75rem;
     --hx-spacing-card: 1.25rem;
     --hx-spacing-popover: 0.25rem;
+    --hx-height-menu-item: 2rem;
+    --hx-spacing-menu-item: 0.5rem;
 
     /* button */
     --hx-height-button: var(--hx-height-control);
@@ -50,9 +53,6 @@
     --hx-spacing-accordion: 1rem;
     /* tooltip */
     --hx-spacing-tooltip: 0.75rem;
-    /* dropdown-menu */
-    --hx-height-menu-item: 2rem;
-    --hx-spacing-menu-item: 0.5rem;
     /* separator */
     --hx-spacing-separator: 1rem;
 
@@ -85,18 +85,4 @@
     --hx-border: oklch(1 0 0 / 10%);
     --hx-input: oklch(1 0 0 / 15%);
     --hx-ring: oklch(0.556 0 0);
-}
-
-@layer base {
-    hx-separator {
-        margin-block: var(--hx-spacing-separator);
-    }
-    hx-separator[direction="vertical"] {
-        margin-block: 0;
-        margin-inline: var(--hx-spacing-separator);
-    }
-    :where(hx-menu, hx-dropdown-menu) > hx-separator {
-        width: auto;
-        margin: var(--hx-spacing-popover) calc(var(--hx-spacing-popover) * -1);
-    }
 }

@@ -14,5 +14,5 @@ export * from "./components/tabs/index.js";
 export * from "./components/separator/index.js";
 export * from "./components/accordion/index.js";
 export * from "./components/tooltip/index.js";
-export * from "./components/menu/index.js";
 export * from "./components/dropdown-menu/index.js";
+export * from "./components/select/index.js";

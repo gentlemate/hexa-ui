@@ -5,27 +5,28 @@ import { FloatingController } from "../../controllers/floating-controller.js";
 import { ListNavigation } from "../../controllers/list-navigation.js";
 import { HxElement } from "../../hx-element.js";
 import { HxOverlayElement } from "../../hx-overlay-element.js";
-import "./hx-menu-group.js";
-import { HxMenuItem } from "./hx-menu-item.js";
+import "./hx-dropdown-menu-group.js";
+import "./hx-dropdown-menu-separator.js";
+import { HxDropdownMenuItem } from "./hx-dropdown-menu-item.js";
 
-export type HxMenuPlacement = Placement;
+export type HxDropdownMenuSubmenuPlacement = Placement;
 
-export type HxMenuFocus = "first" | "last" | "menu" | "none";
+export type HxDropdownMenuFocus = "first" | "last" | "menu" | "none";
 
 const submenuDelay = 100;
 
 /**
- * @element hx-menu
- * @slot - The `hx-menu-item`, `hx-menu-group` and `hx-menu-separator` elements.
+ * @element hx-dropdown-menu-submenu
+ * @slot - The `hx-dropdown-menu-item`, `hx-dropdown-menu-group` and `hx-dropdown-menu-separator` elements.
  * @fires hx-after-show - The menu is open and its enter animation finished.
  * @fires hx-after-hide - The menu is closed and its exit animation finished.
  * @csspart popup - The menu panel.
  *
- * A submenu, placed in the `submenu` slot of an `hx-menu-item`. Also the base class of
+ * A submenu, placed in the `submenu` slot of an `hx-dropdown-menu-item`. Also the base class of
  * `hx-dropdown-menu`, which adds the trigger.
  */
-@customElement("hx-menu")
-export class HxMenu extends HxOverlayElement {
+@customElement("hx-dropdown-menu-submenu")
+export class HxDropdownMenuSubmenu extends HxOverlayElement {
     static override styles = [
         HxElement.styles,
         css`
@@ -35,19 +36,19 @@ export class HxMenu extends HxOverlayElement {
         `,
     ];
 
-    @property({ reflect: true }) placement: HxMenuPlacement = "right-start";
+    @property({ reflect: true }) placement: HxDropdownMenuSubmenuPlacement = "right-start";
     @property({ type: Number }) distance = 4;
 
     @query("#popup") protected overlay!: HTMLElement;
 
     protected alignOffset = -5;
-    protected initialFocus: HxMenuFocus = "menu";
+    protected initialFocus: HxDropdownMenuFocus = "menu";
 
     private navigation = new ListNavigation(
         () => this.items,
         (item) => item.label,
     );
-    private hovered?: HxMenuItem;
+    private hovered?: HxDropdownMenuItem;
     private submenuTimer?: ReturnType<typeof setTimeout>;
 
     private floating = new FloatingController(this, () => {
@@ -76,19 +77,20 @@ export class HxMenu extends HxOverlayElement {
     }
 
     private get items() {
-        return [...this.querySelectorAll("hx-menu-item")].filter((item) => this.owns(item));
+        return [...this.querySelectorAll("hx-dropdown-menu-item")].filter((item) => this.owns(item));
     }
 
-    private owns(item: HxMenuItem) {
-        return item.closest("hx-menu, hx-dropdown-menu") === this;
+    private owns(item: HxDropdownMenuItem) {
+        return item.closest("hx-dropdown-menu-submenu, hx-dropdown-menu") === this;
     }
 
     private itemFrom(target: EventTarget | null) {
-        const element = target instanceof Element ? target.closest("hx-menu-item, hx-menu") : null;
-        return element instanceof HxMenuItem && this.owns(element) ? element : undefined;
+        const element =
+            target instanceof Element ? target.closest("hx-dropdown-menu-item, hx-dropdown-menu-submenu") : null;
+        return element instanceof HxDropdownMenuItem && this.owns(element) ? element : undefined;
     }
 
-    protected focusInitial(focus: HxMenuFocus) {
+    protected focusInitial(focus: HxDropdownMenuFocus) {
         const items = this.items.filter((item) => !item.disabled);
         if (focus === "first") items[0]?.focus();
         else if (focus === "last") items.at(-1)?.focus();
@@ -97,10 +99,10 @@ export class HxMenu extends HxOverlayElement {
 
     protected close() {
         this.open = false;
-        if (this.parentElement instanceof HxMenuItem) this.parentElement.focus();
+        if (this.parentElement instanceof HxDropdownMenuItem) this.parentElement.focus();
     }
 
-    private openSubmenu(item: HxMenuItem, focus: HxMenuFocus) {
+    private openSubmenu(item: HxDropdownMenuItem, focus: HxDropdownMenuFocus) {
         clearTimeout(this.submenuTimer);
         this.closeSubmenus(item);
         const submenu = item.submenu;
@@ -110,7 +112,7 @@ export class HxMenu extends HxOverlayElement {
         submenu.open = true;
     }
 
-    private closeSubmenus(except?: HxMenuItem) {
+    private closeSubmenus(except?: HxDropdownMenuItem) {
         for (const item of this.items) if (item !== except && item.submenu) item.submenu.open = false;
     }
 
@@ -122,7 +124,7 @@ export class HxMenu extends HxOverlayElement {
         event.stopPropagation();
     }
 
-    private handleKey(event: KeyboardEvent, item?: HxMenuItem) {
+    private handleKey(event: KeyboardEvent, item?: HxDropdownMenuItem) {
         switch (event.key) {
             case "Enter":
             case " ":
@@ -133,7 +135,7 @@ export class HxMenu extends HxOverlayElement {
                 if (item?.submenu) this.openSubmenu(item, "first");
                 return true;
             case "ArrowLeft":
-                if (!(this.parentElement instanceof HxMenuItem)) return false;
+                if (!(this.parentElement instanceof HxDropdownMenuItem)) return false;
                 this.close();
                 return true;
             case "Escape":
@@ -196,7 +198,7 @@ export class HxMenu extends HxOverlayElement {
     protected override updated(changed: PropertyValues<this>) {
         super.updated(changed);
         if (!changed.has("open")) return;
-        if (this.parentElement instanceof HxMenuItem) this.parentElement.expanded = this.open;
+        if (this.parentElement instanceof HxDropdownMenuItem) this.parentElement.expanded = this.open;
         if (!this.open) {
             clearTimeout(this.submenuTimer);
             this.hovered = undefined;
@@ -226,6 +228,6 @@ export class HxMenu extends HxOverlayElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        "hx-menu": HxMenu;
+        "hx-dropdown-menu-submenu": HxDropdownMenuSubmenu;
     }
 }

@@ -1,13 +1,11 @@
 import { css, html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { HxElement } from "../../hx-element.js";
+import { HxElement } from "./hx-element.js";
 
 /**
- * @element hx-menu-separator
- * @csspart line - The separator line.
+ * Base class for the separators of a popup list (menu separator, select separator): a line that
+ * spans the whole panel, padding included.
  */
-@customElement("hx-menu-separator")
-export class HxMenuSeparator extends HxElement {
+export abstract class HxMenuSeparatorElement extends HxElement {
     static override styles = [
         HxElement.styles,
         css`
@@ -31,11 +29,5 @@ export class HxMenuSeparator extends HxElement {
 
     override render() {
         return html`<div part="line"></div>`;
-    }
-}
-
-declare global {
-    interface HTMLElementTagNameMap {
-        "hx-menu-separator": HxMenuSeparator;
     }
 }

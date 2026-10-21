@@ -1,25 +1,25 @@
 import { html, type PropertyValues } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { focusTargetOf } from "../../focus-target.js";
-import { HxMenu, type HxMenuPlacement } from "../menu/hx-menu.js";
-import type { HxMenuItem } from "../menu/hx-menu-item.js";
+import { HxDropdownMenuSubmenu, type HxDropdownMenuSubmenuPlacement } from "./hx-dropdown-menu-submenu.js";
+import type { HxDropdownMenuItem } from "./hx-dropdown-menu-item.js";
 
-export type HxDropdownMenuPlacement = HxMenuPlacement;
+export type HxDropdownMenuPlacement = HxDropdownMenuSubmenuPlacement;
 
 /**
  * @element hx-dropdown-menu
  * @slot trigger - The element that opens the menu (e.g. an `hx-button`).
- * @slot - The `hx-menu-item`, `hx-menu-group` and `hx-menu-separator` elements.
+ * @slot - The `hx-dropdown-menu-item`, `hx-dropdown-menu-group` and `hx-dropdown-menu-separator` elements.
  * @fires hx-show - The menu is about to open. Cancelable.
  * @fires hx-after-show - The menu is open and its enter animation finished.
  * @fires hx-hide - The menu is about to close. Cancelable.
  * @fires hx-after-hide - The menu is closed and its exit animation finished.
- * @fires hx-select - An item was activated (fired by the `hx-menu-item`). Normal items close the menu,
+ * @fires hx-select - An item was activated (fired by the `hx-dropdown-menu-item`). Normal items close the menu,
  * checkbox and radio items keep it open. Cancelable: `preventDefault()` keeps the menu open.
  * @csspart popup - The menu panel.
  */
 @customElement("hx-dropdown-menu")
-export class HxDropdownMenu extends HxMenu {
+export class HxDropdownMenu extends HxDropdownMenuSubmenu {
     @property({ reflect: true }) override placement: HxDropdownMenuPlacement = "bottom-start";
     @property({ type: Boolean, reflect: true }) disabled = false;
 
@@ -38,7 +38,7 @@ export class HxDropdownMenu extends HxMenu {
         this.addEventListener("keydown", (event) => this.onTriggerKeyDown(event));
         this.addEventListener("hx-select", (event) =>
             queueMicrotask(() => {
-                const { item } = (event as CustomEvent<{ item: HxMenuItem }>).detail;
+                const { item } = (event as CustomEvent<{ item: HxDropdownMenuItem }>).detail;
                 if (!event.defaultPrevented && item.type === "normal") this.hide();
             }),
         );

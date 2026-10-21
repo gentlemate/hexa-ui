@@ -1,14 +1,12 @@
 import { css, html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { HxElement } from "../../hx-element.js";
+import { property } from "lit/decorators.js";
+import { HxElement } from "./hx-element.js";
 
 /**
- * @element hx-menu-group
- * @slot - The grouped `hx-menu-item` elements. Radio items are exclusive within their group.
- * @csspart label - The group heading, rendered when `label` is set.
+ * Base class for the groups of a popup list (menu group, option group): an ARIA `group` named by
+ * `label`, which is also rendered as a heading.
  */
-@customElement("hx-menu-group")
-export class HxMenuGroup extends HxElement {
+export abstract class HxMenuGroupElement extends HxElement {
     static override styles = [
         HxElement.styles,
         css`
@@ -37,17 +35,11 @@ export class HxMenuGroup extends HxElement {
                     ? html`<div
                           part="label"
                           aria-hidden="true"
-                          class="text-muted-foreground px-2 py-1.5 text-sm font-medium"
+                          class="text-muted-foreground px-menu-item py-1.5 text-sm font-medium"
                       >
                           ${this.label}
                       </div>`
                     : nothing
             }<slot></slot>`;
-    }
-}
-
-declare global {
-    interface HTMLElementTagNameMap {
-        "hx-menu-group": HxMenuGroup;
     }
 }

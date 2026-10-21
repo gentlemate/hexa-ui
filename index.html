@@ -97,6 +97,34 @@
                 </div>
             </hx-accordion-item>
 
+            <hx-accordion-item value="select">
+                <span slot="title">Select</span>
+                <div class="text-foreground">
+                    <div class="flex flex-col gap-3">
+                        <hx-select label="Framework" placeholder="Select a framework">
+                            <hx-select-option value="react">React</hx-select-option>
+                            <hx-select-option value="angular">Angular</hx-select-option>
+                            <hx-select-option value="vue">Vue</hx-select-option>
+                            <hx-select-option value="svelte">Svelte</hx-select-option>
+                        </hx-select>
+                        <hx-select label="City" placeholder="Select a city">
+                            <hx-select-group label="France">
+                                <hx-select-option value="paris">Paris</hx-select-option>
+                                <hx-select-option value="marseille">Marseille</hx-select-option>
+                                <hx-select-option value="lyon">Lyon</hx-select-option>
+                                <hx-select-option value="toulouse">Toulouse</hx-select-option>
+                            </hx-select-group>
+                            <hx-select-separator></hx-select-separator>
+                            <hx-select-group label="Spain">
+                                <hx-select-option value="madrid">Madrid</hx-select-option>
+                                <hx-select-option value="barcelona">Barcelona</hx-select-option>
+                            </hx-select-group>
+                        </hx-select>
+                        <hx-select label="Disabled" placeholder="Select an option" disabled></hx-select>
+                    </div>
+                </div>
+            </hx-accordion-item>
+
             <hx-accordion-item value="checkbox">
                 <span slot="title">Checkbox</span>
                 <div class="text-foreground">
@@ -266,56 +294,66 @@
                     <div class="flex flex-wrap items-center gap-3">
                         <hx-dropdown-menu>
                             <hx-button slot="trigger" variant="outline">Menu</hx-button>
-                            <hx-menu-group label="Account">
-                                <hx-menu-item value="profile" data-icon="User">Profile</hx-menu-item>
-                                <hx-menu-item value="billing" data-icon="CreditCard" disabled>Billing</hx-menu-item>
-                                <hx-menu-item value="settings" data-icon="Settings">Settings</hx-menu-item>
-                            </hx-menu-group>
-                            <hx-menu-separator></hx-menu-separator>
-                            <hx-menu-item value="delete" variant="destructive" data-icon="Trash2">Delete</hx-menu-item>
+                            <hx-dropdown-menu-group label="Account">
+                                <hx-dropdown-menu-item value="profile" data-icon="User">Profile</hx-dropdown-menu-item>
+                                <hx-dropdown-menu-item value="billing" data-icon="CreditCard" disabled
+                                    >Billing</hx-dropdown-menu-item
+                                >
+                                <hx-dropdown-menu-item value="settings" data-icon="Settings"
+                                    >Settings</hx-dropdown-menu-item
+                                >
+                            </hx-dropdown-menu-group>
+                            <hx-dropdown-menu-separator></hx-dropdown-menu-separator>
+                            <hx-dropdown-menu-item value="delete" variant="destructive" data-icon="Trash2"
+                                >Delete</hx-dropdown-menu-item
+                            >
                         </hx-dropdown-menu>
 
                         <hx-dropdown-menu>
                             <hx-button slot="trigger" variant="outline">Checkboxes</hx-button>
-                            <hx-menu-item type="checkbox" value="status-bar" checked>Show status bar</hx-menu-item>
-                            <hx-menu-item type="checkbox" value="activity-bar">Show activity bar</hx-menu-item>
-                            <hx-menu-item type="checkbox" value="panel" disabled>Show panel</hx-menu-item>
+                            <hx-dropdown-menu-item type="checkbox" value="status-bar" checked
+                                >Show status bar</hx-dropdown-menu-item
+                            >
+                            <hx-dropdown-menu-item type="checkbox" value="activity-bar"
+                                >Show activity bar</hx-dropdown-menu-item
+                            >
+                            <hx-dropdown-menu-item type="checkbox" value="panel" disabled
+                                >Show panel</hx-dropdown-menu-item
+                            >
                         </hx-dropdown-menu>
 
                         <hx-dropdown-menu>
                             <hx-button slot="trigger" variant="outline">Radio group</hx-button>
-                            <hx-menu-group label="Panel position">
-                                <hx-menu-item type="radio" value="top" checked>Top</hx-menu-item>
-                                <hx-menu-item type="radio" value="bottom">Bottom</hx-menu-item>
-                                <hx-menu-item type="radio" value="right">Right</hx-menu-item>
-                            </hx-menu-group>
+                            <hx-dropdown-menu-group label="Panel position">
+                                <hx-dropdown-menu-item type="radio" value="top" checked>Top</hx-dropdown-menu-item>
+                                <hx-dropdown-menu-item type="radio" value="bottom">Bottom</hx-dropdown-menu-item>
+                                <hx-dropdown-menu-item type="radio" value="right">Right</hx-dropdown-menu-item>
+                            </hx-dropdown-menu-group>
                         </hx-dropdown-menu>
 
                         <hx-dropdown-menu>
                             <hx-button slot="trigger" variant="outline">Submenus</hx-button>
-                            <hx-menu-item value="new">New file</hx-menu-item>
-                            <hx-menu-item>
+                            <hx-dropdown-menu-item value="download">Download</hx-dropdown-menu-item>
+                            <hx-dropdown-menu-item>
                                 Share
-                                <hx-menu slot="submenu">
-                                    <hx-menu-item value="email">Email</hx-menu-item>
-                                    <hx-menu-item value="message">Message</hx-menu-item>
-                                    <hx-menu-separator></hx-menu-separator>
-                                    <hx-menu-item>
+                                <hx-dropdown-menu-submenu slot="submenu">
+                                    <hx-dropdown-menu-item value="email">Email</hx-dropdown-menu-item>
+                                    <hx-dropdown-menu-item value="message">Message</hx-dropdown-menu-item>
+                                    <hx-dropdown-menu-separator></hx-dropdown-menu-separator>
+                                    <hx-dropdown-menu-item>
                                         More
-                                        <hx-menu slot="submenu">
-                                            <hx-menu-item value="link">Copy link</hx-menu-item>
-                                            <hx-menu-item value="embed">Embed</hx-menu-item>
-                                        </hx-menu>
-                                    </hx-menu-item>
-                                </hx-menu>
-                            </hx-menu-item>
-                            <hx-menu-item value="download" data-icon="Download">Download</hx-menu-item>
+                                        <hx-dropdown-menu-submenu slot="submenu">
+                                            <hx-dropdown-menu-item value="link">Copy link</hx-dropdown-menu-item>
+                                        </hx-dropdown-menu-submenu>
+                                    </hx-dropdown-menu-item>
+                                </hx-dropdown-menu-submenu>
+                            </hx-dropdown-menu-item>
                         </hx-dropdown-menu>
 
                         <hx-dropdown-menu placement="top-start">
                             <hx-button slot="trigger" variant="outline">Top</hx-button>
-                            <hx-menu-item value="profile">Profile</hx-menu-item>
-                            <hx-menu-item value="settings">Settings</hx-menu-item>
+                            <hx-dropdown-menu-item value="profile">Profile</hx-dropdown-menu-item>
+                            <hx-dropdown-menu-item value="settings">Settings</hx-dropdown-menu-item>
                         </hx-dropdown-menu>
                     </div>
                 </div>

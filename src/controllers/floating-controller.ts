@@ -8,6 +8,7 @@ export interface FloatingOptions {
     distance: number;
     alignOffset?: number;
     fit?: boolean;
+    matchWidth?: boolean;
     arrow?: HTMLElement;
 }
 
@@ -45,7 +46,7 @@ export class FloatingController implements ReactiveController {
     }
 
     private async position(options: FloatingOptions) {
-        const { anchor, floating, placement, distance, alignOffset, fit, arrow: arrowElement } = options;
+        const { anchor, floating, placement, distance, alignOffset, fit, matchWidth, arrow: arrowElement } = options;
         const result = await computePosition(anchor, floating, {
             strategy: "fixed",
             placement,
@@ -53,11 +54,12 @@ export class FloatingController implements ReactiveController {
                 offset({ mainAxis: distance, alignmentAxis: alignOffset }),
                 flip(),
                 shift({ padding: 8 }),
-                fit &&
+                (fit || matchWidth) &&
                     size({
                         padding: 8,
-                        apply: ({ availableHeight }) => {
-                            floating.style.maxHeight = `${Math.max(0, availableHeight)}px`;
+                        apply: ({ availableHeight, rects }) => {
+                            if (fit) floating.style.maxHeight = `${Math.max(0, availableHeight)}px`;
+                            if (matchWidth) floating.style.minWidth = `${rects.reference.width}px`;
                         },
                     }),
                 arrowElement && arrow({ element: arrowElement, padding: 8 }),

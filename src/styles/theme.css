@@ -26,9 +26,8 @@
     --radius-control: var(--hx-radius-control);
     --radius-control-lg: calc(var(--hx-radius-control) + 0.125rem);
     --radius-card: var(--hx-radius-card);
-    --radius-popover-sm: calc(var(--hx-radius-popover) - var(--hx-spacing-popover));
     --radius-popover: var(--hx-radius-popover);
-    --radius-popover-lg: calc(var(--hx-radius-popover) + var(--hx-spacing-popover));
+    --radius-menu-item: var(--hx-radius-menu-item);
 
     --height-button: var(--hx-height-button);
     --spacing-button: var(--hx-spacing-button);
