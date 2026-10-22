@@ -4,8 +4,6 @@ import { HxElement } from "../../hx-element.js";
 
 export type HxCardVariant = "default" | "outline" | "ghost";
 
-type HxCardSlot = "header" | "title" | "description" | "action" | "footer";
-
 const variants: Record<HxCardVariant, string> = {
     default: "bg-card text-card-foreground ring-(length:--hx-border-width) ring-foreground/10",
     outline: "bg-background text-foreground ring-(length:--hx-border-width) ring-foreground/10",
@@ -14,16 +12,8 @@ const variants: Record<HxCardVariant, string> = {
 
 /**
  * @element hx-card
- * @slot header - A custom header, replacing the `title`, `description` and `action` layout.
- * @slot title - The card title.
- * @slot description - A short text under the title.
- * @slot action - An element aligned to the top right of the header (button, badge…).
- * @slot - The card content.
- * @slot footer - The card footer (actions…).
+ * @slot - The card sections: `hx-card-header`, `hx-card-content` and `hx-card-footer`.
  * @csspart base - The card container.
- * @csspart header - The header wrapper.
- * @csspart content - The content wrapper.
- * @csspart footer - The footer wrapper.
  */
 @customElement("hx-card")
 export class HxCard extends HxElement {
@@ -33,53 +23,28 @@ export class HxCard extends HxElement {
             :host {
                 display: block;
             }
-            ::slotted([slot="title"]),
-            ::slotted([slot="description"]) {
-                margin: 0;
-                font: inherit;
-            }
         `,
     ];
 
     @property({ reflect: true }) variant: HxCardVariant = "default";
 
-    @state() private filled = new Set<HxCardSlot>();
+    @state() private hasHeader = false;
+    @state() private hasFooter = false;
 
     private onSlotChange(event: Event) {
-        const slot = event.target as HTMLSlotElement;
-        const filled = new Set(this.filled);
-        if (slot.assignedNodes({ flatten: true }).length) filled.add(slot.name as HxCardSlot);
-        else filled.delete(slot.name as HxCardSlot);
-        this.filled = filled;
+        const sections = (event.target as HTMLSlotElement).assignedElements().map((element) => element.localName);
+        this.hasHeader = sections.includes("hx-card-header");
+        this.hasFooter = sections.includes("hx-card-footer");
     }
 
     override render() {
-        const has = (name: HxCardSlot) => this.filled.has(name);
-        const hasHeader = has("header") || has("title") || has("description") || has("action");
         return html`<div
             part="base"
-            class="${variants[this.variant]} rounded-card gap-card py-card flex flex-col"
-            @slotchange=${this.onSlotChange}
+            class="${variants[this.variant]} ${this.hasHeader ? "" : "pt-card"} ${
+                this.hasFooter ? "" : "pb-card"
+            } rounded-card flex flex-col [--panel-footer-justify:flex-start] [--panel-header-end:0px] [--panel-radius:var(--hx-radius-card)] [--panel-spacing:var(--hx-spacing-card)]"
         >
-            <div part="header" class="${hasHeader ? "" : "hidden"} px-card">
-                <slot name="header">
-                    <div class="flex items-start gap-4">
-                        <div class="flex flex-1 flex-col gap-1.5">
-                            <div class="${has("title") ? "" : "hidden"} text-lg leading-none font-medium">
-                                <slot name="title"></slot>
-                            </div>
-                            <div class="${has("description") ? "" : "hidden"} text-muted-foreground">
-                                <slot name="description"></slot>
-                            </div>
-                        </div>
-                        <div class="${has("action") ? "" : "hidden"} shrink-0"><slot name="action"></slot></div>
-                    </div>
-                </slot>
-            </div>
-            <div part="content" class="px-card"><slot></slot></div>
-            <div part="footer" class="${has("footer") ? "flex" : "hidden"} px-card items-center gap-2">
-                <slot name="footer"></slot>
-            </div>
+            <slot @slotchange=${this.onSlotChange}></slot>
         </div>`;
     }
 }

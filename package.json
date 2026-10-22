@@ -82,6 +82,14 @@
         "./select": {
             "types": "./dist/components/select/index.d.ts",
             "import": "./dist/select.js"
+        },
+        "./modal": {
+            "types": "./dist/components/modal/index.d.ts",
+            "import": "./dist/modal.js"
+        },
+        "./drawer": {
+            "types": "./dist/components/drawer/index.d.ts",
+            "import": "./dist/drawer.js"
         }
     },
     "scripts": {

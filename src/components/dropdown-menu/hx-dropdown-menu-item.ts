@@ -16,8 +16,7 @@ const roles: Record<HxDropdownMenuItemType, string> = {
 
 /**
  * @element hx-dropdown-menu-item
- * @slot - The item label.
- * @slot submenu - An `hx-dropdown-menu-submenu` opened from this item.
+ * @slot - The item label, and an optional `hx-dropdown-menu-submenu` opened from this item.
  * @fires hx-select - The item was activated; `event.detail` is `{ item, value }`. Cancelable:
  * `preventDefault()` keeps the menu open (checkbox and radio items keep it open anyway). Checkbox and
  * radio items update `checked` before it fires.
@@ -62,7 +61,7 @@ export class HxDropdownMenuItem extends HxMenuItemElement {
     }
 
     get submenu() {
-        return this.querySelector<HxDropdownMenuSubmenu>(':scope > hx-dropdown-menu-submenu[slot="submenu"]');
+        return this.querySelector<HxDropdownMenuSubmenu>(":scope > hx-dropdown-menu-submenu");
     }
 
     get expanded() {
@@ -94,8 +93,14 @@ export class HxDropdownMenuItem extends HxMenuItemElement {
         );
     }
 
-    private onSubmenuChange(event: Event) {
-        this.hasSubmenu = (event.target as HTMLSlotElement).assignedElements().length > 0;
+    private onSlotChange() {
+        this.hasSubmenu = !!this.submenu;
+    }
+
+    protected override excludedFromLabel(node: Node) {
+        return (
+            super.excludedFromLabel(node) || (node instanceof Element && node.localName === "hx-dropdown-menu-submenu")
+        );
     }
 
     protected override updated() {
@@ -122,9 +127,8 @@ export class HxDropdownMenuItem extends HxMenuItemElement {
                         ? html`<hx-icon part="icon" .icon=${this.icon} class="text-muted-foreground"></hx-icon>`
                         : nothing
                 }
-                <slot></slot>
-                ${this.hasSubmenu ? html`<hx-icon part="chevron" .icon=${ChevronRight} class="ml-auto"></hx-icon>` : nothing}
-                <slot name="submenu" @slotchange=${this.onSubmenuChange}></slot>`,
+                <slot @slotchange=${this.onSlotChange}></slot>
+                ${this.hasSubmenu ? html`<hx-icon part="chevron" .icon=${ChevronRight} class="ml-auto"></hx-icon>` : nothing}`,
             checkable ? "px-menu-item pl-8" : "px-menu-item",
         );
     }

@@ -22,7 +22,7 @@ const submenuDelay = 100;
  * @fires hx-after-hide - The menu is closed and its exit animation finished.
  * @csspart popup - The menu panel.
  *
- * A submenu, placed in the `submenu` slot of an `hx-dropdown-menu-item`. Also the base class of
+ * A submenu, placed inside an `hx-dropdown-menu-item` (after its label). Also the base class of
  * `hx-dropdown-menu`, which adds the trigger.
  */
 @customElement("hx-dropdown-menu-submenu")

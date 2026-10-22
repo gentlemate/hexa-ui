@@ -50,10 +50,14 @@ export abstract class HxMenuItemElement extends HxElement {
 
     get label() {
         return [...this.childNodes]
-            .filter((node) => !(node instanceof Element && node.slot))
+            .filter((node) => !this.excludedFromLabel(node))
             .map((node) => node.textContent)
             .join("")
             .trim();
+    }
+
+    protected excludedFromLabel(node: Node) {
+        return node instanceof Element && !!node.slot;
     }
 
     protected override updated() {

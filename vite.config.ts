@@ -25,6 +25,8 @@ export default defineConfig({
                 tooltip: "src/components/tooltip/index.ts",
                 "dropdown-menu": "src/components/dropdown-menu/index.ts",
                 select: "src/components/select/index.ts",
+                modal: "src/components/modal/index.ts",
+                drawer: "src/components/drawer/index.ts",
             },
             formats: ["es"],
             fileName: (_format, name) => `${name}.js`,

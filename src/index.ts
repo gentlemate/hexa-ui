@@ -16,3 +16,5 @@ export * from "./components/accordion/index.js";
 export * from "./components/tooltip/index.js";
 export * from "./components/dropdown-menu/index.js";
 export * from "./components/select/index.js";
+export * from "./components/modal/index.js";
+export * from "./components/drawer/index.js";

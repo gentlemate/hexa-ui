@@ -43,12 +43,12 @@
                     </div>
                     <div class="mt-3 flex flex-wrap items-center gap-3">
                         <hx-button square><hx-icon data-icon="Plus" size="20"></hx-icon></hx-button>
-                        <hx-button variant="outline" square
-                            ><hx-icon data-icon="Download" size="20"></hx-icon
-                        ></hx-button>
-                        <hx-button variant="destructive" square
-                            ><hx-icon data-icon="Trash2" size="20"></hx-icon
-                        ></hx-button>
+                        <hx-button variant="outline" square>
+                            <hx-icon data-icon="Download" size="20"></hx-icon>
+                        </hx-button>
+                        <hx-button variant="destructive" square>
+                            <hx-icon data-icon="Trash2" size="20"></hx-icon>
+                        </hx-button>
                     </div>
                 </div>
             </hx-accordion-item>
@@ -154,25 +154,33 @@
                 <div class="text-foreground">
                     <div class="flex flex-col gap-4">
                         <hx-card>
-                            <span slot="title">Create project</span>
-                            <span slot="description">Create a new project in one click.</span>
-                            <hx-badge slot="action" variant="secondary">New</hx-badge>
-                            <hx-input label="Name"></hx-input>
-                            <hx-button slot="footer" variant="outline">Create</hx-button>
+                            <hx-card-header>
+                                <hx-card-title>Create project</hx-card-title>
+                                <hx-card-description>Create a new project in one click.</hx-card-description>
+                                <hx-card-action><hx-badge variant="secondary">New</hx-badge></hx-card-action>
+                            </hx-card-header>
+                            <hx-card-content><hx-input label="Name"></hx-input></hx-card-content>
+                            <hx-card-footer><hx-button>Create</hx-button></hx-card-footer>
                         </hx-card>
                         <hx-card>
-                            <div slot="header" class="flex items-center gap-3">
-                                <hx-skeleton circle class="size-10"></hx-skeleton>
-                                <div class="flex flex-1 flex-col gap-2">
-                                    <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
-                                    <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+                            <hx-card-header>
+                                <div class="flex items-center gap-3">
+                                    <hx-skeleton circle class="size-10"></hx-skeleton>
+                                    <div class="flex flex-1 flex-col gap-2">
+                                        <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                                        <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+                                    </div>
                                 </div>
-                            </div>
-                            The header slot replaces the title, description and action layout.
+                            </hx-card-header>
+                            <hx-card-content>The header can hold a custom layout.</hx-card-content>
                         </hx-card>
-                        <hx-card>Default card with content only.</hx-card>
-                        <hx-card variant="outline">Outline card with content only.</hx-card>
-                        <hx-card variant="ghost">Ghost card with content only.</hx-card>
+                        <hx-card><hx-card-content>Default card with content only.</hx-card-content></hx-card>
+                        <hx-card variant="outline">
+                            <hx-card-content>Outline card with content only.</hx-card-content>
+                        </hx-card>
+                        <hx-card variant="ghost">
+                            <hx-card-content>Ghost card with content only.</hx-card-content>
+                        </hx-card>
                     </div>
                 </div>
             </hx-accordion-item>
@@ -296,30 +304,30 @@
                             <hx-button slot="trigger" variant="outline">Menu</hx-button>
                             <hx-dropdown-menu-group label="Account">
                                 <hx-dropdown-menu-item value="profile" data-icon="User">Profile</hx-dropdown-menu-item>
-                                <hx-dropdown-menu-item value="billing" data-icon="CreditCard" disabled
-                                    >Billing</hx-dropdown-menu-item
-                                >
-                                <hx-dropdown-menu-item value="settings" data-icon="Settings"
-                                    >Settings</hx-dropdown-menu-item
-                                >
+                                <hx-dropdown-menu-item value="billing" data-icon="CreditCard" disabled>
+                                    Billing
+                                </hx-dropdown-menu-item>
+                                <hx-dropdown-menu-item value="settings" data-icon="Settings">
+                                    Settings
+                                </hx-dropdown-menu-item>
                             </hx-dropdown-menu-group>
                             <hx-dropdown-menu-separator></hx-dropdown-menu-separator>
-                            <hx-dropdown-menu-item value="delete" variant="destructive" data-icon="Trash2"
-                                >Delete</hx-dropdown-menu-item
-                            >
+                            <hx-dropdown-menu-item value="delete" variant="destructive" data-icon="Trash2">
+                                Delete
+                            </hx-dropdown-menu-item>
                         </hx-dropdown-menu>
 
                         <hx-dropdown-menu>
                             <hx-button slot="trigger" variant="outline">Checkboxes</hx-button>
-                            <hx-dropdown-menu-item type="checkbox" value="status-bar" checked
-                                >Show status bar</hx-dropdown-menu-item
-                            >
-                            <hx-dropdown-menu-item type="checkbox" value="activity-bar"
-                                >Show activity bar</hx-dropdown-menu-item
-                            >
-                            <hx-dropdown-menu-item type="checkbox" value="panel" disabled
-                                >Show panel</hx-dropdown-menu-item
-                            >
+                            <hx-dropdown-menu-item type="checkbox" value="status-bar" checked>
+                                Show status bar
+                            </hx-dropdown-menu-item>
+                            <hx-dropdown-menu-item type="checkbox" value="activity-bar">
+                                Show activity bar
+                            </hx-dropdown-menu-item>
+                            <hx-dropdown-menu-item type="checkbox" value="panel" disabled>
+                                Show panel
+                            </hx-dropdown-menu-item>
                         </hx-dropdown-menu>
 
                         <hx-dropdown-menu>
@@ -336,13 +344,13 @@
                             <hx-dropdown-menu-item value="download">Download</hx-dropdown-menu-item>
                             <hx-dropdown-menu-item>
                                 Share
-                                <hx-dropdown-menu-submenu slot="submenu">
+                                <hx-dropdown-menu-submenu>
                                     <hx-dropdown-menu-item value="email">Email</hx-dropdown-menu-item>
                                     <hx-dropdown-menu-item value="message">Message</hx-dropdown-menu-item>
                                     <hx-dropdown-menu-separator></hx-dropdown-menu-separator>
                                     <hx-dropdown-menu-item>
                                         More
-                                        <hx-dropdown-menu-submenu slot="submenu">
+                                        <hx-dropdown-menu-submenu>
                                             <hx-dropdown-menu-item value="link">Copy link</hx-dropdown-menu-item>
                                         </hx-dropdown-menu-submenu>
                                     </hx-dropdown-menu-item>
@@ -355,6 +363,106 @@
                             <hx-dropdown-menu-item value="profile">Profile</hx-dropdown-menu-item>
                             <hx-dropdown-menu-item value="settings">Settings</hx-dropdown-menu-item>
                         </hx-dropdown-menu>
+                    </div>
+                </div>
+            </hx-accordion-item>
+
+            <hx-accordion-item value="modal">
+                <span slot="title">Modal</span>
+                <div class="text-foreground">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <hx-modal>
+                            <hx-button slot="trigger" variant="outline">Create project</hx-button>
+                            <hx-modal-header>
+                                <hx-modal-title>Create project</hx-modal-title>
+                                <hx-modal-description>Create a new project in one click.</hx-modal-description>
+                            </hx-modal-header>
+                            <hx-modal-content><hx-input label="Name"></hx-input></hx-modal-content>
+                            <hx-modal-footer><hx-button data-close>Create</hx-button></hx-modal-footer>
+                        </hx-modal>
+
+                        <hx-modal persistent without-close>
+                            <hx-button slot="trigger" variant="destructive">Delete</hx-button>
+                            <hx-modal-header>
+                                <hx-modal-title>Delete project?</hx-modal-title>
+                                <hx-modal-description>This action cannot be undone.</hx-modal-description>
+                            </hx-modal-header>
+                            <hx-modal-footer>
+                                <hx-button variant="outline" data-close>Cancel</hx-button>
+                                <hx-button variant="destructive" data-close>Delete</hx-button>
+                            </hx-modal-footer>
+                        </hx-modal>
+
+                        <hx-modal>
+                            <hx-button slot="trigger" variant="outline">With scroll</hx-button>
+                            <hx-modal-header><hx-modal-title>Terms of service</hx-modal-title></hx-modal-header>
+                            <hx-modal-content><hx-skeleton class="h-screen w-full"></hx-skeleton></hx-modal-content>
+                            <hx-modal-footer><hx-button data-close>Accept</hx-button></hx-modal-footer>
+                        </hx-modal>
+
+                        <hx-modal label="Custom header">
+                            <hx-button slot="trigger" variant="outline">Custom</hx-button>
+                            <hx-modal-header>
+                                <div class="flex items-center gap-3">
+                                    <hx-skeleton circle class="size-10"></hx-skeleton>
+                                    <div class="flex flex-1 flex-col gap-2">
+                                        <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                                        <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+                                    </div>
+                                </div>
+                            </hx-modal-header>
+                            <hx-modal-content class="py-modal border-border border-y">
+                                The header can hold a custom layout.
+                            </hx-modal-content>
+                            <hx-modal-footer class="bg-muted"><hx-button data-close>Close</hx-button></hx-modal-footer>
+                        </hx-modal>
+                    </div>
+                </div>
+            </hx-accordion-item>
+
+            <hx-accordion-item value="drawer">
+                <span slot="title">Drawer</span>
+                <div class="text-foreground">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <hx-drawer>
+                            <hx-button slot="trigger" variant="outline">Right</hx-button>
+                            <hx-drawer-header>
+                                <hx-drawer-title>Create project</hx-drawer-title>
+                                <hx-drawer-description>Create a new project in one click.</hx-drawer-description>
+                            </hx-drawer-header>
+                            <hx-drawer-content><hx-input label="Name"></hx-input></hx-drawer-content>
+                            <hx-drawer-footer><hx-button data-close>Create</hx-button></hx-drawer-footer>
+                        </hx-drawer>
+
+                        <hx-drawer placement="left">
+                            <hx-button slot="trigger" variant="outline">Left</hx-button>
+                            <hx-drawer-header><hx-drawer-title>Terms of service</hx-drawer-title></hx-drawer-header>
+                            <hx-drawer-content><hx-skeleton class="h-screen w-full"></hx-skeleton></hx-drawer-content>
+                            <hx-drawer-footer><hx-button data-close>Accept</hx-button></hx-drawer-footer>
+                        </hx-drawer>
+
+                        <hx-drawer placement="top">
+                            <hx-button slot="trigger" variant="outline">Top</hx-button>
+                            <hx-drawer-header><hx-drawer-title>Terms of service</hx-drawer-title></hx-drawer-header>
+                            <hx-drawer-content>
+                                <div class="flex flex-col gap-2">
+                                    <hx-skeleton class="h-4 w-full"></hx-skeleton>
+                                    <hx-skeleton class="h-4 w-3/4"></hx-skeleton>
+                                    <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+                                </div>
+                            </hx-drawer-content>
+                            <hx-drawer-footer><hx-button data-close>Accept</hx-button></hx-drawer-footer>
+                        </hx-drawer>
+
+                        <hx-drawer placement="bottom">
+                            <hx-button slot="trigger" variant="outline">Bottom</hx-button>
+                            <hx-drawer-header>
+                                <hx-drawer-title>Create project</hx-drawer-title>
+                                <hx-drawer-description>Create a new project in one click.</hx-drawer-description>
+                            </hx-drawer-header>
+                            <hx-drawer-content><hx-input label="Name"></hx-input></hx-drawer-content>
+                            <hx-drawer-footer><hx-button data-close>Create</hx-button></hx-drawer-footer>
+                        </hx-drawer>
                     </div>
                 </div>
             </hx-accordion-item>

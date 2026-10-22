@@ -55,6 +55,10 @@
     --hx-spacing-tooltip: 0.75rem;
     /* separator */
     --hx-spacing-separator: 1rem;
+    /* modal */
+    --hx-spacing-modal: var(--hx-spacing-card);
+    /* drawer */
+    --hx-spacing-drawer: var(--hx-spacing-card);
 
     --hx-font-sans: "Outfit", system-ui, sans-serif;
 

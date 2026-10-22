@@ -46,6 +46,8 @@
     --spacing-tab: var(--hx-spacing-tab);
     --spacing-accordion: var(--hx-spacing-accordion);
     --spacing-card: var(--hx-spacing-card);
+    --spacing-modal: var(--hx-spacing-modal);
+    --spacing-drawer: var(--hx-spacing-drawer);
     --spacing-popover: var(--hx-spacing-popover);
     --spacing-tooltip: var(--hx-spacing-tooltip);
     --height-menu-item: var(--hx-height-menu-item);

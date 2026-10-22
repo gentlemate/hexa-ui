@@ -1,4 +1,4 @@
-import { css } from "lit";
+import { css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { HxElement } from "../../hx-element.js";
 
@@ -6,6 +6,7 @@ export type HxSeparatorDirection = "horizontal" | "vertical";
 
 /**
  * @element hx-separator
+ * @csspart line - The line, with its spacing as margins.
  */
 @customElement("hx-separator")
 export class HxSeparator extends HxElement {
@@ -15,17 +16,22 @@ export class HxSeparator extends HxElement {
             :host {
                 display: block;
                 flex-shrink: 0;
-                height: var(--hx-border-width);
                 width: 100%;
-                margin-block: var(--hx-spacing-separator);
-                background: var(--hx-border);
             }
             :host([direction="vertical"]) {
                 align-self: stretch;
+                width: auto;
+            }
+            [part="line"] {
+                height: var(--hx-border-width);
+                margin-block: var(--hx-spacing-separator);
+                background: var(--hx-border);
+            }
+            :host([direction="vertical"]) [part="line"] {
+                height: 100%;
+                width: var(--hx-border-width);
                 margin-block: 0;
                 margin-inline: var(--hx-spacing-separator);
-                height: auto;
-                width: var(--hx-border-width);
             }
         `,
     ];
@@ -41,6 +47,10 @@ export class HxSeparator extends HxElement {
 
     protected override updated() {
         this.internals.ariaOrientation = this.direction;
+    }
+
+    override render() {
+        return html`<div part="line"></div>`;
     }
 }
 
