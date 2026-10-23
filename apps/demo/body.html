@@ -1,0 +1,462 @@
+<hx-color-mode-button></hx-color-mode-button>
+
+<hx-accordion type="multiple" class="mt-6">
+    <hx-accordion-item value="icon">
+        <span slot="title">Icon</span>
+        <div class="text-foreground">
+            <div class="flex flex-wrap items-center gap-4">
+                <hx-icon data-icon="Search"></hx-icon>
+                <hx-icon data-icon="Heart" size="20"></hx-icon>
+                <hx-icon data-icon="Settings" size="24" stroke-width="1.5"></hx-icon>
+                <hx-icon data-icon="CircleAlert" size="24" class="text-destructive"></hx-icon>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="button">
+        <span slot="title">Button</span>
+        <div class="text-foreground">
+            <div class="flex flex-wrap gap-3">
+                <hx-button>Primary</hx-button>
+                <hx-button variant="secondary">Secondary</hx-button>
+                <hx-button variant="outline">Outline</hx-button>
+                <hx-button variant="ghost">Ghost</hx-button>
+                <hx-button variant="destructive">Delete</hx-button>
+            </div>
+            <div class="mt-3 flex flex-wrap items-center gap-3">
+                <hx-button data-icon="Plus">Add</hx-button>
+                <hx-button variant="outline" data-icon="Download">Download</hx-button>
+                <hx-button variant="destructive" data-icon="Trash2">Delete</hx-button>
+            </div>
+            <div class="mt-3 flex flex-wrap items-center gap-3">
+                <hx-button square><hx-icon data-icon="Plus" size="20"></hx-icon></hx-button>
+                <hx-button variant="outline" square>
+                    <hx-icon data-icon="Download" size="20"></hx-icon>
+                </hx-button>
+                <hx-button variant="destructive" square>
+                    <hx-icon data-icon="Trash2" size="20"></hx-icon>
+                </hx-button>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="badge">
+        <span slot="title">Badge</span>
+        <div class="text-foreground">
+            <div class="flex flex-wrap items-center gap-3">
+                <hx-badge>Primary</hx-badge>
+                <hx-badge variant="secondary">Secondary</hx-badge>
+                <hx-badge variant="outline">Outline</hx-badge>
+                <hx-badge variant="destructive">Destructive</hx-badge>
+            </div>
+            <div class="mt-3 flex flex-wrap items-center gap-3">
+                <hx-badge data-icon="Heart">Favorite</hx-badge>
+                <hx-badge variant="outline" data-icon="Settings">Settings</hx-badge>
+                <hx-badge variant="destructive" data-icon="CircleAlert" icon-placement="right">Error</hx-badge>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="input">
+        <span slot="title">Input</span>
+        <div class="text-foreground">
+            <div class="flex flex-col gap-3">
+                <hx-input label="Email" type="email" placeholder="you@example.com"></hx-input>
+                <hx-input label="Password" type="password" hint="Should not be disclosed."></hx-input>
+                <hx-input label="Login" value="admin" error="This login is already used." required></hx-input>
+                <hx-input label="Disabled" disabled></hx-input>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="textarea">
+        <span slot="title">Textarea</span>
+        <div class="text-foreground">
+            <div class="flex flex-col gap-3">
+                <hx-textarea label="Bio" placeholder="Tell us about yourself" hint="Max 500 characters."></hx-textarea>
+                <hx-textarea label="Comment" error="This field is required." required></hx-textarea>
+                <hx-textarea label="Disabled" disabled></hx-textarea>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="select">
+        <span slot="title">Select</span>
+        <div class="text-foreground">
+            <div class="flex flex-col gap-3">
+                <hx-select label="Framework" placeholder="Select a framework">
+                    <hx-select-option value="react">React</hx-select-option>
+                    <hx-select-option value="angular">Angular</hx-select-option>
+                    <hx-select-option value="vue">Vue</hx-select-option>
+                    <hx-select-option value="svelte">Svelte</hx-select-option>
+                </hx-select>
+                <hx-select label="City" placeholder="Select a city">
+                    <hx-select-group label="France">
+                        <hx-select-option value="paris">Paris</hx-select-option>
+                        <hx-select-option value="marseille">Marseille</hx-select-option>
+                        <hx-select-option value="lyon">Lyon</hx-select-option>
+                        <hx-select-option value="toulouse">Toulouse</hx-select-option>
+                    </hx-select-group>
+                    <hx-select-separator></hx-select-separator>
+                    <hx-select-group label="Spain">
+                        <hx-select-option value="madrid">Madrid</hx-select-option>
+                        <hx-select-option value="barcelona">Barcelona</hx-select-option>
+                    </hx-select-group>
+                </hx-select>
+                <hx-select label="Disabled" placeholder="Select an option" disabled></hx-select>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="checkbox">
+        <span slot="title">Checkbox</span>
+        <div class="text-foreground">
+            <div class="flex flex-col gap-3">
+                <hx-checkbox>Default</hx-checkbox>
+                <hx-checkbox checked>Checked</hx-checkbox>
+                <hx-checkbox indeterminate>Indeterminate</hx-checkbox>
+                <hx-checkbox disabled>Disabled</hx-checkbox>
+                <hx-checkbox checked disabled>Checked and disabled</hx-checkbox>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="switch">
+        <span slot="title">Switch</span>
+        <div class="text-foreground">
+            <div class="flex flex-col gap-3">
+                <hx-switch>Default</hx-switch>
+                <hx-switch checked>Checked</hx-switch>
+                <hx-switch disabled>Disabled</hx-switch>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="card">
+        <span slot="title">Card</span>
+        <div class="text-foreground">
+            <div class="flex flex-col gap-4">
+                <hx-card>
+                    <hx-card-header>
+                        <hx-card-title>Create project</hx-card-title>
+                        <hx-card-description>Create a new project in one click.</hx-card-description>
+                        <hx-card-action><hx-badge variant="secondary">New</hx-badge></hx-card-action>
+                    </hx-card-header>
+                    <hx-card-content><hx-input label="Name"></hx-input></hx-card-content>
+                    <hx-card-footer><hx-button>Create</hx-button></hx-card-footer>
+                </hx-card>
+                <hx-card>
+                    <hx-card-header>
+                        <div class="flex items-center gap-3">
+                            <hx-skeleton circle class="size-10"></hx-skeleton>
+                            <div class="flex flex-1 flex-col gap-2">
+                                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                                <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+                            </div>
+                        </div>
+                    </hx-card-header>
+                    <hx-card-content>The header can hold a custom layout.</hx-card-content>
+                </hx-card>
+                <hx-card><hx-card-content>Default card with content only.</hx-card-content></hx-card>
+                <hx-card variant="outline">
+                    <hx-card-content>Outline card with content only.</hx-card-content>
+                </hx-card>
+                <hx-card variant="ghost">
+                    <hx-card-content>Ghost card with content only.</hx-card-content>
+                </hx-card>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="tabs">
+        <span slot="title">Tabs</span>
+        <div class="text-foreground">
+            <div class="flex flex-col gap-6">
+                <hx-tabs value="account">
+                    <hx-tab value="account">Account</hx-tab>
+                    <hx-tab value="password">Password</hx-tab>
+                    <hx-tab value="billing" disabled>Billing</hx-tab>
+                    <hx-tab-panel value="account">Account</hx-tab-panel>
+                    <hx-tab-panel value="password">Password</hx-tab-panel>
+                    <hx-tab-panel value="billing">Billing</hx-tab-panel>
+                </hx-tabs>
+                <hx-tabs value="account" direction="vertical">
+                    <hx-tab value="account">Account</hx-tab>
+                    <hx-tab value="password">Password</hx-tab>
+                    <hx-tab value="billing" disabled>Billing</hx-tab>
+                    <hx-tab-panel value="account">Account</hx-tab-panel>
+                    <hx-tab-panel value="password">Password</hx-tab-panel>
+                    <hx-tab-panel value="billing">Billing</hx-tab-panel>
+                </hx-tabs>
+                <hx-tabs variant="secondary" value="overview">
+                    <hx-tab value="overview">Overview</hx-tab>
+                    <hx-tab value="analytics">Analytics</hx-tab>
+                    <hx-tab value="reports" disabled>Reports</hx-tab>
+                    <hx-tab-panel value="overview">Overview</hx-tab-panel>
+                    <hx-tab-panel value="analytics">Analytics</hx-tab-panel>
+                    <hx-tab-panel value="reports">Reports</hx-tab-panel>
+                </hx-tabs>
+                <hx-tabs variant="secondary" value="overview" direction="vertical">
+                    <hx-tab value="overview" data-icon="House">Overview</hx-tab>
+                    <hx-tab value="analytics" data-icon="ChartLine">Analytics</hx-tab>
+                    <hx-tab value="reports" data-icon="FileText" disabled>Reports</hx-tab>
+                    <hx-tab-panel value="overview">Overview</hx-tab-panel>
+                    <hx-tab-panel value="analytics">Analytics</hx-tab-panel>
+                    <hx-tab-panel value="reports">Reports</hx-tab-panel>
+                </hx-tabs>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="accordion">
+        <span slot="title">Accordion</span>
+        <div class="text-foreground">
+            <hx-accordion collapsible>
+                <hx-accordion-item value="shipping">
+                    <span slot="title">What are your shipping options?</span>
+                    We offer standard (5-7 days), express (2-3 days) and overnight shipping.
+                </hx-accordion-item>
+                <hx-accordion-item value="returns">
+                    <span slot="title">What is your return policy?</span>
+                    Returns are accepted within 30 days of purchase, in their original packaging.
+                </hx-accordion-item>
+                <hx-accordion-item value="support" disabled>
+                    <span slot="title">How can I contact support?</span>
+                    Reach us by email or chat, 24/7.
+                </hx-accordion-item>
+            </hx-accordion>
+            <hx-accordion collapsible variant="secondary" class="mt-4">
+                <hx-accordion-item value="shipping">
+                    <span slot="title">What are your shipping options?</span>
+                    We offer standard (5-7 days), express (2-3 days) and overnight shipping.
+                </hx-accordion-item>
+                <hx-accordion-item value="returns">
+                    <span slot="title">What is your return policy?</span>
+                    Returns are accepted within 30 days of purchase, in their original packaging.
+                </hx-accordion-item>
+                <hx-accordion-item value="support" disabled>
+                    <span slot="title">How can I contact support?</span>
+                    Reach us by email or chat, 24/7.
+                </hx-accordion-item>
+            </hx-accordion>
+            <hx-accordion collapsible class="mt-4">
+                <hx-accordion-item value="shipping" data-icon="Package">
+                    <span slot="title">What are your shipping options?</span>
+                    We offer standard (5-7 days), express (2-3 days) and overnight shipping.
+                </hx-accordion-item>
+                <hx-accordion-item value="returns" data-icon="Undo2">
+                    <span slot="title">What is your return policy?</span>
+                    Returns are accepted within 30 days of purchase, in their original packaging.
+                </hx-accordion-item>
+                <hx-accordion-item value="support" disabled data-icon="Headset">
+                    <span slot="title">How can I contact support?</span>
+                    Reach us by email or chat, 24/7.
+                </hx-accordion-item>
+            </hx-accordion>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="tooltip">
+        <span slot="title">Tooltip</span>
+        <div class="text-foreground">
+            <div class="flex flex-wrap items-center gap-3">
+                <hx-tooltip content="Default">
+                    <hx-button variant="outline">Hover me</hx-button>
+                </hx-tooltip>
+                <hx-tooltip content="Bottom" placement="bottom">
+                    <hx-button variant="outline">Bottom</hx-button>
+                </hx-tooltip>
+                <hx-tooltip content="Left" placement="left">
+                    <hx-button variant="outline">Left</hx-button>
+                </hx-tooltip>
+                <hx-tooltip content="Right" placement="right">
+                    <hx-button variant="outline">Right</hx-button>
+                </hx-tooltip>
+                <hx-tooltip content="No arrow" without-arrow>
+                    <hx-button variant="outline">Without arrow</hx-button>
+                </hx-tooltip>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="dropdown-menu">
+        <span slot="title">Dropdown menu</span>
+        <div class="text-foreground">
+            <div class="flex flex-wrap items-center gap-3">
+                <hx-dropdown-menu>
+                    <hx-button slot="trigger" variant="outline">Menu</hx-button>
+                    <hx-dropdown-menu-group label="Account">
+                        <hx-dropdown-menu-item value="profile" data-icon="User">Profile</hx-dropdown-menu-item>
+                        <hx-dropdown-menu-item value="billing" data-icon="CreditCard" disabled>
+                            Billing
+                        </hx-dropdown-menu-item>
+                        <hx-dropdown-menu-item value="settings" data-icon="Settings">Settings</hx-dropdown-menu-item>
+                    </hx-dropdown-menu-group>
+                    <hx-dropdown-menu-separator></hx-dropdown-menu-separator>
+                    <hx-dropdown-menu-item value="delete" variant="destructive" data-icon="Trash2">
+                        Delete
+                    </hx-dropdown-menu-item>
+                </hx-dropdown-menu>
+
+                <hx-dropdown-menu>
+                    <hx-button slot="trigger" variant="outline">Checkboxes</hx-button>
+                    <hx-dropdown-menu-item type="checkbox" value="status-bar" checked>
+                        Show status bar
+                    </hx-dropdown-menu-item>
+                    <hx-dropdown-menu-item type="checkbox" value="activity-bar">
+                        Show activity bar
+                    </hx-dropdown-menu-item>
+                    <hx-dropdown-menu-item type="checkbox" value="panel" disabled>Show panel</hx-dropdown-menu-item>
+                </hx-dropdown-menu>
+
+                <hx-dropdown-menu>
+                    <hx-button slot="trigger" variant="outline">Radio group</hx-button>
+                    <hx-dropdown-menu-group label="Panel position">
+                        <hx-dropdown-menu-item type="radio" value="top" checked>Top</hx-dropdown-menu-item>
+                        <hx-dropdown-menu-item type="radio" value="bottom">Bottom</hx-dropdown-menu-item>
+                        <hx-dropdown-menu-item type="radio" value="right">Right</hx-dropdown-menu-item>
+                    </hx-dropdown-menu-group>
+                </hx-dropdown-menu>
+
+                <hx-dropdown-menu>
+                    <hx-button slot="trigger" variant="outline">Submenus</hx-button>
+                    <hx-dropdown-menu-item value="download">Download</hx-dropdown-menu-item>
+                    <hx-dropdown-menu-item>
+                        Share
+                        <hx-dropdown-menu-submenu>
+                            <hx-dropdown-menu-item value="email">Email</hx-dropdown-menu-item>
+                            <hx-dropdown-menu-item value="message">Message</hx-dropdown-menu-item>
+                            <hx-dropdown-menu-separator></hx-dropdown-menu-separator>
+                            <hx-dropdown-menu-item>
+                                More
+                                <hx-dropdown-menu-submenu>
+                                    <hx-dropdown-menu-item value="link">Copy link</hx-dropdown-menu-item>
+                                </hx-dropdown-menu-submenu>
+                            </hx-dropdown-menu-item>
+                        </hx-dropdown-menu-submenu>
+                    </hx-dropdown-menu-item>
+                </hx-dropdown-menu>
+
+                <hx-dropdown-menu placement="top-start">
+                    <hx-button slot="trigger" variant="outline">Top</hx-button>
+                    <hx-dropdown-menu-item value="profile">Profile</hx-dropdown-menu-item>
+                    <hx-dropdown-menu-item value="settings">Settings</hx-dropdown-menu-item>
+                </hx-dropdown-menu>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="modal">
+        <span slot="title">Modal</span>
+        <div class="text-foreground">
+            <div class="flex flex-wrap items-center gap-3">
+                <hx-modal>
+                    <hx-button slot="trigger" variant="outline">Create project</hx-button>
+                    <hx-modal-header>
+                        <hx-modal-title>Create project</hx-modal-title>
+                        <hx-modal-description>Create a new project in one click.</hx-modal-description>
+                    </hx-modal-header>
+                    <hx-modal-content><hx-input label="Name"></hx-input></hx-modal-content>
+                    <hx-modal-footer><hx-button data-close>Create</hx-button></hx-modal-footer>
+                </hx-modal>
+
+                <hx-modal persistent without-close>
+                    <hx-button slot="trigger" variant="destructive">Delete</hx-button>
+                    <hx-modal-header>
+                        <hx-modal-title>Delete project?</hx-modal-title>
+                        <hx-modal-description>This action cannot be undone.</hx-modal-description>
+                    </hx-modal-header>
+                    <hx-modal-footer>
+                        <hx-button variant="outline" data-close>Cancel</hx-button>
+                        <hx-button variant="destructive" data-close>Delete</hx-button>
+                    </hx-modal-footer>
+                </hx-modal>
+
+                <hx-modal>
+                    <hx-button slot="trigger" variant="outline">With scroll</hx-button>
+                    <hx-modal-header><hx-modal-title>Terms of service</hx-modal-title></hx-modal-header>
+                    <hx-modal-content><hx-skeleton class="h-screen w-full"></hx-skeleton></hx-modal-content>
+                    <hx-modal-footer><hx-button data-close>Accept</hx-button></hx-modal-footer>
+                </hx-modal>
+
+                <hx-modal label="Custom header">
+                    <hx-button slot="trigger" variant="outline">Custom</hx-button>
+                    <hx-modal-header>
+                        <div class="flex items-center gap-3">
+                            <hx-skeleton circle class="size-10"></hx-skeleton>
+                            <div class="flex flex-1 flex-col gap-2">
+                                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                                <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+                            </div>
+                        </div>
+                    </hx-modal-header>
+                    <hx-modal-content class="py-modal border-border border-y">
+                        The header can hold a custom layout.
+                    </hx-modal-content>
+                    <hx-modal-footer class="bg-muted"><hx-button data-close>Close</hx-button></hx-modal-footer>
+                </hx-modal>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="drawer">
+        <span slot="title">Drawer</span>
+        <div class="text-foreground">
+            <div class="flex flex-wrap items-center gap-3">
+                <hx-drawer>
+                    <hx-button slot="trigger" variant="outline">Right</hx-button>
+                    <hx-drawer-header>
+                        <hx-drawer-title>Create project</hx-drawer-title>
+                        <hx-drawer-description>Create a new project in one click.</hx-drawer-description>
+                    </hx-drawer-header>
+                    <hx-drawer-content><hx-input label="Name"></hx-input></hx-drawer-content>
+                    <hx-drawer-footer><hx-button data-close>Create</hx-button></hx-drawer-footer>
+                </hx-drawer>
+
+                <hx-drawer placement="left">
+                    <hx-button slot="trigger" variant="outline">Left</hx-button>
+                    <hx-drawer-header><hx-drawer-title>Terms of service</hx-drawer-title></hx-drawer-header>
+                    <hx-drawer-content><hx-skeleton class="h-screen w-full"></hx-skeleton></hx-drawer-content>
+                    <hx-drawer-footer><hx-button data-close>Accept</hx-button></hx-drawer-footer>
+                </hx-drawer>
+
+                <hx-drawer placement="top">
+                    <hx-button slot="trigger" variant="outline">Top</hx-button>
+                    <hx-drawer-header><hx-drawer-title>Terms of service</hx-drawer-title></hx-drawer-header>
+                    <hx-drawer-content>
+                        <div class="flex flex-col gap-2">
+                            <hx-skeleton class="h-4 w-full"></hx-skeleton>
+                            <hx-skeleton class="h-4 w-3/4"></hx-skeleton>
+                            <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+                        </div>
+                    </hx-drawer-content>
+                    <hx-drawer-footer><hx-button data-close>Accept</hx-button></hx-drawer-footer>
+                </hx-drawer>
+
+                <hx-drawer placement="bottom">
+                    <hx-button slot="trigger" variant="outline">Bottom</hx-button>
+                    <hx-drawer-header>
+                        <hx-drawer-title>Create project</hx-drawer-title>
+                        <hx-drawer-description>Create a new project in one click.</hx-drawer-description>
+                    </hx-drawer-header>
+                    <hx-drawer-content><hx-input label="Name"></hx-input></hx-drawer-content>
+                    <hx-drawer-footer><hx-button data-close>Create</hx-button></hx-drawer-footer>
+                </hx-drawer>
+            </div>
+        </div>
+    </hx-accordion-item>
+
+    <hx-accordion-item value="skeleton">
+        <span slot="title">Skeleton</span>
+        <div class="text-foreground">
+            <div class="flex w-full items-center gap-4">
+                <hx-skeleton circle class="size-12"></hx-skeleton>
+                <div class="flex flex-1 flex-col gap-2">
+                    <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                    <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+                </div>
+            </div>
+            <hx-skeleton class="rounded-card mt-4 h-32 w-full"></hx-skeleton>
+        </div>
+    </hx-accordion-item>
+</hx-accordion>

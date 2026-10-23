@@ -1,6 +1,7 @@
+@import "../../packages/hexa-ui/tokens.css";
 @import "tailwindcss" source(none);
-@import "./src/styles/theme.css";
-@source "./index.html";
+@import "../../packages/hexa-ui/src/styles/theme.css";
+@source "./*.html";
 
 @layer base {
     body {

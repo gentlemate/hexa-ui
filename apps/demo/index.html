@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Hexa UI</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" />
+        <link rel="stylesheet" href="/demo.css" />
+    </head>
+    <body class="bg-background text-foreground mx-auto my-12 max-w-lg font-sans">
+        <!-- include:body.html -->
+
+        <script type="module">
+            import "../../packages/hexa-ui/src/index.ts";
+            // Demo only: in an app, import each icon and bind it with `.icon=${Search}`.
+            // `[data-icon]` covers every component with an `icon` property (hx-icon, hx-badge, hx-tab, hx-accordion-item…).
+            import {
+                ChartLine,
+                CircleAlert,
+                CreditCard,
+                Download,
+                FileText,
+                Headset,
+                Heart,
+                House,
+                Package,
+                Plus,
+                Search,
+                Settings,
+                Trash2,
+                Undo2,
+                User,
+            } from "lucide";
+            const icons = {
+                ChartLine,
+                CircleAlert,
+                CreditCard,
+                Download,
+                FileText,
+                Headset,
+                Heart,
+                House,
+                Package,
+                Plus,
+                Search,
+                Settings,
+                Trash2,
+                Undo2,
+                User,
+            };
+            for (const el of document.querySelectorAll("[data-icon]")) el.icon = icons[el.dataset.icon];
+        </script>
+    </body>
+</html>
