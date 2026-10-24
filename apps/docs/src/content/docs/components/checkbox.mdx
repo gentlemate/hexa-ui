@@ -1,0 +1,90 @@
+---
+title: Checkbox
+description: Toggles an option on or off.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/checkbox";
+```
+
+<Preview code={`<hx-checkbox>Remember me</hx-checkbox>`} />
+
+## Structure
+
+```html
+<hx-checkbox></hx-checkbox>
+```
+
+## Examples
+
+### States
+
+`indeterminate` shows a dash. It is cleared when the user toggles the checkbox.
+
+<Preview
+    code={`<div class="flex flex-col gap-3">
+    <hx-checkbox>Default</hx-checkbox>
+    <hx-checkbox indeterminate>Indeterminate</hx-checkbox>
+    <hx-checkbox checked>Checked</hx-checkbox>
+</div>`}
+/>
+
+### Disabled
+
+<Preview
+    code={`<hx-checkbox disabled>Disabled</hx-checkbox>
+<hx-checkbox checked disabled>Checked and disabled</hx-checkbox>`}
+/>
+
+### Change event
+
+`change` fires each time the checkbox is toggled.
+
+<Preview code={`<hx-checkbox onchange="this.textContent = this.checked ? 'On' : 'Off'">Off</hx-checkbox>`} />
+
+## Keyboard
+
+<kbd>Space</kbd> toggles the checkbox.
+
+## API
+
+### Properties
+
+| Property        | Attribute       | Type      | Default | Description                                                              |
+| --------------- | --------------- | --------- | ------- | ------------------------------------------------------------------------ |
+| `name`          | `name`          | `string`  | `""`    | Name submitted with the form                                             |
+| `value`         | `value`         | `string`  | `"on"`  | Value submitted with the form when checked                               |
+| `checked`       | `checked`       | `boolean` | `false` | Whether the checkbox is checked (not reflected as an attribute)          |
+| `indeterminate` | `indeterminate` | `boolean` | `false` | Shows a dash instead of the check mark; cleared when the user toggles it |
+| `disabled`      | `disabled`      | `boolean` | `false` | Prevents user interaction                                                |
+| `required`      | `required`      | `boolean` | `false` | Marks the field as required for form validation                          |
+
+### Events
+
+| Name     | Description               |
+| -------- | ------------------------- |
+| `input`  | The checked state changed |
+| `change` | The checked state changed |
+
+### Slots
+
+| Name      | Description        |
+| --------- | ------------------ |
+| (default) | The checkbox label |
+
+### CSS parts
+
+| Name      | Description       |
+| --------- | ----------------- |
+| `control` | The box           |
+| `label`   | The label wrapper |
+
+### CSS states
+
+| Name      | Description             |
+| --------- | ----------------------- |
+| `checked` | The checkbox is checked |

@@ -1,0 +1,89 @@
+---
+title: Button
+description: Triggers an action or submits a form.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/button";
+```
+
+<Preview code={`<hx-button>Button</hx-button>`} />
+
+## Structure
+
+```html
+<hx-button></hx-button>
+```
+
+## Examples
+
+### Variants
+
+<Preview
+    code={`<hx-button>Primary</hx-button>
+<hx-button variant="secondary">Secondary</hx-button>
+<hx-button variant="outline">Outline</hx-button>
+<hx-button variant="ghost">Ghost</hx-button>
+<hx-button variant="destructive">Destructive</hx-button>`}
+/>
+
+### Icon
+
+<Preview
+    code={`<hx-button data-icon="Plus">Add</hx-button>
+<hx-button variant="outline" data-icon="Download" icon-placement="right">Download</hx-button>`}
+/>
+
+### Square
+
+<Preview
+    code={`<hx-button square>
+    <hx-icon data-icon="Plus" size="20"></hx-icon>
+</hx-button>
+<hx-button variant="outline" square>
+    <hx-icon data-icon="Download" size="20"></hx-icon>
+</hx-button>
+<hx-button variant="destructive" square>
+    <hx-icon data-icon="Trash2" size="20"></hx-icon>
+</hx-button>`}
+/>
+
+### Disabled
+
+<Preview
+    code={`<hx-button disabled>Primary</hx-button>
+<hx-button variant="secondary" disabled>Secondary</hx-button>
+<hx-button variant="outline" disabled>Outline</hx-button>
+<hx-button variant="ghost" disabled>Ghost</hx-button>
+<hx-button variant="destructive" disabled>Destructive</hx-button>`}
+/>
+
+## API
+
+### Properties
+
+| Property        | Attribute        | Type                                                                | Default     | Description                                                 |
+| --------------- | ---------------- | ------------------------------------------------------------------- | ----------- | ----------------------------------------------------------- |
+| `variant`       | `variant`        | `"primary" \| "secondary" \| "outline" \| "ghost" \| "destructive"` | `"primary"` | Visual style                                                |
+| `type`          | `type`           | `"button" \| "submit" \| "reset"`                                   | `"button"`  | `submit` and `reset` act on the parent `<form>`             |
+| `disabled`      | `disabled`       | `boolean`                                                           | `false`     | Disables the button                                         |
+| `square`        | `square`         | `boolean`                                                           | `false`     | Square button without horizontal padding, for an icon alone |
+| `icon`          | —                | `IconNode`                                                          | —           | Lucide icon, set as a JS property                           |
+| `iconPlacement` | `icon-placement` | `"left" \| "right"`                                                 | `"left"`    | Side of the icon relative to the label                      |
+
+### Slots
+
+| Name      | Description                    |
+| --------- | ------------------------------ |
+| (default) | The button label (text, icon…) |
+
+### CSS parts
+
+| Name   | Description                                     |
+| ------ | ----------------------------------------------- |
+| `base` | The inner `<button>` element                    |
+| `icon` | The `hx-icon` rendered from the `icon` property |

@@ -1,0 +1,53 @@
+---
+title: Separator
+description: Divides content with a line.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/separator";
+```
+
+<Preview
+    stack
+    code={`<span>Profile</span>
+<hx-separator></hx-separator>
+<span>Settings</span>`}
+/>
+
+## Structure
+
+```html
+<hx-separator></hx-separator>
+```
+
+## Examples
+
+### Vertical
+
+<Preview
+    code={`<div class="flex h-6 items-center">
+    <span>Home</span>
+    <hx-separator direction="vertical"></hx-separator>
+    <span>About</span>
+    <hx-separator direction="vertical"></hx-separator>
+    <span>Contact</span>
+</div>`}
+/>
+
+## API
+
+### Properties
+
+| Property    | Attribute   | Type                         | Default        | Description             |
+| ----------- | ----------- | ---------------------------- | -------------- | ----------------------- |
+| `direction` | `direction` | `"horizontal" \| "vertical"` | `"horizontal"` | Orientation of the line |
+
+### CSS parts
+
+| Name   | Description                           |
+| ------ | ------------------------------------- |
+| `line` | The line, with its spacing as margins |

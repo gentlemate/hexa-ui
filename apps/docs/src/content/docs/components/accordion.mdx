@@ -1,0 +1,222 @@
+---
+title: Accordion
+description: Shows and hides sections of content.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/accordion";
+```
+
+<Preview
+    stack
+    code={`<hx-accordion collapsible>
+    <hx-accordion-item value="shipping">
+        <span slot="title">What are your shipping options?</span>
+        We offer standard (5-7 days), express (2-3 days) and overnight shipping.
+    </hx-accordion-item>
+    <hx-accordion-item value="returns">
+        <span slot="title">What is your return policy?</span>
+        Returns are accepted within 30 days of purchase, in their original packaging.
+    </hx-accordion-item>
+    <hx-accordion-item value="support">
+        <span slot="title">How can I contact support?</span>
+        Reach us by email or chat, 24/7.
+    </hx-accordion-item>
+</hx-accordion>`}
+/>
+
+## Structure
+
+```html
+<hx-accordion>
+    <hx-accordion-item>
+        <span slot="title"></span>
+    </hx-accordion-item>
+</hx-accordion>
+```
+
+## Examples
+
+### Multiple
+
+`type="multiple"` lets several items stay open at once.
+
+<Preview
+    stack
+    code={`<hx-accordion type="multiple">
+    <hx-accordion-item value="shipping" open>
+        <span slot="title">What are your shipping options?</span>
+        We offer standard (5-7 days), express (2-3 days) and overnight shipping.
+    </hx-accordion-item>
+    <hx-accordion-item value="returns" open>
+        <span slot="title">What is your return policy?</span>
+        Returns are accepted within 30 days of purchase, in their original packaging.
+    </hx-accordion-item>
+    <hx-accordion-item value="support">
+        <span slot="title">How can I contact support?</span>
+        Reach us by email or chat, 24/7.
+    </hx-accordion-item>
+</hx-accordion>`}
+/>
+
+### Variants
+
+<Preview
+    stack
+    code={`<hx-accordion collapsible variant="secondary">
+    <hx-accordion-item value="shipping">
+        <span slot="title">What are your shipping options?</span>
+        We offer standard (5-7 days), express (2-3 days) and overnight shipping.
+    </hx-accordion-item>
+    <hx-accordion-item value="returns">
+        <span slot="title">What is your return policy?</span>
+        Returns are accepted within 30 days of purchase, in their original packaging.
+    </hx-accordion-item>
+    <hx-accordion-item value="support">
+        <span slot="title">How can I contact support?</span>
+        Reach us by email or chat, 24/7.
+    </hx-accordion-item>
+</hx-accordion>`}
+/>
+
+### Hover
+
+`trigger="hover"` opens the items on hover.
+
+<Preview
+    stack
+    code={`<hx-accordion collapsible trigger="hover">
+    <hx-accordion-item value="shipping">
+        <span slot="title">What are your shipping options?</span>
+        We offer standard (5-7 days), express (2-3 days) and overnight shipping.
+    </hx-accordion-item>
+    <hx-accordion-item value="returns">
+        <span slot="title">What is your return policy?</span>
+        Returns are accepted within 30 days of purchase, in their original packaging.
+    </hx-accordion-item>
+    <hx-accordion-item value="support">
+        <span slot="title">How can I contact support?</span>
+        Reach us by email or chat, 24/7.
+    </hx-accordion-item>
+</hx-accordion>`}
+/>
+
+### Icon
+
+<Preview
+    stack
+    code={`<hx-accordion collapsible>
+    <hx-accordion-item value="shipping" data-icon="Package">
+        <span slot="title">What are your shipping options?</span>
+        We offer standard (5-7 days), express (2-3 days) and overnight shipping.
+    </hx-accordion-item>
+    <hx-accordion-item value="returns" data-icon="Undo2">
+        <span slot="title">What is your return policy?</span>
+        Returns are accepted within 30 days of purchase, in their original packaging.
+    </hx-accordion-item>
+    <hx-accordion-item value="support" data-icon="Headset">
+        <span slot="title">How can I contact support?</span>
+        Reach us by email or chat, 24/7.
+    </hx-accordion-item>
+</hx-accordion>`}
+/>
+
+### Disabled
+
+<Preview
+    stack
+    code={`<hx-accordion collapsible>
+    <hx-accordion-item value="shipping">
+        <span slot="title">What are your shipping options?</span>
+        We offer standard (5-7 days), express (2-3 days) and overnight shipping.
+    </hx-accordion-item>
+    <hx-accordion-item value="returns">
+        <span slot="title">What is your return policy?</span>
+        Returns are accepted within 30 days of purchase, in their original packaging.
+    </hx-accordion-item>
+    <hx-accordion-item value="support" disabled>
+        <span slot="title">How can I contact support?</span>
+        Reach us by email or chat, 24/7.
+    </hx-accordion-item>
+</hx-accordion>`}
+/>
+
+## Keyboard
+
+<kbd>↑</kbd> / <kbd>↓</kbd> move the focus between the item headers, looping, and <kbd>Home</kbd> / <kbd>End</kbd> to
+the first / last one. <kbd>Enter</kbd> / <kbd>Space</kbd> toggle the focused item. Disabled items are skipped.
+
+## API
+
+### hx-accordion
+
+#### Properties
+
+| Property      | Attribute     | Type                       | Default     | Description                                                               |
+| ------------- | ------------- | -------------------------- | ----------- | ------------------------------------------------------------------------- |
+| `type`        | `type`        | `"single" \| "multiple"`   | `"single"`  | `single` keeps one item open at a time, `multiple` lets several stay open |
+| `collapsible` | `collapsible` | `boolean`                  | `false`     | In `single` mode, lets the user close the open item                       |
+| `variant`     | `variant`     | `"default" \| "secondary"` | `"default"` | Visual style                                                              |
+| `trigger`     | `trigger`     | `"click" \| "hover"`       | `"click"`   | Opens the items on click or on hover                                      |
+| `value`       | —             | `string[]` (read-only)     | —           | Values of the open items                                                  |
+
+#### Events
+
+| Name                  | Description                                                     |
+| --------------------- | --------------------------------------------------------------- |
+| `hx-accordion-change` | The open items changed; `event.detail.value` lists their values |
+
+#### Slots
+
+| Name      | Description                      |
+| --------- | -------------------------------- |
+| (default) | The `hx-accordion-item` elements |
+
+CSS part: `base` (the items wrapper).
+
+### hx-accordion-item
+
+#### Properties
+
+| Property   | Attribute  | Type       | Default | Description                                              |
+| ---------- | ---------- | ---------- | ------- | -------------------------------------------------------- |
+| `value`    | `value`    | `string`   | `""`    | Identifies the item in `hx-accordion-change`             |
+| `open`     | `open`     | `boolean`  | `false` | Whether the item is open                                 |
+| `disabled` | `disabled` | `boolean`  | `false` | Prevents opening or closing the item                     |
+| `icon`     | —          | `IconNode` | —       | Lucide icon shown before the title, set as a JS property |
+
+`variant` and `trigger` are set by the `hx-accordion`.
+
+#### Methods
+
+| Name       | Description                                            |
+| ---------- | ------------------------------------------------------ |
+| `toggle()` | Opens or closes the item (fires `hx-accordion-toggle`) |
+
+#### Events
+
+| Name                  | Description                                                                                                                      |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `hx-accordion-toggle` | The item is about to open or close; `event.detail.open` is the new state. Cancelable: `preventDefault()` keeps the current state |
+
+#### Slots
+
+| Name      | Description             |
+| --------- | ----------------------- |
+| `title`   | The trigger label       |
+| (default) | The collapsible content |
+
+#### CSS parts
+
+| Name        | Description                                                       |
+| ----------- | ----------------------------------------------------------------- |
+| `base`      | The item wrapper                                                  |
+| `trigger`   | The `<button>` that toggles the item                              |
+| `icon`      | The `hx-icon` rendered from the `icon` property, before the title |
+| `chevron`   | The chevron                                                       |
+| `content`   | The content wrapper                                               |
+| `separator` | The line under the item (hidden on the last one)                  |

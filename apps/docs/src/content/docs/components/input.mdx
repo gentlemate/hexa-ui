@@ -1,0 +1,79 @@
+---
+title: Input
+description: A single-line text field.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/input";
+```
+
+<Preview stack code={`<hx-input label="Email" type="email" placeholder="you@example.com"></hx-input>`} />
+
+## Structure
+
+```html
+<hx-input></hx-input>
+```
+
+## Examples
+
+### Hint
+
+<Preview stack code={`<hx-input label="Password" type="password" hint="Should not be disclosed."></hx-input>`} />
+
+### Error
+
+<Preview
+    stack
+    code={`<hx-input label="Login" value="admin" error="This login is already used." required></hx-input>`}
+/>
+
+### Disabled
+
+<Preview stack code={`<hx-input label="Name" value="John Doe" disabled></hx-input>`} />
+
+### Input event
+
+`input` fires on each keystroke, after `value` is updated.
+
+<Preview
+    stack
+    code={`<hx-input
+    label="Name"
+    hint="Hello!"
+    oninput="this.hint = this.value ? 'Hello, ' + this.value + '!' : 'Hello!'"
+></hx-input>`}
+/>
+
+## API
+
+### Properties
+
+| Property      | Attribute     | Type                                                                        | Default  | Description                                                    |
+| ------------- | ------------- | --------------------------------------------------------------------------- | -------- | -------------------------------------------------------------- |
+| `name`        | `name`        | `string`                                                                    | `""`     | Name submitted with the form                                   |
+| `value`       | `value`       | `string`                                                                    | `""`     | Current value                                                  |
+| `type`        | `type`        | `"text" \| "email" \| "password" \| "search" \| "tel" \| "url" \| "number"` | `"text"` | Type of the inner `<input>`                                    |
+| `label`       | `label`       | `string`                                                                    | `""`     | Label displayed above the field                                |
+| `placeholder` | `placeholder` | `string`                                                                    | `""`     | Text shown when the field is empty                             |
+| `hint`        | `hint`        | `string`                                                                    | `""`     | Help text under the field, replaced by `error` when set        |
+| `error`       | `error`       | `string`                                                                    | `""`     | Error message under the field; also marks the field as invalid |
+| `disabled`    | `disabled`    | `boolean`                                                                   | `false`  | Prevents user interaction                                      |
+| `required`    | `required`    | `boolean`                                                                   | `false`  | Marks the field as required for form validation                |
+
+### Events
+
+| Name     | Description                                                                        |
+| -------- | ---------------------------------------------------------------------------------- |
+| `input`  | The value changed (native event, crosses the Shadow DOM)                           |
+| `change` | The value was committed (re-dispatched, since the native `change` is not composed) |
+
+### CSS parts
+
+| Name      | Description                 |
+| --------- | --------------------------- |
+| `control` | The inner `<input>` element |

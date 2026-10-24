@@ -1,0 +1,61 @@
+---
+title: Badge
+description: Displays a short status or label.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/badge";
+```
+
+<Preview code={`<hx-badge>Badge</hx-badge>`} />
+
+## Structure
+
+```html
+<hx-badge></hx-badge>
+```
+
+## Examples
+
+### Variants
+
+<Preview
+    code={`<hx-badge>Primary</hx-badge>
+<hx-badge variant="secondary">Secondary</hx-badge>
+<hx-badge variant="outline">Outline</hx-badge>
+<hx-badge variant="destructive">Destructive</hx-badge>`}
+/>
+
+### Icon
+
+<Preview
+    code={`<hx-badge data-icon="Heart" icon-placement="right">Favorite</hx-badge>
+<hx-badge variant="destructive" data-icon="CircleAlert">Error</hx-badge>`}
+/>
+
+## API
+
+### Properties
+
+| Property        | Attribute        | Type                                                     | Default     | Description                            |
+| --------------- | ---------------- | -------------------------------------------------------- | ----------- | -------------------------------------- |
+| `variant`       | `variant`        | `"primary" \| "secondary" \| "outline" \| "destructive"` | `"primary"` | Visual style                           |
+| `icon`          | —                | `IconNode`                                               | —           | Lucide icon, set as a JS property      |
+| `iconPlacement` | `icon-placement` | `"left" \| "right"`                                      | `"left"`    | Side of the icon relative to the label |
+
+### Slots
+
+| Name      | Description                     |
+| --------- | ------------------------------- |
+| (default) | The badge content (text, icon…) |
+
+### CSS parts
+
+| Name   | Description                                     |
+| ------ | ----------------------------------------------- |
+| `base` | The inner wrapper                               |
+| `icon` | The `hx-icon` rendered from the `icon` property |

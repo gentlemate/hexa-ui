@@ -1,0 +1,142 @@
+---
+title: Tooltip
+description: Shows a short hint on hover or focus.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/tooltip";
+```
+
+<Preview
+    code={`<hx-tooltip content="This is a tooltip">
+    <hx-button variant="outline">Hover me</hx-button>
+</hx-tooltip>`}
+/>
+
+## Structure
+
+```html
+<hx-tooltip>
+    <hx-button></hx-button>
+    <span slot="content"></span>
+</hx-tooltip>
+```
+
+## Examples
+
+### Placement
+
+<Preview
+    code={`<hx-tooltip content="Top">
+    <hx-button variant="outline">Top</hx-button>
+</hx-tooltip>
+<hx-tooltip content="Bottom" placement="bottom">
+    <hx-button variant="outline">Bottom</hx-button>
+</hx-tooltip>
+<hx-tooltip content="Left" placement="left">
+    <hx-button variant="outline">Left</hx-button>
+</hx-tooltip>
+<hx-tooltip content="Right" placement="right">
+    <hx-button variant="outline">Right</hx-button>
+</hx-tooltip>`}
+/>
+
+### Distance
+
+`distance` sets the gap in pixels between the trigger and the tooltip (`8` by default).
+
+<Preview
+    code={`<hx-tooltip content="16px away" distance="16">
+    <hx-button variant="outline">Distance</hx-button>
+</hx-tooltip>`}
+/>
+
+### Open delay
+
+`open-delay` sets the delay in milliseconds before the tooltip opens on hover (`300` by default).
+
+<Preview
+    code={`<hx-tooltip content="No delay" open-delay="0" close-delay="0">
+    <hx-button variant="outline">Open delay</hx-button>
+</hx-tooltip>`}
+/>
+
+### Without arrow
+
+<Preview
+    code={`<hx-tooltip content="No arrow" without-arrow>
+    <hx-button variant="outline">Without arrow</hx-button>
+</hx-tooltip>`}
+/>
+
+### Rich content
+
+<Preview
+    code={`<hx-tooltip>
+    <hx-button variant="outline">Shortcut</hx-button>
+    <span slot="content">Save <kbd class="bg-background/20 rounded-control-sm px-1.5 ml-1">Ctrl</kbd> + <kbd class="bg-background/20 rounded-control-sm px-1.5">S</kbd></span>
+</hx-tooltip>`}
+/>
+
+### Disabled
+
+`disabled` prevents the tooltip from opening.
+
+<Preview
+    code={`<hx-tooltip content="Disabled" disabled>
+    <hx-button variant="outline">Disabled</hx-button>
+</hx-tooltip>`}
+/>
+
+## Usage
+
+The tooltip opens on hover (after `open-delay`) and on keyboard focus. It closes on pointer leave, blur, click and <kbd>Escape</kbd>. Its text is exposed as the trigger's `aria-description`.
+
+## API
+
+### Properties
+
+| Property       | Attribute       | Type                                                              | Default | Description                                                         |
+| -------------- | --------------- | ----------------------------------------------------------------- | ------- | ------------------------------------------------------------------- |
+| `content`      | `content`       | `string`                                                          | `""`    | Tooltip text; use the `content` slot for rich content               |
+| `placement`    | `placement`     | `"top" \| "right" \| "bottom" \| "left"`, with `-start` or `-end` | `"top"` | Position of the tooltip relative to the trigger                     |
+| `distance`     | `distance`      | `number`                                                          | `8`     | Gap in pixels between the trigger and the popup                     |
+| `openDelay`    | `open-delay`    | `number`                                                          | `300`   | Delay in milliseconds before opening on hover                       |
+| `closeDelay`   | `close-delay`   | `number`                                                          | `100`   | Delay in milliseconds before closing on pointer leave               |
+| `disabled`     | `disabled`      | `boolean`                                                         | `false` | Prevents the tooltip from opening                                   |
+| `withoutArrow` | `without-arrow` | `boolean`                                                         | `false` | Hides the arrow                                                     |
+| `open`         | `open`          | `boolean`                                                         | `false` | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
+
+### Methods
+
+| Name     | Description                          |
+| -------- | ------------------------------------ |
+| `show()` | Opens the tooltip (fires `hx-show`)  |
+| `hide()` | Closes the tooltip (fires `hx-hide`) |
+
+### Events
+
+| Name            | Description                                           |
+| --------------- | ----------------------------------------------------- |
+| `hx-show`       | The tooltip is about to open. Cancelable              |
+| `hx-after-show` | The tooltip is open and its enter animation finished  |
+| `hx-hide`       | The tooltip is about to close. Cancelable             |
+| `hx-after-hide` | The tooltip is closed and its exit animation finished |
+
+### Slots
+
+| Name      | Description                                             |
+| --------- | ------------------------------------------------------- |
+| (default) | The trigger (the first element is the anchor)           |
+| `content` | Rich tooltip content, instead of the `content` property |
+
+### CSS parts
+
+| Name    | Description                                                           |
+| ------- | --------------------------------------------------------------------- |
+| `popup` | The tooltip bubble                                                    |
+| `arrow` | The arrow pointing to the trigger (not rendered with `without-arrow`) |

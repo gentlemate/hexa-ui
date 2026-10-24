@@ -1,0 +1,80 @@
+---
+title: Textarea
+description: A multi-line text field.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/textarea";
+```
+
+<Preview stack code={`<hx-textarea label="Bio" placeholder="Tell us about yourself"></hx-textarea>`} />
+
+## Structure
+
+```html
+<hx-textarea></hx-textarea>
+```
+
+## Examples
+
+### Hint
+
+<Preview stack code={`<hx-textarea label="Comment" hint="Max 500 characters."></hx-textarea>`} />
+
+### Error
+
+<Preview stack code={`<hx-textarea label="Message" error="This field is required." required></hx-textarea>`} />
+
+### Rows
+
+<Preview stack code={`<hx-textarea label="Bio" rows="8"></hx-textarea>`} />
+
+### Disabled
+
+<Preview stack code={`<hx-textarea label="Comment" disabled></hx-textarea>`} />
+
+### Input event
+
+`input` fires on each keystroke, after `value` is updated.
+
+<Preview
+    stack
+    code={`<hx-textarea
+    label="Comment"
+    hint="0 / 100 characters"
+    oninput="this.hint = this.value.length + ' / 100 characters'"
+></hx-textarea>`}
+/>
+
+## API
+
+### Properties
+
+| Property      | Attribute     | Type      | Default | Description                                                    |
+| ------------- | ------------- | --------- | ------- | -------------------------------------------------------------- |
+| `name`        | `name`        | `string`  | `""`    | Name submitted with the form                                   |
+| `value`       | `value`       | `string`  | `""`    | Current value                                                  |
+| `label`       | `label`       | `string`  | `""`    | Label displayed above the field                                |
+| `placeholder` | `placeholder` | `string`  | `""`    | Text shown when the field is empty                             |
+| `hint`        | `hint`        | `string`  | `""`    | Help text under the field, replaced by `error` when set        |
+| `error`       | `error`       | `string`  | `""`    | Error message under the field; also marks the field as invalid |
+| `rows`        | `rows`        | `number`  | `3`     | Number of visible text lines                                   |
+| `disabled`    | `disabled`    | `boolean` | `false` | Prevents user interaction                                      |
+| `required`    | `required`    | `boolean` | `false` | Marks the field as required for form validation                |
+
+### Events
+
+| Name     | Description                                                                        |
+| -------- | ---------------------------------------------------------------------------------- |
+| `input`  | The value changed (native event, crosses the Shadow DOM)                           |
+| `change` | The value was committed (re-dispatched, since the native `change` is not composed) |
+
+### CSS parts
+
+| Name      | Description                    |
+| --------- | ------------------------------ |
+| `control` | The inner `<textarea>` element |

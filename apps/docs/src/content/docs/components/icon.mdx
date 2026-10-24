@@ -1,0 +1,69 @@
+---
+title: Icon
+description: Renders a Lucide icon.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/icon";
+```
+
+<Preview code={`<hx-icon data-icon="Search"></hx-icon>`} />
+
+## Structure
+
+```html
+<hx-icon></hx-icon>
+```
+
+## Examples
+
+### Size
+
+<Preview
+    code={`<hx-icon data-icon="Heart"></hx-icon>
+<hx-icon data-icon="Heart" size="20"></hx-icon>
+<hx-icon data-icon="Heart" size="24"></hx-icon>
+<hx-icon data-icon="Heart" size="32"></hx-icon>`}
+/>
+
+### Stroke width
+
+<Preview
+    code={`<hx-icon data-icon="Settings" size="24" stroke-width="1"></hx-icon>
+<hx-icon data-icon="Settings" size="24" stroke-width="1.5"></hx-icon>
+<hx-icon data-icon="Settings" size="24"></hx-icon>
+<hx-icon data-icon="Settings" size="24" stroke-width="2.5"></hx-icon>`}
+/>
+
+### Color
+
+The icon uses the current text color.
+
+<Preview code={`<hx-icon data-icon="CircleAlert" size="24" class="text-destructive"></hx-icon>`} />
+
+### Label
+
+Without `label`, the icon is decorative and hidden from assistive technologies. With `label`, it is announced.
+
+<Preview code={`<hx-icon data-icon="Trash2" label="Delete"></hx-icon>`} />
+
+## API
+
+### Properties
+
+| Property      | Attribute      | Type       | Default | Description                                         |
+| ------------- | -------------- | ---------- | ------- | --------------------------------------------------- |
+| `icon`        | —              | `IconNode` | —       | Lucide icon to render, set as a JS property         |
+| `size`        | `size`         | `number`   | `16`    | Width and height in pixels                          |
+| `strokeWidth` | `stroke-width` | `number`   | `2`     | Stroke width of the paths                           |
+| `label`       | `label`        | `string`   | `""`    | Accessible name; without it, the icon is decorative |
+
+### CSS parts
+
+| Name  | Description               |
+| ----- | ------------------------- |
+| `svg` | The inner `<svg>` element |

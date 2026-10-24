@@ -1,0 +1,96 @@
+---
+title: Card
+description: Groups related content and actions.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/card";
+```
+
+<Preview
+    stack
+    code={`<hx-card>
+    <hx-card-header>
+        <hx-card-title>Create project</hx-card-title>
+        <hx-card-description>Create a new project in one click.</hx-card-description>
+        <hx-card-action>
+            <hx-badge variant="secondary">New</hx-badge>
+        </hx-card-action>
+    </hx-card-header>
+    <hx-card-content>
+        <hx-input label="Name"></hx-input>
+    </hx-card-content>
+    <hx-card-footer>
+        <hx-button>Create</hx-button>
+    </hx-card-footer>
+</hx-card>`}
+/>
+
+## Structure
+
+```html
+<hx-card>
+    <hx-card-header>
+        <hx-card-title></hx-card-title>
+        <hx-card-description></hx-card-description>
+        <hx-card-action></hx-card-action>
+    </hx-card-header>
+    <hx-card-content></hx-card-content>
+    <hx-card-footer></hx-card-footer>
+</hx-card>
+```
+
+## Examples
+
+### Variants
+
+<Preview
+    stack
+    code={`<hx-card>
+    <hx-card-content>Default card.</hx-card-content>
+</hx-card>
+<hx-card variant="outline">
+    <hx-card-content>Outline card.</hx-card-content>
+</hx-card>
+<hx-card variant="ghost">
+    <hx-card-content>Ghost card.</hx-card-content>
+</hx-card>`}
+/>
+
+### Custom header
+
+The header can hold any layout instead of the title and the description.
+
+<Preview
+    stack
+    code={`<hx-card>
+    <hx-card-header>
+        <div class="flex items-center gap-3">
+            <hx-skeleton circle class="size-10"></hx-skeleton>
+            <div class="flex flex-1 flex-col gap-2">
+                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+            </div>
+        </div>
+    </hx-card-header>
+    <hx-card-content>The header can hold a custom layout.</hx-card-content>
+</hx-card>`}
+/>
+
+## API
+
+### hx-card
+
+| Property  | Attribute | Type                                | Default     | Description  |
+| --------- | --------- | ----------------------------------- | ----------- | ------------ |
+| `variant` | `variant` | `"default" \| "outline" \| "ghost"` | `"default"` | Visual style |
+
+| Slot      | Description                                                                 |
+| --------- | --------------------------------------------------------------------------- |
+| (default) | The card sections: `hx-card-header`, `hx-card-content` and `hx-card-footer` |
+
+CSS part: `base` (the card container).

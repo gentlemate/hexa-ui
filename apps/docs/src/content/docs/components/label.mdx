@@ -1,0 +1,59 @@
+---
+title: Label
+description: Names a form control.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/label";
+```
+
+<Preview
+    code={`<hx-switch id="notifications"></hx-switch>
+<hx-label for="notifications">Notifications</hx-label>`}
+/>
+
+## Structure
+
+```html
+<hx-label></hx-label>
+```
+
+## Examples
+
+### Required
+
+`required` adds an asterisk after the text.
+
+<Preview
+    code={`<hx-checkbox id="terms"></hx-checkbox>
+<hx-label for="terms" required>Accept the terms</hx-label>`}
+/>
+
+## Usage
+
+`for` takes the `id` of the control. A click on the label focuses and clicks the control, and the label gives the control its accessible name.
+
+## API
+
+### Properties
+
+| Property   | Attribute  | Type      | Default | Description                     |
+| ---------- | ---------- | --------- | ------- | ------------------------------- |
+| `htmlFor`  | `for`      | `string`  | `""`    | `id` of the control it labels   |
+| `required` | `required` | `boolean` | `false` | Adds an asterisk after the text |
+
+### Slots
+
+| Name      | Description    |
+| --------- | -------------- |
+| (default) | The label text |
+
+### CSS parts
+
+| Name   | Description                 |
+| ------ | --------------------------- |
+| `base` | The inner `<label>` element |

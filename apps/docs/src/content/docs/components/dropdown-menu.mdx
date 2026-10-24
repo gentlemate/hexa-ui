@@ -1,0 +1,261 @@
+---
+title: Dropdown menu
+description: A list of actions opened from a trigger.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/dropdown-menu";
+```
+
+<Preview
+    code={`<hx-dropdown-menu>
+    <hx-button slot="trigger">Account</hx-button>
+    <hx-dropdown-menu-group label="Account">
+        <hx-dropdown-menu-item value="profile" data-icon="User">Profile</hx-dropdown-menu-item>
+        <hx-dropdown-menu-item value="settings" data-icon="Settings">Settings</hx-dropdown-menu-item>
+        <hx-dropdown-menu-item data-icon="Bell">
+            Notifications
+            <hx-dropdown-menu-submenu>
+                <hx-dropdown-menu-item type="checkbox" value="email" checked>Email</hx-dropdown-menu-item>
+                <hx-dropdown-menu-item type="checkbox" value="sms">SMS</hx-dropdown-menu-item>
+                <hx-dropdown-menu-item type="checkbox" value="push">Push</hx-dropdown-menu-item>
+            </hx-dropdown-menu-submenu>
+        </hx-dropdown-menu-item>
+    </hx-dropdown-menu-group>
+    <hx-dropdown-menu-separator></hx-dropdown-menu-separator>
+    <hx-dropdown-menu-item data-icon="SunMoon">
+        Theme
+        <hx-dropdown-menu-submenu>
+            <hx-dropdown-menu-item type="radio" value="light">Light</hx-dropdown-menu-item>
+            <hx-dropdown-menu-item type="radio" value="dark">Dark</hx-dropdown-menu-item>
+            <hx-dropdown-menu-item type="radio" value="system" checked>System</hx-dropdown-menu-item>
+        </hx-dropdown-menu-submenu>
+    </hx-dropdown-menu-item>
+    <hx-dropdown-menu-separator></hx-dropdown-menu-separator>
+    <hx-dropdown-menu-item value="logout" variant="destructive" data-icon="LogOut">Log out</hx-dropdown-menu-item>
+</hx-dropdown-menu>`}
+/>
+
+## Structure
+
+```html
+<hx-dropdown-menu>
+    <hx-button slot="trigger"></hx-button>
+
+    <hx-dropdown-menu-group>
+        <hx-dropdown-menu-item></hx-dropdown-menu-item>
+    </hx-dropdown-menu-group>
+
+    <hx-dropdown-menu-item></hx-dropdown-menu-item>
+
+    <hx-dropdown-menu-item>
+        <hx-dropdown-menu-submenu>
+            <hx-dropdown-menu-item></hx-dropdown-menu-item>
+        </hx-dropdown-menu-submenu>
+    </hx-dropdown-menu-item>
+
+    <hx-dropdown-menu-separator></hx-dropdown-menu-separator>
+</hx-dropdown-menu>
+```
+
+## Examples
+
+### Groups
+
+<Preview
+    code={`<hx-dropdown-menu>
+    <hx-button slot="trigger">Account</hx-button>
+    <hx-dropdown-menu-group label="Account">
+        <hx-dropdown-menu-item value="profile">Profile</hx-dropdown-menu-item>
+        <hx-dropdown-menu-item value="settings">Settings</hx-dropdown-menu-item>
+        <hx-dropdown-menu-item value="notifications">Notifications</hx-dropdown-menu-item>
+    </hx-dropdown-menu-group>
+    <hx-dropdown-menu-separator></hx-dropdown-menu-separator>
+    <hx-dropdown-menu-item value="delete" variant="destructive">Delete</hx-dropdown-menu-item>
+</hx-dropdown-menu>`}
+/>
+
+### Icon
+
+<Preview
+    code={`<hx-dropdown-menu>
+    <hx-button slot="trigger">Account</hx-button>
+    <hx-dropdown-menu-item value="profile" data-icon="User">Profile</hx-dropdown-menu-item>
+    <hx-dropdown-menu-item value="settings" data-icon="Settings">Settings</hx-dropdown-menu-item>
+    <hx-dropdown-menu-item value="notifications" data-icon="Bell">Notifications</hx-dropdown-menu-item>
+    <hx-dropdown-menu-separator></hx-dropdown-menu-separator>
+    <hx-dropdown-menu-item value="delete" variant="destructive" data-icon="Trash2">Delete</hx-dropdown-menu-item>
+</hx-dropdown-menu>`}
+/>
+
+### Checkboxes
+
+<Preview
+    code={`<hx-dropdown-menu>
+    <hx-button slot="trigger">Notifications</hx-button>
+    <hx-dropdown-menu-item type="checkbox" value="email" checked>Email notifications</hx-dropdown-menu-item>
+    <hx-dropdown-menu-item type="checkbox" value="sms">SMS notifications</hx-dropdown-menu-item>
+    <hx-dropdown-menu-item type="checkbox" value="push">Push notifications</hx-dropdown-menu-item>
+</hx-dropdown-menu>`}
+/>
+
+### Radio group
+
+Radio items are exclusive within their group.
+
+<Preview
+    code={`<hx-dropdown-menu>
+    <hx-button slot="trigger">Theme</hx-button>
+    <hx-dropdown-menu-group label="Theme">
+        <hx-dropdown-menu-item type="radio" value="light">Light</hx-dropdown-menu-item>
+        <hx-dropdown-menu-item type="radio" value="dark">Dark</hx-dropdown-menu-item>
+        <hx-dropdown-menu-item type="radio" value="system" checked>System</hx-dropdown-menu-item>
+    </hx-dropdown-menu-group>
+</hx-dropdown-menu>`}
+/>
+
+### Submenus
+
+Place an `hx-dropdown-menu-submenu` inside an item, after its label.
+
+<Preview
+    code={`<hx-dropdown-menu>
+    <hx-button slot="trigger">Action</hx-button>
+    <hx-dropdown-menu-item value="download">Download</hx-dropdown-menu-item>
+    <hx-dropdown-menu-item>
+        Share
+        <hx-dropdown-menu-submenu>
+            <hx-dropdown-menu-item value="email">Email</hx-dropdown-menu-item>
+            <hx-dropdown-menu-item value="sms">SMS</hx-dropdown-menu-item>
+            <hx-dropdown-menu-separator></hx-dropdown-menu-separator>
+            <hx-dropdown-menu-item>
+                More
+                <hx-dropdown-menu-submenu>
+                    <hx-dropdown-menu-item value="link">Copy link</hx-dropdown-menu-item>
+                </hx-dropdown-menu-submenu>
+            </hx-dropdown-menu-item>
+        </hx-dropdown-menu-submenu>
+    </hx-dropdown-menu-item>
+</hx-dropdown-menu>`}
+/>
+
+### Placement
+
+<Preview
+    code={`<hx-dropdown-menu placement="top-start">
+    <hx-button slot="trigger">Top</hx-button>
+    <hx-dropdown-menu-item value="profile">Profile</hx-dropdown-menu-item>
+    <hx-dropdown-menu-item value="settings">Settings</hx-dropdown-menu-item>
+    <hx-dropdown-menu-item value="notifications">Notifications</hx-dropdown-menu-item>
+</hx-dropdown-menu>`}
+/>
+
+### Disabled
+
+<Preview
+    code={`<hx-dropdown-menu>
+    <hx-button slot="trigger">Account</hx-button>
+    <hx-dropdown-menu-item value="profile">Profile</hx-dropdown-menu-item>
+    <hx-dropdown-menu-item value="settings">Settings</hx-dropdown-menu-item>
+    <hx-dropdown-menu-item value="notifications" disabled>Notifications</hx-dropdown-menu-item>
+</hx-dropdown-menu>`}
+/>
+
+## Keyboard
+
+On the trigger, <kbd>Enter</kbd> / <kbd>Space</kbd> and <kbd>↓</kbd> open the menu on the first item, <kbd>↑</kbd> on the last one. <kbd>↑</kbd> / <kbd>↓</kbd> (looping), <kbd>Home</kbd> / <kbd>End</kbd> and typeahead navigate the items, <kbd>Enter</kbd> / <kbd>Space</kbd> activate them. Disabled items are skipped.
+
+<kbd>→</kbd> opens a submenu and <kbd>←</kbd> closes it. <kbd>Escape</kbd> closes the current menu, <kbd>Tab</kbd>
+closes the whole menu. When the menu closes, the focus returns to the trigger.
+
+## API
+
+### hx-dropdown-menu
+
+#### Properties
+
+| Property    | Attribute   | Type                                                              | Default          | Description                                                         |
+| ----------- | ----------- | ----------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------- |
+| `placement` | `placement` | `"top" \| "right" \| "bottom" \| "left"`, with `-start` or `-end` | `"bottom-start"` | Position of the menu relative to the trigger                        |
+| `distance`  | `distance`  | `number`                                                          | `4`              | Gap in pixels between the trigger and the popup                     |
+| `disabled`  | `disabled`  | `boolean`                                                         | `false`          | Prevents the trigger from opening the menu                          |
+| `open`      | `open`      | `boolean`                                                         | `false`          | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
+
+#### Methods
+
+| Name     | Description                       |
+| -------- | --------------------------------- |
+| `show()` | Opens the menu (fires `hx-show`)  |
+| `hide()` | Closes the menu (fires `hx-hide`) |
+
+#### Events
+
+| Name            | Description                                                                                                                                   |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `hx-show`       | The menu is about to open. Cancelable                                                                                                         |
+| `hx-after-show` | The menu is open and its enter animation finished                                                                                             |
+| `hx-hide`       | The menu is about to close. Cancelable                                                                                                        |
+| `hx-after-hide` | The menu is closed and its exit animation finished                                                                                            |
+| `hx-select`     | An item was activated. Normal items close the menu, checkbox and radio items keep it open. Cancelable: `preventDefault()` keeps the menu open |
+
+#### Slots
+
+| Name      | Description                                                                                     |
+| --------- | ----------------------------------------------------------------------------------------------- |
+| `trigger` | The element that opens the menu (e.g. an `hx-button`)                                           |
+| (default) | The `hx-dropdown-menu-item`, `hx-dropdown-menu-group` and `hx-dropdown-menu-separator` elements |
+
+CSS part: `popup` (the menu panel).
+
+### hx-dropdown-menu-item
+
+#### Properties
+
+| Property   | Attribute  | Type                                | Default     | Description                                                          |
+| ---------- | ---------- | ----------------------------------- | ----------- | -------------------------------------------------------------------- |
+| `value`    | `value`    | `string`                            | `""`        | Sent as `event.detail.value` in `hx-select`                          |
+| `type`     | `type`     | `"normal" \| "checkbox" \| "radio"` | `"normal"`  | `checkbox` and `radio` items toggle `checked` and keep the menu open |
+| `checked`  | `checked`  | `boolean`                           | `false`     | Whether a checkbox or radio item is checked                          |
+| `variant`  | `variant`  | `"default" \| "destructive"`        | `"default"` | `destructive` shows the item in the destructive color                |
+| `disabled` | `disabled` | `boolean`                           | `false`     | Prevents activating the item                                         |
+| `icon`     | —          | `IconNode`                          | —           | Lucide icon, set as a JS property                                    |
+
+#### Events
+
+| Name        | Description                                                                                                                                                                |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `hx-select` | The item was activated; `event.detail` is `{ item, value }`. Checkbox and radio items update `checked` before it fires. Cancelable: `preventDefault()` keeps the menu open |
+
+#### CSS parts
+
+| Name        | Description                                       |
+| ----------- | ------------------------------------------------- |
+| `base`      | The item wrapper                                  |
+| `indicator` | The check mark or dot of checkbox and radio items |
+| `icon`      | The `hx-icon` rendered from the `icon` property   |
+| `chevron`   | The chevron of an item with a submenu             |
+
+### hx-dropdown-menu-submenu
+
+| Property    | Attribute   | Type                                                              | Default         | Description                                    |
+| ----------- | ----------- | ----------------------------------------------------------------- | --------------- | ---------------------------------------------- |
+| `placement` | `placement` | `"top" \| "right" \| "bottom" \| "left"`, with `-start` or `-end` | `"right-start"` | Position of the submenu relative to its item   |
+| `distance`  | `distance`  | `number`                                                          | `4`             | Gap in pixels between the item and the submenu |
+
+Fires `hx-after-show` and `hx-after-hide`. CSS part: `popup` (the menu panel).
+
+### hx-dropdown-menu-group
+
+| Property | Attribute | Type     | Default | Description                                    |
+| -------- | --------- | -------- | ------- | ---------------------------------------------- |
+| `label`  | `label`   | `string` | `""`    | Heading of the group, also its accessible name |
+
+CSS part: `label` (the group heading, rendered when `label` is set).
+
+### hx-dropdown-menu-separator
+
+CSS part: `line` (the separator line).

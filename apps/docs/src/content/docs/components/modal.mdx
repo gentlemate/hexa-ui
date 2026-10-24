@@ -1,0 +1,194 @@
+---
+title: Modal
+description: A dialog centered over the page.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/modal";
+```
+
+<Preview
+    code={`<hx-modal>
+    <hx-button slot="trigger">Open</hx-button>
+    <hx-modal-header>
+        <hx-modal-title>Create project</hx-modal-title>
+        <hx-modal-description>Create a new project in one click.</hx-modal-description>
+    </hx-modal-header>
+    <hx-modal-content>
+        <hx-input label="Name"></hx-input>
+    </hx-modal-content>
+    <hx-modal-footer>
+        <hx-button data-close>Create</hx-button>
+    </hx-modal-footer>
+</hx-modal>`}
+/>
+
+## Structure
+
+```html
+<hx-modal>
+    <hx-button slot="trigger"></hx-button>
+
+    <hx-modal-header>
+        <hx-modal-title></hx-modal-title>
+        <hx-modal-description></hx-modal-description>
+    </hx-modal-header>
+    <hx-modal-content></hx-modal-content>
+    <hx-modal-footer></hx-modal-footer>
+</hx-modal>
+```
+
+## Examples
+
+### Persistent
+
+`persistent` ignores backdrop clicks and `without-close` removes the close button: the modal only closes through its actions or <kbd>Escape</kbd>.
+
+<Preview
+    code={`<hx-modal persistent without-close>
+    <hx-button slot="trigger" variant="destructive">Delete</hx-button>
+    <hx-modal-header>
+        <hx-modal-title>Delete project?</hx-modal-title>
+        <hx-modal-description>This action cannot be undone.</hx-modal-description>
+    </hx-modal-header>
+    <hx-modal-footer>
+        <hx-button variant="outline" data-close>Cancel</hx-button>
+        <hx-button variant="destructive" data-close>Delete</hx-button>
+    </hx-modal-footer>
+</hx-modal>`}
+/>
+
+### Scroll
+
+The content scrolls when it overflows.
+
+<Preview
+    code={`<hx-modal>
+    <hx-button slot="trigger">Terms of service</hx-button>
+    <hx-modal-header>
+        <hx-modal-title>Terms of service</hx-modal-title>
+    </hx-modal-header>
+    <hx-modal-content>
+    <div class="flex flex-col gap-6">
+            <div class="flex flex-col gap-2">
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
+                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+            </div>
+            <div class="flex flex-col gap-2">
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
+                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+            </div>
+            <div class="flex flex-col gap-2">
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
+                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+            </div>
+            <div class="flex flex-col gap-2">
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
+                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+            </div>
+            <div class="flex flex-col gap-2">
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
+                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+            </div>
+            <div class="flex flex-col gap-2">
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
+                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+            </div>
+            <div class="flex flex-col gap-2">
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
+                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+            </div>
+            <div class="flex flex-col gap-2">
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4"></hx-skeleton>
+                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
+                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+            </div>
+        </div>
+    </hx-modal-content>
+    <hx-modal-footer>
+        <hx-button data-close>Accept</hx-button>
+    </hx-modal-footer>
+</hx-modal>`}
+/>
+
+### Opening from code
+
+<Preview
+    code={`<hx-modal id="welcome">
+    <hx-modal-header>
+        <hx-modal-title>Welcome</hx-modal-title>
+    </hx-modal-header>
+    <hx-modal-footer>
+        <hx-button data-close>Close</hx-button>
+    </hx-modal-footer>
+</hx-modal>
+<hx-button onclick="document.querySelector('#welcome').show()">Open</hx-button>`}
+/>
+
+## Usage
+
+The modal closes on <kbd>Escape</kbd>, on a backdrop click (unless `persistent`), with the close button and on a click on any element with a `data-close` attribute. All of them go through `hide()`, so `hx-hide` can cancel them.
+
+While open, the rest of the page is inert and does not scroll. On close, the focus returns to the element that had it before opening. The title and the description label and describe the dialog; without a title, `label` does.
+
+## API
+
+### hx-modal
+
+#### Properties
+
+| Property       | Attribute       | Type      | Default | Description                                                         |
+| -------------- | --------------- | --------- | ------- | ------------------------------------------------------------------- |
+| `open`         | `open`          | `boolean` | `false` | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
+| `label`        | `label`         | `string`  | `""`    | Accessible name of the dialog when there is no title                |
+| `persistent`   | `persistent`    | `boolean` | `false` | Ignores backdrop clicks                                             |
+| `withoutClose` | `without-close` | `boolean` | `false` | Hides the close button                                              |
+
+#### Methods
+
+| Name     | Description                        |
+| -------- | ---------------------------------- |
+| `show()` | Opens the modal (fires `hx-show`)  |
+| `hide()` | Closes the modal (fires `hx-hide`) |
+
+#### Events
+
+| Name            | Description                                                                             |
+| --------------- | --------------------------------------------------------------------------------------- |
+| `hx-show`       | The modal is about to open. Cancelable                                                  |
+| `hx-after-show` | The modal is open and its enter animation finished                                      |
+| `hx-hide`       | The modal is about to close (Escape, backdrop, close button, `data-close`…). Cancelable |
+| `hx-after-hide` | The modal is closed and its exit animation finished                                     |
+
+#### Slots
+
+| Name      | Description                                                                                                 |
+| --------- | ----------------------------------------------------------------------------------------------------------- |
+| `trigger` | The element that opens the modal on click (e.g. an `hx-button`). Optional: `show()` and `open` also open it |
+| (default) | The modal sections: `hx-modal-header`, `hx-modal-content` and `hx-modal-footer`                             |
+
+#### CSS parts
+
+| Name           | Description                                                           |
+| -------------- | --------------------------------------------------------------------- |
+| `base`         | The `<dialog>` element (`::part(base)::backdrop` styles the backdrop) |
+| `close-button` | The close button (not rendered with `without-close`)                  |

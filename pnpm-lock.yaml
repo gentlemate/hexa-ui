@@ -169,9 +169,12 @@ importers:
       prettier:
         specifier: ^3.9.10
         version: 3.9.10
+      prettier-plugin-astro:
+        specifier: ^1.1.2
+        version: 1.1.2(prettier@3.9.10)
       prettier-plugin-tailwindcss:
         specifier: ^0.8.1
-        version: 0.8.1(prettier@3.9.10)
+        version: 0.8.1(prettier-plugin-astro@1.1.2(prettier@3.9.10))(prettier@3.9.10)
 
   apps/demo:
     dependencies:
@@ -194,12 +197,30 @@ importers:
       '@astrojs/starlight':
         specifier: ^0.42.7
         version: 0.42.7(astro@7.4.2(@types/node@24.19.2)(jiti@2.7.0)(yaml@2.9.1))(typescript@7.0.2)
+      '@astrojs/starlight-tailwind':
+        specifier: ^5.0.0
+        version: 5.0.0(@astrojs/starlight@0.42.7(astro@7.4.2(@types/node@24.19.2)(jiti@2.7.0)(yaml@2.9.1))(typescript@7.0.2))(tailwindcss@4.3.3)
+      '@fontsource-variable/outfit':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@tailwindcss/vite':
+        specifier: ^4.3.3
+        version: 4.3.3(vite@8.3.4(@types/node@24.19.2)(jiti@2.7.0)(yaml@2.9.1))
       astro:
         specifier: ^7.2.10
         version: 7.4.2(@types/node@24.19.2)(jiti@2.7.0)(yaml@2.9.1)
+      hexa-ui:
+        specifier: workspace:*
+        version: link:../../packages/hexa-ui
+      lucide:
+        specifier: ^1.55.0
+        version: 1.55.0
       sharp:
         specifier: ^0.35.3
         version: 0.35.5(@types/node@24.19.2)
+      tailwindcss:
+        specifier: ^4.3.3
+        version: 4.3.3
 
   packages/hexa-ui:
     dependencies:
@@ -325,6 +346,12 @@ packages:
 
   '@astrojs/sitemap@3.7.4':
     resolution: {integrity: sha512-LbKNC24bdUWcQf/pThB6qLlSqHojxGjZDURIzFocY8rlWnAn2t74nnhnK6S5x0NHriHoAduLEpVjRykmeGiVvA==}
+
+  '@astrojs/starlight-tailwind@5.0.0':
+    resolution: {integrity: sha512-VivF+bWg++4ma/ffr5sgHsd/ONtGdVJIKAaRZ6jmL4yqxy7bviu59MGNi5aW3nd8psP9i/aivBTrpwGxRM1XyA==}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.38.0'
+      tailwindcss: ^4.0.0
 
   '@astrojs/starlight@0.42.7':
     resolution: {integrity: sha512-mlbit5iRjLx5eIcLf84Q2CwkrrsEgZrQwKKBK+vRf+ZGiSrwy1UGdT1hUfAIaHrMfcvkDpL+gw3aua7HobiKFg==}
@@ -459,6 +486,9 @@ packages:
 
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
+
+  '@fontsource-variable/outfit@5.3.0':
+    resolution: {integrity: sha512-fPb5XnYK0k7SbR++HEmm4+ZqDszmLKQ+sPRUr8oQ/KNC0vy6r6hazJFe8iYozv4cqlHbvJ/JECkJWrfDodUMVQ==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -694,6 +724,9 @@ packages:
     resolution: {integrity: sha512-Fa2Iyw7kaDRzGMfNYNUXNW2zbL5FQVDgSOcbDHdzBrDEdpqOqg8TcZ68F22ol6NJ9IGzvUdmeyZypLW5dyhqsg==}
     cpu: [x64]
     os: [win32]
+
+  '@prettier/parse-srcset@3.1.0':
+    resolution: {integrity: sha512-FIRv2rZotO9NP/r66taYqD1zICpPiBbrECqjKV/xqNotqDxF7fLzzUeK+1RSRx9Tenk0DajR/GcRmTJ2qtHaKQ==}
 
   '@rolldown/binding-android-arm-eabi@1.2.13':
     resolution: {integrity: sha512-Vu/NICrgdRvUOeaJZIyB2FP63s6fO/4ud5l8dXmxDx9yDyn+mN0y+gsvsVviSli+T361Aqo0h46EuMoobrwawA==}
@@ -1801,6 +1834,12 @@ packages:
     resolution: {integrity: sha512-49cGhUbXj8Qenv0iTMxA1cFBzxXoctpC9Ujd77t1WcbJIr6nF/eI7g/8MgxrYldFRuAXvja7xQRwavoW7kgrxQ==}
     engines: {node: ^10 || ^12 || >=14}
 
+  prettier-plugin-astro@1.1.2:
+    resolution: {integrity: sha512-vKyJW7Bb/QcIPUebEehbG+Tn+3yTIhoJ8ecm6NyJgcOj5T2xP+eF1IxY4zv809YyA69nV4ZFj+H9mdpC5cTaQA==}
+    engines: {node: '>=22.12.0'}
+    peerDependencies:
+      prettier: ^3.5.3
+
   prettier-plugin-tailwindcss@0.8.1:
     resolution: {integrity: sha512-iaFMYqDsE4ffdDkn5qup0j5f2aCEBFZrdrZnvu9QKTlWx/iGPeQ4HHu7b7fCPMxeo9nwQBiOAh2nSypdFYWJkw==}
     engines: {node: '>=20.19'}
@@ -1905,6 +1944,13 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
+  s.color@0.0.15:
+    resolution: {integrity: sha512-AUNrbEUHeKY8XsYr/DYpl+qk5+aM+DChopnWOPEzn8YKzOhv4l2zH6LzZms3tOZP3wwdOyc0RmTciyi46HLIuA==}
+
+  sass-formatter@0.8.0:
+    resolution: {integrity: sha512-Nf4eMGE2O5vnJG7KPCRyksWS9gVKSYoUWtPeMXRRxwZSPVQhSGtL602xVYS65LvMkHmkvKa7xpauF0+/5pPwrg==}
+    hasBin: true
+
   satteri@0.10.5:
     resolution: {integrity: sha512-Ao1LKpAEa9Wdg0otgbVKViZHEq9ebdXe4DMrp3s9vQAU0HNIuHnFEuMuOcm0ZIXyV0Yzxj91NvhLpvXZJO/5ZQ==}
 
@@ -1954,6 +2000,9 @@ packages:
 
   stringify-entities@4.0.4:
     resolution: {integrity: sha512-IwfBptatlO+QCJUo19AqvrPNqlVMpW9YEL2LIVY+Rpv2qsjCGxaDLNRgeGsQWJhfItebuJhsGSLjaBbNSQ+ieg==}
+
+  suf-log@2.5.3:
+    resolution: {integrity: sha512-KvC8OPjzdNOe+xQ4XWJV2whQA0aM1kGVczMQ8+dStAO6KfEB140JEVQ9dE76ONZ0/Ylf67ni4tILPJB41U0eow==}
 
   svgo@4.1.0:
     resolution: {integrity: sha512-bkxnTg1kSU0guhIBmibA6UUhrQmPVA1XsQLN+ylCd+UWzbnLkySOcXpyk1mrl05f+pcaCx2eHb+sp6BgMZWX+Q==}
@@ -2281,6 +2330,11 @@ snapshots:
       sitemap: 9.0.1
       zod: 4.6.7
 
+  '@astrojs/starlight-tailwind@5.0.0(@astrojs/starlight@0.42.7(astro@7.4.2(@types/node@24.19.2)(jiti@2.7.0)(yaml@2.9.1))(typescript@7.0.2))(tailwindcss@4.3.3)':
+    dependencies:
+      '@astrojs/starlight': 0.42.7(astro@7.4.2(@types/node@24.19.2)(jiti@2.7.0)(yaml@2.9.1))(typescript@7.0.2)
+      tailwindcss: 4.3.3
+
   '@astrojs/starlight@0.42.7(astro@7.4.2(@types/node@24.19.2)(jiti@2.7.0)(yaml@2.9.1))(typescript@7.0.2)':
     dependencies:
       '@astrojs/markdown-satteri': 0.4.5
@@ -2453,6 +2507,8 @@ snapshots:
 
   '@floating-ui/utils@0.2.12': {}
 
+  '@fontsource-variable/outfit@5.3.0': {}
+
   '@img/colour@1.1.0': {}
 
   '@img/sharp-darwin-arm64@0.35.5':
@@ -2624,6 +2680,8 @@ snapshots:
 
   '@pagefind/windows-x64@1.5.2':
     optional: true
+
+  '@prettier/parse-srcset@3.1.0': {}
 
   '@rolldown/binding-android-arm-eabi@1.2.13':
     optional: true
@@ -3776,9 +3834,18 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.2
 
-  prettier-plugin-tailwindcss@0.8.1(prettier@3.9.10):
+  prettier-plugin-astro@1.1.2(prettier@3.9.10):
+    dependencies:
+      '@astrojs/compiler-rs': 0.5.2
+      '@prettier/parse-srcset': 3.1.0
+      prettier: 3.9.10
+      sass-formatter: 0.8.0
+
+  prettier-plugin-tailwindcss@0.8.1(prettier-plugin-astro@1.1.2(prettier@3.9.10))(prettier@3.9.10):
     dependencies:
       prettier: 3.9.10
+    optionalDependencies:
+      prettier-plugin-astro: 1.1.2(prettier@3.9.10)
 
   prettier@3.9.10: {}
 
@@ -3843,6 +3910,12 @@ snapshots:
       '@rolldown/binding-openharmony-arm64': 1.2.13
       '@rolldown/binding-win32-arm64-msvc': 1.2.13
       '@rolldown/binding-win32-x64-msvc': 1.2.13
+
+  s.color@0.0.15: {}
+
+  sass-formatter@0.8.0:
+    dependencies:
+      suf-log: 2.5.3
 
   satteri@0.10.5:
     dependencies:
@@ -3930,6 +4003,10 @@ snapshots:
     dependencies:
       character-entities-html4: 2.1.0
       character-entities-legacy: 3.0.0
+
+  suf-log@2.5.3:
+    dependencies:
+      s.color: 0.0.15
 
   svgo@4.1.0:
     dependencies:

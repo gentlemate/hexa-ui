@@ -1,0 +1,49 @@
+---
+title: Color mode button
+description: Switches between the light and dark color modes.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/color-mode-button";
+```
+
+<Preview code={`<hx-color-mode-button></hx-color-mode-button>`} />
+
+## Structure
+
+```html
+<hx-color-mode-button></hx-color-mode-button>
+```
+
+## Examples
+
+### Variants
+
+<Preview
+    code={`<hx-color-mode-button variant="primary"></hx-color-mode-button>
+<hx-color-mode-button variant="secondary"></hx-color-mode-button>
+<hx-color-mode-button></hx-color-mode-button>
+<hx-color-mode-button variant="ghost"></hx-color-mode-button>`}
+/>
+
+## Usage
+
+The button toggles the `dark` class on `<html>`, which switches the `--hx-*` tokens, and stores the choice in `localStorage`. Without a stored choice, it follows `prefers-color-scheme`. Several buttons on the same page stay in sync.
+
+## API
+
+### Properties
+
+| Property  | Attribute | Type                                                                | Default     | Description  |
+| --------- | --------- | ------------------------------------------------------------------- | ----------- | ------------ |
+| `variant` | `variant` | `"primary" \| "secondary" \| "outline" \| "ghost" \| "destructive"` | `"outline"` | Visual style |
+
+### Events
+
+| Name                   | Description                                                          |
+| ---------------------- | -------------------------------------------------------------------- |
+| `hx-color-mode-change` | The color mode changed; `event.detail.mode` is `"light"` or `"dark"` |

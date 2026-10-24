@@ -1,0 +1,41 @@
+---
+import { Code } from "@astrojs/starlight/components";
+
+interface Props {
+    code: string;
+    stack?: boolean;
+}
+
+const { code, stack = false } = Astro.props;
+
+const iconPattern = /data-icon="(\w+)"/g;
+const icons = [...new Set([...code.matchAll(iconPattern)].map(([, name]) => name))].sort();
+
+const source = icons.length
+    ? `import { ${icons.join(", ")} } from "lucide";
+
+html\`
+${code.replace(iconPattern, ".icon=$${$1}").replace(/^/gm, "    ")}
+\`;`
+    : code;
+---
+
+<div class="preview not-content bg-background text-foreground rounded-[0.5rem] border border-(--sl-color-gray-5) font-sans">
+    <div
+        class:list={[
+            "flex justify-center gap-3 px-6 py-10",
+            stack ? "mx-auto max-w-md flex-col items-stretch" : "flex-wrap items-center",
+        ]}
+        set:html={code}
+    />
+</div>
+<Code code={source} lang={icons.length ? "js" : "html"} />
+
+<script>
+    import "hexa-ui";
+    import { icons } from "lucide";
+
+    for (const element of document.querySelectorAll<HTMLElement & { icon?: unknown }>(".preview [data-icon]")) {
+        element.icon = icons[element.dataset.icon as keyof typeof icons];
+    }
+</script>

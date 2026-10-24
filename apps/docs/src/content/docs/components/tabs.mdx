@@ -1,0 +1,162 @@
+---
+title: Tabs
+description: Switches between panels of content.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/tabs";
+```
+
+<Preview
+    stack
+    code={`<hx-tabs value="login">
+    <hx-tab value="login">Log in</hx-tab>
+    <hx-tab value="signin">Sign in</hx-tab>
+    <hx-tab-panel value="login">Log in</hx-tab-panel>
+    <hx-tab-panel value="signin">Sign in</hx-tab-panel>
+</hx-tabs>`}
+/>
+
+## Structure
+
+```html
+<hx-tabs>
+    <hx-tab></hx-tab>
+    <hx-tab-panel></hx-tab-panel>
+</hx-tabs>
+```
+
+## Examples
+
+### Variants
+
+<Preview
+    stack
+    code={`<hx-tabs variant="secondary" value="profile">
+    <hx-tab value="profile">Profile</hx-tab>
+    <hx-tab value="settings">Settings</hx-tab>
+    <hx-tab value="notifications">Notifications</hx-tab>
+    <hx-tab-panel value="profile">Profile</hx-tab-panel>
+    <hx-tab-panel value="settings">Settings</hx-tab-panel>
+    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
+</hx-tabs>`}
+/>
+
+### Vertical
+
+<Preview
+    stack
+    code={`<hx-tabs value="profile" direction="vertical">
+    <hx-tab value="profile">Profile</hx-tab>
+    <hx-tab value="settings">Settings</hx-tab>
+    <hx-tab value="notifications">Notifications</hx-tab>
+    <hx-tab-panel value="profile">Profile</hx-tab-panel>
+    <hx-tab-panel value="settings">Settings</hx-tab-panel>
+    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
+</hx-tabs>
+<hx-separator></hx-separator>
+<hx-tabs variant="secondary" value="profile" direction="vertical">
+    <hx-tab value="profile">Profile</hx-tab>
+    <hx-tab value="settings">Settings</hx-tab>
+    <hx-tab value="notifications">Notifications</hx-tab>
+    <hx-tab-panel value="profile">Profile</hx-tab-panel>
+    <hx-tab-panel value="settings">Settings</hx-tab-panel>
+    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
+</hx-tabs>`}
+/>
+
+### Icon
+
+<Preview
+    stack
+    code={`<hx-tabs value="profile">
+    <hx-tab value="profile" data-icon="User">Profile</hx-tab>
+    <hx-tab value="settings" data-icon="Settings">Settings</hx-tab>
+    <hx-tab value="notifications" data-icon="Bell">Notifications</hx-tab>
+    <hx-tab-panel value="profile">Profile</hx-tab-panel>
+    <hx-tab-panel value="settings">Settings</hx-tab-panel>
+    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
+</hx-tabs>
+<hx-separator></hx-separator>
+<hx-tabs variant="secondary" value="profile">
+    <hx-tab value="profile" data-icon="User">Profile</hx-tab>
+    <hx-tab value="settings" data-icon="Settings">Settings</hx-tab>
+    <hx-tab value="notifications" data-icon="Bell">Notifications</hx-tab>
+    <hx-tab-panel value="profile">Profile</hx-tab-panel>
+    <hx-tab-panel value="settings">Settings</hx-tab-panel>
+    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
+</hx-tabs>`}
+/>
+
+### Disabled
+
+<Preview
+    stack
+    code={`<hx-tabs value="profile">
+    <hx-tab value="profile">Profile</hx-tab>
+    <hx-tab value="settings">Settings</hx-tab>
+    <hx-tab value="notifications" disabled>Notifications</hx-tab>
+    <hx-tab-panel value="profile">Profile</hx-tab-panel>
+    <hx-tab-panel value="settings">Settings</hx-tab-panel>
+    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
+</hx-tabs>`}
+/>
+
+## Keyboard
+
+<kbd>←</kbd> / <kbd>→</kbd> (<kbd>↑</kbd> / <kbd>↓</kbd> with `direction="vertical"`) move to the previous / next tab,
+looping, and <kbd>Home</kbd> / <kbd>End</kbd> to the first / last one. The focused tab is selected right away. Disabled
+tabs are skipped. Only the selected tab is in the tab order.
+
+## API
+
+### hx-tabs
+
+#### Properties
+
+| Property    | Attribute   | Type                         | Default        | Description                                                     |
+| ----------- | ----------- | ---------------------------- | -------------- | --------------------------------------------------------------- |
+| `value`     | `value`     | `string`                     | `""`           | Value of the selected tab                                       |
+| `variant`   | `variant`   | `"default" \| "secondary"`   | `"default"`    | Visual style                                                    |
+| `direction` | `direction` | `"horizontal" \| "vertical"` | `"horizontal"` | Tab list above (`horizontal`) or beside (`vertical`) the panels |
+
+#### Events
+
+| Name            | Description                                                 |
+| --------------- | ----------------------------------------------------------- |
+| `hx-tab-change` | The selected tab changed; `event.detail.value` is its value |
+
+#### Slots
+
+| Name      | Description                                                                       |
+| --------- | --------------------------------------------------------------------------------- |
+| (default) | The `hx-tab` and `hx-tab-panel` elements (tabs move to the tab list on their own) |
+
+#### CSS parts
+
+| Name   | Description        |
+| ------ | ------------------ |
+| `nav`  | The tab list       |
+| `body` | The panels wrapper |
+
+### hx-tab
+
+| Property        | Attribute        | Type                | Default  | Description                                            |
+| --------------- | ---------------- | ------------------- | -------- | ------------------------------------------------------ |
+| `value`         | `value`          | `string`            | `""`     | Matches the `value` of its `hx-tab-panel`              |
+| `selected`      | `selected`       | `boolean`           | `false`  | Whether the tab is selected (managed by the `hx-tabs`) |
+| `disabled`      | `disabled`       | `boolean`           | `false`  | Prevents selecting the tab                             |
+| `icon`          | —                | `IconNode`          | —        | Lucide icon, set as a JS property                      |
+| `iconPlacement` | `icon-placement` | `"left" \| "right"` | `"left"` | Side of the icon relative to the label                 |
+
+`variant` and `direction` are set by the `hx-tabs`. CSS parts: `base` (the tab wrapper), `icon` (the `hx-icon` rendered from the `icon` property).
+
+### hx-tab-panel
+
+| Property | Attribute | Type     | Default | Description                         |
+| -------- | --------- | -------- | ------- | ----------------------------------- |
+| `value`  | `value`   | `string` | `""`    | Matches the `value` of its `hx-tab` |

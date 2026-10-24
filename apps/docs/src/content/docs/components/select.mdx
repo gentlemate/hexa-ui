@@ -1,0 +1,153 @@
+---
+title: Select
+description: Picks one option from a list.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/select";
+```
+
+<Preview
+    stack
+    code={`<hx-select label="Framework" placeholder="Select a framework">
+    <hx-select-option value="react">React</hx-select-option>
+    <hx-select-option value="angular">Angular</hx-select-option>
+    <hx-select-option value="vue">Vue</hx-select-option>
+    <hx-select-option value="svelte">Svelte</hx-select-option>
+</hx-select>`}
+/>
+
+## Structure
+
+```html
+<hx-select>
+    <hx-select-group>
+        <hx-select-option></hx-select-option>
+    </hx-select-group>
+
+    <hx-select-option></hx-select-option>
+
+    <hx-select-separator></hx-select-separator>
+</hx-select>
+```
+
+## Examples
+
+### Groups
+
+<Preview
+    stack
+    code={`<hx-select label="City" placeholder="Select a city">
+    <hx-select-group label="France">
+        <hx-select-option value="paris">Paris</hx-select-option>
+        <hx-select-option value="marseille">Marseille</hx-select-option>
+        <hx-select-option value="lyon">Lyon</hx-select-option>
+    </hx-select-group>
+    <hx-select-separator></hx-select-separator>
+    <hx-select-group label="Spain">
+        <hx-select-option value="madrid">Madrid</hx-select-option>
+        <hx-select-option value="barcelona">Barcelona</hx-select-option>
+    </hx-select-group>
+</hx-select>`}
+/>
+
+### Hint and error
+
+<Preview
+    stack
+    code={`<hx-select label="Country" placeholder="Select a country" hint="Used for shipping.">
+    <hx-select-option value="fr">France</hx-select-option>
+    <hx-select-option value="es">Spain</hx-select-option>
+</hx-select>
+<hx-select label="Plan" placeholder="Select a plan" error="You must select a plan." required>
+    <hx-select-option value="free">Free</hx-select-option>
+    <hx-select-option value="pro">Pro</hx-select-option>
+</hx-select>`}
+/>
+
+### Disabled
+
+<Preview stack code={`<hx-select label="Framework" placeholder="Select a framework" disabled></hx-select>`} />
+
+## Keyboard
+
+The trigger opens a listbox and moves the focus to the selected option. <kbd>↑</kbd> / <kbd>↓</kbd>, <kbd>Home</kbd> / <kbd>End</kbd> and typeahead navigate the options, <kbd>Enter</kbd> / <kbd>Space</kbd> select. On the closed trigger, typeahead and <kbd>Home</kbd> / <kbd>End</kbd> select directly.
+
+## API
+
+### hx-select
+
+#### Properties
+
+| Property      | Attribute     | Type                                                              | Default          | Description                                                                  |
+| ------------- | ------------- | ----------------------------------------------------------------- | ---------------- | ---------------------------------------------------------------------------- |
+| `name`        | `name`        | `string`                                                          | `""`             | Name submitted with the form                                                 |
+| `value`       | `value`       | `string`                                                          | `""`             | Value of the selected option                                                 |
+| `label`       | `label`       | `string`                                                          | `""`             | Label displayed above the field                                              |
+| `placeholder` | `placeholder` | `string`                                                          | `""`             | Text shown when no option is selected                                        |
+| `hint`        | `hint`        | `string`                                                          | `""`             | Help text under the field, replaced by `error` when set                      |
+| `error`       | `error`       | `string`                                                          | `""`             | Error message under the field; also marks the field as invalid               |
+| `placement`   | `placement`   | `"top" \| "right" \| "bottom" \| "left"`, with `-start` or `-end` | `"bottom-start"` | Position of the listbox relative to the trigger                              |
+| `distance`    | `distance`    | `number`                                                          | `4`              | Gap in pixels between the trigger and the listbox                            |
+| `disabled`    | `disabled`    | `boolean`                                                         | `false`          | Prevents user interaction                                                    |
+| `required`    | `required`    | `boolean`                                                         | `false`          | Marks the field as required for form validation                              |
+| `open`        | `open`        | `boolean`                                                         | `false`          | Whether the listbox is open. Setting it directly skips `hx-show` / `hx-hide` |
+
+#### Methods
+
+| Name     | Description                          |
+| -------- | ------------------------------------ |
+| `show()` | Opens the listbox (fires `hx-show`)  |
+| `hide()` | Closes the listbox (fires `hx-hide`) |
+
+#### Events
+
+| Name            | Description                                           |
+| --------------- | ----------------------------------------------------- |
+| `input`         | The user selected another option                      |
+| `change`        | The user selected another option                      |
+| `hx-show`       | The listbox is about to open. Cancelable              |
+| `hx-after-show` | The listbox is open and its enter animation finished  |
+| `hx-hide`       | The listbox is about to close. Cancelable             |
+| `hx-after-hide` | The listbox is closed and its exit animation finished |
+
+#### Slots
+
+| Name      | Description                                                                  |
+| --------- | ---------------------------------------------------------------------------- |
+| (default) | The `hx-select-option`, `hx-select-group` and `hx-select-separator` elements |
+
+#### CSS parts
+
+| Name      | Description                                   |
+| --------- | --------------------------------------------- |
+| `trigger` | The button showing the selected option        |
+| `value`   | The selected option label, or the placeholder |
+| `chevron` | The chevron of the trigger                    |
+| `popup`   | The listbox panel                             |
+
+### hx-select-option
+
+| Property   | Attribute  | Type      | Default | Description                                                 |
+| ---------- | ---------- | --------- | ------- | ----------------------------------------------------------- |
+| `value`    | `value`    | `string`  | `""`    | Value of the option                                         |
+| `disabled` | `disabled` | `boolean` | `false` | Prevents selecting the option                               |
+| `selected` | `selected` | `boolean` | `false` | Whether the option is selected (managed by the `hx-select`) |
+
+`selected` is managed by the `hx-select` from its `value`. CSS parts: `base` (the option wrapper), `indicator` (the check mark of the selected option).
+
+### hx-select-group
+
+| Property | Attribute | Type     | Default | Description                                    |
+| -------- | --------- | -------- | ------- | ---------------------------------------------- |
+| `label`  | `label`   | `string` | `""`    | Heading of the group, also its accessible name |
+
+CSS part: `label` (the group heading, rendered when `label` is set).
+
+### hx-select-separator
+
+CSS part: `line` (the separator line).

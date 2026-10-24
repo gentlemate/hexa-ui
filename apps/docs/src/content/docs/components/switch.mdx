@@ -1,0 +1,82 @@
+---
+title: Switch
+description: Turns a setting on or off.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/switch";
+```
+
+<Preview code={`<hx-switch>Notifications</hx-switch>`} />
+
+## Structure
+
+```html
+<hx-switch></hx-switch>
+```
+
+## Examples
+
+### Checked
+
+<Preview code={`<hx-switch checked>Checked</hx-switch>`} />
+
+### Disabled
+
+<Preview
+    code={`<hx-switch disabled>Disabled</hx-switch>
+<hx-switch checked disabled>Checked and disabled</hx-switch>`}
+/>
+
+### Change event
+
+`change` fires each time the switch is toggled.
+
+<Preview code={`<hx-switch onchange="this.textContent = this.checked ? 'On' : 'Off'">Off</hx-switch>`} />
+
+## Keyboard
+
+<kbd>Space</kbd> toggles the switch.
+
+## API
+
+### Properties
+
+| Property   | Attribute  | Type      | Default | Description                                              |
+| ---------- | ---------- | --------- | ------- | -------------------------------------------------------- |
+| `name`     | `name`     | `string`  | `""`    | Name submitted with the form                             |
+| `value`    | `value`    | `string`  | `"on"`  | Value submitted with the form when on                    |
+| `checked`  | `checked`  | `boolean` | `false` | Whether the switch is on (not reflected as an attribute) |
+| `disabled` | `disabled` | `boolean` | `false` | Prevents user interaction                                |
+| `required` | `required` | `boolean` | `false` | Marks the field as required for form validation          |
+
+### Events
+
+| Name     | Description               |
+| -------- | ------------------------- |
+| `input`  | The checked state changed |
+| `change` | The checked state changed |
+
+### Slots
+
+| Name      | Description      |
+| --------- | ---------------- |
+| (default) | The switch label |
+
+### CSS parts
+
+| Name      | Description       |
+| --------- | ----------------- |
+| `control` | The track         |
+| `thumb`   | The sliding thumb |
+| `label`   | The label wrapper |
+
+### CSS states
+
+| Name      | Description      |
+| --------- | ---------------- |
+| `checked` | The switch is on |
