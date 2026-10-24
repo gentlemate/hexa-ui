@@ -5,6 +5,15 @@ import { HxElement } from "../../hx-element.js";
 
 /**
  * @element hx-textarea
+ * @property name - Name submitted with the form.
+ * @property value - Current value.
+ * @property label - Label displayed above the field.
+ * @property placeholder - Text shown when the field is empty.
+ * @property hint - Help text under the field, replaced by `error` when set.
+ * @property error - Error message under the field; also marks the field as invalid.
+ * @property rows - Number of visible text lines.
+ * @property disabled - Prevents user interaction.
+ * @property required - Marks the field as required for form validation.
  * @fires input - The value changed (native event, crosses the Shadow DOM).
  * @fires change - The value was committed (re-dispatched, since the native `change` is not composed).
  * @csspart control - The inner `<textarea>` element.

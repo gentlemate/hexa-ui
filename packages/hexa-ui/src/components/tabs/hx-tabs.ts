@@ -27,6 +27,9 @@ const directions: Record<HxTabsDirection, { nav: string; body: string }> = {
 
 /**
  * @element hx-tabs
+ * @property value - Value of the selected tab.
+ * @property variant - Visual style.
+ * @property direction - Tab list above (`horizontal`) or beside (`vertical`) the panels.
  * @slot - The `hx-tab` and `hx-tab-panel` elements (tabs move to the tab list on their own).
  * @fires hx-tab-change - The selected tab changed; `event.detail.value` is its value.
  * @csspart nav - The tab list.

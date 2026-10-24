@@ -85,12 +85,68 @@ The header can hold any layout instead of the title and the description.
 
 ### hx-card
 
+#### Properties
+
 | Property  | Attribute | Type                                | Default     | Description  |
 | --------- | --------- | ----------------------------------- | ----------- | ------------ |
 | `variant` | `variant` | `"default" \| "outline" \| "ghost"` | `"default"` | Visual style |
 
-| Slot      | Description                                                                 |
+#### Slots
+
+| Name      | Description                                                                 |
 | --------- | --------------------------------------------------------------------------- |
 | (default) | The card sections: `hx-card-header`, `hx-card-content` and `hx-card-footer` |
 
-CSS part: `base` (the card container).
+#### CSS parts
+
+| Name   | Description        |
+| ------ | ------------------ |
+| `base` | The card container |
+
+### hx-card-header
+
+#### Slots
+
+| Name      | Description                                                                                  |
+| --------- | -------------------------------------------------------------------------------------------- |
+| (default) | The `hx-card-title`, `hx-card-description` and `hx-card-action` elements, or a custom header |
+
+### hx-card-title
+
+#### Slots
+
+| Name      | Description    |
+| --------- | -------------- |
+| (default) | The card title |
+
+### hx-card-description
+
+#### Slots
+
+| Name      | Description                  |
+| --------- | ---------------------------- |
+| (default) | A short text under the title |
+
+### hx-card-action
+
+#### Slots
+
+| Name      | Description                                                                  |
+| --------- | ---------------------------------------------------------------------------- |
+| (default) | An element aligned to the top right of the `hx-card-header` (button, badge…) |
+
+### hx-card-content
+
+#### Slots
+
+| Name      | Description      |
+| --------- | ---------------- |
+| (default) | The card content |
+
+### hx-card-footer
+
+#### Slots
+
+| Name      | Description                |
+| --------- | -------------------------- |
+| (default) | The card footer (actions…) |

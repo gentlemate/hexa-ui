@@ -178,29 +178,29 @@ closes the whole menu. When the menu closes, the focus returns to the trigger.
 
 #### Properties
 
-| Property    | Attribute   | Type                                                              | Default          | Description                                                         |
-| ----------- | ----------- | ----------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------- |
-| `placement` | `placement` | `"top" \| "right" \| "bottom" \| "left"`, with `-start` or `-end` | `"bottom-start"` | Position of the menu relative to the trigger                        |
-| `distance`  | `distance`  | `number`                                                          | `4`              | Gap in pixels between the trigger and the popup                     |
-| `disabled`  | `disabled`  | `boolean`                                                         | `false`          | Prevents the trigger from opening the menu                          |
-| `open`      | `open`      | `boolean`                                                         | `false`          | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
+| Property    | Attribute   | Type                                                                                                                                                                 | Default          | Description                                                         |
+| ----------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------- |
+| `placement` | `placement` | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"bottom-start"` | Position of the menu relative to the trigger                        |
+| `disabled`  | `disabled`  | `boolean`                                                                                                                                                            | `false`          | Prevents the trigger from opening the menu                          |
+| `distance`  | `distance`  | `number`                                                                                                                                                             | `4`              | Gap in pixels between the trigger and the popup                     |
+| `open`      | `open`      | `boolean`                                                                                                                                                            | `false`          | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
 
 #### Methods
 
-| Name     | Description                       |
-| -------- | --------------------------------- |
-| `show()` | Opens the menu (fires `hx-show`)  |
-| `hide()` | Closes the menu (fires `hx-hide`) |
+| Name     | Description                 |
+| -------- | --------------------------- |
+| `show()` | Opens it (fires `hx-show`)  |
+| `hide()` | Closes it (fires `hx-hide`) |
 
 #### Events
 
-| Name            | Description                                                                                                                                   |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `hx-show`       | The menu is about to open. Cancelable                                                                                                         |
-| `hx-after-show` | The menu is open and its enter animation finished                                                                                             |
-| `hx-hide`       | The menu is about to close. Cancelable                                                                                                        |
-| `hx-after-hide` | The menu is closed and its exit animation finished                                                                                            |
-| `hx-select`     | An item was activated. Normal items close the menu, checkbox and radio items keep it open. Cancelable: `preventDefault()` keeps the menu open |
+| Name            | Description                                                                                                                                                                          |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `hx-show`       | The menu is about to open. Cancelable                                                                                                                                                |
+| `hx-after-show` | The menu is open and its enter animation finished                                                                                                                                    |
+| `hx-hide`       | The menu is about to close. Cancelable                                                                                                                                               |
+| `hx-after-hide` | The menu is closed and its exit animation finished                                                                                                                                   |
+| `hx-select`     | An item was activated (fired by the `hx-dropdown-menu-item`). Normal items close the menu, checkbox and radio items keep it open. Cancelable: `preventDefault()` keeps the menu open |
 
 #### Slots
 
@@ -209,7 +209,49 @@ closes the whole menu. When the menu closes, the focus returns to the trigger.
 | `trigger` | The element that opens the menu (e.g. an `hx-button`)                                           |
 | (default) | The `hx-dropdown-menu-item`, `hx-dropdown-menu-group` and `hx-dropdown-menu-separator` elements |
 
-CSS part: `popup` (the menu panel).
+#### CSS parts
+
+| Name    | Description    |
+| ------- | -------------- |
+| `popup` | The menu panel |
+
+### hx-dropdown-menu-submenu
+
+#### Properties
+
+| Property    | Attribute   | Type                                                                                                                                                                 | Default         | Description                                                         |
+| ----------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------- |
+| `placement` | `placement` | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"right-start"` | Position of the submenu relative to its item                        |
+| `distance`  | `distance`  | `number`                                                                                                                                                             | `4`             | Gap in pixels between the item and the submenu                      |
+| `open`      | `open`      | `boolean`                                                                                                                                                            | `false`         | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
+
+#### Methods
+
+| Name     | Description                 |
+| -------- | --------------------------- |
+| `show()` | Opens it (fires `hx-show`)  |
+| `hide()` | Closes it (fires `hx-hide`) |
+
+#### Events
+
+| Name            | Description                                        |
+| --------------- | -------------------------------------------------- |
+| `hx-show`       | The menu is about to open. Cancelable              |
+| `hx-after-show` | The menu is open and its enter animation finished  |
+| `hx-hide`       | The menu is about to close. Cancelable             |
+| `hx-after-hide` | The menu is closed and its exit animation finished |
+
+#### Slots
+
+| Name      | Description                                                                                     |
+| --------- | ----------------------------------------------------------------------------------------------- |
+| (default) | The `hx-dropdown-menu-item`, `hx-dropdown-menu-group` and `hx-dropdown-menu-separator` elements |
+
+#### CSS parts
+
+| Name    | Description    |
+| ------- | -------------- |
+| `popup` | The menu panel |
 
 ### hx-dropdown-menu-item
 
@@ -217,18 +259,24 @@ CSS part: `popup` (the menu panel).
 
 | Property   | Attribute  | Type                                | Default     | Description                                                          |
 | ---------- | ---------- | ----------------------------------- | ----------- | -------------------------------------------------------------------- |
-| `value`    | `value`    | `string`                            | `""`        | Sent as `event.detail.value` in `hx-select`                          |
 | `type`     | `type`     | `"normal" \| "checkbox" \| "radio"` | `"normal"`  | `checkbox` and `radio` items toggle `checked` and keep the menu open |
 | `checked`  | `checked`  | `boolean`                           | `false`     | Whether a checkbox or radio item is checked                          |
 | `variant`  | `variant`  | `"default" \| "destructive"`        | `"default"` | `destructive` shows the item in the destructive color                |
-| `disabled` | `disabled` | `boolean`                           | `false`     | Prevents activating the item                                         |
 | `icon`     | —          | `IconNode`                          | —           | Lucide icon, set as a JS property                                    |
+| `value`    | `value`    | `string`                            | `""`        | Sent as `event.detail.value` in `hx-select`                          |
+| `disabled` | `disabled` | `boolean`                           | `false`     | Prevents activating the item                                         |
 
 #### Events
 
-| Name        | Description                                                                                                                                                                |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `hx-select` | The item was activated; `event.detail` is `{ item, value }`. Checkbox and radio items update `checked` before it fires. Cancelable: `preventDefault()` keeps the menu open |
+| Name        | Description                                                                                                                                                                                                               |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `hx-select` | The item was activated; `event.detail` is `{ item, value }`. Cancelable: `preventDefault()` keeps the menu open (checkbox and radio items keep it open anyway). Checkbox and radio items update `checked` before it fires |
+
+#### Slots
+
+| Name      | Description                                                                      |
+| --------- | -------------------------------------------------------------------------------- |
+| (default) | The item label, and an optional `hx-dropdown-menu-submenu` opened from this item |
 
 #### CSS parts
 
@@ -239,23 +287,36 @@ CSS part: `popup` (the menu panel).
 | `icon`      | The `hx-icon` rendered from the `icon` property   |
 | `chevron`   | The chevron of an item with a submenu             |
 
-### hx-dropdown-menu-submenu
+#### CSS states
 
-| Property    | Attribute   | Type                                                              | Default         | Description                                    |
-| ----------- | ----------- | ----------------------------------------------------------------- | --------------- | ---------------------------------------------- |
-| `placement` | `placement` | `"top" \| "right" \| "bottom" \| "left"`, with `-start` or `-end` | `"right-start"` | Position of the submenu relative to its item   |
-| `distance`  | `distance`  | `number`                                                          | `4`             | Gap in pixels between the item and the submenu |
-
-Fires `hx-after-show` and `hx-after-hide`. CSS part: `popup` (the menu panel).
+| Name       | Description                     |
+| ---------- | ------------------------------- |
+| `expanded` | The submenu of the item is open |
 
 ### hx-dropdown-menu-group
+
+#### Properties
 
 | Property | Attribute | Type     | Default | Description                                    |
 | -------- | --------- | -------- | ------- | ---------------------------------------------- |
 | `label`  | `label`   | `string` | `""`    | Heading of the group, also its accessible name |
 
-CSS part: `label` (the group heading, rendered when `label` is set).
+#### Slots
+
+| Name      | Description                                                                                |
+| --------- | ------------------------------------------------------------------------------------------ |
+| (default) | The grouped `hx-dropdown-menu-item` elements. Radio items are exclusive within their group |
+
+#### CSS parts
+
+| Name    | Description                                     |
+| ------- | ----------------------------------------------- |
+| `label` | The group heading, rendered when `label` is set |
 
 ### hx-dropdown-menu-separator
 
-CSS part: `line` (the separator line).
+#### CSS parts
+
+| Name   | Description        |
+| ------ | ------------------ |
+| `line` | The separator line |

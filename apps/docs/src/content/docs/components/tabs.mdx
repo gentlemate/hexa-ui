@@ -145,18 +145,41 @@ tabs are skipped. Only the selected tab is in the tab order.
 
 ### hx-tab
 
-| Property        | Attribute        | Type                | Default  | Description                                            |
-| --------------- | ---------------- | ------------------- | -------- | ------------------------------------------------------ |
-| `value`         | `value`          | `string`            | `""`     | Matches the `value` of its `hx-tab-panel`              |
-| `selected`      | `selected`       | `boolean`           | `false`  | Whether the tab is selected (managed by the `hx-tabs`) |
-| `disabled`      | `disabled`       | `boolean`           | `false`  | Prevents selecting the tab                             |
-| `icon`          | —                | `IconNode`          | —        | Lucide icon, set as a JS property                      |
-| `iconPlacement` | `icon-placement` | `"left" \| "right"` | `"left"` | Side of the icon relative to the label                 |
+#### Properties
 
-`variant` and `direction` are set by the `hx-tabs`. CSS parts: `base` (the tab wrapper), `icon` (the `hx-icon` rendered from the `icon` property).
+| Property        | Attribute        | Type                         | Default        | Description                                                |
+| --------------- | ---------------- | ---------------------------- | -------------- | ---------------------------------------------------------- |
+| `value`         | `value`          | `string`                     | `""`           | Matches the `value` of its `hx-tab-panel`                  |
+| `selected`      | `selected`       | `boolean`                    | `false`        | Whether the tab is selected (set by the `hx-tabs`)         |
+| `disabled`      | `disabled`       | `boolean`                    | `false`        | Prevents selecting the tab                                 |
+| `variant`       | `variant`        | `"default" \| "secondary"`   | `"default"`    | Visual style (set by the `hx-tabs`)                        |
+| `direction`     | `direction`      | `"horizontal" \| "vertical"` | `"horizontal"` | Tab list above or beside the panels (set by the `hx-tabs`) |
+| `icon`          | —                | `IconNode`                   | —              | Lucide icon, set as a JS property                          |
+| `iconPlacement` | `icon-placement` | `"left" \| "right"`          | `"left"`       | Side of the icon relative to the label                     |
+
+#### Slots
+
+| Name      | Description                 |
+| --------- | --------------------------- |
+| (default) | The tab label (text, icon…) |
+
+#### CSS parts
+
+| Name   | Description                                     |
+| ------ | ----------------------------------------------- |
+| `base` | The tab wrapper                                 |
+| `icon` | The `hx-icon` rendered from the `icon` property |
 
 ### hx-tab-panel
+
+#### Properties
 
 | Property | Attribute | Type     | Default | Description                         |
 | -------- | --------- | -------- | ------- | ----------------------------------- |
 | `value`  | `value`   | `string` | `""`    | Matches the `value` of its `hx-tab` |
+
+#### Slots
+
+| Name      | Description       |
+| --------- | ----------------- |
+| (default) | The panel content |

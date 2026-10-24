@@ -51,7 +51,9 @@ import "hexa-ui/input";
 
 ## API
 
-### Properties
+### hx-input
+
+#### Properties
 
 | Property      | Attribute     | Type                                                                        | Default  | Description                                                    |
 | ------------- | ------------- | --------------------------------------------------------------------------- | -------- | -------------------------------------------------------------- |
@@ -65,14 +67,14 @@ import "hexa-ui/input";
 | `disabled`    | `disabled`    | `boolean`                                                                   | `false`  | Prevents user interaction                                      |
 | `required`    | `required`    | `boolean`                                                                   | `false`  | Marks the field as required for form validation                |
 
-### Events
+#### Events
 
 | Name     | Description                                                                        |
 | -------- | ---------------------------------------------------------------------------------- |
-| `input`  | The value changed (native event, crosses the Shadow DOM)                           |
 | `change` | The value was committed (re-dispatched, since the native `change` is not composed) |
+| `input`  | The value changed (native event, crosses the Shadow DOM)                           |
 
-### CSS parts
+#### CSS parts
 
 | Name      | Description                 |
 | --------- | --------------------------- |

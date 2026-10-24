@@ -5,11 +5,12 @@ import { HxMenuItemElement } from "../../hx-menu-item-element.js";
 
 /**
  * @element hx-select-option
+ * @property value - Value of the option.
+ * @property disabled - Prevents selecting the option.
+ * @property selected - Whether the option is selected (set by the `hx-select`).
  * @slot - The option label.
  * @csspart base - The option wrapper.
  * @csspart indicator - The check mark of the selected option.
- *
- * An option of an `hx-select`. `selected` is managed by the `hx-select` from its `value`.
  */
 @customElement("hx-select-option")
 export class HxSelectOption extends HxMenuItemElement {

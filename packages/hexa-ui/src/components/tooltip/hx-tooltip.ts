@@ -13,6 +13,13 @@ let lastClosed = 0;
 
 /**
  * @element hx-tooltip
+ * @property content - Tooltip text; use the `content` slot for rich content.
+ * @property placement - Position of the tooltip relative to the trigger.
+ * @property distance - Gap in pixels between the trigger and the popup.
+ * @property openDelay - Delay in milliseconds before opening on hover.
+ * @property closeDelay - Delay in milliseconds before closing on pointer leave.
+ * @property disabled - Prevents the tooltip from opening.
+ * @property withoutArrow - Hides the arrow.
  * @slot - The trigger (the first element is the anchor).
  * @slot content - Rich tooltip content, instead of the `content` property.
  * @fires hx-show - The tooltip is about to open. Cancelable.
@@ -21,10 +28,6 @@ let lastClosed = 0;
  * @fires hx-after-hide - The tooltip is closed and its exit animation finished.
  * @csspart popup - The tooltip bubble.
  * @csspart arrow - The arrow pointing to the trigger (not rendered with `without-arrow`).
- *
- * Opens on hover (after `open-delay`) and on keyboard focus; closes on pointer leave, blur, click and
- * Escape. The text is exposed as the trigger's `aria-description`; on `hx-*` components that delegate
- * focus, it goes on their `focusTarget` (the inner element that actually receives focus).
  */
 @customElement("hx-tooltip")
 export class HxTooltip extends HxOverlayElement {

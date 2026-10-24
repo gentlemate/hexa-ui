@@ -5,6 +5,10 @@ import { HxElement } from "../../hx-element.js";
 
 /**
  * @element hx-icon
+ * @property icon - Lucide icon to render, set as a JS property.
+ * @property size - Width and height in pixels.
+ * @property strokeWidth - Stroke width of the paths.
+ * @property label - Accessible name; without it, the icon is decorative.
  * @csspart svg - The inner `<svg>` element.
  */
 @customElement("hx-icon")

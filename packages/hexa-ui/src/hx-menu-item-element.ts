@@ -4,13 +4,6 @@ import type { IconNode } from "lucide";
 import "./components/icon/hx-icon.js";
 import { HxElement } from "./hx-element.js";
 
-/**
- * Base class for the items of a popup list (menu item, select option).
- *
- * Items are out of the tab order: the parent list moves the focus between them (keyboard and hover),
- * and the focused item is highlighted. Disabled items are dimmed and swallow their clicks. Subclasses
- * set their ARIA role and render their content with `renderBase()` and `renderIndicator()`.
- */
 export abstract class HxMenuItemElement extends HxElement {
     static override styles = [
         HxElement.styles,

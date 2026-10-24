@@ -5,6 +5,15 @@ import { HxElement } from "../../hx-element.js";
 
 /**
  * @element hx-input
+ * @property name - Name submitted with the form.
+ * @property value - Current value.
+ * @property type - Type of the inner `<input>`.
+ * @property label - Label displayed above the field.
+ * @property placeholder - Text shown when the field is empty.
+ * @property hint - Help text under the field, replaced by `error` when set.
+ * @property error - Error message under the field; also marks the field as invalid.
+ * @property disabled - Prevents user interaction.
+ * @property required - Marks the field as required for form validation.
  * @fires input - The value changed (native event, crosses the Shadow DOM).
  * @fires change - The value was committed (re-dispatched, since the native `change` is not composed).
  * @csspart control - The inner `<input>` element.

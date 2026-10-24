@@ -83,26 +83,27 @@ The trigger opens a listbox and moves the focus to the selected option. <kbd>↑
 
 #### Properties
 
-| Property      | Attribute     | Type                                                              | Default          | Description                                                                  |
-| ------------- | ------------- | ----------------------------------------------------------------- | ---------------- | ---------------------------------------------------------------------------- |
-| `name`        | `name`        | `string`                                                          | `""`             | Name submitted with the form                                                 |
-| `value`       | `value`       | `string`                                                          | `""`             | Value of the selected option                                                 |
-| `label`       | `label`       | `string`                                                          | `""`             | Label displayed above the field                                              |
-| `placeholder` | `placeholder` | `string`                                                          | `""`             | Text shown when no option is selected                                        |
-| `hint`        | `hint`        | `string`                                                          | `""`             | Help text under the field, replaced by `error` when set                      |
-| `error`       | `error`       | `string`                                                          | `""`             | Error message under the field; also marks the field as invalid               |
-| `placement`   | `placement`   | `"top" \| "right" \| "bottom" \| "left"`, with `-start` or `-end` | `"bottom-start"` | Position of the listbox relative to the trigger                              |
-| `distance`    | `distance`    | `number`                                                          | `4`              | Gap in pixels between the trigger and the listbox                            |
-| `disabled`    | `disabled`    | `boolean`                                                         | `false`          | Prevents user interaction                                                    |
-| `required`    | `required`    | `boolean`                                                         | `false`          | Marks the field as required for form validation                              |
-| `open`        | `open`        | `boolean`                                                         | `false`          | Whether the listbox is open. Setting it directly skips `hx-show` / `hx-hide` |
+| Property      | Attribute     | Type                                                                                                                                                                 | Default          | Description                                                         |
+| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------- |
+| `name`        | `name`        | `string`                                                                                                                                                             | `""`             | Name submitted with the form                                        |
+| `value`       | `value`       | `string`                                                                                                                                                             | `""`             | Value of the selected option                                        |
+| `label`       | `label`       | `string`                                                                                                                                                             | `""`             | Label displayed above the field                                     |
+| `placeholder` | `placeholder` | `string`                                                                                                                                                             | `""`             | Text shown when no option is selected                               |
+| `hint`        | `hint`        | `string`                                                                                                                                                             | `""`             | Help text under the field, replaced by `error` when set             |
+| `error`       | `error`       | `string`                                                                                                                                                             | `""`             | Error message under the field; also marks the field as invalid      |
+| `placement`   | `placement`   | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"bottom-start"` | Position of the listbox relative to the trigger                     |
+| `distance`    | `distance`    | `number`                                                                                                                                                             | `4`              | Gap in pixels between the trigger and the listbox                   |
+| `disabled`    | `disabled`    | `boolean`                                                                                                                                                            | `false`          | Prevents user interaction                                           |
+| `required`    | `required`    | `boolean`                                                                                                                                                            | `false`          | Marks the field as required for form validation                     |
+| `focusTarget` | —             | `HTMLButtonElement`                                                                                                                                                  | —                | The inner element that receives the focus (read-only)               |
+| `open`        | `open`        | `boolean`                                                                                                                                                            | `false`          | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
 
 #### Methods
 
-| Name     | Description                          |
-| -------- | ------------------------------------ |
-| `show()` | Opens the listbox (fires `hx-show`)  |
-| `hide()` | Closes the listbox (fires `hx-hide`) |
+| Name     | Description                 |
+| -------- | --------------------------- |
+| `show()` | Opens it (fires `hx-show`)  |
+| `hide()` | Closes it (fires `hx-hide`) |
 
 #### Events
 
@@ -132,22 +133,51 @@ The trigger opens a listbox and moves the focus to the selected option. <kbd>↑
 
 ### hx-select-option
 
-| Property   | Attribute  | Type      | Default | Description                                                 |
-| ---------- | ---------- | --------- | ------- | ----------------------------------------------------------- |
-| `value`    | `value`    | `string`  | `""`    | Value of the option                                         |
-| `disabled` | `disabled` | `boolean` | `false` | Prevents selecting the option                               |
-| `selected` | `selected` | `boolean` | `false` | Whether the option is selected (managed by the `hx-select`) |
+#### Properties
 
-`selected` is managed by the `hx-select` from its `value`. CSS parts: `base` (the option wrapper), `indicator` (the check mark of the selected option).
+| Property   | Attribute  | Type      | Default | Description                                             |
+| ---------- | ---------- | --------- | ------- | ------------------------------------------------------- |
+| `selected` | `selected` | `boolean` | `false` | Whether the option is selected (set by the `hx-select`) |
+| `value`    | `value`    | `string`  | `""`    | Value of the option                                     |
+| `disabled` | `disabled` | `boolean` | `false` | Prevents selecting the option                           |
+
+#### Slots
+
+| Name      | Description      |
+| --------- | ---------------- |
+| (default) | The option label |
+
+#### CSS parts
+
+| Name        | Description                           |
+| ----------- | ------------------------------------- |
+| `base`      | The option wrapper                    |
+| `indicator` | The check mark of the selected option |
 
 ### hx-select-group
+
+#### Properties
 
 | Property | Attribute | Type     | Default | Description                                    |
 | -------- | --------- | -------- | ------- | ---------------------------------------------- |
 | `label`  | `label`   | `string` | `""`    | Heading of the group, also its accessible name |
 
-CSS part: `label` (the group heading, rendered when `label` is set).
+#### Slots
+
+| Name      | Description                             |
+| --------- | --------------------------------------- |
+| (default) | The grouped `hx-select-option` elements |
+
+#### CSS parts
+
+| Name    | Description                                     |
+| ------- | ----------------------------------------------- |
+| `label` | The group heading, rendered when `label` is set |
 
 ### hx-select-separator
 
-CSS part: `line` (the separator line).
+#### CSS parts
+
+| Name   | Description        |
+| ------ | ------------------ |
+| `line` | The separator line |

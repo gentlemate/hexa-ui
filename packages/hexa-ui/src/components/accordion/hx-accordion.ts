@@ -15,6 +15,11 @@ const variants: Record<HxAccordionVariant, string> = {
 
 /**
  * @element hx-accordion
+ * @property type - `single` keeps one item open at a time, `multiple` lets several stay open.
+ * @property collapsible - In `single` mode, lets the user close the open item.
+ * @property variant - Visual style.
+ * @property trigger - Opens the items on click or on hover.
+ * @property {string[]} value - Values of the open items.
  * @slot - The `hx-accordion-item` elements.
  * @fires hx-accordion-change - The open items changed; `event.detail.value` lists their values.
  * @csspart base - The items wrapper.

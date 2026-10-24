@@ -158,17 +158,17 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 
 | Property       | Attribute       | Type      | Default | Description                                                         |
 | -------------- | --------------- | --------- | ------- | ------------------------------------------------------------------- |
-| `open`         | `open`          | `boolean` | `false` | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
 | `label`        | `label`         | `string`  | `""`    | Accessible name of the dialog when there is no title                |
 | `persistent`   | `persistent`    | `boolean` | `false` | Ignores backdrop clicks                                             |
 | `withoutClose` | `without-close` | `boolean` | `false` | Hides the close button                                              |
+| `open`         | `open`          | `boolean` | `false` | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
 
 #### Methods
 
-| Name     | Description                        |
-| -------- | ---------------------------------- |
-| `show()` | Opens the modal (fires `hx-show`)  |
-| `hide()` | Closes the modal (fires `hx-hide`) |
+| Name     | Description                 |
+| -------- | --------------------------- |
+| `show()` | Opens it (fires `hx-show`)  |
+| `hide()` | Closes it (fires `hx-hide`) |
 
 #### Events
 
@@ -192,3 +192,43 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 | -------------- | --------------------------------------------------------------------- |
 | `base`         | The `<dialog>` element (`::part(base)::backdrop` styles the backdrop) |
 | `close-button` | The close button (not rendered with `without-close`)                  |
+
+### hx-modal-header
+
+#### Slots
+
+| Name      | Description                                                                  |
+| --------- | ---------------------------------------------------------------------------- |
+| (default) | The `hx-modal-title` and `hx-modal-description` elements, or a custom header |
+
+### hx-modal-title
+
+#### Slots
+
+| Name      | Description                           |
+| --------- | ------------------------------------- |
+| (default) | The modal title. It labels the dialog |
+
+### hx-modal-description
+
+#### Slots
+
+| Name      | Description                                           |
+| --------- | ----------------------------------------------------- |
+| (default) | A short text under the title. It describes the dialog |
+
+### hx-modal-content
+
+#### Slots
+
+| Name      | Description                                     |
+| --------- | ----------------------------------------------- |
+| (default) | The modal content, scrollable when it overflows |
+
+### hx-modal-footer
+
+#### Slots
+
+| Name      | Description                                                                      |
+| --------- | -------------------------------------------------------------------------------- |
+| (default) | The modal footer (actions…). Elements with `data-close` close the modal on click |

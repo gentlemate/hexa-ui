@@ -1,10 +1,6 @@
 import { css, html } from "lit";
 import { HxElement } from "./hx-element.js";
 
-/**
- * Base class for the separators of a popup list (menu separator, select separator): a line that
- * spans the whole panel, padding included.
- */
 export abstract class HxMenuSeparatorElement extends HxElement {
     static override styles = [
         HxElement.styles,

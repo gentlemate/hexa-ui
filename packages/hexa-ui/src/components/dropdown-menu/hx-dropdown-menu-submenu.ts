@@ -17,13 +17,14 @@ const submenuDelay = 100;
 
 /**
  * @element hx-dropdown-menu-submenu
+ * @property placement - Position of the submenu relative to its item.
+ * @property distance - Gap in pixels between the item and the submenu.
  * @slot - The `hx-dropdown-menu-item`, `hx-dropdown-menu-group` and `hx-dropdown-menu-separator` elements.
+ * @fires hx-show - The menu is about to open. Cancelable.
  * @fires hx-after-show - The menu is open and its enter animation finished.
+ * @fires hx-hide - The menu is about to close. Cancelable.
  * @fires hx-after-hide - The menu is closed and its exit animation finished.
  * @csspart popup - The menu panel.
- *
- * A submenu, placed inside an `hx-dropdown-menu-item` (after its label). Also the base class of
- * `hx-dropdown-menu`, which adds the trigger.
  */
 @customElement("hx-dropdown-menu-submenu")
 export class HxDropdownMenuSubmenu extends HxOverlayElement {

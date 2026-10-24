@@ -12,6 +12,7 @@ const STORAGE_KEY = "hx-color-mode";
 
 /**
  * @element hx-color-mode-button
+ * @property variant - Visual style.
  * @fires hx-color-mode-change - The color mode changed; `event.detail.mode` is `"light"` or `"dark"`.
  */
 @customElement("hx-color-mode-button")
@@ -58,9 +59,7 @@ export class HxColorModeButton extends HxElement {
         applyColorMode(mode);
         try {
             localStorage.setItem(STORAGE_KEY, mode);
-        } catch {
-            // Storage unavailable (private mode, blocked cookies): the toggle still works for this page.
-        }
+        } catch {}
         this.dispatchEvent(
             new CustomEvent("hx-color-mode-change", { detail: { mode }, bubbles: true, composed: true }),
         );

@@ -26,16 +26,9 @@ function releaseScrollLock() {
 }
 
 /**
- * Base class for modal dialogs (`hx-modal`, `hx-drawer`): a `<dialog>` opened with `showModal()`, with
- * a trigger and the panel sections named after the element (`hx-modal-header`, `hx-modal-content`,
- * `hx-modal-footer`…). The title and the description of the header label and describe the dialog;
- * without a title, `label` does. Subclasses provide the placement, size and animation classes of the
- * `<dialog>` in `dialogClass`, which also sets the `--panel-spacing` padding.
- *
- * Closes on Escape, on a backdrop click (unless `persistent`), with the close button and on a click on
- * any element with a `data-close` attribute; all go through `hide()`, so `hx-hide` can cancel them.
- * While open, the rest of the page is inert and does not scroll; on close, the focus returns to the
- * element that had it before opening.
+ * @property label - Accessible name of the dialog when there is no title.
+ * @property persistent - Ignores backdrop clicks.
+ * @property withoutClose - Hides the close button.
  */
 export abstract class HxDialogElement extends HxOverlayElement {
     static override styles = [

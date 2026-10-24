@@ -12,6 +12,7 @@ const variants: Record<HxCardVariant, string> = {
 
 /**
  * @element hx-card
+ * @property variant - Visual style.
  * @slot - The card sections: `hx-card-header`, `hx-card-content` and `hx-card-footer`.
  * @csspart base - The card container.
  */

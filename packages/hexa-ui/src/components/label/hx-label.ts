@@ -4,6 +4,8 @@ import { HxElement } from "../../hx-element.js";
 
 /**
  * @element hx-label
+ * @property htmlFor - `id` of the control it labels.
+ * @property required - Adds an asterisk after the text.
  * @slot - The label text.
  * @csspart base - The inner `<label>` element.
  */

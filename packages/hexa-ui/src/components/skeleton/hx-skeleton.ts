@@ -4,6 +4,7 @@ import { HxElement } from "../../hx-element.js";
 
 /**
  * @element hx-skeleton
+ * @property circle - Fully rounded shape, e.g. for an avatar.
  * @csspart base - The pulsing block.
  */
 @customElement("hx-skeleton")

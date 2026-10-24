@@ -176,20 +176,24 @@ the first / last one. <kbd>Enter</kbd> / <kbd>Space</kbd> toggle the focused ite
 | --------- | -------------------------------- |
 | (default) | The `hx-accordion-item` elements |
 
-CSS part: `base` (the items wrapper).
+#### CSS parts
+
+| Name   | Description       |
+| ------ | ----------------- |
+| `base` | The items wrapper |
 
 ### hx-accordion-item
 
 #### Properties
 
-| Property   | Attribute  | Type       | Default | Description                                              |
-| ---------- | ---------- | ---------- | ------- | -------------------------------------------------------- |
-| `value`    | `value`    | `string`   | `""`    | Identifies the item in `hx-accordion-change`             |
-| `open`     | `open`     | `boolean`  | `false` | Whether the item is open                                 |
-| `disabled` | `disabled` | `boolean`  | `false` | Prevents opening or closing the item                     |
-| `icon`     | —          | `IconNode` | —       | Lucide icon shown before the title, set as a JS property |
-
-`variant` and `trigger` are set by the `hx-accordion`.
+| Property   | Attribute  | Type                       | Default     | Description                                                     |
+| ---------- | ---------- | -------------------------- | ----------- | --------------------------------------------------------------- |
+| `value`    | `value`    | `string`                   | `""`        | Identifies the item in `hx-accordion-change`                    |
+| `open`     | `open`     | `boolean`                  | `false`     | Whether the item is open                                        |
+| `disabled` | `disabled` | `boolean`                  | `false`     | Prevents opening or closing the item                            |
+| `variant`  | `variant`  | `"default" \| "secondary"` | `"default"` | Visual style (set by the `hx-accordion`)                        |
+| `trigger`  | `trigger`  | `"click" \| "hover"`       | `"click"`   | Opens the item on click or on hover (set by the `hx-accordion`) |
+| `icon`     | —          | `IconNode`                 | —           | Lucide icon shown before the title, set as a JS property        |
 
 #### Methods
 

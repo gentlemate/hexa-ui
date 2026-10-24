@@ -98,27 +98,29 @@ The tooltip opens on hover (after `open-delay`) and on keyboard focus. It closes
 
 ## API
 
-### Properties
+### hx-tooltip
 
-| Property       | Attribute       | Type                                                              | Default | Description                                                         |
-| -------------- | --------------- | ----------------------------------------------------------------- | ------- | ------------------------------------------------------------------- |
-| `content`      | `content`       | `string`                                                          | `""`    | Tooltip text; use the `content` slot for rich content               |
-| `placement`    | `placement`     | `"top" \| "right" \| "bottom" \| "left"`, with `-start` or `-end` | `"top"` | Position of the tooltip relative to the trigger                     |
-| `distance`     | `distance`      | `number`                                                          | `8`     | Gap in pixels between the trigger and the popup                     |
-| `openDelay`    | `open-delay`    | `number`                                                          | `300`   | Delay in milliseconds before opening on hover                       |
-| `closeDelay`   | `close-delay`   | `number`                                                          | `100`   | Delay in milliseconds before closing on pointer leave               |
-| `disabled`     | `disabled`      | `boolean`                                                         | `false` | Prevents the tooltip from opening                                   |
-| `withoutArrow` | `without-arrow` | `boolean`                                                         | `false` | Hides the arrow                                                     |
-| `open`         | `open`          | `boolean`                                                         | `false` | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
+#### Properties
 
-### Methods
+| Property       | Attribute       | Type                                                                                                                                                                 | Default | Description                                                         |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------- |
+| `content`      | `content`       | `string`                                                                                                                                                             | `""`    | Tooltip text; use the `content` slot for rich content               |
+| `placement`    | `placement`     | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"top"` | Position of the tooltip relative to the trigger                     |
+| `distance`     | `distance`      | `number`                                                                                                                                                             | `8`     | Gap in pixels between the trigger and the popup                     |
+| `openDelay`    | `open-delay`    | `number`                                                                                                                                                             | `300`   | Delay in milliseconds before opening on hover                       |
+| `closeDelay`   | `close-delay`   | `number`                                                                                                                                                             | `100`   | Delay in milliseconds before closing on pointer leave               |
+| `disabled`     | `disabled`      | `boolean`                                                                                                                                                            | `false` | Prevents the tooltip from opening                                   |
+| `withoutArrow` | `without-arrow` | `boolean`                                                                                                                                                            | `false` | Hides the arrow                                                     |
+| `open`         | `open`          | `boolean`                                                                                                                                                            | `false` | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
 
-| Name     | Description                          |
-| -------- | ------------------------------------ |
-| `show()` | Opens the tooltip (fires `hx-show`)  |
-| `hide()` | Closes the tooltip (fires `hx-hide`) |
+#### Methods
 
-### Events
+| Name     | Description                 |
+| -------- | --------------------------- |
+| `show()` | Opens it (fires `hx-show`)  |
+| `hide()` | Closes it (fires `hx-hide`) |
+
+#### Events
 
 | Name            | Description                                           |
 | --------------- | ----------------------------------------------------- |
@@ -127,14 +129,14 @@ The tooltip opens on hover (after `open-delay`) and on keyboard focus. It closes
 | `hx-hide`       | The tooltip is about to close. Cancelable             |
 | `hx-after-hide` | The tooltip is closed and its exit animation finished |
 
-### Slots
+#### Slots
 
 | Name      | Description                                             |
 | --------- | ------------------------------------------------------- |
 | (default) | The trigger (the first element is the anchor)           |
 | `content` | Rich tooltip content, instead of the `content` property |
 
-### CSS parts
+#### CSS parts
 
 | Name    | Description                                                           |
 | ------- | --------------------------------------------------------------------- |

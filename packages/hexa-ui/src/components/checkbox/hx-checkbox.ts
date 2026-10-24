@@ -6,6 +6,9 @@ import "../icon/hx-icon.js";
 
 /**
  * @element hx-checkbox
+ * @property indeterminate - Shows a dash instead of the check mark; cleared when the user toggles it.
+ * @property value - Value submitted with the form when checked.
+ * @property checked - Whether the checkbox is checked (not reflected as an attribute).
  * @slot - The checkbox label.
  * @fires input - The checked state changed.
  * @fires change - The checked state changed.

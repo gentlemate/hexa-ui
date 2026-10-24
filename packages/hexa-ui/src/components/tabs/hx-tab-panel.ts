@@ -4,6 +4,7 @@ import { HxElement } from "../../hx-element.js";
 
 /**
  * @element hx-tab-panel
+ * @property value - Matches the `value` of its `hx-tab`.
  * @slot - The panel content.
  */
 @customElement("hx-tab-panel")

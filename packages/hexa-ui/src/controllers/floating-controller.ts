@@ -16,11 +16,6 @@ type Side = "top" | "right" | "bottom" | "left";
 
 const opposite: Record<Side, Side> = { top: "bottom", right: "left", bottom: "top", left: "right" };
 
-/**
- * Positions a floating element (a `[popover]` in the top layer) next to its anchor with Floating UI,
- * and keeps it there while the page scrolls or resizes. Sets `data-side` and `data-align` on the
- * floating element so the CSS can animate it from the right direction.
- */
 export class FloatingController implements ReactiveController {
     private options: () => FloatingOptions | undefined;
     private cleanup?: () => void;

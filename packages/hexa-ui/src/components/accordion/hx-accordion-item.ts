@@ -12,6 +12,13 @@ const variants: Record<HxAccordionVariant, { hover: string; separator: string }>
 
 /**
  * @element hx-accordion-item
+ * @property value - Identifies the item in `hx-accordion-change`.
+ * @property open - Whether the item is open.
+ * @property disabled - Prevents opening or closing the item.
+ * @property variant - Visual style (set by the `hx-accordion`).
+ * @property trigger - Opens the item on click or on hover (set by the `hx-accordion`).
+ * @property icon - Lucide icon shown before the title, set as a JS property.
+ * @method toggle - Opens or closes the item (fires `hx-accordion-toggle`).
  * @slot title - The trigger label.
  * @slot - The collapsible content.
  * @fires hx-accordion-toggle - The item is about to open or close; `event.detail.open` is the new state.

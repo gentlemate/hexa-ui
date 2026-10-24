@@ -12,8 +12,6 @@ import { HxDialogElement } from "../../hx-dialog-element.js";
  * @fires hx-after-hide - The modal is closed and its exit animation finished.
  * @csspart base - The `<dialog>` element (`::part(base)::backdrop` styles the backdrop).
  * @csspart close-button - The close button (not rendered with `without-close`).
- *
- * A dialog centered over the page. Backdrop clicks close it, unless `persistent`.
  */
 @customElement("hx-modal")
 export class HxModal extends HxDialogElement {

@@ -52,38 +52,40 @@ import "hexa-ui/checkbox";
 
 ## API
 
-### Properties
+### hx-checkbox
+
+#### Properties
 
 | Property        | Attribute       | Type      | Default | Description                                                              |
 | --------------- | --------------- | --------- | ------- | ------------------------------------------------------------------------ |
-| `name`          | `name`          | `string`  | `""`    | Name submitted with the form                                             |
+| `indeterminate` | `indeterminate` | `boolean` | `false` | Shows a dash instead of the check mark; cleared when the user toggles it |
 | `value`         | `value`         | `string`  | `"on"`  | Value submitted with the form when checked                               |
 | `checked`       | `checked`       | `boolean` | `false` | Whether the checkbox is checked (not reflected as an attribute)          |
-| `indeterminate` | `indeterminate` | `boolean` | `false` | Shows a dash instead of the check mark; cleared when the user toggles it |
+| `name`          | `name`          | `string`  | `""`    | Name submitted with the form                                             |
 | `disabled`      | `disabled`      | `boolean` | `false` | Prevents user interaction                                                |
 | `required`      | `required`      | `boolean` | `false` | Marks the field as required for form validation                          |
 
-### Events
+#### Events
 
 | Name     | Description               |
 | -------- | ------------------------- |
 | `input`  | The checked state changed |
 | `change` | The checked state changed |
 
-### Slots
+#### Slots
 
 | Name      | Description        |
 | --------- | ------------------ |
 | (default) | The checkbox label |
 
-### CSS parts
+#### CSS parts
 
 | Name      | Description       |
 | --------- | ----------------- |
 | `control` | The box           |
 | `label`   | The label wrapper |
 
-### CSS states
+#### CSS states
 
 | Name      | Description             |
 | --------- | ----------------------- |

@@ -4,10 +4,6 @@ export interface ListItem extends HTMLElement {
 
 const typeaheadDelay = 500;
 
-/**
- * Keyboard navigation in a vertical list (menu, listbox): ArrowUp/ArrowDown (looping), Home/End, and
- * typeahead on the item labels. Disabled items are skipped.
- */
 export class ListNavigation<T extends ListItem> {
     private items: () => T[];
     private label: (item: T) => string;

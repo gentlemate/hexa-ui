@@ -16,6 +16,12 @@ const roles: Record<HxDropdownMenuItemType, string> = {
 
 /**
  * @element hx-dropdown-menu-item
+ * @property value - Sent as `event.detail.value` in `hx-select`.
+ * @property disabled - Prevents activating the item.
+ * @property type - `checkbox` and `radio` items toggle `checked` and keep the menu open.
+ * @property checked - Whether a checkbox or radio item is checked.
+ * @property variant - `destructive` shows the item in the destructive color.
+ * @property icon - Lucide icon, set as a JS property.
  * @slot - The item label, and an optional `hx-dropdown-menu-submenu` opened from this item.
  * @fires hx-select - The item was activated; `event.detail` is `{ item, value }`. Cancelable:
  * `preventDefault()` keeps the menu open (checkbox and radio items keep it open anyway). Checkbox and
@@ -24,6 +30,7 @@ const roles: Record<HxDropdownMenuItemType, string> = {
  * @csspart indicator - The check mark or dot of checkbox and radio items.
  * @csspart icon - The `hx-icon` rendered from the `icon` property.
  * @csspart chevron - The chevron of an item with a submenu.
+ * @cssstate expanded - The submenu of the item is open.
  */
 @customElement("hx-dropdown-menu-item")
 export class HxDropdownMenuItem extends HxMenuItemElement {

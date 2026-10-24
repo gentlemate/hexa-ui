@@ -64,7 +64,9 @@ import "hexa-ui/button";
 
 ## API
 
-### Properties
+### hx-button
+
+#### Properties
 
 | Property        | Attribute        | Type                                                                | Default     | Description                                                 |
 | --------------- | ---------------- | ------------------------------------------------------------------- | ----------- | ----------------------------------------------------------- |
@@ -74,14 +76,15 @@ import "hexa-ui/button";
 | `square`        | `square`         | `boolean`                                                           | `false`     | Square button without horizontal padding, for an icon alone |
 | `icon`          | —                | `IconNode`                                                          | —           | Lucide icon, set as a JS property                           |
 | `iconPlacement` | `icon-placement` | `"left" \| "right"`                                                 | `"left"`    | Side of the icon relative to the label                      |
+| `focusTarget`   | —                | `HTMLButtonElement`                                                 | —           | The inner element that receives the focus (read-only)       |
 
-### Slots
+#### Slots
 
 | Name      | Description                    |
 | --------- | ------------------------------ |
 | (default) | The button label (text, icon…) |
 
-### CSS parts
+#### CSS parts
 
 | Name   | Description                                     |
 | ------ | ----------------------------------------------- |

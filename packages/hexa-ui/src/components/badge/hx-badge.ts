@@ -16,6 +16,9 @@ const variants: Record<HxBadgeVariant, string> = {
 
 /**
  * @element hx-badge
+ * @property variant - Visual style.
+ * @property icon - Lucide icon, set as a JS property.
+ * @property iconPlacement - Side of the icon relative to the label.
  * @slot - The badge content (text, icon…).
  * @csspart base - The inner wrapper.
  * @csspart icon - The `hx-icon` rendered from the `icon` property.

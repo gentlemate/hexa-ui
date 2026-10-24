@@ -3,11 +3,9 @@ import { property } from "lit/decorators.js";
 import { HxElement } from "./hx-element.js";
 
 /**
- * Base class for controls that toggle a boolean `checked` state (checkbox, switch).
- *
- * The host itself is the control: it carries the ARIA role, the focus and the form value, so a
- * native `<label for>` or an `<hx-label for>` can target it and give it its accessible name.
- * Subclasses render a `part="control"` element, which receives the focus ring.
+ * @property name - Name submitted with the form.
+ * @property disabled - Prevents user interaction.
+ * @property required - Marks the field as required for form validation.
  */
 export abstract class HxCheckableElement extends HxElement {
     static formAssociated = true;

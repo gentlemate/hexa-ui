@@ -4,6 +4,8 @@ import { HxCheckableElement } from "../../hx-checkable-element.js";
 
 /**
  * @element hx-switch
+ * @property value - Value submitted with the form when on.
+ * @property checked - Whether the switch is on (not reflected as an attribute).
  * @slot - The switch label.
  * @fires input - The checked state changed.
  * @fires change - The checked state changed.

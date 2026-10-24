@@ -24,6 +24,13 @@ const variants: Record<HxTabsVariant, { selected: string; idle: string } & Recor
 
 /**
  * @element hx-tab
+ * @property value - Matches the `value` of its `hx-tab-panel`.
+ * @property selected - Whether the tab is selected (set by the `hx-tabs`).
+ * @property disabled - Prevents selecting the tab.
+ * @property variant - Visual style (set by the `hx-tabs`).
+ * @property direction - Tab list above or beside the panels (set by the `hx-tabs`).
+ * @property icon - Lucide icon, set as a JS property.
+ * @property iconPlacement - Side of the icon relative to the label.
  * @slot - The tab label (text, icon…).
  * @csspart base - The tab wrapper.
  * @csspart icon - The `hx-icon` rendered from the `icon` property.

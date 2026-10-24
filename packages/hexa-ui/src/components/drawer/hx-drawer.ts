@@ -12,6 +12,7 @@ const placements: Record<HxDrawerPlacement, string> = {
 
 /**
  * @element hx-drawer
+ * @property placement - Edge of the screen the drawer slides in from.
  * @slot trigger - The element that opens the drawer on click (e.g. an `hx-button`). Optional: `show()` and
  * `open` also open it.
  * @slot - The drawer sections: `hx-drawer-header`, `hx-drawer-content` and `hx-drawer-footer`.
@@ -21,8 +22,6 @@ const placements: Record<HxDrawerPlacement, string> = {
  * @fires hx-after-hide - The drawer is closed and its exit animation finished.
  * @csspart base - The `<dialog>` element (`::part(base)::backdrop` styles the backdrop).
  * @csspart close-button - The close button (not rendered with `without-close`).
- *
- * A panel that slides in from an edge of the screen (`placement`). Backdrop clicks close it, unless `persistent`.
  */
 @customElement("hx-drawer")
 export class HxDrawer extends HxDialogElement {

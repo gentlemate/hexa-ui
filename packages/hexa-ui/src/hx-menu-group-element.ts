@@ -3,8 +3,7 @@ import { property } from "lit/decorators.js";
 import { HxElement } from "./hx-element.js";
 
 /**
- * Base class for the groups of a popup list (menu group, option group): an ARIA `group` named by
- * `label`, which is also rendered as a heading.
+ * @property label - Heading of the group, also its accessible name.
  */
 export abstract class HxMenuGroupElement extends HxElement {
     static override styles = [

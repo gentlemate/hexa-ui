@@ -20,11 +20,16 @@ const variants: Record<HxButtonVariant, string> = {
 
 /**
  * @element hx-button
+ * @property variant - Visual style.
+ * @property type - `submit` and `reset` act on the parent `<form>`.
+ * @property disabled - Disables the button.
+ * @property square - Square button without horizontal padding, for an icon alone.
+ * @property icon - Lucide icon, set as a JS property.
+ * @property iconPlacement - Side of the icon relative to the label.
+ * @property focusTarget - The inner element that receives the focus (read-only).
  * @slot - The button label (text, icon…).
  * @csspart base - The inner `<button>` element.
  * @csspart icon - The `hx-icon` rendered from the `icon` property.
- *
- * `focusTarget` is the inner `<button>`, which receives the focus (used by `hx-tooltip` to describe it).
  */
 @customElement("hx-button")
 export class HxButton extends HxElement {

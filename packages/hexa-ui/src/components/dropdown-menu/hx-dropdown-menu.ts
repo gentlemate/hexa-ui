@@ -8,6 +8,9 @@ export type HxDropdownMenuPlacement = HxDropdownMenuSubmenuPlacement;
 
 /**
  * @element hx-dropdown-menu
+ * @property placement - Position of the menu relative to the trigger.
+ * @property disabled - Prevents the trigger from opening the menu.
+ * @property distance - Gap in pixels between the trigger and the popup.
  * @slot trigger - The element that opens the menu (e.g. an `hx-button`).
  * @slot - The `hx-dropdown-menu-item`, `hx-dropdown-menu-group` and `hx-dropdown-menu-separator` elements.
  * @fires hx-show - The menu is about to open. Cancelable.

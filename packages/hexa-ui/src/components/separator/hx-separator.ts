@@ -6,6 +6,7 @@ export type HxSeparatorDirection = "horizontal" | "vertical";
 
 /**
  * @element hx-separator
+ * @property direction - Orientation of the line.
  * @csspart line - The line, with its spacing as margins.
  */
 @customElement("hx-separator")

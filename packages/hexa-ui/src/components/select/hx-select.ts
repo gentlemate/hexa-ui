@@ -16,6 +16,17 @@ export type HxSelectPlacement = Placement;
 
 /**
  * @element hx-select
+ * @property name - Name submitted with the form.
+ * @property value - Value of the selected option.
+ * @property label - Label displayed above the field.
+ * @property placeholder - Text shown when no option is selected.
+ * @property hint - Help text under the field, replaced by `error` when set.
+ * @property error - Error message under the field; also marks the field as invalid.
+ * @property placement - Position of the listbox relative to the trigger.
+ * @property distance - Gap in pixels between the trigger and the listbox.
+ * @property disabled - Prevents user interaction.
+ * @property required - Marks the field as required for form validation.
+ * @property focusTarget - The inner element that receives the focus (read-only).
  * @slot - The `hx-select-option`, `hx-select-group` and `hx-select-separator` elements.
  * @fires input - The user selected another option.
  * @fires change - The user selected another option.
@@ -27,10 +38,6 @@ export type HxSelectPlacement = Placement;
  * @csspart value - The selected option label, or the placeholder.
  * @csspart chevron - The chevron of the trigger.
  * @csspart popup - The listbox panel.
- *
- * A select-only combobox: the trigger opens a listbox and moves the focus to the selected option.
- * ArrowUp/ArrowDown, Home/End and typeahead navigate the options, Enter/Space select. On the closed
- * trigger, typeahead and Home/End select directly. `focusTarget` is the trigger.
  */
 @customElement("hx-select")
 export class HxSelect extends HxOverlayElement {
