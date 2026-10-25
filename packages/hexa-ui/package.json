@@ -98,6 +98,18 @@
         "./date-field": {
             "types": "./dist/components/date-field/index.d.ts",
             "import": "./dist/date-field.js"
+        },
+        "./range-calendar": {
+            "types": "./dist/components/range-calendar/index.d.ts",
+            "import": "./dist/range-calendar.js"
+        },
+        "./date-picker": {
+            "types": "./dist/components/date-picker/index.d.ts",
+            "import": "./dist/date-picker.js"
+        },
+        "./date-range-picker": {
+            "types": "./dist/components/date-range-picker/index.d.ts",
+            "import": "./dist/date-range-picker.js"
         }
     },
     "scripts": {

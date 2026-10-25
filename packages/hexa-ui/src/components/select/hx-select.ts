@@ -5,6 +5,7 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { ChevronDown } from "lucide";
 import { FloatingController } from "../../controllers/floating-controller.js";
 import { ListNavigation } from "../../controllers/list-navigation.js";
+import { hasFocus } from "../../focus-target.js";
 import { HxElement } from "../../hx-element.js";
 import { HxOverlayElement } from "../../hx-overlay-element.js";
 import "../icon/hx-icon.js";
@@ -225,12 +226,7 @@ export class HxSelect extends HxOverlayElement {
         else this.internals.setValidity({});
 
         if (changed.has("disabled") && this.disabled) this.hide();
-        if (
-            changed.has("open") &&
-            !this.open &&
-            changed.get("open") !== undefined &&
-            this.contains(document.activeElement)
-        )
+        if (changed.has("open") && !this.open && changed.get("open") !== undefined && hasFocus(this))
             this.focusTarget.focus();
     }
 

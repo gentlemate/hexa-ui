@@ -73,14 +73,15 @@ start / end of the week, <kbd>Page Up</kbd> / <kbd>Page Down</kbd> by month and 
 
 #### Properties
 
-| Property      | Attribute      | Type      | Default | Description                                                                         |
-| ------------- | -------------- | --------- | ------- | ----------------------------------------------------------------------------------- |
-| `value`       | `value`        | `string`  | `""`    | Selected date, as `YYYY-MM-DD`                                                      |
-| `min`         | `min`          | `string`  | `""`    | Earliest selectable date, as `YYYY-MM-DD`                                           |
-| `max`         | `max`          | `string`  | `""`    | Latest selectable date, as `YYYY-MM-DD`                                             |
-| `locale`      | `locale`       | `string`  | `""`    | Language of the month and weekday names; defaults to the closest `lang` attribute   |
-| `monthSelect` | `month-select` | `boolean` | `false` | Shows the month as a select                                                         |
-| `yearSelect`  | `year-select`  | `boolean` | `false` | Shows the year as a select, from `min` to `max` (100 years around today by default) |
+| Property      | Attribute      | Type                | Default | Description                                                                         |
+| ------------- | -------------- | ------------------- | ------- | ----------------------------------------------------------------------------------- |
+| `value`       | `value`        | `string`            | `""`    | Selected date, as `YYYY-MM-DD`                                                      |
+| `min`         | `min`          | `string`            | `""`    | Earliest selectable date, as `YYYY-MM-DD`                                           |
+| `max`         | `max`          | `string`            | `""`    | Latest selectable date, as `YYYY-MM-DD`                                             |
+| `locale`      | `locale`       | `string`            | `""`    | Language of the month and weekday names; defaults to the closest `lang` attribute   |
+| `monthSelect` | `month-select` | `boolean`           | `false` | Shows the month as a select                                                         |
+| `yearSelect`  | `year-select`  | `boolean`           | `false` | Shows the year as a select, from `min` to `max` (100 years around today by default) |
+| `focusTarget` | —              | `HTMLButtonElement` | —       | The day of the grid that receives the focus (read-only)                             |
 
 #### Events
 

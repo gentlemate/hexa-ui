@@ -1,6 +1,6 @@
 import { html, type PropertyValues } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { focusTargetOf } from "../../focus-target.js";
+import { focusTargetOf, hasFocus } from "../../focus-target.js";
 import { HxDropdownMenuSubmenu, type HxDropdownMenuSubmenuPlacement } from "./hx-dropdown-menu-submenu.js";
 import type { HxDropdownMenuItem } from "./hx-dropdown-menu-item.js";
 
@@ -112,8 +112,7 @@ export class HxDropdownMenu extends HxDropdownMenuSubmenu {
         super.updated(changed);
         if (!changed.has("open")) return;
         this.syncTrigger();
-        if (!this.open && changed.get("open") !== undefined && this.contains(document.activeElement))
-            this.trigger?.focus();
+        if (!this.open && changed.get("open") !== undefined && hasFocus(this)) this.trigger?.focus();
     }
 
     override render() {

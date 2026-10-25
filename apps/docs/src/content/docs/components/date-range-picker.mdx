@@ -1,0 +1,182 @@
+---
+title: Date range picker
+description: Picks a range of dates in a calendar popup.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/date-range-picker";
+```
+
+<Preview stack code={`<hx-date-range-picker label="Stay" placeholder="Pick a range"></hx-date-range-picker>`} />
+
+## Structure
+
+```html
+<hx-date-range-picker></hx-date-range-picker>
+```
+
+## Examples
+
+### Hint and error
+
+<Preview
+    stack
+    code={`<hx-date-range-picker label="Stay" placeholder="Pick a range" hint="Check-in from 3 pm, check-out by 11 am."></hx-date-range-picker>
+<hx-date-range-picker label="Stay" start="2025-10-25" end="2025-10-26" error="Your stay must be at least 2 nights."></hx-date-range-picker>`}
+/>
+
+### Date style
+
+`date-style` sets the format of the displayed range: `full`, `long`, `medium` (default) or `short`.
+
+<Preview
+    stack
+    code={`<hx-date-range-picker label="Full" start="2025-01-01" end="2026-12-31" date-style="full"></hx-date-range-picker>
+<hx-date-range-picker label="Long" start="2025-01-01" end="2026-12-31" date-style="long"></hx-date-range-picker>
+<hx-date-range-picker label="Medium" start="2025-01-01" end="2026-12-31"></hx-date-range-picker>
+<hx-date-range-picker label="Short" start="2025-01-01" end="2026-12-31" date-style="short"></hx-date-range-picker>
+<hx-separator></hx-separator>
+<hx-date-range-picker label="Full" start="2026-10-01" end="2026-10-31" date-style="full"></hx-date-range-picker>
+<hx-date-range-picker label="Long" start="2026-10-01" end="2026-10-31" date-style="long"></hx-date-range-picker>
+<hx-date-range-picker label="Medium" start="2026-10-01" end="2026-10-31"></hx-date-range-picker>
+<hx-date-range-picker label="Short" start="2026-10-01" end="2026-10-31" date-style="short"></hx-date-range-picker>`}
+/>
+
+### Min and max
+
+Days outside the range are disabled in the calendar, and so are the navigation buttons that would leave it.
+
+<Preview
+    stack
+    code={`<hx-date-range-picker label="Date range" placeholder="Pick a range" min="2026-01-01" max="2026-12-31"></hx-date-range-picker>`}
+/>
+
+### Month and year selects
+
+`month-select` and `year-select` turn the month and the year of the calendar heading into selects, independently. Without `min` / `max`, the years go from 100 years before to 100 years after today.
+
+<Preview
+    stack
+    code={`<hx-date-range-picker label="Month select" placeholder="Pick a range" month-select></hx-date-range-picker>
+<hx-date-range-picker label="Year select" placeholder="Pick a range" year-select></hx-date-range-picker>
+<hx-date-range-picker label="Both" placeholder="Pick a range" month-select year-select></hx-date-range-picker>`}
+/>
+
+### Locale
+
+The displayed range, the month and weekday names, and the first day of the week follow `locale`, or the closest `lang` attribute.
+
+<Preview
+    stack
+    code={`<hx-date-range-picker label="French" locale="fr-FR" start="2026-01-01" end="2026-12-31"></hx-date-range-picker>
+<hx-date-range-picker label="American" locale="en-US" start="2026-01-01" end="2026-12-31"></hx-date-range-picker>
+<hx-date-range-picker label="Japanese" locale="ja-JP" start="2026-01-01" end="2026-12-31"></hx-date-range-picker>`}
+/>
+
+### Disabled
+
+<Preview
+    stack
+    code={`<hx-date-range-picker label="Date range" start="2026-01-01" end="2026-12-31" disabled></hx-date-range-picker>`}
+/>
+
+### Change event
+
+`change` fires once both ends of the range are picked, after `start` and `end` are updated.
+
+<Preview
+    stack
+    code={`<hx-date-range-picker
+    label="Date range"
+    start="2026-01-01"
+    end="2026-12-31"
+    hint="Thursday 1 January – Thursday 31 December 2026"
+    onchange="this.hint = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full' }).formatRange(new Date(this.start + 'T00:00'), new Date(this.end + 'T00:00'))"
+></hx-date-range-picker>`}
+/>
+
+### Form
+
+`start-name` and `end-name` submit both dates as separate fields.
+
+<Preview
+    stack
+    code={`<form onsubmit="event.preventDefault(); this.querySelector('p').textContent = new URLSearchParams(new FormData(this))">
+    <hx-date-range-picker label="Stay" start-name="from" end-name="to" start="2026-01-01" end="2026-12-31"></hx-date-range-picker>
+    <hx-button type="submit" class="mt-3">Submit</hx-button>
+    <p class="mt-2 text-sm"></p>
+</form>`}
+/>
+
+## Behavior
+
+`start`, `end`, `min` and `max` are always in the `YYYY-MM-DD` format (like `<input type="date">`), whatever the `locale`: it only changes how the range is displayed.
+
+The first click picks one end of the range and the second one the other end, in any order; hovering previews the range. `input` / `change` fire once both ends are picked, then the calendar closes. <kbd>Escape</kbd> after the first click cancels it.
+
+## Keyboard
+
+<kbd>↓</kbd> / <kbd>↑</kbd> on the trigger open the calendar. The calendar keys then apply (see
+[Calendar](../calendar/#keyboard)); <kbd>Enter</kbd> / <kbd>Space</kbd> pick each end of the range. <kbd>Escape</kbd>
+cancels a range in progress, otherwise closes the calendar.
+
+## API
+
+### hx-date-range-picker
+
+#### Properties
+
+| Property      | Attribute      | Type                                                                                                                                                                 | Default          | Description                                                                                  |
+| ------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | -------------------------------------------------------------------------------------------- |
+| `startName`   | `start-name`   | `string`                                                                                                                                                             | `""`             | Name of the first date submitted with the form                                               |
+| `endName`     | `end-name`     | `string`                                                                                                                                                             | `""`             | Name of the last date submitted with the form                                                |
+| `start`       | `start`        | `string`                                                                                                                                                             | `""`             | First date of the selected range, as `YYYY-MM-DD`                                            |
+| `end`         | `end`          | `string`                                                                                                                                                             | `""`             | Last date of the selected range, as `YYYY-MM-DD`                                             |
+| `label`       | `label`        | `string`                                                                                                                                                             | `""`             | Label displayed above the field                                                              |
+| `placeholder` | `placeholder`  | `string`                                                                                                                                                             | `""`             | Text shown when no date is selected                                                          |
+| `hint`        | `hint`         | `string`                                                                                                                                                             | `""`             | Help text under the field, replaced by `error` when set                                      |
+| `error`       | `error`        | `string`                                                                                                                                                             | `""`             | Error message under the field; also marks the field as invalid                               |
+| `min`         | `min`          | `string`                                                                                                                                                             | `""`             | Earliest selectable date, as `YYYY-MM-DD`                                                    |
+| `max`         | `max`          | `string`                                                                                                                                                             | `""`             | Latest selectable date, as `YYYY-MM-DD`                                                      |
+| `locale`      | `locale`       | `string`                                                                                                                                                             | `""`             | Language of the displayed date and of the calendar; defaults to the closest `lang` attribute |
+| `dateStyle`   | `date-style`   | `"full" \| "long" \| "medium" \| "short"`                                                                                                                            | `"medium"`       | Format of the displayed date                                                                 |
+| `monthSelect` | `month-select` | `boolean`                                                                                                                                                            | `false`          | Shows the month of the calendar as a select                                                  |
+| `yearSelect`  | `year-select`  | `boolean`                                                                                                                                                            | `false`          | Shows the year of the calendar as a select                                                   |
+| `placement`   | `placement`    | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"bottom-start"` | Position of the calendar relative to the trigger                                             |
+| `distance`    | `distance`     | `number`                                                                                                                                                             | `4`              | Gap in pixels between the trigger and the calendar                                           |
+| `disabled`    | `disabled`     | `boolean`                                                                                                                                                            | `false`          | Prevents user interaction                                                                    |
+| `required`    | `required`     | `boolean`                                                                                                                                                            | `false`          | Adds an asterisk to the label and marks the field as required for assistive technologies     |
+| `focusTarget` | —              | `HTMLButtonElement`                                                                                                                                                  | —                | The inner element that receives the focus (read-only)                                        |
+| `open`        | `open`         | `boolean`                                                                                                                                                            | `false`          | Whether it is open. Setting it directly skips `hx-show` / `hx-hide`                          |
+
+#### Methods
+
+| Name     | Description                 |
+| -------- | --------------------------- |
+| `show()` | Opens it (fires `hx-show`)  |
+| `hide()` | Closes it (fires `hx-hide`) |
+
+#### Events
+
+| Name            | Description                                            |
+| --------------- | ------------------------------------------------------ |
+| `input`         | The user selected another range                        |
+| `change`        | The user selected another range                        |
+| `hx-show`       | The calendar is about to open. Cancelable              |
+| `hx-after-show` | The calendar is open and its enter animation finished  |
+| `hx-hide`       | The calendar is about to close. Cancelable             |
+| `hx-after-hide` | The calendar is closed and its exit animation finished |
+
+#### CSS parts
+
+| Name       | Description                            |
+| ---------- | -------------------------------------- |
+| `trigger`  | The button showing the selected range  |
+| `value`    | The selected range, or the placeholder |
+| `icon`     | The calendar icon of the trigger       |
+| `popup`    | The panel holding the calendar         |
+| `calendar` | The `hx-range-calendar`                |
