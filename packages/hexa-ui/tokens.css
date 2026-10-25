@@ -48,6 +48,7 @@
     --hx-spacing-separator: 1rem;
     --hx-spacing-modal: var(--hx-spacing-card);
     --hx-spacing-drawer: var(--hx-spacing-card);
+    --hx-size-calendar-day: 2.25rem;
 
     --hx-font-sans: "Outfit", system-ui, sans-serif;
 

@@ -48,6 +48,7 @@
     --spacing-card: var(--hx-spacing-card);
     --spacing-modal: var(--hx-spacing-modal);
     --spacing-drawer: var(--hx-spacing-drawer);
+    --size-calendar-day: var(--hx-size-calendar-day);
     --spacing-popover: var(--hx-spacing-popover);
     --spacing-tooltip: var(--hx-spacing-tooltip);
     --height-menu-item: var(--hx-height-menu-item);

@@ -27,6 +27,8 @@ export default defineConfig({
                 select: "src/components/select/index.ts",
                 modal: "src/components/modal/index.ts",
                 drawer: "src/components/drawer/index.ts",
+                calendar: "src/components/calendar/index.ts",
+                "date-field": "src/components/date-field/index.ts",
             },
             formats: ["es"],
             fileName: (_format, name) => `${name}.js`,

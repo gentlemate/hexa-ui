@@ -50,7 +50,7 @@ export abstract class HxMenuItemElement extends HxElement {
     }
 
     protected excludedFromLabel(node: Node) {
-        return node instanceof Element && !!node.slot;
+        return node instanceof Comment || (node instanceof Element && !!node.slot);
     }
 
     protected override updated() {

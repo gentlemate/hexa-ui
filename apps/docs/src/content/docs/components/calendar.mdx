@@ -1,0 +1,103 @@
+---
+title: Calendar
+description: Picks a date in a month grid.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/calendar";
+```
+
+<Preview code={`<hx-calendar value="2026-10-25"></hx-calendar>`} />
+
+## Structure
+
+```html
+<hx-calendar></hx-calendar>
+```
+
+## Examples
+
+### Min and max
+
+Days outside the range are disabled, and so are the navigation buttons that would leave it.
+
+<Preview code={`<hx-calendar min="2026-01-01" max="2026-12-31"></hx-calendar>`} />
+
+### Month and year selects
+
+`month-select` and `year-select` turn the month and the year of the heading into selects, independently. Without `min` / `max`, the years go from 100 years before to 100 years after today.
+
+<Preview
+    code={`<hx-calendar month-select></hx-calendar>
+<hx-calendar year-select></hx-calendar>
+<hx-calendar month-select year-select></hx-calendar>`}
+/>
+
+### Locale
+
+Month and weekday names, and the first day of the week, follow `locale`, or the closest `lang` attribute.
+
+<Preview code={`<hx-calendar locale="en-US"></hx-calendar>`} />
+
+### Change event
+
+`change` fires when the user selects another day, after `value` is updated.
+
+<Preview
+    code={`<div>
+    <hx-calendar
+        value="2026-10-25"
+        onchange="this.nextElementSibling.textContent = new Date(this.value + 'T00:00').toLocaleDateString('en-GB', { dateStyle: 'full' })"
+    ></hx-calendar>
+    <p class="mt-2 text-sm">Sunday, 25 October 2026</p>
+</div>`}
+/>
+
+## Behavior
+
+`value`, `min` and `max` are always in the `YYYY-MM-DD` format (like `<input type="date">`), whatever the `locale`: it only changes how the date is displayed. Convert `value` with `new Date(value + "T00:00")` to get a local date, since `new Date(value)` reads it as UTC.
+
+## Keyboard
+
+<kbd>←</kbd> / <kbd>→</kbd> move by day, <kbd>↑</kbd> / <kbd>↓</kbd> by week, <kbd>Home</kbd> / <kbd>End</kbd> to the
+start / end of the week, <kbd>Page Up</kbd> / <kbd>Page Down</kbd> by month and <kbd>Shift</kbd> + <kbd>Page Up</kbd> /
+<kbd>Page Down</kbd> by year. <kbd>Enter</kbd> / <kbd>Space</kbd> select the focused day.
+
+## API
+
+### hx-calendar
+
+#### Properties
+
+| Property      | Attribute      | Type      | Default | Description                                                                         |
+| ------------- | -------------- | --------- | ------- | ----------------------------------------------------------------------------------- |
+| `value`       | `value`        | `string`  | `""`    | Selected date, as `YYYY-MM-DD`                                                      |
+| `min`         | `min`          | `string`  | `""`    | Earliest selectable date, as `YYYY-MM-DD`                                           |
+| `max`         | `max`          | `string`  | `""`    | Latest selectable date, as `YYYY-MM-DD`                                             |
+| `locale`      | `locale`       | `string`  | `""`    | Language of the month and weekday names; defaults to the closest `lang` attribute   |
+| `monthSelect` | `month-select` | `boolean` | `false` | Shows the month as a select                                                         |
+| `yearSelect`  | `year-select`  | `boolean` | `false` | Shows the year as a select, from `min` to `max` (100 years around today by default) |
+
+#### Events
+
+| Name     | Description                    |
+| -------- | ------------------------------ |
+| `change` | The user selected another date |
+
+#### CSS parts
+
+| Name           | Description                                                                         |
+| -------------- | ----------------------------------------------------------------------------------- |
+| `header`       | The month heading and the navigation buttons                                        |
+| `heading`      | The displayed month and year (visually hidden with `month-select` or `year-select`) |
+| `month-select` | The `hx-select` of the month                                                        |
+| `year-select`  | The `hx-select` of the year                                                         |
+| `previous`     | The previous month button                                                           |
+| `next`         | The next month button                                                               |
+| `grid`         | The table of days                                                                   |
+| `weekday`      | A weekday column header                                                             |
+| `day`          | A day button                                                                        |

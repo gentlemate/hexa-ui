@@ -90,6 +90,14 @@
         "./drawer": {
             "types": "./dist/components/drawer/index.d.ts",
             "import": "./dist/drawer.js"
+        },
+        "./calendar": {
+            "types": "./dist/components/calendar/index.d.ts",
+            "import": "./dist/calendar.js"
+        },
+        "./date-field": {
+            "types": "./dist/components/date-field/index.d.ts",
+            "import": "./dist/date-field.js"
         }
     },
     "scripts": {

@@ -10,6 +10,7 @@ export default defineConfig({
     integrations: [
         starlight({
             title: "Hexa UI",
+            locales: { root: { label: "English", lang: "en-GB" } },
             customCss: ["./src/styles/global.css"],
             social: [{ icon: "github", label: "GitHub", href: "https://github.com/gentlemate/hexa-ui" }],
             sidebar: [

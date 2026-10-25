@@ -1,0 +1,103 @@
+---
+title: Date field
+description: A date typed segment by segment.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/date-field";
+```
+
+<Preview stack code={`<hx-date-field label="Birthday"></hx-date-field>`} />
+
+## Structure
+
+```html
+<hx-date-field></hx-date-field>
+```
+
+## Examples
+
+### Hint and error
+
+<Preview
+    stack
+    code={`<hx-date-field label="Birthday" hint="Used to wish you a happy birthday."></hx-date-field>
+<hx-date-field label="Event" value="2025-10-25" error="The event cannot be in the past."></hx-date-field>`}
+/>
+
+### Locale
+
+The order of the segments, their separators and their placeholders (`dd/mm/yyyy`, `jj/mm/aaaa`…) follow `locale`, or the closest `lang` attribute. Languages without letter case (Japanese, Chinese, Arabic…) show dashes.
+
+<Preview
+    stack
+    code={`<hx-date-field label="French" locale="fr-FR" value="2026-10-25"></hx-date-field>
+<hx-date-field label="American" locale="en-US" value="2026-10-25"></hx-date-field>
+<hx-date-field label="Japanese" locale="ja-JP" value="2026-10-25"></hx-date-field>`}
+/>
+
+### Disabled
+
+<Preview stack code={`<hx-date-field label="Date" value="2026-10-25" disabled></hx-date-field>`} />
+
+### Input event
+
+`input` fires once a segment is committed, after `value` is updated.
+
+<Preview
+    stack
+    code={`<hx-date-field
+    label="Date"
+    value="2026-10-25"
+    hint="Sunday, 25 October 2026"
+    oninput="this.hint = this.value ? new Date(this.value + 'T00:00').toLocaleDateString('en-GB', { dateStyle: 'full' }) : ''"
+></hx-date-field>`}
+/>
+
+## Behavior
+
+`value` is always in the `YYYY-MM-DD` format (like `<input type="date">`), whatever the `locale`: it only changes how the date is displayed. Convert `value` with `new Date(value + "T00:00")` to get a local date, since `new Date(value)` reads it as UTC.
+
+`value` stays empty until the day, the month and the year are all filled. A segment is committed, and `input` / `change` fire, once its last digit is typed or when it loses the focus.
+
+## Keyboard
+
+Each segment is a tab stop. Digits fill the focused segment and move to the next one once no other digit can follow. <kbd>↑</kbd> / <kbd>↓</kbd> increment / decrement the segment (an empty segment starts from today), <kbd>←</kbd> / <kbd>→</kbd> move between segments, <kbd>Backspace</kbd> erases the last digit and <kbd>Delete</kbd> clears the segment.
+
+## API
+
+### hx-date-field
+
+#### Properties
+
+| Property      | Attribute  | Type                  | Default | Description                                                                                  |
+| ------------- | ---------- | --------------------- | ------- | -------------------------------------------------------------------------------------------- |
+| `name`        | `name`     | `string`              | `""`    | Name submitted with the form                                                                 |
+| `value`       | `value`    | `string`              | `""`    | Current date, as `YYYY-MM-DD`; empty while the date is incomplete                            |
+| `label`       | `label`    | `string`              | `""`    | Label displayed above the field                                                              |
+| `hint`        | `hint`     | `string`              | `""`    | Help text under the field, replaced by `error` when set                                      |
+| `error`       | `error`    | `string`              | `""`    | Error message under the field; also marks the field as invalid                               |
+| `locale`      | `locale`   | `string`              | `""`    | Order, separators and placeholders of the segments; defaults to the closest `lang` attribute |
+| `disabled`    | `disabled` | `boolean`             | `false` | Prevents user interaction                                                                    |
+| `required`    | `required` | `boolean`             | `false` | Marks the field as required for form validation                                              |
+| `focusTarget` | —          | `HTMLElement`         | —       | The group of segments, which holds the focus (read-only)                                     |
+| `incomplete`  | —          | `boolean` (read-only) | —       | Whether some segments are filled but not all, while `value` is empty                         |
+
+#### Events
+
+| Name     | Description       |
+| -------- | ----------------- |
+| `input`  | The value changed |
+| `change` | The value changed |
+
+#### CSS parts
+
+| Name        | Description                   |
+| ----------- | ----------------------------- |
+| `control`   | The group of segments         |
+| `segment`   | A day, month or year segment  |
+| `separator` | The text between two segments |
