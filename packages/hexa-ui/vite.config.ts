@@ -24,6 +24,7 @@ export default defineConfig({
                 accordion: "src/components/accordion/index.ts",
                 tooltip: "src/components/tooltip/index.ts",
                 "dropdown-menu": "src/components/dropdown-menu/index.ts",
+                popover: "src/components/popover/index.ts",
                 select: "src/components/select/index.ts",
                 modal: "src/components/modal/index.ts",
                 drawer: "src/components/drawer/index.ts",

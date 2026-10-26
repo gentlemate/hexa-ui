@@ -79,6 +79,10 @@
             "types": "./dist/components/dropdown-menu/index.d.ts",
             "import": "./dist/dropdown-menu.js"
         },
+        "./popover": {
+            "types": "./dist/components/popover/index.d.ts",
+            "import": "./dist/popover.js"
+        },
         "./select": {
             "types": "./dist/components/select/index.d.ts",
             "import": "./dist/select.js"

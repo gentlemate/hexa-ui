@@ -1,0 +1,146 @@
+---
+title: Popover
+description: Shows rich content in a panel opened from a trigger.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/popover";
+```
+
+<Preview
+    code={`<hx-popover>
+    <hx-button slot="trigger">Open</hx-button>
+    <div class="flex w-64 flex-col gap-3">
+        <p class="text-muted-foreground text-sm">Set the dimensions for the layer.</p>
+        <hx-input label="Width" value="100%"></hx-input>
+        <hx-input label="Height" value="50px"></hx-input>
+    </div>
+</hx-popover>`}
+/>
+
+## Structure
+
+```html
+<hx-popover>
+    <hx-button slot="trigger"></hx-button>
+</hx-popover>
+```
+
+## Examples
+
+### Placement
+
+<Preview
+    code={`<hx-popover placement="top">
+    <hx-button slot="trigger">Top</hx-button>
+    <p class="text-sm">Top</p>
+</hx-popover>
+<hx-popover>
+    <hx-button slot="trigger">Bottom</hx-button>
+    <p class="text-sm">Bottom</p>
+</hx-popover>
+<hx-popover placement="left">
+    <hx-button slot="trigger">Left</hx-button>
+    <p class="text-sm">Left</p>
+</hx-popover>
+<hx-popover placement="right">
+    <hx-button slot="trigger">Right</hx-button>
+    <p class="text-sm">Right</p>
+</hx-popover>`}
+/>
+
+### Distance
+
+`distance` sets the gap in pixels between the trigger and the popover (`8` by default).
+
+<Preview
+    code={`<hx-popover distance="16">
+    <hx-button slot="trigger">Distance</hx-button>
+    <p class="text-sm">16px away</p>
+</hx-popover>`}
+/>
+
+### Hover
+
+`trigger="hover"` opens the popover when the pointer rests on the trigger, and closes it when the pointer leaves both the trigger and the popover.
+
+<Preview
+    code={`<hx-popover trigger="hover">
+    <hx-button slot="trigger">Hover me</hx-button>
+    <p class="w-64 text-sm">Opens on hover, closes when the pointer leaves.</p>
+</hx-popover>`}
+/>
+
+### Open and close delays
+
+`open-delay` sets the delay in milliseconds before the popover opens on hover (`300` by default), and `close-delay` the delay before it closes once the pointer has left (`100` by default).
+
+<Preview
+    code={`<hx-popover trigger="hover" open-delay="0" close-delay="0">
+    <hx-button slot="trigger">No delay</hx-button>
+    <p class="text-sm">No delay</p>
+</hx-popover>`}
+/>
+
+### Without arrow
+
+<Preview
+    code={`<hx-popover without-arrow>
+    <hx-button slot="trigger">Without arrow</hx-button>
+    <p class="text-sm">No arrow</p>
+</hx-popover>`}
+/>
+
+## Usage
+
+The popover opens on click of the trigger and moves the focus to its panel. It closes on a second click, on a click outside, on <kbd>Escape</kbd>, or when the focus leaves it, then gives the focus back to the trigger. With `trigger="hover"`, it opens on hover without moving the focus; a click or <kbd>Enter</kbd> on the trigger still opens it, for keyboard and touch users.
+
+## API
+
+### hx-popover
+
+#### Properties
+
+| Property       | Attribute       | Type                                                                                                                                                                 | Default    | Description                                                                    |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------ |
+| `placement`    | `placement`     | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"bottom"` | Position of the popover relative to the trigger                                |
+| `distance`     | `distance`      | `number`                                                                                                                                                             | `8`        | Gap in pixels between the trigger and the popup                                |
+| `trigger`      | `trigger`       | `"click" \| "hover"`                                                                                                                                                 | `"click"`  | Opens the popover on click or on hover                                         |
+| `openDelay`    | `open-delay`    | `number`                                                                                                                                                             | `300`      | Delay in milliseconds before opening on hover (with `trigger="hover"`)         |
+| `closeDelay`   | `close-delay`   | `number`                                                                                                                                                             | `100`      | Delay in milliseconds before closing on pointer leave (with `trigger="hover"`) |
+| `withoutArrow` | `without-arrow` | `boolean`                                                                                                                                                            | `false`    | Hides the arrow                                                                |
+| `open`         | `open`          | `boolean`                                                                                                                                                            | `false`    | Whether it is open. Setting it directly skips `hx-show` / `hx-hide`            |
+
+#### Methods
+
+| Name     | Description                 |
+| -------- | --------------------------- |
+| `show()` | Opens it (fires `hx-show`)  |
+| `hide()` | Closes it (fires `hx-hide`) |
+
+#### Events
+
+| Name            | Description                                           |
+| --------------- | ----------------------------------------------------- |
+| `hx-show`       | The popover is about to open. Cancelable              |
+| `hx-after-show` | The popover is open and its enter animation finished  |
+| `hx-hide`       | The popover is about to close. Cancelable             |
+| `hx-after-hide` | The popover is closed and its exit animation finished |
+
+#### Slots
+
+| Name      | Description                                              |
+| --------- | -------------------------------------------------------- |
+| `trigger` | The element that opens the popover (e.g. an `hx-button`) |
+| (default) | The popover content                                      |
+
+#### CSS parts
+
+| Name    | Description                                                           |
+| ------- | --------------------------------------------------------------------- |
+| `popup` | The popover panel                                                     |
+| `arrow` | The arrow pointing to the trigger (not rendered with `without-arrow`) |
