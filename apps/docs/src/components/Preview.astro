@@ -22,9 +22,10 @@ ${code.replace(iconPattern, ".icon=$${$1}").replace(/^/gm, "    ")}
 
 <div class="preview not-content bg-background text-foreground group relative rounded-[0.5rem] border border-(--sl-color-gray-5) font-sans">
     <hx-color-mode-button class="absolute top-2 right-2 opacity-0 transition-opacity group-hover:opacity-100"></hx-color-mode-button>
+    <div class="bg-accent absolute -inset-px animate-pulse rounded-[inherit] group-data-ready:hidden motion-reduce:animate-none"></div>
     <div
         class:list={[
-            "flex justify-center gap-3 px-6 py-10",
+            "invisible flex justify-center gap-3 px-6 py-10 group-data-ready:visible",
             stack ? "mx-auto max-w-md flex-col items-stretch" : "flex-wrap items-center",
         ]}
         set:html={code}
@@ -38,5 +39,9 @@ ${code.replace(iconPattern, ".icon=$${$1}").replace(/^/gm, "    ")}
 
     for (const element of document.querySelectorAll<HTMLElement & { icon?: unknown }>(".preview [data-icon]")) {
         element.icon = icons[element.dataset.icon as keyof typeof icons];
+    }
+
+    for (const preview of document.querySelectorAll<HTMLElement>(".preview")) {
+        preview.dataset.ready = "";
     }
 </script>

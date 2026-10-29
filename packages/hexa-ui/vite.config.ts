@@ -8,6 +8,7 @@ export default defineConfig({
         lib: {
             entry: {
                 index: "src/index.ts",
+                "color-mode": "src/color-mode.ts",
                 button: "src/components/button/index.ts",
                 input: "src/components/input/index.ts",
                 icon: "src/components/icon/index.ts",

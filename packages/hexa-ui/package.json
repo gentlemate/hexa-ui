@@ -19,6 +19,10 @@
             "import": "./dist/button.js"
         },
         "./tokens.css": "./tokens.css",
+        "./color-mode": {
+            "types": "./dist/color-mode.d.ts",
+            "import": "./dist/color-mode.js"
+        },
         "./input": {
             "types": "./dist/components/input/index.d.ts",
             "import": "./dist/input.js"

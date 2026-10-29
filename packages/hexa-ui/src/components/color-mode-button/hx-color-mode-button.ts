@@ -2,13 +2,10 @@ import { css, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { Moon, Sun } from "lucide";
 import { HxElement } from "../../hx-element.js";
+import { type HxColorMode, initColorMode, toggleColorMode } from "../../color-mode.js";
 import type { HxButtonVariant } from "../button/hx-button.js";
 import "../button/hx-button.js";
 import "../icon/hx-icon.js";
-
-export type HxColorMode = "light" | "dark";
-
-const STORAGE_KEY = "hx-color-mode";
 
 /**
  * @element hx-color-mode-button
@@ -34,13 +31,7 @@ export class HxColorModeButton extends HxElement {
 
     override connectedCallback() {
         super.connectedCallback();
-        const stored = readStoredColorMode();
-        if (stored) applyColorMode(stored);
-        else if (
-            !document.documentElement.classList.contains("dark") &&
-            matchMedia("(prefers-color-scheme: dark)").matches
-        )
-            applyColorMode("dark");
+        initColorMode();
         this.syncMode();
         this.observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
     }
@@ -55,11 +46,7 @@ export class HxColorModeButton extends HxElement {
     }
 
     private toggle() {
-        const mode: HxColorMode = this.mode === "dark" ? "light" : "dark";
-        applyColorMode(mode);
-        try {
-            localStorage.setItem(STORAGE_KEY, mode);
-        } catch {}
+        const mode = toggleColorMode();
         this.dispatchEvent(
             new CustomEvent("hx-color-mode-change", { detail: { mode }, bubbles: true, composed: true }),
         );
@@ -70,19 +57,6 @@ export class HxColorModeButton extends HxElement {
         return html`<hx-button square variant=${this.variant} title=${label} @click=${this.toggle}>
             <hx-icon .icon=${this.mode === "dark" ? Sun : Moon} size="20" label=${label}></hx-icon>
         </hx-button>`;
-    }
-}
-
-function applyColorMode(mode: HxColorMode) {
-    document.documentElement.classList.toggle("dark", mode === "dark");
-}
-
-function readStoredColorMode(): HxColorMode | null {
-    try {
-        const value = localStorage.getItem(STORAGE_KEY);
-        return value === "light" || value === "dark" ? value : null;
-    } catch {
-        return null;
     }
 }
 
