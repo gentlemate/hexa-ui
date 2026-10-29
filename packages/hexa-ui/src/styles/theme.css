@@ -29,10 +29,10 @@
     --radius-popover: var(--hx-radius-popover);
     --radius-menu-item: var(--hx-radius-menu-item);
 
-    --height-button: var(--hx-height-button);
-    --spacing-button: var(--hx-spacing-button);
-    --height-input: var(--hx-height-input);
-    --spacing-input: var(--hx-spacing-input);
+    --height-button: var(--hx-height-button, var(--hx-height-control));
+    --spacing-button: var(--hx-spacing-button, var(--hx-spacing-control));
+    --height-input: var(--hx-height-input, var(--hx-height-control));
+    --spacing-input: var(--hx-spacing-input, var(--hx-spacing-control));
     --size-checkbox: var(--hx-size-checkbox);
     --size-switch: var(--hx-size-switch);
     --height-switch: var(--hx-size-switch);
@@ -40,14 +40,14 @@
     --spacing-switch: var(--hx-spacing-switch);
     --height-badge: var(--hx-height-badge);
     --spacing-badge: var(--hx-spacing-badge);
-    --height-tabs: var(--hx-height-tabs);
+    --height-tabs: var(--hx-height-tabs, var(--hx-height-control));
     --spacing-tabs: var(--hx-spacing-tabs);
-    --height-tab: calc(var(--hx-height-tabs) - var(--hx-spacing-tabs) * 2);
-    --spacing-tab: var(--hx-spacing-tab);
+    --height-tab: calc(var(--hx-height-tabs, var(--hx-height-control)) - var(--hx-spacing-tabs) * 2);
+    --spacing-tab: var(--hx-spacing-tab, var(--hx-spacing-control));
     --spacing-accordion: var(--hx-spacing-accordion);
     --spacing-card: var(--hx-spacing-card);
-    --spacing-modal: var(--hx-spacing-modal);
-    --spacing-drawer: var(--hx-spacing-drawer);
+    --spacing-modal: var(--hx-spacing-modal, var(--hx-spacing-card));
+    --spacing-drawer: var(--hx-spacing-drawer, var(--hx-spacing-card));
     --size-calendar-day: var(--hx-size-calendar-day);
     --spacing-popover: var(--hx-spacing-popover);
     --spacing-tooltip: var(--hx-spacing-tooltip);

@@ -18,15 +18,11 @@ export default defineConfig({
             sidebar: [
                 {
                     label: "Guides",
-                    items: [{ label: "Example Guide", slug: "guides/example" }],
+                    items: ["guides/installation", "guides/theming", "guides/dark-mode"],
                 },
                 {
                     label: "Components",
                     items: [{ autogenerate: { directory: "components" } }],
-                },
-                {
-                    label: "Reference",
-                    items: [{ autogenerate: { directory: "reference" } }],
                 },
             ],
         }),

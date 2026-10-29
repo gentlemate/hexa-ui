@@ -1,0 +1,65 @@
+---
+title: Dark mode
+description: Switch Hexa UI between light and dark tokens.
+---
+
+`hexa-ui/tokens.css` defines a dark value for every color token under the `dark` class. Adding `dark` to `<html>` switches every component to dark mode.
+
+```html
+<html class="dark"></html>
+```
+
+Components do not style the page itself. Use the tokens so the page follows the color mode:
+
+```css
+body {
+    background: var(--hx-background);
+    color: var(--hx-foreground);
+}
+```
+
+## Color mode button
+
+[`<hx-color-mode-button>`](/components/color-mode-button/) toggles the `dark` class and stores the choice in `localStorage`, under the `hx-color-mode` key. Without a stored choice, it follows the system preference (`prefers-color-scheme`).
+
+```html
+<hx-color-mode-button></hx-color-mode-button>
+```
+
+## Custom toggle
+
+`hexa-ui/color-mode` exposes the same logic for your own controls. `toggleColorMode()` switches the mode, stores it and returns the new mode.
+
+```js
+import { toggleColorMode } from "hexa-ui/color-mode";
+
+button.addEventListener("click", () => {
+    toggleColorMode();
+});
+```
+
+Every `<hx-color-mode-button>` on the page stays in sync, whatever changes the `dark` class.
+
+## Avoiding a flash
+
+Components apply the stored mode once they are loaded. Until then, the page renders in light mode. To apply the mode before the first render, run `initColorMode()` in an inline script in `<head>`. The function is self-contained, so its source can be inlined at build time:
+
+```astro
+---
+import { initColorMode } from "hexa-ui/color-mode";
+---
+
+<head>
+    <script is:inline set:html={`(${initColorMode})()`} />
+</head>
+```
+
+## Scoped dark mode
+
+The `dark` class works on any element, for the components it contains.
+
+```html
+<section class="dark">
+    <hx-button>Dark button</hx-button>
+</section>
+```

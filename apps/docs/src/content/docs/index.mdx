@@ -1,39 +1,41 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: Hexa UI
+description: A framework-agnostic & themeable Web Component library built with Lit.
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
-    tagline: Congrats on setting up a new Starlight project!
+    tagline: Framework-agnostic & themeable Web Components built with Lit.
     image:
         file: ../../assets/houston.webp
     actions:
-        - text: Example Guide
-          link: /guides/example/
+        - text: Get started
+          link: /guides/installation/
           icon: right-arrow
-        - text: Read the Starlight docs
-          link: https://starlight.astro.build
-          icon: external
+        - text: Browse components
+          link: /components/accordion/
           variant: minimal
 ---
 
 import { Card, CardGrid } from "@astrojs/starlight/components";
 
-## Next steps
+## Features
 
 <CardGrid stagger>
-    <Card title="Update content" icon="pencil">
-        Edit `src/content/docs/index.mdx` to see this page change.
+    <Card title="Framework-agnostic" icon="puzzle">
+        Standard Web Components that work with React, Vue, Angular, Svelte or plain HTML.
     </Card>
-    <Card title="Change page layout" icon="document">
-        Delete `template: splash` in `src/content/docs/index.mdx` to display a sidebar on this page.
+    <Card title="Themeable" icon="seti:css">
+        Customize colors, radius, sizes & spacing through `--hx-*` design tokens.
     </Card>
-    <Card title="Add new content" icon="add-document">
-        Add Markdown or MDX files to `src/content/docs` to create new pages.
+    <Card title="Import only what you need" icon="rocket">
+        Every component has its own entry point: `import "hexa-ui/button"`.
     </Card>
-    <Card title="Configure your site" icon="setting">
-        Edit your `sidebar` and other config in `astro.config.mjs`.
+    <Card title="Dark mode built in" icon="moon">
+        Toggle the `dark` class on `<html>`, or drop in `<hx-color-mode-button>`.
     </Card>
-    <Card title="Read the docs" icon="open-book">
-        Learn more in [the Starlight Docs](https://starlight.astro.build/).
+    <Card title="Built with Lit" icon="star">
+        Lightweight, fast, reactive components powered by Lit and Shadow DOM.
+    </Card>
+    <Card title="Typed" icon="seti:typescript">
+        Ships TypeScript declarations for every component.
     </Card>
 </CardGrid>

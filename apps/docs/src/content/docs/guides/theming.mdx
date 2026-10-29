@@ -1,0 +1,106 @@
+---
+title: Theming
+description: Customize Hexa UI with design tokens.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+Every component is styled from `--hx-*` custom properties defined in `hexa-ui/tokens.css`. Custom properties inherit through the Shadow DOM, so overriding a token is enough to restyle every component that uses it.
+
+## Global theme
+
+Override tokens on `:root`, in a stylesheet loaded after `hexa-ui/tokens.css`. Colors have a light and a dark value: define both, with `:root` for light and `:root.dark` for dark.
+
+```css
+:root {
+    --hx-primary: oklch(0.205 0 0);
+    --hx-primary-foreground: oklch(0.985 0 0);
+    --hx-radius-control: 0px;
+}
+
+:root.dark {
+    --hx-primary: oklch(0.922 0 0);
+    --hx-primary-foreground: oklch(0.205 0 0);
+}
+```
+
+:::caution
+`:root` and `.dark` have the same specificity. A color overridden on `:root` only, after `tokens.css`, also wins over the dark value: use `:root.dark` for the dark one.
+:::
+
+## Scoped theme
+
+Tokens can also be overridden on any element, for the components it contains.
+
+<Preview
+    stack
+    code={`<div
+    class="flex flex-col gap-3"
+    style="
+        --hx-primary: oklch(63.7% 0.237 25.331);
+        --hx-primary-foreground: oklch(0.985 0 0);
+        --hx-radius-control: 9999px;
+        --hx-height-control: 3rem;
+        --hx-spacing-input: 1.5rem;
+        --hx-spacing-button: 3rem;
+    "
+>
+    <hx-input placeholder="Email"></hx-input>
+    <hx-checkbox checked>Remember me</hx-checkbox>
+    <div class="flex gap-3">
+        <hx-button>Log in</hx-button>
+        <hx-button variant="outline">Sign in</hx-button>
+    </div>
+</div>`}
+/>
+
+## Tokens
+
+### Colors
+
+Each color has a `-foreground` pair for the content placed on it.
+
+| Token                                          | Usage                                    |
+| ---------------------------------------------- | ---------------------------------------- |
+| `--hx-background` / `--hx-foreground`          | Page background and default text         |
+| `--hx-card` / `--hx-card-foreground`           | Cards, modals and drawers                |
+| `--hx-popover` / `--hx-popover-foreground`     | Popovers, menus, tooltips and selects    |
+| `--hx-primary` / `--hx-primary-foreground`     | Primary actions                          |
+| `--hx-secondary` / `--hx-secondary-foreground` | Secondary actions                        |
+| `--hx-muted` / `--hx-muted-foreground`         | Subdued backgrounds and text             |
+| `--hx-accent` / `--hx-accent-foreground`       | Hovered and highlighted items, skeletons |
+| `--hx-destructive`                             | Destructive actions and errors           |
+| `--hx-border`                                  | Borders and separators                   |
+| `--hx-input`                                   | Form control borders                     |
+| `--hx-ring`                                    | Focus rings                              |
+
+### Radius
+
+| Token                   | Default   |
+| ----------------------- | --------- |
+| `--hx-radius-control`   | `0.5rem`  |
+| `--hx-radius-card`      | `0.75rem` |
+| `--hx-radius-popover`   | `0.5rem`  |
+| `--hx-radius-menu-item` | `0.25rem` |
+
+### Sizes and spacing
+
+| Token                    | Default   |
+| ------------------------ | --------- |
+| `--hx-height-control`    | `2.5rem`  |
+| `--hx-spacing-control`   | `0.75rem` |
+| `--hx-spacing-card`      | `1.25rem` |
+| `--hx-spacing-popover`   | `0.25rem` |
+| `--hx-height-menu-item`  | `2rem`    |
+| `--hx-spacing-menu-item` | `0.5rem`  |
+
+See [`tokens.css`](https://github.com/gentlemate/hexa-ui/blob/master/packages/hexa-ui/tokens.css) for the full list and default values. Some component tokens, such as `--hx-height-button`, are not set by default and fall back to a global one: see [`theme.css`](https://github.com/gentlemate/hexa-ui/blob/master/packages/hexa-ui/src/styles/theme.css).
+
+### Typography
+
+| Token                                  | Default                           |
+| -------------------------------------- | --------------------------------- |
+| `--hx-font-sans`                       | `"Outfit", system-ui, sans-serif` |
+| `--hx-text-sm` / `--hx-leading-sm`     | `0.875rem` / `calc(1.25 / 0.875)` |
+| `--hx-text-base` / `--hx-leading-base` | `1rem` / `calc(1.5 / 1)`          |
+| `--hx-text-lg` / `--hx-leading-lg`     | `1.125rem` / `calc(1.75 / 1.125)` |

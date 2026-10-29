@@ -31,23 +31,15 @@
     --hx-height-menu-item: 2rem;
     --hx-spacing-menu-item: 0.5rem;
 
-    --hx-height-button: var(--hx-height-control);
-    --hx-spacing-button: var(--hx-spacing-control);
-    --hx-height-input: var(--hx-height-control);
-    --hx-spacing-input: var(--hx-spacing-control);
     --hx-size-checkbox: 1.25rem;
     --hx-size-switch: 1.25rem;
     --hx-spacing-switch: 1px;
     --hx-height-badge: 1.5rem;
     --hx-spacing-badge: 0.5rem;
-    --hx-height-tabs: var(--hx-height-control);
     --hx-spacing-tabs: 0.25rem;
-    --hx-spacing-tab: var(--hx-spacing-control);
     --hx-spacing-accordion: 1rem;
     --hx-spacing-tooltip: 0.75rem;
     --hx-spacing-separator: 1rem;
-    --hx-spacing-modal: var(--hx-spacing-card);
-    --hx-spacing-drawer: var(--hx-spacing-card);
     --hx-size-calendar-day: 2.25rem;
 
     --hx-font-sans: "Outfit", system-ui, sans-serif;
