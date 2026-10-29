@@ -20,7 +20,8 @@ ${code.replace(iconPattern, ".icon=$${$1}").replace(/^/gm, "    ")}
     : code;
 ---
 
-<div class="preview not-content bg-background text-foreground rounded-[0.5rem] border border-(--sl-color-gray-5) font-sans">
+<div class="preview not-content bg-background text-foreground group relative rounded-[0.5rem] border border-(--sl-color-gray-5) font-sans">
+    <hx-color-mode-button class="absolute top-2 right-2 opacity-0 transition-opacity group-hover:opacity-100"></hx-color-mode-button>
     <div
         class:list={[
             "flex justify-center gap-3 px-6 py-10",

@@ -26,7 +26,7 @@ export class HxColorModeButton extends HxElement {
         `,
     ];
 
-    @property({ reflect: true }) variant: HxButtonVariant = "outline";
+    @property({ reflect: true }) variant: HxButtonVariant = "ghost";
 
     @state() private mode: HxColorMode = "light";
 
