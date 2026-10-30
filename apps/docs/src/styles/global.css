@@ -1,11 +1,11 @@
 @layer base, starlight, theme, components, utilities;
 
 @import "@fontsource-variable/outfit";
-@import "hexa-ui/tokens.css";
+@import "hexa-ui/theme.css";
 @import "@astrojs/starlight-tailwind";
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
-@import "../../../../packages/hexa-ui/src/styles/theme.css";
+@import "../../../../packages/hexa-ui/src/styles/tailwind-theme.css";
 
 :root {
     --hx-font-sans: "Outfit Variable", system-ui, sans-serif;

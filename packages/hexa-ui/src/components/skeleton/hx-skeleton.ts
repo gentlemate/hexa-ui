@@ -5,6 +5,7 @@ import { HxElement } from "../../hx-element.js";
 /**
  * @element hx-skeleton
  * @property circle - Fully rounded shape, e.g. for an avatar.
+ * @cssprop [--hx-radius-skeleton=var(--hx-radius-panel)] - Border radius.
  * @csspart base - The pulsing block.
  */
 @customElement("hx-skeleton")
@@ -15,7 +16,7 @@ export class HxSkeleton extends HxElement {
             :host {
                 display: block;
                 flex-shrink: 0;
-                border-radius: var(--hx-radius-card);
+                border-radius: var(--hx-radius-skeleton, var(--hx-radius-panel));
             }
             :host([circle]) {
                 border-radius: 9999px;

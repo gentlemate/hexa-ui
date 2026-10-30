@@ -5,29 +5,29 @@ import { FloatingController } from "../../controllers/floating-controller.js";
 import { ListNavigation } from "../../controllers/list-navigation.js";
 import { HxElement } from "../../hx-element.js";
 import { HxOverlayElement } from "../../hx-overlay-element.js";
-import "./hx-dropdown-menu-group.js";
-import "./hx-dropdown-menu-separator.js";
-import { HxDropdownMenuItem } from "./hx-dropdown-menu-item.js";
+import "./hx-dropdown-group.js";
+import "./hx-dropdown-separator.js";
+import { HxDropdownItem } from "./hx-dropdown-item.js";
 
-export type HxDropdownMenuSubmenuPlacement = Placement;
+export type HxDropdownSubmenuPlacement = Placement;
 
-export type HxDropdownMenuFocus = "first" | "last" | "menu" | "none";
+export type HxDropdownFocus = "first" | "last" | "menu" | "none";
 
 const submenuDelay = 100;
 
 /**
- * @element hx-dropdown-menu-submenu
+ * @element hx-dropdown-submenu
  * @property placement - Position of the submenu relative to its item.
  * @property distance - Gap in pixels between the item and the submenu.
- * @slot - The `hx-dropdown-menu-item`, `hx-dropdown-menu-group` and `hx-dropdown-menu-separator` elements.
+ * @slot - The `hx-dropdown-item`, `hx-dropdown-group` and `hx-dropdown-separator` elements.
  * @fires hx-show - The menu is about to open. Cancelable.
  * @fires hx-after-show - The menu is open and its enter animation finished.
  * @fires hx-hide - The menu is about to close. Cancelable.
  * @fires hx-after-hide - The menu is closed and its exit animation finished.
  * @csspart popup - The menu panel.
  */
-@customElement("hx-dropdown-menu-submenu")
-export class HxDropdownMenuSubmenu extends HxOverlayElement {
+@customElement("hx-dropdown-submenu")
+export class HxDropdownSubmenu extends HxOverlayElement {
     static override styles = [
         HxElement.styles,
         css`
@@ -37,19 +37,19 @@ export class HxDropdownMenuSubmenu extends HxOverlayElement {
         `,
     ];
 
-    @property({ reflect: true }) placement: HxDropdownMenuSubmenuPlacement = "right-start";
+    @property({ reflect: true }) placement: HxDropdownSubmenuPlacement = "right-start";
     @property({ type: Number }) distance = 4;
 
     @query("#popup") protected overlay!: HTMLElement;
 
     protected alignOffset = -5;
-    protected initialFocus: HxDropdownMenuFocus = "menu";
+    protected initialFocus: HxDropdownFocus = "menu";
 
     private navigation = new ListNavigation(
         () => this.items,
         (item) => item.label,
     );
-    private hovered?: HxDropdownMenuItem;
+    private hovered?: HxDropdownItem;
     private submenuTimer?: ReturnType<typeof setTimeout>;
 
     private floating = new FloatingController(this, () => {
@@ -78,20 +78,19 @@ export class HxDropdownMenuSubmenu extends HxOverlayElement {
     }
 
     private get items() {
-        return [...this.querySelectorAll("hx-dropdown-menu-item")].filter((item) => this.owns(item));
+        return [...this.querySelectorAll("hx-dropdown-item")].filter((item) => this.owns(item));
     }
 
-    private owns(item: HxDropdownMenuItem) {
-        return item.closest("hx-dropdown-menu-submenu, hx-dropdown-menu") === this;
+    private owns(item: HxDropdownItem) {
+        return item.closest("hx-dropdown-submenu, hx-dropdown") === this;
     }
 
     private itemFrom(target: EventTarget | null) {
-        const element =
-            target instanceof Element ? target.closest("hx-dropdown-menu-item, hx-dropdown-menu-submenu") : null;
-        return element instanceof HxDropdownMenuItem && this.owns(element) ? element : undefined;
+        const element = target instanceof Element ? target.closest("hx-dropdown-item, hx-dropdown-submenu") : null;
+        return element instanceof HxDropdownItem && this.owns(element) ? element : undefined;
     }
 
-    protected focusInitial(focus: HxDropdownMenuFocus) {
+    protected focusInitial(focus: HxDropdownFocus) {
         const items = this.items.filter((item) => !item.disabled);
         if (focus === "first") items[0]?.focus();
         else if (focus === "last") items.at(-1)?.focus();
@@ -100,10 +99,10 @@ export class HxDropdownMenuSubmenu extends HxOverlayElement {
 
     protected close() {
         this.open = false;
-        if (this.parentElement instanceof HxDropdownMenuItem) this.parentElement.focus();
+        if (this.parentElement instanceof HxDropdownItem) this.parentElement.focus();
     }
 
-    private openSubmenu(item: HxDropdownMenuItem, focus: HxDropdownMenuFocus) {
+    private openSubmenu(item: HxDropdownItem, focus: HxDropdownFocus) {
         clearTimeout(this.submenuTimer);
         this.closeSubmenus(item);
         const submenu = item.submenu;
@@ -113,7 +112,7 @@ export class HxDropdownMenuSubmenu extends HxOverlayElement {
         submenu.open = true;
     }
 
-    private closeSubmenus(except?: HxDropdownMenuItem) {
+    private closeSubmenus(except?: HxDropdownItem) {
         for (const item of this.items) if (item !== except && item.submenu) item.submenu.open = false;
     }
 
@@ -125,7 +124,7 @@ export class HxDropdownMenuSubmenu extends HxOverlayElement {
         event.stopPropagation();
     }
 
-    private handleKey(event: KeyboardEvent, item?: HxDropdownMenuItem) {
+    private handleKey(event: KeyboardEvent, item?: HxDropdownItem) {
         switch (event.key) {
             case "Enter":
             case " ":
@@ -136,7 +135,7 @@ export class HxDropdownMenuSubmenu extends HxOverlayElement {
                 if (item?.submenu) this.openSubmenu(item, "first");
                 return true;
             case "ArrowLeft":
-                if (!(this.parentElement instanceof HxDropdownMenuItem)) return false;
+                if (!(this.parentElement instanceof HxDropdownItem)) return false;
                 this.close();
                 return true;
             case "Escape":
@@ -199,7 +198,7 @@ export class HxDropdownMenuSubmenu extends HxOverlayElement {
     protected override updated(changed: PropertyValues<this>) {
         super.updated(changed);
         if (!changed.has("open")) return;
-        if (this.parentElement instanceof HxDropdownMenuItem) this.parentElement.expanded = this.open;
+        if (this.parentElement instanceof HxDropdownItem) this.parentElement.expanded = this.open;
         if (!this.open) {
             clearTimeout(this.submenuTimer);
             this.hovered = undefined;
@@ -215,7 +214,7 @@ export class HxDropdownMenuSubmenu extends HxOverlayElement {
             role="menu"
             tabindex="-1"
             data-state=${this.open ? "open" : "closed"}
-            class="bg-popover text-popover-foreground border-border animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-popover p-popover inset-auto m-0 min-w-32 overflow-x-hidden overflow-y-auto border shadow-md outline-none"
+            class="bg-surface text-surface-foreground border-border animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-dropdown p-dropdown inset-auto m-0 min-w-32 overflow-x-hidden overflow-y-auto border shadow-md outline-none"
             @pointerleave=${this.onPointerLeave}
         >
             <slot></slot>
@@ -229,6 +228,6 @@ export class HxDropdownMenuSubmenu extends HxOverlayElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        "hx-dropdown-menu-submenu": HxDropdownMenuSubmenu;
+        "hx-dropdown-submenu": HxDropdownSubmenu;
     }
 }

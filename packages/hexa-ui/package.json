@@ -5,7 +5,7 @@
     "license": "MIT",
     "files": [
         "dist",
-        "tokens.css"
+        "theme.css"
     ],
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -18,7 +18,7 @@
             "types": "./dist/components/button/index.d.ts",
             "import": "./dist/button.js"
         },
-        "./tokens.css": "./tokens.css",
+        "./theme.css": "./theme.css",
         "./color-mode": {
             "types": "./dist/color-mode.d.ts",
             "import": "./dist/color-mode.js"
@@ -79,9 +79,9 @@
             "types": "./dist/components/tooltip/index.d.ts",
             "import": "./dist/tooltip.js"
         },
-        "./dropdown-menu": {
-            "types": "./dist/components/dropdown-menu/index.d.ts",
-            "import": "./dist/dropdown-menu.js"
+        "./dropdown": {
+            "types": "./dist/components/dropdown/index.d.ts",
+            "import": "./dist/dropdown.js"
         },
         "./popover": {
             "types": "./dist/components/popover/index.d.ts",

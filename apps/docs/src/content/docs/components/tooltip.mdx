@@ -78,7 +78,7 @@ import "hexa-ui/tooltip";
 <Preview
     code={`<hx-tooltip>
     <hx-button variant="outline">Shortcut</hx-button>
-    <span slot="content">Save <kbd class="bg-background/20 rounded-control-sm px-1.5 ml-1">Ctrl</kbd> + <kbd class="bg-background/20 rounded-control-sm px-1.5">S</kbd></span>
+    <span slot="content">Save <kbd class="bg-background/20 rounded-sm px-1.5 ml-1">Ctrl</kbd> + <kbd class="bg-background/20 rounded-sm px-1.5">S</kbd></span>
 </hx-tooltip>`}
 />
 
@@ -135,6 +135,13 @@ The tooltip opens on hover (after `open-delay`) and on keyboard focus. It closes
 | --------- | ------------------------------------------------------- |
 | (default) | The trigger (the first element is the anchor)           |
 | `content` | Rich tooltip content, instead of the `content` property |
+
+#### CSS custom properties
+
+| Name                   | Default                  | Description                                            |
+| ---------------------- | ------------------------ | ------------------------------------------------------ |
+| `--hx-spacing-tooltip` | `0.75rem`                | Horizontal padding. The vertical padding is half of it |
+| `--hx-radius-tooltip`  | `var(--hx-radius-popup)` | Border radius                                          |
 
 #### CSS parts
 

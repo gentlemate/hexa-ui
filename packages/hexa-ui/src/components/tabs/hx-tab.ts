@@ -9,8 +9,8 @@ import type { HxTabsDirection, HxTabsVariant } from "./hx-tabs.js";
 
 const variants: Record<HxTabsVariant, { selected: string; idle: string } & Record<HxTabsDirection, string>> = {
     default: {
-        horizontal: "justify-center rounded-control border border-transparent h-tab gap-2 px-tab",
-        vertical: "justify-start rounded-control border border-transparent h-tab gap-2 px-tab",
+        horizontal: "justify-center rounded-tab border border-transparent h-tab gap-2 px-tab",
+        vertical: "justify-start rounded-tab border border-transparent h-tab gap-2 px-tab",
         selected: "bg-background text-foreground shadow-sm",
         idle: "hover:text-foreground",
     },

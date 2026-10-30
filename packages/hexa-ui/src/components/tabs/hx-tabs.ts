@@ -11,8 +11,8 @@ export type HxTabsDirection = "horizontal" | "vertical";
 
 const variants: Record<HxTabsVariant, Record<HxTabsDirection, string>> = {
     default: {
-        horizontal: "rounded-control-lg bg-muted p-tabs text-muted-foreground",
-        vertical: "rounded-control-lg bg-muted p-tabs text-muted-foreground",
+        horizontal: "rounded-tabs bg-muted p-tabs text-muted-foreground",
+        vertical: "rounded-tabs bg-muted p-tabs text-muted-foreground",
     },
     secondary: {
         horizontal: "border-b border-border",
@@ -32,6 +32,11 @@ const directions: Record<HxTabsDirection, { nav: string; body: string }> = {
  * @property direction - Tab list above (`horizontal`) or beside (`vertical`) the panels.
  * @slot - The `hx-tab` and `hx-tab-panel` elements (tabs move to the tab list on their own).
  * @fires hx-tab-change - The selected tab changed; `event.detail.value` is its value.
+ * @cssprop [--hx-height-tabs=var(--hx-height-control)] - Height of the tab list.
+ * @cssprop [--hx-spacing-tabs=0.25rem] - Padding of the tab list.
+ * @cssprop [--hx-spacing-tab=var(--hx-spacing-control)] - Horizontal padding of each tab.
+ * @cssprop [--hx-radius-tabs=calc(var(--hx-radius-tab) + 0.125rem)] - Border radius of the tab list.
+ * @cssprop [--hx-radius-tab=var(--hx-radius-control)] - Border radius of each tab.
  * @csspart nav - The tab list.
  * @csspart body - The panels wrapper.
  */

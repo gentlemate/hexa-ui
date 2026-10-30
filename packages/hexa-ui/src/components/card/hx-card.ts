@@ -5,7 +5,7 @@ import { HxElement } from "../../hx-element.js";
 export type HxCardVariant = "default" | "outline" | "ghost";
 
 const variants: Record<HxCardVariant, string> = {
-    default: "bg-card text-card-foreground ring-(length:--hx-border-width) ring-foreground/10",
+    default: "bg-surface text-surface-foreground ring-(length:--hx-border-width) ring-foreground/10",
     outline: "bg-background text-foreground ring-(length:--hx-border-width) ring-foreground/10",
     ghost: "",
 };
@@ -14,6 +14,8 @@ const variants: Record<HxCardVariant, string> = {
  * @element hx-card
  * @property variant - Visual style.
  * @slot - The card sections: `hx-card-header`, `hx-card-content` and `hx-card-footer`.
+ * @cssprop [--hx-spacing-card=var(--hx-spacing-panel)] - Padding.
+ * @cssprop [--hx-radius-card=var(--hx-radius-panel)] - Border radius.
  * @csspart base - The card container.
  */
 @customElement("hx-card")
@@ -43,7 +45,7 @@ export class HxCard extends HxElement {
             part="base"
             class="${variants[this.variant]} ${this.hasHeader ? "" : "pt-card"} ${
                 this.hasFooter ? "" : "pb-card"
-            } rounded-card flex flex-col [--panel-footer-justify:flex-start] [--panel-header-end:0px] [--panel-radius:var(--hx-radius-card)] [--panel-spacing:var(--hx-spacing-card)]"
+            } rounded-card flex flex-col [--panel-footer-justify:flex-start] [--panel-header-end:0px] [--panel-radius:var(--radius-card)] [--panel-spacing:var(--spacing-card)]"
         >
             <slot @slotchange=${this.onSlotChange}></slot>
         </div>`;

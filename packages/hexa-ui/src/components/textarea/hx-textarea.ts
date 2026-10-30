@@ -16,6 +16,8 @@ import { HxElement } from "../../hx-element.js";
  * @property required - Marks the field as required for form validation.
  * @fires input - The value changed (native event, crosses the Shadow DOM).
  * @fires change - The value was committed (re-dispatched, since the native `change` is not composed).
+ * @cssprop [--hx-spacing-textarea=var(--hx-spacing-field)] - Horizontal padding.
+ * @cssprop [--hx-radius-textarea=var(--hx-radius-field)] - Border radius.
  * @csspart control - The inner `<textarea>` element.
  */
 @customElement("hx-textarea")
@@ -71,7 +73,7 @@ export class HxTextarea extends HxElement {
                 <textarea
                     id="control"
                     part="control"
-                    class="border-input bg-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 rounded-control px-input min-h-16 w-full resize-y border py-2 shadow-xs outline-none focus-visible:ring-[3px] disabled:opacity-50"
+                    class="border-border bg-field placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 rounded-textarea px-textarea min-h-16 w-full resize-y border py-2 shadow-xs outline-none focus-visible:ring-[3px] disabled:opacity-50"
                     .value=${this.value}
                     rows=${this.rows}
                     placeholder=${ifDefined(this.placeholder || undefined)}

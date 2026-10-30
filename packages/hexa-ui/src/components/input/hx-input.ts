@@ -16,6 +16,9 @@ import { HxElement } from "../../hx-element.js";
  * @property required - Marks the field as required for form validation.
  * @fires input - The value changed (native event, crosses the Shadow DOM).
  * @fires change - The value was committed (re-dispatched, since the native `change` is not composed).
+ * @cssprop [--hx-height-input=var(--hx-height-field)] - Height.
+ * @cssprop [--hx-spacing-input=var(--hx-spacing-field)] - Horizontal padding.
+ * @cssprop [--hx-radius-input=var(--hx-radius-field)] - Border radius.
  * @csspart control - The inner `<input>` element.
  */
 @customElement("hx-input")
@@ -68,7 +71,7 @@ export class HxInput extends HxElement {
                 <input
                     id="control"
                     part="control"
-                    class="border-input bg-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 rounded-control h-input px-input w-full border shadow-xs outline-none focus-visible:ring-[3px] disabled:opacity-50"
+                    class="border-border bg-field placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 rounded-input h-input px-input w-full border shadow-xs outline-none focus-visible:ring-[3px] disabled:opacity-50"
                     .value=${this.value}
                     type=${this.type}
                     placeholder=${ifDefined(this.placeholder || undefined)}

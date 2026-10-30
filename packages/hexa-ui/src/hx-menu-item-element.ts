@@ -60,7 +60,7 @@ export abstract class HxMenuItemElement extends HxElement {
     protected renderBase(content: unknown, padding: string) {
         return html`<div
             part="base"
-            class="${padding} rounded-menu-item min-h-menu-item relative flex cursor-default items-center gap-2 select-none"
+            class="${padding} rounded-option min-h-option relative flex cursor-default items-center gap-2 select-none"
         >
             ${content}
         </div>`;

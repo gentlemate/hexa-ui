@@ -10,7 +10,7 @@ export abstract class HxMenuSeparatorElement extends HxElement {
             }
             [part="line"] {
                 height: var(--hx-border-width);
-                margin: var(--hx-spacing-popover) calc(var(--hx-spacing-popover) * -1);
+                margin: var(--hx-spacing-popup) calc(var(--hx-spacing-popup) * -1);
                 background: var(--hx-border);
             }
         `,

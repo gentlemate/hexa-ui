@@ -68,6 +68,15 @@ function sections(element) {
             ["Name", "Description"],
             (element.slots ?? []).map((slot) => [slot.name ? code(slot.name) : "(default)", text(slot.description)]),
         ],
+        [
+            "CSS custom properties",
+            ["Name", "Default", "Description"],
+            (element.cssProperties ?? []).map((property) => [
+                code(property.name),
+                code(property.default),
+                text(property.description),
+            ]),
+        ],
         ["CSS parts", ["Name", "Description"], named(element.cssParts ?? [])],
         ["CSS states", ["Name", "Description"], named(element.cssStates ?? [])],
     ].filter(([, , rows]) => rows.length);

@@ -6,7 +6,7 @@ import "../icon/hx-icon.js";
 import type { HxAccordionTrigger, HxAccordionVariant } from "./hx-accordion.js";
 
 const variants: Record<HxAccordionVariant, { hover: string; separator: string }> = {
-    default: { hover: "hover:bg-card hover:text-card-foreground", separator: "" },
+    default: { hover: "hover:bg-surface hover:text-surface-foreground", separator: "" },
     secondary: { hover: "hover:bg-accent", separator: "mx-accordion" },
 };
 
@@ -119,7 +119,9 @@ export class HxAccordionItem extends HxElement {
                 } grid transition-[grid-template-rows] duration-200"
             >
                 <div class="overflow-hidden">
-                    <div class="text-muted-foreground p-accordion"><slot></slot></div>
+                    <div class="text-muted-foreground p-accordion pt-[calc(var(--hx-spacing-accordion)/2)]">
+                        <slot></slot>
+                    </div>
                 </div>
             </div>
             <div part="separator" class="${variant.separator} bg-border h-(--hx-border-width)"></div>

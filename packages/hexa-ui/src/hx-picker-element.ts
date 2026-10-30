@@ -74,6 +74,8 @@ export abstract class HxPickerElement extends HxOverlayElement {
         distance: this.distance,
     }));
 
+    protected abstract get triggerClass(): string;
+
     protected abstract get displayText(): string;
 
     protected abstract renderCalendar(): TemplateResult;
@@ -170,7 +172,7 @@ export abstract class HxPickerElement extends HxOverlayElement {
                     aria-labelledby=${this.label ? "label value" : "value"}
                     aria-required=${this.required ? "true" : "false"}
                     aria-invalid=${this.error ? "true" : "false"}
-                    class="border-input bg-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 rounded-control h-input px-input flex w-full cursor-pointer items-center justify-between gap-2 border text-left shadow-xs outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
+                    class="border-border bg-field focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 ${this.triggerClass} flex w-full cursor-pointer items-center justify-between gap-2 border text-left shadow-xs outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
                     ?disabled=${this.disabled}
                     @pointerdown=${() => (this.openOnPointerDown = this.open)}
                     @click=${this.onTriggerClick}
@@ -196,7 +198,7 @@ export abstract class HxPickerElement extends HxOverlayElement {
                 role="dialog"
                 aria-labelledby=${ifDefined(this.label ? "label" : undefined)}
                 data-state=${this.open ? "open" : "closed"}
-                class="bg-popover text-popover-foreground border-border animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-popover p-popover inset-auto m-0 border shadow-md outline-none"
+                class="bg-surface text-surface-foreground border-border animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-popup p-calendar inset-auto m-0 border shadow-md outline-none"
                 @focusout=${this.onPopupFocusOut}
             >
                 ${keyed(this.generation, this.renderCalendar())}

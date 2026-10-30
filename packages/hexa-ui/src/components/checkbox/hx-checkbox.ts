@@ -12,6 +12,8 @@ import "../icon/hx-icon.js";
  * @slot - The checkbox label.
  * @fires input - The checked state changed.
  * @fires change - The checked state changed.
+ * @cssprop [--hx-size-checkbox=1.25rem] - Width and height of the box.
+ * @cssprop [--hx-radius-checkbox=0.375rem] - Border radius of the box.
  * @csspart control - The box.
  * @csspart label - The label wrapper.
  * @cssstate checked - The checkbox is checked.
@@ -38,8 +40,8 @@ export class HxCheckbox extends HxCheckableElement {
         return html`<span
                 part="control"
                 class="${
-                    on ? "border-primary bg-primary text-primary-foreground" : "border-input"
-                } rounded-control-sm size-checkbox flex shrink-0 items-center justify-center border shadow-xs transition-shadow"
+                    on ? "border-primary bg-primary text-primary-foreground" : "border-field"
+                } rounded-checkbox size-checkbox flex shrink-0 items-center justify-center border shadow-xs transition-shadow"
             >
                 ${
                     on

@@ -20,6 +20,7 @@ const placements: Record<HxDrawerPlacement, string> = {
  * @fires hx-after-show - The drawer is open and its enter animation finished.
  * @fires hx-hide - The drawer is about to close (Escape, backdrop, close button, `data-close`…). Cancelable.
  * @fires hx-after-hide - The drawer is closed and its exit animation finished.
+ * @cssprop [--hx-spacing-drawer=var(--hx-spacing-panel)] - Padding.
  * @csspart base - The `<dialog>` element (`::part(base)::backdrop` styles the backdrop).
  * @csspart close-button - The close button (not rendered with `without-close`).
  */

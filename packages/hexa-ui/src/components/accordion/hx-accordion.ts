@@ -10,7 +10,7 @@ export type HxAccordionTrigger = "click" | "hover";
 
 const variants: Record<HxAccordionVariant, string> = {
     default: "",
-    secondary: "overflow-hidden rounded-card bg-secondary",
+    secondary: "overflow-hidden rounded-accordion bg-secondary",
 };
 
 /**
@@ -22,6 +22,8 @@ const variants: Record<HxAccordionVariant, string> = {
  * @property {string[]} value - Values of the open items.
  * @slot - The `hx-accordion-item` elements.
  * @fires hx-accordion-change - The open items changed; `event.detail.value` lists their values.
+ * @cssprop [--hx-spacing-accordion=1rem] - Padding of the triggers and contents. The top padding of the contents is half of it.
+ * @cssprop [--hx-radius-accordion=var(--hx-radius-panel)] - Border radius of the `secondary` variant.
  * @csspart base - The items wrapper.
  */
 @customElement("hx-accordion")

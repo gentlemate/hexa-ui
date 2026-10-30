@@ -189,7 +189,7 @@ export abstract class HxDialogElement extends HxOverlayElement {
                 aria-label=${this.label || nothing}
                 class="${this.dialogClass} ${top} ${this.hasFooter ? "" : "pb-(--panel-spacing)"} ${
                     this.withoutClose ? "[--panel-header-end:0px]" : "[--panel-header-end:1.75rem]"
-                } bg-background text-foreground border-border animate-in data-[state=closed]:animate-out backdrop:animate-in backdrop:fade-in-0 data-[state=closed]:backdrop:animate-out data-[state=closed]:backdrop:fade-out-0 flex-col overflow-hidden p-0 shadow-lg outline-none [--panel-footer-justify:flex-end] [--panel-radius:0px] backdrop:bg-black/50 open:flex"
+                } bg-surface text-surface-foreground border-border animate-in data-[state=closed]:animate-out backdrop:animate-in backdrop:fade-in-0 data-[state=closed]:backdrop:animate-out data-[state=closed]:backdrop:fade-out-0 flex-col overflow-hidden p-0 shadow-lg outline-none [--panel-footer-justify:flex-end] [--panel-radius:0px] backdrop:bg-black/50 open:flex"
                 @pointerdown=${this.onPointerDown}
                 @click=${this.onDialogClick}
                 @cancel=${this.onCancel}
@@ -202,7 +202,7 @@ export abstract class HxDialogElement extends HxOverlayElement {
                               part="close-button"
                               type="button"
                               aria-label="Close"
-                              class="rounded-control-sm focus-visible:ring-ring/50 absolute top-[calc(var(--panel-spacing)-0.25rem)] right-[calc(var(--panel-spacing)-0.25rem)] inline-flex cursor-pointer p-1 opacity-70 transition-opacity outline-none hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-[3px]"
+                              class="focus-visible:ring-ring/50 absolute top-[calc(var(--panel-spacing)-0.25rem)] right-[calc(var(--panel-spacing)-0.25rem)] inline-flex cursor-pointer rounded-[calc(var(--hx-radius-control)-0.125rem)] p-1 opacity-70 transition-opacity outline-none hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-[3px]"
                               @click=${this.hide}
                           >
                               <hx-icon .icon=${X}></hx-icon>

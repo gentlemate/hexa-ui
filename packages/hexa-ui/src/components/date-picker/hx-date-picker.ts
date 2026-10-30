@@ -19,6 +19,11 @@ export type HxDatePickerDateStyle = HxDateStyle;
  * @fires hx-after-show - The calendar is open and its enter animation finished.
  * @fires hx-hide - The calendar is about to close. Cancelable.
  * @fires hx-after-hide - The calendar is closed and its exit animation finished.
+ * @cssprop [--hx-height-date-picker=var(--hx-height-field)] - Height of the trigger.
+ * @cssprop [--hx-spacing-date-picker=var(--hx-spacing-field)] - Horizontal padding of the trigger.
+ * @cssprop [--hx-radius-date-picker=var(--hx-radius-field)] - Border radius of the trigger.
+ * @cssprop [--hx-spacing-calendar=var(--hx-spacing-popup)] - Padding around the calendar.
+ * @cssprop [--hx-size-calendar-day=2.25rem] - Width and height of the day cells, and height of the month and year selects.
  * @csspart trigger - The button showing the selected date.
  * @csspart value - The selected date, or the placeholder.
  * @csspart icon - The calendar icon of the trigger.
@@ -29,6 +34,10 @@ export type HxDatePickerDateStyle = HxDateStyle;
 export class HxDatePicker extends HxPickerElement {
     @property({ reflect: true }) name = "";
     @property() value = "";
+
+    protected get triggerClass() {
+        return "rounded-date-picker h-date-picker px-date-picker";
+    }
 
     protected get displayText() {
         const date = parseDate(this.value);

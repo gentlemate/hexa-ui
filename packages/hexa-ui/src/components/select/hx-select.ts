@@ -35,6 +35,9 @@ export type HxSelectPlacement = Placement;
  * @fires hx-after-show - The listbox is open and its enter animation finished.
  * @fires hx-hide - The listbox is about to close. Cancelable.
  * @fires hx-after-hide - The listbox is closed and its exit animation finished.
+ * @cssprop [--hx-height-select=var(--hx-height-field)] - Height of the trigger.
+ * @cssprop [--hx-spacing-select=var(--hx-spacing-field)] - Horizontal padding of the trigger.
+ * @cssprop [--hx-radius-select=var(--hx-radius-field)] - Border radius of the trigger.
  * @csspart trigger - The button showing the selected option.
  * @csspart value - The selected option label, or the placeholder.
  * @csspart chevron - The chevron of the trigger.
@@ -260,7 +263,7 @@ export class HxSelect extends HxOverlayElement {
                     aria-labelledby=${ifDefined(this.label ? "label" : undefined)}
                     aria-required=${this.required ? "true" : "false"}
                     aria-invalid=${this.error ? "true" : "false"}
-                    class="border-input bg-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 rounded-control h-input px-input flex w-full cursor-pointer items-center justify-between gap-2 border text-left shadow-xs outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
+                    class="border-border bg-field focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 rounded-select h-select px-select flex w-full cursor-pointer items-center justify-between gap-2 border text-left shadow-xs outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
                     ?disabled=${this.disabled}
                 >
                     <span part="value" class="${selected ? "" : "text-muted-foreground"} truncate"
@@ -284,7 +287,7 @@ export class HxSelect extends HxOverlayElement {
                 tabindex="-1"
                 aria-labelledby=${ifDefined(this.label ? "label" : undefined)}
                 data-state=${this.open ? "open" : "closed"}
-                class="bg-popover text-popover-foreground border-border animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-popover p-popover inset-auto m-0 overflow-x-hidden overflow-y-auto border shadow-md outline-none"
+                class="bg-surface text-surface-foreground border-border animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-popup p-popup inset-auto m-0 overflow-x-hidden overflow-y-auto border shadow-md outline-none"
                 @pointerleave=${this.onPointerLeave}
             >
                 <slot @slotchange=${() => this.requestUpdate()}></slot>

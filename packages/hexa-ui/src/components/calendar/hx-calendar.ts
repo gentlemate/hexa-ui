@@ -7,6 +7,7 @@ import { HxCalendarElement } from "../../hx-calendar-element.js";
  * @element hx-calendar
  * @property value - Selected date, as `YYYY-MM-DD`.
  * @fires change - The user selected another date.
+ * @cssprop [--hx-size-calendar-day=2.25rem] - Width and height of the day cells, and height of the month and year selects.
  * @csspart header - The month heading and the navigation buttons.
  * @csspart heading - The displayed month and year (visually hidden with `month-select` or `year-select`).
  * @csspart month-select - The `hx-select` of the month.

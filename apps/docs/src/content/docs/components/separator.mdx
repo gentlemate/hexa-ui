@@ -13,9 +13,11 @@ import "hexa-ui/separator";
 
 <Preview
     stack
-    code={`<span>Profile</span>
-<hx-separator></hx-separator>
-<span>Settings</span>`}
+    code={`<div class="flex flex-col">
+    <span>Profile</span>
+    <hx-separator></hx-separator>
+    <span>Settings</span>
+</div>`}
 />
 
 ## Structure
@@ -47,6 +49,12 @@ import "hexa-ui/separator";
 | Property    | Attribute   | Type                         | Default        | Description             |
 | ----------- | ----------- | ---------------------------- | -------------- | ----------------------- |
 | `direction` | `direction` | `"horizontal" \| "vertical"` | `"horizontal"` | Orientation of the line |
+
+#### CSS custom properties
+
+| Name                     | Default | Description                     |
+| ------------------------ | ------- | ------------------------------- |
+| `--hx-spacing-separator` | `1rem`  | Space on both sides of the line |
 
 #### CSS parts
 

@@ -5,11 +5,11 @@ description: Customize Hexa UI with design tokens.
 
 import Preview from "../../../components/Preview.astro";
 
-Every component is styled from `--hx-*` custom properties defined in `hexa-ui/tokens.css`. Custom properties inherit through the Shadow DOM, so overriding a token is enough to restyle every component that uses it.
+Every component is styled from `--hx-*` custom properties defined in `hexa-ui/theme.css`. Custom properties inherit through the Shadow DOM, so overriding a token is enough to restyle every component that uses it.
 
 ## Global theme
 
-Override tokens on `:root`, in a stylesheet loaded after `hexa-ui/tokens.css`. Colors have a light and a dark value: define both, with `:root` for light and `:root.dark` for dark.
+Override tokens on `:root`, in a stylesheet loaded after `hexa-ui/theme.css`. Colors have a light and a dark value: define both, with `:root` for light and `:root.dark` for dark.
 
 ```css
 :root {
@@ -25,7 +25,7 @@ Override tokens on `:root`, in a stylesheet loaded after `hexa-ui/tokens.css`. C
 ```
 
 :::caution
-`:root` and `.dark` have the same specificity. A color overridden on `:root` only, after `tokens.css`, also wins over the dark value: use `:root.dark` for the dark one.
+`:root` and `.dark` have the same specificity. A color overridden on `:root` only, after `theme.css`, also wins over the dark value: use `:root.dark` for the dark one.
 :::
 
 ## Scoped theme
@@ -39,9 +39,12 @@ Tokens can also be overridden on any element, for the components it contains.
     style="
         --hx-primary: oklch(63.7% 0.237 25.331);
         --hx-primary-foreground: oklch(0.985 0 0);
-        --hx-radius-control: 9999px;
-        --hx-height-control: 3rem;
+        --hx-radius-input: 9999px;
+        --hx-height-input: 3rem;
         --hx-spacing-input: 1.5rem;
+        --hx-radius-checkbox: 9999px;
+        --hx-radius-button: 9999px;
+        --hx-height-button: 3rem;
         --hx-spacing-button: 3rem;
     "
 >
@@ -54,47 +57,49 @@ Tokens can also be overridden on any element, for the components it contains.
 </div>`}
 />
 
-## Tokens
+## Design tokens
 
 ### Colors
 
 Each color has a `-foreground` pair for the content placed on it.
 
-| Token                                          | Usage                                    |
-| ---------------------------------------------- | ---------------------------------------- |
-| `--hx-background` / `--hx-foreground`          | Page background and default text         |
-| `--hx-card` / `--hx-card-foreground`           | Cards, modals and drawers                |
-| `--hx-popover` / `--hx-popover-foreground`     | Popovers, menus, tooltips and selects    |
-| `--hx-primary` / `--hx-primary-foreground`     | Primary actions                          |
-| `--hx-secondary` / `--hx-secondary-foreground` | Secondary actions                        |
-| `--hx-muted` / `--hx-muted-foreground`         | Subdued backgrounds and text             |
-| `--hx-accent` / `--hx-accent-foreground`       | Hovered and highlighted items, skeletons |
-| `--hx-destructive`                             | Destructive actions and errors           |
-| `--hx-border`                                  | Borders and separators                   |
-| `--hx-input`                                   | Form control borders                     |
-| `--hx-ring`                                    | Focus rings                              |
+| Token                                          | Usage                                                                      |
+| ---------------------------------------------- | -------------------------------------------------------------------------- |
+| `--hx-background` / `--hx-foreground`          | Page background and default text                                           |
+| `--hx-surface` / `--hx-surface-foreground`     | Cards, modals, drawers, popovers, dropdowns, select and date picker popups |
+| `--hx-primary` / `--hx-primary-foreground`     | Primary actions                                                            |
+| `--hx-secondary` / `--hx-secondary-foreground` | Secondary actions                                                          |
+| `--hx-muted` / `--hx-muted-foreground`         | Subdued backgrounds and text                                               |
+| `--hx-accent` / `--hx-accent-foreground`       | Hovered and highlighted items, skeletons                                   |
+| `--hx-destructive`                             | Destructive actions and errors                                             |
+| `--hx-border`                                  | Borders and separators                                                     |
+| `--hx-field`                                   | Field backgrounds, checkbox borders, switch tracks, outline button borders |
+| `--hx-ring`                                    | Focus rings                                                                |
 
 ### Radius
 
-| Token                   | Default   |
-| ----------------------- | --------- |
-| `--hx-radius-control`   | `0.5rem`  |
-| `--hx-radius-card`      | `0.75rem` |
-| `--hx-radius-popover`   | `0.5rem`  |
-| `--hx-radius-menu-item` | `0.25rem` |
+| Token                 | Default   | Used by                                                                                                                   |
+| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `--hx-radius-control` | `0.5rem`  | `hx-button`, `hx-tabs`, the days of `hx-calendar` and `hx-range-calendar`, the close button of `hx-modal` and `hx-drawer` |
+| `--hx-radius-field`   | `0.5rem`  | `hx-input`, `hx-textarea`, `hx-select`, `hx-date-field`, `hx-date-picker`, `hx-date-range-picker`                         |
+| `--hx-radius-panel`   | `0.75rem` | `hx-card`, `hx-modal`, `hx-accordion`, `hx-skeleton`                                                                      |
+| `--hx-radius-popup`   | `0.5rem`  | `hx-popover`, `hx-tooltip`, `hx-dropdown`, `hx-select`, `hx-date-picker`, `hx-date-range-picker`                          |
+| `--hx-radius-option`  | `0.25rem` | `hx-dropdown-item`, `hx-select-option`                                                                                    |
 
 ### Sizes and spacing
 
-| Token                    | Default   |
-| ------------------------ | --------- |
-| `--hx-height-control`    | `2.5rem`  |
-| `--hx-spacing-control`   | `0.75rem` |
-| `--hx-spacing-card`      | `1.25rem` |
-| `--hx-spacing-popover`   | `0.25rem` |
-| `--hx-height-menu-item`  | `2rem`    |
-| `--hx-spacing-menu-item` | `0.5rem`  |
+| Token                  | Default   | Used by                                                                                               |
+| ---------------------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| `--hx-height-control`  | `2.5rem`  | `hx-button`, `hx-tabs`                                                                                |
+| `--hx-spacing-control` | `0.75rem` | `hx-button`, `hx-tabs`                                                                                |
+| `--hx-height-field`    | `2.5rem`  | `hx-input`, `hx-select`, `hx-date-field`, `hx-date-picker`, `hx-date-range-picker`                    |
+| `--hx-spacing-field`   | `0.75rem` | `hx-input`, `hx-textarea`, `hx-select`, `hx-date-field`, `hx-date-picker`, `hx-date-range-picker`     |
+| `--hx-spacing-panel`   | `1.25rem` | `hx-card`, `hx-modal`, `hx-drawer`                                                                    |
+| `--hx-spacing-popup`   | `0.25rem` | `hx-dropdown`, `hx-select`, `hx-date-picker` and `hx-date-range-picker` (via `--hx-spacing-calendar`) |
+| `--hx-height-option`   | `2rem`    | `hx-dropdown-item`, `hx-select-option`                                                                |
+| `--hx-spacing-option`  | `0.5rem`  | `hx-dropdown-item`, `hx-select-option`, `hx-dropdown-group`, `hx-select-group`                        |
 
-See [`tokens.css`](https://github.com/gentlemate/hexa-ui/blob/master/packages/hexa-ui/tokens.css) for the full list and default values. Some component tokens, such as `--hx-height-button`, are not set by default and fall back to a global one: see [`theme.css`](https://github.com/gentlemate/hexa-ui/blob/master/packages/hexa-ui/src/styles/theme.css).
+See [`theme.css`](https://github.com/gentlemate/hexa-ui/blob/master/packages/hexa-ui/theme.css) for the full list and default values.
 
 ### Typography
 

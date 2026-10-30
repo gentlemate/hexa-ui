@@ -3,26 +3,26 @@ import { customElement, property, state } from "lit/decorators.js";
 import { Check, ChevronRight, CircleDot, type IconNode } from "lucide";
 import { HxMenuItemElement } from "../../hx-menu-item-element.js";
 import "../icon/hx-icon.js";
-import type { HxDropdownMenuSubmenu } from "./hx-dropdown-menu-submenu.js";
+import type { HxDropdownSubmenu } from "./hx-dropdown-submenu.js";
 
-export type HxDropdownMenuItemType = "normal" | "checkbox" | "radio";
-export type HxDropdownMenuItemVariant = "default" | "destructive";
+export type HxDropdownItemType = "normal" | "checkbox" | "radio";
+export type HxDropdownItemVariant = "default" | "destructive";
 
-const roles: Record<HxDropdownMenuItemType, string> = {
+const roles: Record<HxDropdownItemType, string> = {
     normal: "menuitem",
     checkbox: "menuitemcheckbox",
     radio: "menuitemradio",
 };
 
 /**
- * @element hx-dropdown-menu-item
+ * @element hx-dropdown-item
  * @property value - Sent as `event.detail.value` in `hx-select`.
  * @property disabled - Prevents activating the item.
  * @property type - `checkbox` and `radio` items toggle `checked` and keep the menu open.
  * @property checked - Whether a checkbox or radio item is checked.
  * @property variant - `destructive` shows the item in the destructive color.
  * @property icon - Lucide icon, set as a JS property.
- * @slot - The item label, and an optional `hx-dropdown-menu-submenu` opened from this item.
+ * @slot - The item label, and an optional `hx-dropdown-submenu` opened from this item.
  * @fires hx-select - The item was activated; `event.detail` is `{ item, value }`. Cancelable:
  * `preventDefault()` keeps the menu open (checkbox and radio items keep it open anyway). Checkbox and
  * radio items update `checked` before it fires.
@@ -32,8 +32,8 @@ const roles: Record<HxDropdownMenuItemType, string> = {
  * @csspart chevron - The chevron of an item with a submenu.
  * @cssstate expanded - The submenu of the item is open.
  */
-@customElement("hx-dropdown-menu-item")
-export class HxDropdownMenuItem extends HxMenuItemElement {
+@customElement("hx-dropdown-item")
+export class HxDropdownItem extends HxMenuItemElement {
     static override styles = [
         HxMenuItemElement.styles,
         css`
@@ -55,9 +55,9 @@ export class HxDropdownMenuItem extends HxMenuItemElement {
         `,
     ];
 
-    @property({ reflect: true }) type: HxDropdownMenuItemType = "normal";
+    @property({ reflect: true }) type: HxDropdownItemType = "normal";
     @property({ type: Boolean, reflect: true }) checked = false;
-    @property({ reflect: true }) variant: HxDropdownMenuItemVariant = "default";
+    @property({ reflect: true }) variant: HxDropdownItemVariant = "default";
     @property({ attribute: false }) icon?: IconNode;
 
     @state() private hasSubmenu = false;
@@ -68,7 +68,7 @@ export class HxDropdownMenuItem extends HxMenuItemElement {
     }
 
     get submenu() {
-        return this.querySelector<HxDropdownMenuSubmenu>(":scope > hx-dropdown-menu-submenu");
+        return this.querySelector<HxDropdownSubmenu>(":scope > hx-dropdown-submenu");
     }
 
     get expanded() {
@@ -82,13 +82,12 @@ export class HxDropdownMenuItem extends HxMenuItemElement {
     }
 
     private onClick(event: MouseEvent) {
-        if ((event.target as Element).closest("hx-dropdown-menu-item") !== this) return;
+        if ((event.target as Element).closest("hx-dropdown-item") !== this) return;
         if (this.submenu) return;
         if (this.type === "checkbox") this.checked = !this.checked;
         if (this.type === "radio") {
             for (const sibling of this.parentElement?.children ?? [])
-                if (sibling instanceof HxDropdownMenuItem && sibling.type === "radio")
-                    sibling.checked = sibling === this;
+                if (sibling instanceof HxDropdownItem && sibling.type === "radio") sibling.checked = sibling === this;
         }
         this.dispatchEvent(
             new CustomEvent("hx-select", {
@@ -105,9 +104,7 @@ export class HxDropdownMenuItem extends HxMenuItemElement {
     }
 
     protected override excludedFromLabel(node: Node) {
-        return (
-            super.excludedFromLabel(node) || (node instanceof Element && node.localName === "hx-dropdown-menu-submenu")
-        );
+        return super.excludedFromLabel(node) || (node instanceof Element && node.localName === "hx-dropdown-submenu");
     }
 
     protected override updated() {
@@ -136,13 +133,13 @@ export class HxDropdownMenuItem extends HxMenuItemElement {
                 }
                 <slot @slotchange=${this.onSlotChange}></slot>
                 ${this.hasSubmenu ? html`<hx-icon part="chevron" .icon=${ChevronRight} class="ml-auto"></hx-icon>` : nothing}`,
-            checkable ? "px-menu-item pl-8" : "px-menu-item",
+            checkable ? "px-option pl-8" : "px-option",
         );
     }
 }
 
 declare global {
     interface HTMLElementTagNameMap {
-        "hx-dropdown-menu-item": HxDropdownMenuItem;
+        "hx-dropdown-item": HxDropdownItem;
     }
 }

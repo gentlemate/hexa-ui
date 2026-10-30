@@ -26,6 +26,8 @@ let lastClosed = 0;
  * @fires hx-after-show - The tooltip is open and its enter animation finished.
  * @fires hx-hide - The tooltip is about to close. Cancelable.
  * @fires hx-after-hide - The tooltip is closed and its exit animation finished.
+ * @cssprop [--hx-spacing-tooltip=0.75rem] - Horizontal padding. The vertical padding is half of it.
+ * @cssprop [--hx-radius-tooltip=var(--hx-radius-popup)] - Border radius.
  * @csspart popup - The tooltip bubble.
  * @csspart arrow - The arrow pointing to the trigger (not rendered with `without-arrow`).
  */
@@ -155,7 +157,7 @@ export class HxTooltip extends HxOverlayElement {
                 popover="manual"
                 role="tooltip"
                 data-state=${this.open ? "open" : "closed"}
-                class="bg-foreground text-background animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-popover px-tooltip inset-auto m-0 w-fit max-w-xs overflow-visible border-0 py-1.5 text-sm font-medium text-balance"
+                class="bg-foreground text-background animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-tooltip px-tooltip inset-auto m-0 w-fit max-w-xs overflow-visible border-0 py-[calc(var(--hx-spacing-tooltip)/2)] text-sm font-medium text-balance"
             >
                 <slot name="content" @slotchange=${this.describe}>${this.content}</slot>
                 ${

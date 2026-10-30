@@ -23,6 +23,8 @@ export type HxPopoverTrigger = "click" | "hover";
  * @fires hx-after-show - The popover is open and its enter animation finished.
  * @fires hx-hide - The popover is about to close. Cancelable.
  * @fires hx-after-hide - The popover is closed and its exit animation finished.
+ * @cssprop [--hx-spacing-popover=1.25rem] - Padding.
+ * @cssprop [--hx-radius-popover=var(--hx-radius-popup)] - Border radius.
  * @csspart popup - The popover panel.
  * @csspart arrow - The arrow pointing to the trigger (not rendered with `without-arrow`).
  */
@@ -173,7 +175,7 @@ export class HxPopover extends HxOverlayElement {
                 role="dialog"
                 tabindex="-1"
                 data-state=${this.open ? "open" : "closed"}
-                class="group bg-popover text-popover-foreground border-border animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-popover p-card inset-auto m-0 overflow-visible border shadow-md outline-none"
+                class="group bg-surface text-surface-foreground border-border animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-popover p-popover inset-auto m-0 overflow-visible border shadow-md outline-none"
                 @focusout=${this.onPopupFocusOut}
             >
                 <slot></slot>
@@ -183,7 +185,7 @@ export class HxPopover extends HxOverlayElement {
                         : html`<div
                               part="arrow"
                               id="arrow"
-                              class="bg-popover border-border absolute size-2.5 rotate-45 rounded-[2px] group-data-[side=bottom]:border-t group-data-[side=bottom]:border-l group-data-[side=left]:border-t group-data-[side=left]:border-r group-data-[side=right]:border-b group-data-[side=right]:border-l group-data-[side=top]:border-r group-data-[side=top]:border-b"
+                              class="bg-surface border-border absolute size-2.5 rotate-45 rounded-[2px] group-data-[side=bottom]:border-t group-data-[side=bottom]:border-l group-data-[side=left]:border-t group-data-[side=left]:border-r group-data-[side=right]:border-b group-data-[side=right]:border-l group-data-[side=top]:border-r group-data-[side=top]:border-b"
                           ></div>`
                 }
             </div>`;

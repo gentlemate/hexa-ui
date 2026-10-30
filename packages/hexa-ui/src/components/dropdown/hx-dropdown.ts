@@ -1,29 +1,31 @@
 import { html, type PropertyValues } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { focusTargetOf, hasFocus } from "../../focus-target.js";
-import { HxDropdownMenuSubmenu, type HxDropdownMenuSubmenuPlacement } from "./hx-dropdown-menu-submenu.js";
-import type { HxDropdownMenuItem } from "./hx-dropdown-menu-item.js";
+import { HxDropdownSubmenu, type HxDropdownSubmenuPlacement } from "./hx-dropdown-submenu.js";
+import type { HxDropdownItem } from "./hx-dropdown-item.js";
 
-export type HxDropdownMenuPlacement = HxDropdownMenuSubmenuPlacement;
+export type HxDropdownPlacement = HxDropdownSubmenuPlacement;
 
 /**
- * @element hx-dropdown-menu
+ * @element hx-dropdown
  * @property placement - Position of the menu relative to the trigger.
  * @property disabled - Prevents the trigger from opening the menu.
  * @property distance - Gap in pixels between the trigger and the popup.
  * @slot trigger - The element that opens the menu (e.g. an `hx-button`).
- * @slot - The `hx-dropdown-menu-item`, `hx-dropdown-menu-group` and `hx-dropdown-menu-separator` elements.
+ * @slot - The `hx-dropdown-item`, `hx-dropdown-group` and `hx-dropdown-separator` elements.
  * @fires hx-show - The menu is about to open. Cancelable.
  * @fires hx-after-show - The menu is open and its enter animation finished.
  * @fires hx-hide - The menu is about to close. Cancelable.
  * @fires hx-after-hide - The menu is closed and its exit animation finished.
- * @fires hx-select - An item was activated (fired by the `hx-dropdown-menu-item`). Normal items close the menu,
+ * @fires hx-select - An item was activated (fired by the `hx-dropdown-item`). Normal items close the menu,
  * checkbox and radio items keep it open. Cancelable: `preventDefault()` keeps the menu open.
+ * @cssprop [--hx-spacing-dropdown=var(--hx-spacing-popup)] - Padding of the menu.
+ * @cssprop [--hx-radius-dropdown=var(--hx-radius-popup)] - Border radius of the menu.
  * @csspart popup - The menu panel.
  */
-@customElement("hx-dropdown-menu")
-export class HxDropdownMenu extends HxDropdownMenuSubmenu {
-    @property({ reflect: true }) override placement: HxDropdownMenuPlacement = "bottom-start";
+@customElement("hx-dropdown")
+export class HxDropdown extends HxDropdownSubmenu {
+    @property({ reflect: true }) override placement: HxDropdownPlacement = "bottom-start";
     @property({ type: Boolean, reflect: true }) disabled = false;
 
     protected override alignOffset = 0;
@@ -41,7 +43,7 @@ export class HxDropdownMenu extends HxDropdownMenuSubmenu {
         this.addEventListener("keydown", (event) => this.onTriggerKeyDown(event));
         this.addEventListener("hx-select", (event) =>
             queueMicrotask(() => {
-                const { item } = (event as CustomEvent<{ item: HxDropdownMenuItem }>).detail;
+                const { item } = (event as CustomEvent<{ item: HxDropdownItem }>).detail;
                 if (!event.defaultPrevented && item.type === "normal") this.hide();
             }),
         );
@@ -122,6 +124,6 @@ export class HxDropdownMenu extends HxDropdownMenuSubmenu {
 
 declare global {
     interface HTMLElementTagNameMap {
-        "hx-dropdown-menu": HxDropdownMenu;
+        "hx-dropdown": HxDropdown;
     }
 }

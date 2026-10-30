@@ -8,12 +8,12 @@ export type HxButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "d
 export type HxButtonIconPlacement = "left" | "right";
 
 const base =
-    "inline-flex h-button cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-control outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50";
+    "inline-flex h-button cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-button outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<HxButtonVariant, string> = {
     primary: "bg-primary text-primary-foreground hover:bg-primary/90",
     secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-    outline: "border border-input bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
+    outline: "border border-field bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
     ghost: "text-foreground hover:bg-accent hover:text-accent-foreground",
     destructive: "bg-destructive text-white hover:bg-destructive/90",
 };
@@ -28,6 +28,9 @@ const variants: Record<HxButtonVariant, string> = {
  * @property iconPlacement - Side of the icon relative to the label.
  * @property focusTarget - The inner element that receives the focus (read-only).
  * @slot - The button label (text, icon…).
+ * @cssprop [--hx-height-button=var(--hx-height-control)] - Height.
+ * @cssprop [--hx-spacing-button=var(--hx-spacing-control)] - Horizontal padding.
+ * @cssprop [--hx-radius-button=var(--hx-radius-control)] - Border radius.
  * @csspart base - The inner `<button>` element.
  * @csspart icon - The `hx-icon` rendered from the `icon` property.
  */

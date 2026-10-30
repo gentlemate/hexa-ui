@@ -53,6 +53,9 @@ function valueOf({ day, month, year }: Segments) {
  * @property incomplete - Whether some segments are filled but not all, while `value` is empty.
  * @fires input - The value changed.
  * @fires change - The value changed.
+ * @cssprop [--hx-height-date-field=var(--hx-height-field)] - Height.
+ * @cssprop [--hx-spacing-date-field=var(--hx-spacing-field)] - Horizontal padding.
+ * @cssprop [--hx-radius-date-field=var(--hx-radius-field)] - Border radius.
  * @csspart control - The group of segments.
  * @csspart segment - A day, month or year segment.
  * @csspart separator - The text between two segments.
@@ -245,7 +248,7 @@ export class HxDateField extends HxElement {
             aria-required=${this.required ? "true" : "false"}
             aria-invalid=${this.error ? "true" : "false"}
             aria-disabled=${this.disabled ? "true" : "false"}
-            class="${empty ? "text-muted-foreground" : ""} rounded-control-sm focus:bg-accent focus:text-accent-foreground px-0.5 tabular-nums caret-transparent outline-none"
+            class="${empty ? "text-muted-foreground" : ""} focus:bg-accent focus:text-accent-foreground rounded-[calc(var(--hx-radius-field)-0.125rem)] px-0.5 tabular-nums caret-transparent outline-none"
             @focus=${() => this.activate(type)}
             @blur=${() => this.activate(undefined)}
             @keydown=${(event: KeyboardEvent) => this.onKeyDown(event, type)}
@@ -284,7 +287,7 @@ export class HxDateField extends HxElement {
                     aria-labelledby=${ifDefined(this.label ? "label" : undefined)}
                     ?data-invalid=${!!this.error}
                     ?data-disabled=${this.disabled}
-                    class="border-input bg-input focus-within:border-ring focus-within:ring-ring/50 data-invalid:border-destructive data-invalid:ring-destructive/20 rounded-control h-input px-input flex w-full cursor-text items-center border shadow-xs focus-within:ring-[3px] data-disabled:cursor-not-allowed data-disabled:opacity-50"
+                    class="border-border bg-field focus-within:border-ring focus-within:ring-ring/50 data-invalid:border-destructive data-invalid:ring-destructive/20 rounded-date-field h-date-field px-date-field flex w-full cursor-text items-center border shadow-xs focus-within:ring-[3px] data-disabled:cursor-not-allowed data-disabled:opacity-50"
                     @mousedown=${this.onControlMouseDown}
                 >
                     ${parts.map((part) =>

@@ -1,10 +1,8 @@
 :root {
     --hx-background: oklch(1 0 0);
     --hx-foreground: oklch(0.145 0 0);
-    --hx-card: oklch(1 0 0);
-    --hx-card-foreground: oklch(0.145 0 0);
-    --hx-popover: oklch(1 0 0);
-    --hx-popover-foreground: oklch(0.145 0 0);
+    --hx-surface: oklch(1 0 0);
+    --hx-surface-foreground: oklch(0.145 0 0);
     --hx-primary: oklch(0.205 0 0);
     --hx-primary-foreground: oklch(0.985 0 0);
     --hx-secondary: oklch(0.97 0 0);
@@ -15,32 +13,37 @@
     --hx-accent-foreground: oklch(0.205 0 0);
     --hx-destructive: oklch(0.577 0.245 27.325);
     --hx-border: oklch(0.922 0 0);
-    --hx-input: oklch(0.922 0 0);
+    --hx-field: oklch(0.922 0 0);
     --hx-ring: oklch(0.708 0 0);
 
     --hx-border-width: 1px;
+
     --hx-radius-control: 0.5rem;
-    --hx-radius-card: 0.75rem;
-    --hx-radius-popover: 0.5rem;
-    --hx-radius-menu-item: 0.25rem;
+    --hx-radius-field: 0.5rem;
+    --hx-radius-option: 0.25rem;
+    --hx-radius-panel: 0.75rem;
+    --hx-radius-popup: 0.5rem;
+    --hx-radius-checkbox: 0.375rem;
 
     --hx-height-control: 2.5rem;
     --hx-spacing-control: 0.75rem;
-    --hx-spacing-card: 1.25rem;
-    --hx-spacing-popover: 0.25rem;
-    --hx-height-menu-item: 2rem;
-    --hx-spacing-menu-item: 0.5rem;
-
-    --hx-size-checkbox: 1.25rem;
-    --hx-size-switch: 1.25rem;
-    --hx-spacing-switch: 1px;
+    --hx-height-field: 2.5rem;
+    --hx-spacing-field: 0.75rem;
+    --hx-height-option: 2rem;
+    --hx-spacing-option: 0.5rem;
+    --hx-spacing-panel: 1.25rem;
+    --hx-spacing-popup: 0.25rem;
+    --hx-spacing-accordion: 1rem;
     --hx-height-badge: 1.5rem;
     --hx-spacing-badge: 0.5rem;
-    --hx-spacing-tabs: 0.25rem;
-    --hx-spacing-accordion: 1rem;
-    --hx-spacing-tooltip: 0.75rem;
-    --hx-spacing-separator: 1rem;
     --hx-size-calendar-day: 2.25rem;
+    --hx-size-checkbox: 1.25rem;
+    --hx-spacing-popover: 1rem;
+    --hx-spacing-separator: 1rem;
+    --hx-size-switch: 1.25rem;
+    --hx-spacing-switch: 1px;
+    --hx-spacing-tabs: 0.25rem;
+    --hx-spacing-tooltip: 0.75rem;
 
     --hx-font-sans: "Outfit", system-ui, sans-serif;
 
@@ -55,10 +58,8 @@
 .dark {
     --hx-background: oklch(0.145 0 0);
     --hx-foreground: oklch(0.985 0 0);
-    --hx-card: oklch(0.205 0 0);
-    --hx-card-foreground: oklch(0.985 0 0);
-    --hx-popover: oklch(0.205 0 0);
-    --hx-popover-foreground: oklch(0.985 0 0);
+    --hx-surface: oklch(0.205 0 0);
+    --hx-surface-foreground: oklch(0.985 0 0);
     --hx-primary: oklch(0.922 0 0);
     --hx-primary-foreground: oklch(0.205 0 0);
     --hx-secondary: oklch(0.269 0 0);
@@ -69,6 +70,6 @@
     --hx-accent-foreground: oklch(0.985 0 0);
     --hx-destructive: oklch(0.704 0.191 22.216);
     --hx-border: oklch(1 0 0 / 10%);
-    --hx-input: oklch(1 0 0 / 15%);
+    --hx-field: oklch(1 0 0 / 15%);
     --hx-ring: oklch(0.556 0 0);
 }

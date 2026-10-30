@@ -29,7 +29,7 @@ export class HxSelectOption extends HxMenuItemElement {
     override render() {
         return this.renderBase(
             html`<slot></slot>${this.renderIndicator(this.selected ? Check : undefined, "right")}`,
-            "pl-menu-item pr-8",
+            "pl-option pr-8",
         );
     }
 }
