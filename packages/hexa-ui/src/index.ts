@@ -22,6 +22,7 @@ export * from "./components/modal/index.js";
 export * from "./components/drawer/index.js";
 export * from "./components/calendar/index.js";
 export * from "./components/date-field/index.js";
+export * from "./components/number-field/index.js";
 export * from "./components/range-calendar/index.js";
 export * from "./components/date-picker/index.js";
 export * from "./components/date-range-picker/index.js";

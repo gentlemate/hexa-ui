@@ -35,6 +35,7 @@
     --radius-dropdown: var(--hx-radius-dropdown, var(--hx-radius-popup));
     --radius-input: var(--hx-radius-input, var(--hx-radius-field));
     --radius-modal: var(--hx-radius-modal, var(--hx-radius-panel));
+    --radius-number-field: var(--hx-radius-number-field, var(--hx-radius-field));
     --radius-popover: var(--hx-radius-popover, var(--hx-radius-popup));
     --radius-select: var(--hx-radius-select, var(--hx-radius-field));
     --radius-tab: var(--hx-radius-tab, var(--hx-radius-control));
@@ -67,6 +68,8 @@
     --height-input: var(--hx-height-input, var(--hx-height-field));
     --spacing-input: var(--hx-spacing-input, var(--hx-spacing-field));
     --spacing-modal: var(--hx-spacing-modal, var(--hx-spacing-panel));
+    --height-number-field: var(--hx-height-number-field, var(--hx-height-field));
+    --spacing-number-field: var(--hx-spacing-number-field, var(--hx-spacing-field));
     --spacing-popover: var(--hx-spacing-popover);
     --height-select: var(--hx-height-select, var(--hx-height-field));
     --spacing-select: var(--hx-spacing-select, var(--hx-spacing-field));

@@ -107,6 +107,10 @@
             "types": "./dist/components/date-field/index.d.ts",
             "import": "./dist/date-field.js"
         },
+        "./number-field": {
+            "types": "./dist/components/number-field/index.d.ts",
+            "import": "./dist/number-field.js"
+        },
         "./range-calendar": {
             "types": "./dist/components/range-calendar/index.d.ts",
             "import": "./dist/range-calendar.js"

@@ -1,0 +1,136 @@
+---
+title: Number field
+description: A number typed or stepped with buttons, the keyboard or the mouse wheel.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/number-field";
+```
+
+<Preview stack code={`<hx-number-field label="Quantity" value="1" min="0"></hx-number-field>`} />
+
+## Structure
+
+```html
+<hx-number-field></hx-number-field>
+```
+
+## Examples
+
+### Variants
+
+<Preview stack code={`<hx-number-field label="Number" value="1" variant="secondary"></hx-number-field>`} />
+
+### Min, max and step
+
+<Preview stack code={`<hx-number-field label="Rating" value="2.5" min="-5" max="5" step="0.5"></hx-number-field>`} />
+
+### Format
+
+`format-options` takes the options of [`Intl.NumberFormat`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options), as JSON. With `"style": "percent"`, `value` is a fraction (`0.25` is displayed `25%`), so `step` is usually `0.01`.
+
+<Preview
+    stack
+    code={`<hx-number-field label="Price" value="49.9" min="0" format-options='{"style":"currency","currency":"EUR"}'></hx-number-field>
+<hx-number-field label="Percentage" value="0.25" min="0" max="1" step="0.01" format-options='{"style":"percent"}'></hx-number-field>
+<hx-number-field label="Distance" value="12" min="0" format-options='{"style":"unit","unit":"kilometer"}'></hx-number-field>`}
+/>
+
+### Locale
+
+The separators and the digits follow `locale`, or the closest `lang` attribute.
+
+<Preview
+    stack
+    code={`<hx-number-field label="French" locale="fr-FR" value="1234.5" step="0.1"></hx-number-field>
+<hx-number-field label="German" locale="de-DE" value="1234.5" step="0.1"></hx-number-field>
+<hx-number-field label="American" locale="en-US" value="1234.5" step="0.1"></hx-number-field>
+<hx-number-field label="Arabic" locale="ar-EG" value="1234.5" step="0.1"></hx-number-field>`}
+/>
+
+### Hint and error
+
+<Preview
+    stack
+    code={`<hx-number-field label="Guests" min="1" max="10" hint="Up to 10 guests."></hx-number-field>
+<hx-number-field label="Age" value="15" error="You must be at least 18." required></hx-number-field>`}
+/>
+
+### Disabled
+
+<Preview stack code={`<hx-number-field label="Number" value="1" disabled></hx-number-field>`} />
+
+### Input event
+
+`input` fires once the value is committed, after `value` is updated.
+
+<Preview
+    stack
+    code={`<hx-number-field
+    label="Quantity"
+    value="1"
+    min="0"
+    hint="Total: 12.00 €"
+    oninput="this.hint = 'Total: ' + ((this.value ?? 0) * 12).toFixed(2) + ' €'"
+></hx-number-field>`}
+/>
+
+## Behavior
+
+`value` is a `number`, or `undefined` while the field is empty, whatever the `locale` and `format-options`: they only change how the number is displayed and read. The form receives `value` as a plain number string (`1234.5`).
+
+The text is read and committed when the field loses the focus or on <kbd>Enter</kbd>: it is rounded to the displayed fraction digits and clamped between `min` and `max`, then `input` / `change` fire. A text that is not a number is discarded. Each step is committed right away, and an empty field starts from `0`, clamped between `min` and `max`.
+
+## Keyboard
+
+The field is a single tab stop: the buttons are not focusable. <kbd>↑</kbd> / <kbd>↓</kbd> add / remove `step`, <kbd>Home</kbd> / <kbd>End</kbd> go to `min` / `max` and <kbd>Enter</kbd> commits the text. While the field has the focus, the mouse wheel adds / removes `step` too.
+
+## API
+
+### hx-number-field
+
+#### Properties
+
+| Property        | Attribute        | Type                       | Default     | Description                                                                                       |
+| --------------- | ---------------- | -------------------------- | ----------- | ------------------------------------------------------------------------------------------------- |
+| `name`          | `name`           | `string`                   | `""`        | Name submitted with the form                                                                      |
+| `value`         | `value`          | `number`                   | —           | Current number; `undefined` while the field is empty                                              |
+| `min`           | `min`            | `number`                   | —           | Smallest allowed value                                                                            |
+| `max`           | `max`            | `number`                   | —           | Largest allowed value                                                                             |
+| `step`          | `step`           | `number`                   | `1`         | Amount added or removed by the buttons, the arrow keys and the mouse wheel                        |
+| `label`         | `label`          | `string`                   | `""`        | Label displayed above the field                                                                   |
+| `placeholder`   | `placeholder`    | `string`                   | `""`        | Text shown when the field is empty                                                                |
+| `hint`          | `hint`           | `string`                   | `""`        | Help text under the field, replaced by `error` when set                                           |
+| `error`         | `error`          | `string`                   | `""`        | Error message under the field; also marks the field as invalid                                    |
+| `locale`        | `locale`         | `string`                   | `""`        | Separators and digits of the number; defaults to the closest `lang` attribute                     |
+| `formatOptions` | `format-options` | `Intl.NumberFormatOptions` | `{}`        | `Intl.NumberFormat` options (currency, percent, unit, fraction digits…), as JSON in the attribute |
+| `variant`       | `variant`        | `"default" \| "secondary"` | `"default"` | `default` puts − and + on each side, `secondary` stacks two chevrons on the right                 |
+| `disabled`      | `disabled`       | `boolean`                  | `false`     | Prevents user interaction                                                                         |
+| `required`      | `required`       | `boolean`                  | `false`     | Marks the field as required for form validation                                                   |
+
+#### Events
+
+| Name     | Description       |
+| -------- | ----------------- |
+| `input`  | The value changed |
+| `change` | The value changed |
+
+#### CSS custom properties
+
+| Name                        | Default                   | Description        |
+| --------------------------- | ------------------------- | ------------------ |
+| `--hx-height-number-field`  | `var(--hx-height-field)`  | Height             |
+| `--hx-spacing-number-field` | `var(--hx-spacing-field)` | Horizontal padding |
+| `--hx-radius-number-field`  | `var(--hx-radius-field)`  | Border radius      |
+
+#### CSS parts
+
+| Name        | Description                    |
+| ----------- | ------------------------------ |
+| `control`   | The inner `<input>` element    |
+| `decrement` | The button that removes `step` |
+| `increment` | The button that adds `step`    |
