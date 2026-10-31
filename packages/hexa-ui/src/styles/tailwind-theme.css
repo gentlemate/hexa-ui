@@ -33,6 +33,7 @@
     --radius-date-field: var(--hx-radius-date-field, var(--hx-radius-field));
     --radius-date-picker: var(--hx-radius-date-picker, var(--hx-radius-field));
     --radius-date-range-picker: var(--hx-radius-date-range-picker, var(--hx-radius-field));
+    --radius-drawer: var(--hx-radius-drawer, var(--hx-radius-panel));
     --radius-dropdown: var(--hx-radius-dropdown, var(--hx-radius-popup));
     --radius-input: var(--hx-radius-input, var(--hx-radius-field));
     --radius-modal: var(--hx-radius-modal, var(--hx-radius-panel));
@@ -66,6 +67,13 @@
     --spacing-date-picker: var(--hx-spacing-date-picker, var(--hx-spacing-field));
     --height-date-range-picker: var(--hx-height-date-range-picker, var(--hx-height-field));
     --spacing-date-range-picker: var(--hx-spacing-date-range-picker, var(--hx-spacing-field));
+    --width-drawer: var(--hx-width-drawer);
+    --min-width-drawer: var(--hx-min-width-drawer);
+    --max-width-drawer: var(--hx-max-width-drawer);
+    --height-drawer: var(--hx-height-drawer);
+    --min-height-drawer: var(--hx-min-height-drawer);
+    --max-height-drawer: var(--hx-max-height-drawer);
+    --inset-drawer: var(--hx-inset-drawer);
     --spacing-drawer: var(--hx-spacing-drawer, var(--hx-spacing-panel));
     --spacing-dropdown: var(--hx-spacing-dropdown, var(--hx-spacing-popup));
     --height-input: var(--hx-height-input, var(--hx-height-field));

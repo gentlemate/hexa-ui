@@ -60,9 +60,11 @@ function expandedTypes() {
                     const property = node?.members.find(
                         (property) => ts.isPropertyDeclaration(property) && property.name.getText() === member.name,
                     );
-                    if (!property?.type || member.type?.text !== property.type.getText()) continue;
+                    const text = member.type?.text.replace(/ \| undefined$/, "");
+                    if (!property?.type || text !== property.type.getText()) continue;
                     const values = literals(property.type);
-                    if (values) member.type.text = values.join(" | ");
+                    if (values)
+                        member.type.text = values.join(" | ") + (text === member.type.text ? "" : " | undefined");
                 }
             }
         },

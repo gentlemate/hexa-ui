@@ -51,6 +51,10 @@ export abstract class HxDialogElement extends HxOverlayElement {
 
     protected abstract get dialogClass(): string;
 
+    protected renderHandle(): unknown {
+        return nothing;
+    }
+
     private trigger?: HTMLElement;
     private triggerTarget?: HTMLElement;
     private pressedBackdrop = false;
@@ -202,12 +206,13 @@ export abstract class HxDialogElement extends HxOverlayElement {
                               part="close-button"
                               type="button"
                               aria-label="Close"
-                              class="focus-visible:ring-ring/50 absolute top-[calc(var(--panel-spacing)-0.25rem)] right-[calc(var(--panel-spacing)-0.25rem)] inline-flex cursor-pointer rounded-[calc(var(--hx-radius-control)-0.125rem)] p-1 opacity-70 transition-opacity outline-none hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-[3px]"
+                              class="focus-visible:ring-ring/50 bg-accent absolute top-[calc(var(--panel-spacing)-0.25rem)] right-[calc(var(--panel-spacing)-0.25rem)] z-10 inline-flex cursor-pointer rounded-[calc(var(--hx-radius-control)-0.125rem)] p-1 opacity-80 transition-opacity outline-none hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-[3px]"
                               @click=${this.hide}
                           >
                               <hx-icon .icon=${X}></hx-icon>
                           </button>`
                 }
+                ${this.renderHandle()}
             </dialog>`;
     }
 }

@@ -97,6 +97,212 @@ import "hexa-ui/drawer";
 </hx-drawer>`}
 />
 
+### Variant
+
+`secondary` keeps the drawer against its edge but leaves a margin on both sides (`--hx-inset-drawer`, 1rem) and rounds the inner corners (`--hx-radius-drawer`).
+
+<Preview
+    code={`<hx-drawer variant="secondary" placement="right">
+    <hx-button slot="trigger">Right</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>Right</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-32"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>
+<hx-drawer variant="secondary" placement="bottom">
+    <hx-button slot="trigger">Bottom</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>Bottom</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-16"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>`}
+/>
+
+With `--hx-inset-drawer: auto`, the drawer takes the size of its content and is centered along its edge.
+
+<Preview
+    code={`<hx-drawer variant="secondary" placement="right" style="--hx-inset-drawer: auto">
+    <hx-button slot="trigger">Right</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>Right</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-32"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>
+<hx-drawer variant="secondary" placement="bottom" style="--hx-inset-drawer: auto">
+    <hx-button slot="trigger">Bottom</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>Bottom</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-16 w-80"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>`}
+/>
+
+### Size
+
+`size` sets the width of a `left` or `right` drawer and the height of a `top` or `bottom` drawer.
+
+| `size` | Width (`left`, `right`) | Height (`top`, `bottom`) |
+| ------ | ----------------------- | ------------------------ |
+| `xs`   | 16rem                   | 20% of the screen        |
+| `sm`   | 24rem                   | 35% of the screen        |
+| `md`   | 36rem                   | 50% of the screen        |
+| `lg`   | 56rem                   | 65% of the screen        |
+| `xl`   | 80rem                   | 80% of the screen        |
+| `full` | 100%                    | 100%                     |
+
+Without `size`, the width is `--hx-width-drawer` (36rem, like `md`) and the height `--hx-height-drawer` (the height of the content). Except for `full`, the drawer stays within `--hx-max-width-drawer` and `--hx-max-height-drawer`.
+
+#### Width
+
+<Preview
+    code={`<hx-drawer size="xs">
+    <hx-button slot="trigger">xs</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>xs</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-32"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>
+<hx-drawer size="sm">
+    <hx-button slot="trigger">sm</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>sm</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-32"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>
+<hx-drawer size="md">
+    <hx-button slot="trigger">md</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>md</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-32"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>
+<hx-drawer size="lg">
+    <hx-button slot="trigger">lg</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>lg</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-32"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>
+<hx-drawer size="xl">
+    <hx-button slot="trigger">xl</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>xl</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-32"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>
+<hx-drawer size="full">
+    <hx-button slot="trigger">full</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>full</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-32"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>`}
+/>
+
+#### Height
+
+<Preview
+    code={`<hx-drawer placement="bottom" size="xs">
+    <hx-button slot="trigger">xs</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>xs</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-16"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>
+<hx-drawer placement="bottom" size="sm">
+    <hx-button slot="trigger">sm</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>sm</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-16"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>
+<hx-drawer placement="bottom" size="md">
+    <hx-button slot="trigger">md</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>md</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-16"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>
+<hx-drawer placement="bottom" size="lg">
+    <hx-button slot="trigger">lg</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>lg</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-16"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>
+<hx-drawer placement="bottom" size="xl">
+    <hx-button slot="trigger">xl</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>xl</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-16"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>
+<hx-drawer placement="bottom" size="full">
+    <hx-button slot="trigger">full</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>full</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-16"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>`}
+/>
+
+### Resizable
+
+`resizable` adds a handle on the inner edge. Drag it, or focus it and use the arrow keys (<kbd>Home</kbd> and <kbd>End</kbd> jump to the bounds). The size stays between `--hx-min-width-drawer` and `--hx-max-width-drawer` on the sides, `--hx-min-height-drawer` and `--hx-max-height-drawer` at the top and bottom. `hx-resize` gives the new size to save it.
+
+<Preview
+    code={`<hx-drawer resizable>
+    <hx-button slot="trigger">Right</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>Resizable</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-32"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>
+<hx-drawer placement="bottom" resizable>
+    <hx-button slot="trigger">Bottom</hx-button>
+    <hx-drawer-header>
+        <hx-drawer-title>Resizable</hx-drawer-title>
+    </hx-drawer-header>
+    <hx-drawer-content>
+        <hx-skeleton class="h-32"></hx-skeleton>
+    </hx-drawer-content>
+</hx-drawer>`}
+/>
+
 ### Persistent
 
 `persistent` ignores backdrop clicks and `without-close` removes the close button: the drawer only closes through its actions or <kbd>Escape</kbd>.
@@ -209,13 +415,16 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 
 #### Properties
 
-| Property       | Attribute       | Type                                     | Default   | Description                                                         |
-| -------------- | --------------- | ---------------------------------------- | --------- | ------------------------------------------------------------------- |
-| `placement`    | `placement`     | `"top" \| "right" \| "bottom" \| "left"` | `"right"` | Edge of the screen the drawer slides in from                        |
-| `label`        | `label`         | `string`                                 | `""`      | Accessible name of the dialog when there is no title                |
-| `persistent`   | `persistent`    | `boolean`                                | `false`   | Ignores backdrop clicks                                             |
-| `withoutClose` | `without-close` | `boolean`                                | `false`   | Hides the close button                                              |
-| `open`         | `open`          | `boolean`                                | `false`   | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
+| Property       | Attribute       | Type                                             | Default     | Description                                                                                                                                                                                   |
+| -------------- | --------------- | ------------------------------------------------ | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `variant`      | `variant`       | `"default" \| "secondary"`                       | `"default"` | Visual style. `secondary` leaves a margin on both sides along the edge and rounds the inner corners                                                                                           |
+| `placement`    | `placement`     | `"top" \| "right" \| "bottom" \| "left"`         | `"right"`   | Edge of the screen the drawer slides in from                                                                                                                                                  |
+| `size`         | `size`          | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "full"` | —           | Width with `left` and `right` (`xs` 16rem to `xl` 80rem), height with `top` and `bottom` (`xs` 20% to `xl` 80% of the screen). Without it, `--hx-width-drawer` and `--hx-height-drawer` apply |
+| `resizable`    | `resizable`     | `boolean`                                        | `false`     | Adds a handle on the inner edge to resize the drawer with the pointer or the arrow keys                                                                                                       |
+| `label`        | `label`         | `string`                                         | `""`        | Accessible name of the dialog when there is no title                                                                                                                                          |
+| `persistent`   | `persistent`    | `boolean`                                        | `false`     | Ignores backdrop clicks                                                                                                                                                                       |
+| `withoutClose` | `without-close` | `boolean`                                        | `false`     | Hides the close button                                                                                                                                                                        |
+| `open`         | `open`          | `boolean`                                        | `false`     | Whether it is open. Setting it directly skips `hx-show` / `hx-hide`                                                                                                                           |
 
 #### Methods
 
@@ -226,12 +435,13 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 
 #### Events
 
-| Name            | Description                                                                              |
-| --------------- | ---------------------------------------------------------------------------------------- |
-| `hx-show`       | The drawer is about to open. Cancelable                                                  |
-| `hx-after-show` | The drawer is open and its enter animation finished                                      |
-| `hx-hide`       | The drawer is about to close (Escape, backdrop, close button, `data-close`…). Cancelable |
-| `hx-after-hide` | The drawer is closed and its exit animation finished                                     |
+| Name            | Description                                                                                                                                                      |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `hx-resize`     | The drawer was resized, once the handle is released or from the keyboard. `detail.size` is the new width (`left`, `right`) or height (`top`, `bottom`) in pixels |
+| `hx-show`       | The drawer is about to open. Cancelable                                                                                                                          |
+| `hx-after-show` | The drawer is open and its enter animation finished                                                                                                              |
+| `hx-hide`       | The drawer is about to close (Escape, backdrop, close button, `data-close`…). Cancelable                                                                         |
+| `hx-after-hide` | The drawer is closed and its exit animation finished                                                                                                             |
 
 #### Slots
 
@@ -242,9 +452,17 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 
 #### CSS custom properties
 
-| Name                  | Default                   | Description |
-| --------------------- | ------------------------- | ----------- |
-| `--hx-spacing-drawer` | `var(--hx-spacing-panel)` | Padding     |
+| Name                     | Default                   | Description                                                                                                                |
+| ------------------------ | ------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `--hx-spacing-drawer`    | `var(--hx-spacing-panel)` | Padding                                                                                                                    |
+| `--hx-radius-drawer`     | `var(--hx-radius-panel)`  | Border radius of the inner corners with `secondary`                                                                        |
+| `--hx-inset-drawer`      | `1rem`                    | Margin on both sides along the edge with `secondary`. `auto` sizes the drawer to its content and centers it along the edge |
+| `--hx-width-drawer`      | `36rem`                   | Width with `left` and `right`                                                                                              |
+| `--hx-min-width-drawer`  | `16rem`                   | Minimum width when resizing                                                                                                |
+| `--hx-max-width-drawer`  | `calc(100% - 3rem)`       | Maximum width                                                                                                              |
+| `--hx-height-drawer`     | `auto`                    | Height with `top` and `bottom`                                                                                             |
+| `--hx-min-height-drawer` | `10rem`                   | Minimum height when resizing                                                                                               |
+| `--hx-max-height-drawer` | `calc(100% - 3rem)`       | Maximum height                                                                                                             |
 
 #### CSS parts
 
@@ -252,6 +470,7 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 | -------------- | --------------------------------------------------------------------- |
 | `base`         | The `<dialog>` element (`::part(base)::backdrop` styles the backdrop) |
 | `close-button` | The close button (not rendered with `without-close`)                  |
+| `handle`       | The resize handle (rendered with `resizable`)                         |
 
 ### hx-drawer-header
 

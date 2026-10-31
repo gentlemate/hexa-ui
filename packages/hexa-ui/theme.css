@@ -41,6 +41,13 @@
     --hx-spacing-badge: 0.5rem;
     --hx-size-calendar-day: 2.25rem;
     --hx-size-checkbox: 1.25rem;
+    --hx-width-drawer: 36rem;
+    --hx-min-width-drawer: 16rem;
+    --hx-max-width-drawer: calc(100% - 3rem);
+    --hx-height-drawer: auto;
+    --hx-min-height-drawer: 10rem;
+    --hx-max-height-drawer: calc(100% - 3rem);
+    --hx-inset-drawer: 1rem;
     --hx-spacing-popover: 1rem;
     --hx-height-progress: 0.675rem;
     --hx-spacing-separator: 1rem;
