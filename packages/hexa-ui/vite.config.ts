@@ -32,6 +32,8 @@ export default defineConfig({
                 calendar: "src/components/calendar/index.ts",
                 "date-field": "src/components/date-field/index.ts",
                 "number-field": "src/components/number-field/index.ts",
+                progress: "src/components/progress/index.ts",
+                slider: "src/components/slider/index.ts",
                 "range-calendar": "src/components/range-calendar/index.ts",
                 "date-picker": "src/components/date-picker/index.ts",
                 "date-range-picker": "src/components/date-range-picker/index.ts",

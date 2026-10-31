@@ -22,6 +22,7 @@ const variants: Record<HxBadgeVariant, string> = {
  * @slot - The badge content (text, icon…).
  * @cssprop [--hx-height-badge=1.5rem] - Height.
  * @cssprop [--hx-spacing-badge=0.5rem] - Horizontal padding.
+ * @cssprop [--hx-radius-badge=9999px] - Border radius.
  * @csspart base - The inner wrapper.
  * @csspart icon - The `hx-icon` rendered from the `icon` property.
  */
@@ -44,7 +45,7 @@ export class HxBadge extends HxElement {
         const icon = this.icon ? html`<hx-icon part="icon" .icon=${this.icon} size="12"></hx-icon>` : nothing;
         return html`<span
             part="base"
-            class="${variants[this.variant]} h-badge px-badge inline-flex shrink-0 items-center justify-center gap-1 rounded-full border text-sm whitespace-nowrap"
+            class="${variants[this.variant]} h-badge px-badge rounded-badge inline-flex shrink-0 items-center justify-center gap-1 border text-sm whitespace-nowrap"
         >
             ${this.iconPlacement === "left" ? icon : nothing}<slot></slot>${
                 this.iconPlacement === "right" ? icon : nothing

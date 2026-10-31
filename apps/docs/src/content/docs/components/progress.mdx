@@ -1,0 +1,85 @@
+---
+title: Progress
+description: Shows the progress of a task, such as an upload or a download.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/progress";
+```
+
+<Preview stack code={`<hx-progress label="Loading…" value="50" format-options='{"style":"percent"}'></hx-progress>`} />
+
+## Structure
+
+```html
+<hx-progress></hx-progress>
+```
+
+## Examples
+
+### Without label
+
+Without `label`, only the bar is displayed: give it an `aria-label` for screen readers.
+
+<Preview stack code={`<hx-progress value="50" aria-label="Loading"></hx-progress>`} />
+
+### Indeterminate
+
+When the progress is unknown, `indeterminate` animates the bar and hides the value.
+
+<Preview stack code={`<hx-progress label="Loading…" indeterminate></hx-progress>`} />
+
+`indeterminate-alternate` does the same, but the bar goes back and forth across the track.
+
+<Preview stack code={`<hx-progress label="Loading…" indeterminate-alternate></hx-progress>`} />
+
+### Min and max
+
+<Preview stack code={`<hx-progress label="Files" value="3" min="0" max="10"></hx-progress>`} />
+
+### Format
+
+`format-options` takes the options of [`Intl.NumberFormat`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options), as JSON. With `"style": "percent"`, the position between `min` and `max` is displayed.
+
+<Preview
+    stack
+    code={`<hx-progress label="Uploading…" value="40" format-options='{"style":"percent"}'></hx-progress>
+<hx-progress label="Download" value="200" max="1000" format-options='{"style":"unit","unit":"megabyte"}'></hx-progress>`}
+/>
+
+## API
+
+### hx-progress
+
+#### Properties
+
+| Property                 | Attribute                 | Type                       | Default | Description                                                                                                                                                |
+| ------------------------ | ------------------------- | -------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `indeterminate`          | `indeterminate`           | `boolean`                  | `false` | The progress is unknown: the bar is animated and no value is displayed                                                                                     |
+| `indeterminateAlternate` | `indeterminate-alternate` | `boolean`                  | `false` | Same as `indeterminate`, but the bar goes back and forth across the track                                                                                  |
+| `value`                  | `value`                   | `number`                   | `0`     | Current number                                                                                                                                             |
+| `min`                    | `min`                     | `number`                   | `0`     | Smallest value                                                                                                                                             |
+| `max`                    | `max`                     | `number`                   | `100`   | Largest value                                                                                                                                              |
+| `label`                  | `label`                   | `string`                   | `""`    | Label displayed above the bar, next to the formatted value                                                                                                 |
+| `locale`                 | `locale`                  | `string`                   | `""`    | Separators and digits of the displayed value; defaults to the closest `lang` attribute                                                                     |
+| `formatOptions`          | `format-options`          | `Intl.NumberFormatOptions` | `{}`    | `Intl.NumberFormat` options of the displayed value, as JSON in the attribute. With `"style": "percent"`, the position between `min` and `max` is displayed |
+
+#### CSS custom properties
+
+| Name                   | Default  | Description                             |
+| ---------------------- | -------- | --------------------------------------- |
+| `--hx-height-progress` | `0.5rem` | Height of the track                     |
+| `--hx-radius-progress` | `9999px` | Border radius of the track and the fill |
+
+#### CSS parts
+
+| Name    | Description                  |
+| ------- | ---------------------------- |
+| `label` | The label                    |
+| `value` | The formatted value          |
+| `track` | The track                    |
+| `fill`  | The filled part of the track |

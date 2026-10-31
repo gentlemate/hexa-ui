@@ -111,6 +111,14 @@
             "types": "./dist/components/number-field/index.d.ts",
             "import": "./dist/number-field.js"
         },
+        "./progress": {
+            "types": "./dist/components/progress/index.d.ts",
+            "import": "./dist/progress.js"
+        },
+        "./slider": {
+            "types": "./dist/components/slider/index.d.ts",
+            "import": "./dist/slider.js"
+        },
         "./range-calendar": {
             "types": "./dist/components/range-calendar/index.d.ts",
             "import": "./dist/range-calendar.js"
