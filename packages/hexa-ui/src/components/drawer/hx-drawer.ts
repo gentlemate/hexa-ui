@@ -1,6 +1,6 @@
-import { html, nothing, type PropertyValues } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
-import { HxDialogElement } from "../../hx-dialog-element.js";
+import type { PropertyValues } from "lit";
+import { customElement, property } from "lit/decorators.js";
+import { HxDialogElement, type HxResizeHandle } from "../../hx-dialog-element.js";
 
 export type HxDrawerVariant = "default" | "secondary";
 export type HxDrawerPlacement = "top" | "right" | "bottom" | "left";
@@ -29,8 +29,8 @@ const variants: Record<HxDrawerVariant, Record<HxDrawerPlacement, string>> = {
 };
 
 const dimensions = {
-    width: { size: "w-drawer", min: "min-w-drawer", max: "max-w-drawer", bar: "h-10 w-1.5" },
-    height: { size: "h-drawer", min: "min-h-drawer", max: "max-h-drawer", bar: "h-1.5 w-10" },
+    width: { size: "w-drawer", min: "min-w-drawer", max: "max-w-drawer" },
+    height: { size: "h-drawer", min: "min-h-drawer", max: "max-h-drawer" },
 };
 
 const sizes: Record<keyof typeof dimensions, Record<HxDrawerSize, string>> = {
@@ -58,8 +58,6 @@ const handles: Record<HxDrawerPlacement, string> = {
     bottom: "inset-x-0 top-0 h-5 cursor-row-resize",
     left: "inset-y-0 right-0 w-5 cursor-col-resize",
 };
-
-const resizeStep = 16;
 
 /**
  * @element hx-drawer
@@ -99,12 +97,6 @@ export class HxDrawer extends HxDialogElement {
     @property({ reflect: true }) size?: HxDrawerSize;
     @property({ type: Boolean, reflect: true }) resizable = false;
 
-    @state() private extent = 0;
-    @state() private minExtent = 0;
-    @state() private maxExtent = 0;
-
-    private dragStart?: { position: number; extent: number };
-
     private get dimension(): keyof typeof dimensions {
         return this.placement === "left" || this.placement === "right" ? "width" : "height";
     }
@@ -120,110 +112,18 @@ export class HxDrawer extends HxDialogElement {
         } ${this.resizable ? `${dimension.min} transition-none` : ""} m-0 duration-300 backdrop:duration-300 data-[state=closed]:duration-200 data-[state=closed]:backdrop:duration-200 [--panel-spacing:var(--spacing-drawer)]`;
     }
 
-    private measure(extent: string) {
-        this.overlay.style[this.dimension] = extent;
-        return Math.round(this.overlay.getBoundingClientRect()[this.dimension]);
+    protected override get resizeHandles(): HxResizeHandle[] {
+        if (!this.resizable) return [];
+        return [{ class: handles[this.placement], growth: { [this.dimension]: this.growth }, keyboard: true }];
     }
 
-    private syncBounds() {
-        const extent = this.overlay.style[this.dimension];
-        this.minExtent = this.measure("0px");
-        this.maxExtent = this.measure(this.dimension === "width" ? "100vw" : "100vh");
-        this.extent = this.measure(extent);
-    }
-
-    private resize(extent: number, commit: boolean) {
-        extent = Math.min(Math.max(Math.round(extent), this.minExtent), this.maxExtent);
-        if (extent === this.extent) return;
-        this.extent = extent;
-        this.overlay.style[this.dimension] = `${extent}px`;
-        if (commit) this.emitResize();
-    }
-
-    private emitResize() {
-        this.dispatchEvent(
-            new CustomEvent("hx-resize", { detail: { size: this.extent }, bubbles: true, composed: true }),
-        );
-    }
-
-    private pointerPosition(event: PointerEvent) {
-        return this.dimension === "width" ? event.clientX : event.clientY;
-    }
-
-    private onHandlePointerDown(event: PointerEvent) {
-        if (event.button !== 0) return;
-        event.preventDefault();
-        const handle = event.currentTarget as HTMLElement;
-        handle.focus();
-        handle.setPointerCapture(event.pointerId);
-        this.syncBounds();
-        this.dragStart = { position: this.pointerPosition(event), extent: this.extent };
-    }
-
-    private onHandlePointerMove(event: PointerEvent) {
-        if (!this.dragStart) return;
-        const delta = this.pointerPosition(event) - this.dragStart.position;
-        this.resize(this.dragStart.extent + this.growth * delta, false);
-    }
-
-    private onHandlePointerEnd() {
-        if (this.dragStart && this.dragStart.extent !== this.extent) this.emitResize();
-        this.dragStart = undefined;
-    }
-
-    private onHandleKeyDown(event: KeyboardEvent) {
-        const [backward, forward] = this.dimension === "width" ? ["ArrowLeft", "ArrowRight"] : ["ArrowUp", "ArrowDown"];
-        switch (event.key) {
-            case backward:
-                this.resize(this.extent - this.growth * resizeStep, true);
-                break;
-            case forward:
-                this.resize(this.extent + this.growth * resizeStep, true);
-                break;
-            case "Home":
-                this.resize(this.minExtent, true);
-                break;
-            case "End":
-                this.resize(this.maxExtent, true);
-                break;
-            default:
-                return;
-        }
-        event.preventDefault();
+    protected override resizeDetail(rect: DOMRect) {
+        return { size: Math.round(rect[this.dimension]) };
     }
 
     protected override updated(changed: PropertyValues<this>) {
         super.updated(changed);
-        if (!this.resizable || changed.has("placement") || changed.has("size")) {
-            this.overlay.style.width = "";
-            this.overlay.style.height = "";
-        }
-    }
-
-    protected override renderHandle() {
-        if (!this.resizable) return nothing;
-        return html`<div
-            part="handle"
-            role="separator"
-            tabindex="0"
-            aria-label="Resize"
-            aria-orientation=${this.dimension === "width" ? "vertical" : "horizontal"}
-            aria-valuemin=${this.minExtent}
-            aria-valuemax=${this.maxExtent}
-            aria-valuenow=${this.extent}
-            class="${handles[this.placement]} group absolute flex touch-none items-center justify-center outline-none"
-            @focus=${this.syncBounds}
-            @keydown=${this.onHandleKeyDown}
-            @pointerdown=${this.onHandlePointerDown}
-            @pointermove=${this.onHandlePointerMove}
-            @lostpointercapture=${this.onHandlePointerEnd}
-        >
-            <span
-                class="${
-                    dimensions[this.dimension].bar
-                } bg-border group-hover:bg-muted-foreground group-focus-visible:ring-ring/50 rounded-full transition-colors group-focus-visible:ring-[3px]"
-            ></span>
-        </div>`;
+        if (changed.has("placement") || changed.has("size")) this.resetSize();
     }
 }
 

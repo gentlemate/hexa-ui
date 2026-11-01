@@ -48,6 +48,12 @@
     --hx-min-height-drawer: 10rem;
     --hx-max-height-drawer: calc(100% - 3rem);
     --hx-inset-drawer: 1rem;
+    --hx-width-modal: 36rem;
+    --hx-min-width-modal: 16rem;
+    --hx-max-width-modal: calc(100% - 2rem);
+    --hx-height-modal: fit-content;
+    --hx-min-height-modal: 10rem;
+    --hx-max-height-modal: calc(100% - 2rem);
     --hx-spacing-popover: 1rem;
     --hx-height-progress: 0.675rem;
     --hx-spacing-separator: 1rem;

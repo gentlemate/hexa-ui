@@ -6,6 +6,30 @@ import { HxElement } from "./hx-element.js";
 import { HxOverlayElement } from "./hx-overlay-element.js";
 import "./components/icon/hx-icon.js";
 
+export type HxResizeAxis = "width" | "height";
+
+export interface HxResizeHandle {
+    class: string;
+    growth: Partial<Record<HxResizeAxis, number>>;
+    keyboard?: boolean;
+}
+
+const resizeStep = 16;
+
+const resizeKeys: Record<HxResizeAxis, [string, string]> = {
+    width: ["ArrowLeft", "ArrowRight"],
+    height: ["ArrowUp", "ArrowDown"],
+};
+
+const resizeBars: Record<HxResizeAxis, string> = {
+    width: "h-10 w-1.5",
+    height: "h-1.5 w-10",
+};
+
+function axesOf(handle: HxResizeHandle) {
+    return Object.keys(handle.growth) as HxResizeAxis[];
+}
+
 let scrollLocks = 0;
 let restoreScroll = { overflow: "", paddingRight: "" };
 
@@ -48,17 +72,26 @@ export abstract class HxDialogElement extends HxOverlayElement {
 
     @state() private hasHeader = false;
     @state() private hasFooter = false;
+    @state() private resizeBounds: Record<HxResizeAxis, { size: number; min: number; max: number }> = {
+        width: { size: 0, min: 0, max: 0 },
+        height: { size: 0, min: 0, max: 0 },
+    };
 
     protected abstract get dialogClass(): string;
 
-    protected renderHandle(): unknown {
-        return nothing;
+    protected get resizeHandles(): HxResizeHandle[] {
+        return [];
+    }
+
+    protected resizeDetail(rect: DOMRect): unknown {
+        return { width: Math.round(rect.width), height: Math.round(rect.height) };
     }
 
     private trigger?: HTMLElement;
     private triggerTarget?: HTMLElement;
     private pressedBackdrop = false;
     private scrollLocked = false;
+    private dragStart?: { x: number; y: number; width: number; height: number };
 
     constructor() {
         super();
@@ -156,6 +189,98 @@ export abstract class HxDialogElement extends HxOverlayElement {
         else releaseScrollLock();
     }
 
+    protected resetSize() {
+        this.overlay.style.width = "";
+        this.overlay.style.height = "";
+    }
+
+    private measure(axis: HxResizeAxis, size: string) {
+        this.overlay.style[axis] = size;
+        return Math.round(this.overlay.getBoundingClientRect()[axis]);
+    }
+
+    private syncBounds(handle: HxResizeHandle) {
+        const bounds = { ...this.resizeBounds };
+        for (const axis of axesOf(handle)) {
+            const size = this.overlay.style[axis];
+            bounds[axis] = {
+                min: this.measure(axis, "0px"),
+                max: this.measure(axis, axis === "width" ? "100vw" : "100vh"),
+                size: this.measure(axis, size),
+            };
+        }
+        this.resizeBounds = bounds;
+    }
+
+    private resize(sizes: Partial<Record<HxResizeAxis, number>>, commit: boolean) {
+        const bounds = { ...this.resizeBounds };
+        let changed = false;
+        for (const [axis, value] of Object.entries(sizes) as [HxResizeAxis, number][]) {
+            const { size, min, max } = bounds[axis];
+            const next = Math.min(Math.max(Math.round(value), min), max);
+            if (next === size) continue;
+            bounds[axis] = { size: next, min, max };
+            this.overlay.style[axis] = `${next}px`;
+            changed = true;
+        }
+        if (!changed) return;
+        this.resizeBounds = bounds;
+        if (commit) this.emitResize();
+    }
+
+    private emitResize() {
+        this.dispatchEvent(
+            new CustomEvent("hx-resize", {
+                detail: this.resizeDetail(this.overlay.getBoundingClientRect()),
+                bubbles: true,
+                composed: true,
+            }),
+        );
+    }
+
+    private onHandlePointerDown(event: PointerEvent, handle: HxResizeHandle) {
+        if (event.button !== 0) return;
+        event.preventDefault();
+        const target = event.currentTarget as HTMLElement;
+        target.focus();
+        target.setPointerCapture(event.pointerId);
+        this.syncBounds(handle);
+        const { width, height } = this.resizeBounds;
+        this.dragStart = { x: event.clientX, y: event.clientY, width: width.size, height: height.size };
+    }
+
+    private onHandlePointerMove(event: PointerEvent, handle: HxResizeHandle) {
+        const start = this.dragStart;
+        if (!start) return;
+        const delta = { width: event.clientX - start.x, height: event.clientY - start.y };
+        const sizes: Partial<Record<HxResizeAxis, number>> = {};
+        for (const axis of axesOf(handle)) sizes[axis] = start[axis] + handle.growth[axis]! * delta[axis];
+        this.resize(sizes, false);
+    }
+
+    private onHandlePointerEnd() {
+        const start = this.dragStart;
+        this.dragStart = undefined;
+        const { width, height } = this.resizeBounds;
+        if (start && (start.width !== width.size || start.height !== height.size)) this.emitResize();
+    }
+
+    private onHandleKeyDown(event: KeyboardEvent, handle: HxResizeHandle) {
+        const sizes: Partial<Record<HxResizeAxis, number>> = {};
+        for (const axis of axesOf(handle)) {
+            const { size, min, max } = this.resizeBounds[axis];
+            const step = Math.sign(handle.growth[axis]!) * resizeStep;
+            const [backward, forward] = resizeKeys[axis];
+            if (event.key === backward) sizes[axis] = size - step;
+            else if (event.key === forward) sizes[axis] = size + step;
+            else if (event.key === "Home") sizes[axis] = min;
+            else if (event.key === "End") sizes[axis] = max;
+        }
+        if (!Object.keys(sizes).length) return;
+        event.preventDefault();
+        this.resize(sizes, true);
+    }
+
     protected override present() {
         this.syncLabels();
         if (!this.overlay.open) this.overlay.showModal();
@@ -178,6 +303,43 @@ export abstract class HxDialogElement extends HxOverlayElement {
     protected override updated(changed: PropertyValues<this>) {
         super.updated(changed);
         if (changed.has("open")) this.syncTrigger();
+        const axes = this.resizeHandles.flatMap(axesOf);
+        if (!axes.includes("width")) this.overlay.style.width = "";
+        if (!axes.includes("height")) this.overlay.style.height = "";
+    }
+
+    private renderResizeHandle(handle: HxResizeHandle) {
+        const axes = axesOf(handle);
+        const { size, min, max } = this.resizeBounds[axes[0]];
+        return html`<div
+            part="handle"
+            role="separator"
+            tabindex=${handle.keyboard ? 0 : nothing}
+            aria-hidden=${handle.keyboard ? nothing : "true"}
+            aria-label="Resize"
+            aria-orientation=${axes[0] === "width" ? "vertical" : "horizontal"}
+            aria-valuemin=${min}
+            aria-valuemax=${max}
+            aria-valuenow=${size}
+            class="${handle.class} ${
+                axes.length === 1 ? "" : "focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:ring-inset"
+            } group absolute flex touch-none items-center justify-center outline-none"
+            @focus=${() => this.syncBounds(handle)}
+            @keydown=${(event: KeyboardEvent) => this.onHandleKeyDown(event, handle)}
+            @pointerdown=${(event: PointerEvent) => this.onHandlePointerDown(event, handle)}
+            @pointermove=${(event: PointerEvent) => this.onHandlePointerMove(event, handle)}
+            @lostpointercapture=${this.onHandlePointerEnd}
+        >
+            ${
+                axes.length === 1
+                    ? html`<span
+                          class="${
+                              resizeBars[axes[0]]
+                          } bg-border group-hover:bg-muted-foreground group-focus-visible:ring-ring/50 rounded-full transition-colors group-focus-visible:ring-[3px]"
+                      ></span>`
+                    : nothing
+            }
+        </div>`;
     }
 
     override render() {
@@ -212,7 +374,7 @@ export abstract class HxDialogElement extends HxOverlayElement {
                               <hx-icon .icon=${X}></hx-icon>
                           </button>`
                 }
-                ${this.renderHandle()}
+                ${this.resizeHandles.map((handle) => this.renderResizeHandle(handle))}
             </dialog>`;
     }
 }
