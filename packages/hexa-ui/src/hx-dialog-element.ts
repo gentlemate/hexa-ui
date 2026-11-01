@@ -125,7 +125,7 @@ export abstract class HxDialogElement extends HxOverlayElement {
         return !!closer && owner === this;
     }
 
-    private onBackdrop(event: MouseEvent) {
+    protected onBackdrop(event: MouseEvent) {
         if (event.target !== this.overlay) return false;
         const rect = this.overlay.getBoundingClientRect();
         return (

@@ -57,7 +57,7 @@ import "hexa-ui/modal";
 | `xl`   | 80rem |
 | `full` | 100%  |
 
-Without `size`, the width is `--hx-width-modal` (36rem, like `md`) and the height `--hx-height-modal` (the height of the content). Except for `full`, the modal stays within `--hx-max-width-modal` and `--hx-max-height-modal`.
+Without `size`, the width is `--hx-width-modal` (36rem, like `md`) and the height `--hx-height-modal` (the height of the content). The modal never exceeds the screen.
 
 <Preview
     code={`<hx-modal size="xs">
@@ -118,7 +118,7 @@ Without `size`, the width is `--hx-width-modal` (36rem, like `md`) and the heigh
 
 ### Resizable
 
-`resizable` makes the corners resize the modal in every direction, without visible handles. `resizable-x` adds handles on the left and right edges to resize the width only, `resizable-y` on the top and bottom edges to resize the height only. The modal stays centered and grows on both sides. Drag a corner or a handle, or focus the bottom right corner, the right handle or the bottom handle and use the arrow keys (<kbd>Home</kbd> and <kbd>End</kbd> jump to the bounds). The size stays between `--hx-min-width-modal` and `--hx-max-width-modal`, `--hx-min-height-modal` and `--hx-max-height-modal`. `hx-resize` gives the new size to save it.
+`resizable` makes the corners resize the modal in every direction, without visible handles. `resizable-x` adds handles on the left and right edges to resize the width only, `resizable-y` on the top and bottom edges to resize the height only. The modal stays centered and grows on both sides. Drag a corner or a handle, or focus the bottom right corner, the right handle or the bottom handle and use the arrow keys (<kbd>Home</kbd> and <kbd>End</kbd> jump to the bounds). The size stays above `--hx-min-width-modal` and `--hx-min-height-modal`, and within the screen. `hx-resize` gives the new size to save it.
 
 <Preview
     code={`<hx-modal resizable-x>
@@ -147,6 +147,39 @@ Without `size`, the width is `--hx-width-modal` (36rem, like `md`) and the heigh
     <hx-modal-content>
         <hx-skeleton class="h-32"></hx-skeleton>
     </hx-modal-content>
+</hx-modal>`}
+/>
+
+### Movable
+
+`movable` lets the modal be dragged by its empty areas: around the sections, the header (title and description included) and the footer. The content and the interactive elements are not grab areas, so text stays selectable and fields usable. Without a header, the space above the content and the close button still works. The modal stays within the screen and keeps its position when reopened. `hx-move` gives its offset from the center.
+
+<Preview
+    code={`<hx-modal movable>
+    <hx-button slot="trigger">Movable</hx-button>
+    <hx-modal-header>
+        <hx-modal-title>Movable</hx-modal-title>
+        <hx-modal-description>Drag the modal by its header or footer.</hx-modal-description>
+    </hx-modal-header>
+    <hx-modal-content>
+        <hx-skeleton class="h-32"></hx-skeleton>
+    </hx-modal-content>
+    <hx-modal-footer>
+        <hx-button data-close>Close</hx-button>
+    </hx-modal-footer>
+</hx-modal>
+<hx-modal movable resizable>
+    <hx-button slot="trigger">Movable & resizable</hx-button>
+    <hx-modal-header>
+        <hx-modal-title>Movable & resizable</hx-modal-title>
+        <hx-modal-description>Drag the modal by its header or footer.</hx-modal-description>
+    </hx-modal-header>
+    <hx-modal-content>
+        <hx-skeleton class="h-32"></hx-skeleton>
+    </hx-modal-content>
+    <hx-modal-footer>
+        <hx-button data-close>Close</hx-button>
+    </hx-modal-footer>
 </hx-modal>`}
 />
 
@@ -262,16 +295,17 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 
 #### Properties
 
-| Property       | Attribute       | Type                                             | Default | Description                                                                                                        |
-| -------------- | --------------- | ------------------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------ |
-| `size`         | `size`          | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "full"` | —       | Width, from `xs` 16rem to `xl` 80rem. `full` covers the whole screen. Without it, `--hx-width-modal` applies       |
-| `resizable`    | `resizable`     | `boolean`                                        | `false` | Makes the corners resize the width and the height with the pointer, or the arrow keys from the bottom right corner |
-| `resizableX`   | `resizable-x`   | `boolean`                                        | `false` | Adds handles on the left and right edges to resize the width with the pointer or the arrow keys                    |
-| `resizableY`   | `resizable-y`   | `boolean`                                        | `false` | Adds handles on the top and bottom edges to resize the height with the pointer or the arrow keys                   |
-| `label`        | `label`         | `string`                                         | `""`    | Accessible name of the dialog when there is no title                                                               |
-| `persistent`   | `persistent`    | `boolean`                                        | `false` | Ignores backdrop clicks                                                                                            |
-| `withoutClose` | `without-close` | `boolean`                                        | `false` | Hides the close button                                                                                             |
-| `open`         | `open`          | `boolean`                                        | `false` | Whether it is open. Setting it directly skips `hx-show` / `hx-hide`                                                |
+| Property       | Attribute       | Type                                             | Default | Description                                                                                                                                                                                                     |
+| -------------- | --------------- | ------------------------------------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `size`         | `size`          | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "full"` | —       | Width, from `xs` 16rem to `xl` 80rem. `full` covers the whole screen. Without it, `--hx-width-modal` applies                                                                                                    |
+| `resizable`    | `resizable`     | `boolean`                                        | `false` | Makes the corners resize the width and the height with the pointer, or the arrow keys from the bottom right corner                                                                                              |
+| `resizableX`   | `resizable-x`   | `boolean`                                        | `false` | Adds handles on the left and right edges to resize the width with the pointer or the arrow keys                                                                                                                 |
+| `resizableY`   | `resizable-y`   | `boolean`                                        | `false` | Adds handles on the top and bottom edges to resize the height with the pointer or the arrow keys                                                                                                                |
+| `movable`      | `movable`       | `boolean`                                        | `false` | Lets the modal be dragged by its empty areas: around the sections, the header (title and description included) and the footer, not the content. It stays within the screen and keeps its position when reopened |
+| `label`        | `label`         | `string`                                         | `""`    | Accessible name of the dialog when there is no title                                                                                                                                                            |
+| `persistent`   | `persistent`    | `boolean`                                        | `false` | Ignores backdrop clicks                                                                                                                                                                                         |
+| `withoutClose` | `without-close` | `boolean`                                        | `false` | Hides the close button                                                                                                                                                                                          |
+| `open`         | `open`          | `boolean`                                        | `false` | Whether it is open. Setting it directly skips `hx-show` / `hx-hide`                                                                                                                                             |
 
 #### Methods
 
@@ -284,6 +318,7 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 
 | Name            | Description                                                                                                                          |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `hx-move`       | The modal was moved, once released. `detail.x` and `detail.y` are its offset from the center in pixels                               |
 | `hx-show`       | The modal is about to open. Cancelable                                                                                               |
 | `hx-after-show` | The modal is open and its enter animation finished                                                                                   |
 | `hx-hide`       | The modal is about to close (Escape, backdrop, close button, `data-close`…). Cancelable                                              |
@@ -305,10 +340,8 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 | `--hx-radius-modal`     | `var(--hx-radius-panel)`  | Border radius                |
 | `--hx-width-modal`      | `36rem`                   | Width                        |
 | `--hx-min-width-modal`  | `16rem`                   | Minimum width when resizing  |
-| `--hx-max-width-modal`  | `calc(100% - 2rem)`       | Maximum width                |
 | `--hx-height-modal`     | `fit-content`             | Height                       |
 | `--hx-min-height-modal` | `10rem`                   | Minimum height when resizing |
-| `--hx-max-height-modal` | `calc(100% - 2rem)`       | Maximum height               |
 
 #### CSS parts
 
