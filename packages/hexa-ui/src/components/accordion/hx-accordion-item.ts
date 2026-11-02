@@ -124,7 +124,7 @@ export class HxAccordionItem extends HxElement {
                     </div>
                 </div>
             </div>
-            <div part="separator" class="${variant.separator} bg-border h-(--hx-border-width)"></div>
+            <div part="separator" class="${variant.separator} border-border border-t"></div>
         </div>`;
     }
 }
