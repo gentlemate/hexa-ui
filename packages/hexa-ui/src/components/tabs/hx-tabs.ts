@@ -1,5 +1,5 @@
 import { css, html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
 import { HxElement } from "../../hx-element.js";
 import type { HxTabPanel } from "./hx-tab-panel.js";
 import type { HxTab } from "./hx-tab.js";
@@ -38,7 +38,7 @@ const directions: Record<HxTabsDirection, { nav: string; body: string }> = {
  * @cssprop [--hx-radius-tabs=calc(var(--hx-radius-tab) + 0.125rem)] - Border radius of the tab list.
  * @cssprop [--hx-radius-tab=var(--hx-radius-control)] - Border radius of each tab.
  * @csspart nav - The tab list.
- * @csspart body - The panels wrapper.
+ * @csspart body - The panels wrapper (not displayed without `hx-tab-panel`).
  */
 @customElement("hx-tabs")
 export class HxTabs extends HxElement {
@@ -58,6 +58,8 @@ export class HxTabs extends HxElement {
     @property() value = "";
     @property({ reflect: true }) variant: HxTabsVariant = "default";
     @property({ reflect: true }) direction: HxTabsDirection = "horizontal";
+
+    @state() private hasPanels = false;
 
     constructor() {
         super();
@@ -129,6 +131,11 @@ export class HxTabs extends HxElement {
         for (const panel of panels) panel.hidden = panel.value !== value;
     }
 
+    private onSlotChange() {
+        this.hasPanels = this.panels.length > 0;
+        this.sync();
+    }
+
     protected override updated() {
         this.sync();
     }
@@ -143,7 +150,9 @@ export class HxTabs extends HxElement {
             >
                 <slot name="nav" @slotchange=${this.sync}></slot>
             </div>
-            <div part="body" class=${direction.body}><slot @slotchange=${this.sync}></slot></div>`;
+            <div part="body" class=${this.hasPanels ? direction.body : "hidden"}>
+                <slot @slotchange=${this.onSlotChange}></slot>
+            </div>`;
     }
 }
 
