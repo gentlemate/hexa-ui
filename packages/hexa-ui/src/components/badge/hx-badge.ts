@@ -22,7 +22,7 @@ const variants: Record<HxBadgeVariant, string> = {
  * @slot - The badge content (text, icon…).
  * @cssprop [--hx-height-badge=1.5rem] - Height.
  * @cssprop [--hx-spacing-badge=0.5rem] - Horizontal padding.
- * @cssprop [--hx-radius-badge=9999px] - Border radius.
+ * @cssprop [--hx-radius-badge=var(--hx-radius-pill)] - Border radius.
  * @csspart base - The inner wrapper.
  * @csspart icon - The `hx-icon` rendered from the `icon` property.
  */

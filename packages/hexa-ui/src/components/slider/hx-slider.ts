@@ -13,7 +13,8 @@ import { HxRangeElement } from "../../hx-range-element.js";
  * @fires change - The value changed, once the thumb is released or from the keyboard.
  * @cssprop [--hx-height-slider=0.5rem] - Height of the track.
  * @cssprop [--hx-size-slider-thumb=1.25rem] - Size of the thumb.
- * @cssprop [--hx-radius-slider=9999px] - Border radius of the track and the thumb.
+ * @cssprop [--hx-radius-slider=var(--hx-radius-pill)] - Border radius of the track.
+ * @cssprop [--hx-radius-slider-thumb=var(--hx-radius-slider)] - Border radius of the thumb.
  * @csspart label - The label.
  * @csspart value - The formatted value.
  * @csspart track - The track.
@@ -171,7 +172,7 @@ export class HxSlider extends HxRangeElement {
                     aria-valuenow=${this.value}
                     aria-valuetext=${this.valueText}
                     aria-disabled=${this.disabled ? "true" : "false"}
-                    class="bg-background border-primary size-slider-thumb focus-visible:ring-ring/50 rounded-slider absolute top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 shadow-sm outline-none focus-visible:ring-[3px]"
+                    class="bg-background border-primary size-slider-thumb focus-visible:ring-ring/50 rounded-slider-thumb absolute top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 shadow-sm outline-none focus-visible:ring-[3px]"
                     style="left: ${percent}%"
                     @keydown=${this.onKeyDown}
                 ></div>

@@ -23,10 +23,8 @@
     --hx-radius-option: 0.25rem;
     --hx-radius-panel: 0.75rem;
     --hx-radius-popup: 0.5rem;
-    --hx-radius-badge: 9999px;
     --hx-radius-checkbox: 0.375rem;
-    --hx-radius-progress: 9999px;
-    --hx-radius-slider: 9999px;
+    --hx-radius-pill: 9999px;
 
     --hx-height-control: 2.5rem;
     --hx-spacing-control: 0.75rem;
@@ -62,7 +60,7 @@
     --hx-spacing-tabs: 0.25rem;
     --hx-spacing-tooltip: 0.75rem;
 
-    --hx-font-sans: "Outfit", system-ui, sans-serif;
+    --hx-font-sans: system-ui, sans-serif;
 
     --hx-text-sm: 0.875rem;
     --hx-leading-sm: calc(1.25 / 0.875);

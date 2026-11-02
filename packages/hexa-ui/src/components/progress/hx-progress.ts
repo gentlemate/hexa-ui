@@ -7,7 +7,7 @@ import { HxRangeElement } from "../../hx-range-element.js";
  * @property indeterminate - The progress is unknown: the bar is animated and no value is displayed.
  * @property indeterminateAlternate - Same as `indeterminate`, but the bar goes back and forth across the track.
  * @cssprop [--hx-height-progress=0.5rem] - Height of the track.
- * @cssprop [--hx-radius-progress=9999px] - Border radius of the track and the fill.
+ * @cssprop [--hx-radius-progress=var(--hx-radius-pill)] - Border radius of the track and the fill.
  * @csspart label - The label.
  * @csspart value - The formatted value.
  * @csspart track - The track.

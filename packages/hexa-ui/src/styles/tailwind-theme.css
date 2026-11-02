@@ -26,7 +26,7 @@
     --radius-panel: var(--hx-radius-panel);
     --radius-popup: var(--hx-radius-popup);
     --radius-accordion: var(--hx-radius-accordion, var(--hx-radius-panel));
-    --radius-badge: var(--hx-radius-badge);
+    --radius-badge: var(--hx-radius-badge, var(--hx-radius-pill));
     --radius-button: var(--hx-radius-button, var(--hx-radius-control));
     --radius-card: var(--hx-radius-card, var(--hx-radius-panel));
     --radius-checkbox: var(--hx-radius-checkbox);
@@ -39,9 +39,12 @@
     --radius-modal: var(--hx-radius-modal, var(--hx-radius-panel));
     --radius-number-field: var(--hx-radius-number-field, var(--hx-radius-field));
     --radius-popover: var(--hx-radius-popover, var(--hx-radius-popup));
-    --radius-progress: var(--hx-radius-progress);
+    --radius-progress: var(--hx-radius-progress, var(--hx-radius-pill));
     --radius-select: var(--hx-radius-select, var(--hx-radius-field));
-    --radius-slider: var(--hx-radius-slider);
+    --radius-slider: var(--hx-radius-slider, var(--hx-radius-pill));
+    --radius-slider-thumb: var(--hx-radius-slider-thumb, var(--radius-slider));
+    --radius-switch: var(--hx-radius-switch, var(--hx-radius-pill));
+    --radius-switch-thumb: var(--hx-radius-switch-thumb, var(--radius-switch));
     --radius-tab: var(--hx-radius-tab, var(--hx-radius-control));
     --radius-tabs: var(--hx-radius-tabs, calc(var(--radius-tab) + 0.125rem));
     --radius-textarea: var(--hx-radius-textarea, var(--hx-radius-field));

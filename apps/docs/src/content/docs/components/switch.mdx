@@ -11,7 +11,7 @@ import Preview from "../../../components/Preview.astro";
 import "hexa-ui/switch";
 ```
 
-<Preview code={`<hx-switch>Notifications</hx-switch>`} />
+<Preview code={`<hx-switch checked>Notifications</hx-switch>`} />
 
 ## Structure
 
@@ -21,9 +21,12 @@ import "hexa-ui/switch";
 
 ## Examples
 
-### Checked
+### States
 
-<Preview code={`<hx-switch checked>Checked</hx-switch>`} />
+<Preview
+    code={`<hx-switch>Default</hx-switch>
+<hx-switch checked>Checked</hx-switch>`}
+/>
 
 ### Disabled
 
@@ -71,10 +74,12 @@ import "hexa-ui/switch";
 
 #### CSS custom properties
 
-| Name                  | Default   | Description                                       |
-| --------------------- | --------- | ------------------------------------------------- |
-| `--hx-size-switch`    | `1.25rem` | Size of the thumb. The track is twice as wide     |
-| `--hx-spacing-switch` | `1px`     | Space between the thumb and the edge of the track |
+| Name                       | Default                   | Description                                       |
+| -------------------------- | ------------------------- | ------------------------------------------------- |
+| `--hx-size-switch`         | `1.25rem`                 | Size of the thumb. The track is twice as wide     |
+| `--hx-spacing-switch`      | `1px`                     | Space between the thumb and the edge of the track |
+| `--hx-radius-switch`       | `var(--hx-radius-pill)`   | Border radius of the track                        |
+| `--hx-radius-switch-thumb` | `var(--hx-radius-switch)` | Border radius of the thumb                        |
 
 #### CSS parts
 

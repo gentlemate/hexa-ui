@@ -11,6 +11,8 @@ import { HxCheckableElement } from "../../hx-checkable-element.js";
  * @fires change - The checked state changed.
  * @cssprop [--hx-size-switch=1.25rem] - Size of the thumb. The track is twice as wide.
  * @cssprop [--hx-spacing-switch=1px] - Space between the thumb and the edge of the track.
+ * @cssprop [--hx-radius-switch=var(--hx-radius-pill)] - Border radius of the track.
+ * @cssprop [--hx-radius-switch-thumb=var(--hx-radius-switch)] - Border radius of the thumb.
  * @csspart control - The track.
  * @csspart thumb - The sliding thumb.
  * @csspart label - The label wrapper.
@@ -27,13 +29,13 @@ export class HxSwitch extends HxCheckableElement {
                 part="control"
                 class="${
                     this.checked ? "bg-primary" : "bg-field"
-                } h-switch w-switch p-switch box-content inline-flex shrink-0 items-center rounded-full border border-transparent shadow-xs transition-colors"
+                } h-switch w-switch p-switch rounded-switch box-content inline-flex shrink-0 items-center border border-transparent shadow-xs transition-colors"
             >
                 <span
                     part="thumb"
                     class="${
                         this.checked ? "translate-x-full" : "translate-x-0"
-                    } bg-background size-switch rounded-full shadow-sm transition-transform"
+                    } bg-background size-switch rounded-switch-thumb shadow-sm transition-transform"
                 ></span>
             </span>
             <span part="label" class="text-foreground leading-none"><slot></slot></span>`;
