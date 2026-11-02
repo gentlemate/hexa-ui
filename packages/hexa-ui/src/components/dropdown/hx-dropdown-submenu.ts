@@ -154,6 +154,7 @@ export class HxDropdownSubmenu extends HxOverlayElement {
         if (!item) {
             if (this.items.some((own) => own.submenu?.open && own.submenu.contains(event.target as Node)))
                 clearTimeout(this.submenuTimer);
+            else this.onPointerLeave();
             return;
         }
         if (item === this.hovered || item.disabled) return;

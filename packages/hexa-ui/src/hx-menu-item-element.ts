@@ -16,9 +16,11 @@ export abstract class HxMenuItemElement extends HxElement {
                 background: var(--hx-accent);
                 color: var(--hx-accent-foreground);
             }
+            :host([disabled]) {
+                pointer-events: none;
+            }
             :host([disabled]) [part="base"] {
                 opacity: 0.5;
-                pointer-events: none;
             }
         `,
     ];
