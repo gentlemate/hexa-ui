@@ -201,6 +201,23 @@ Without `size`, the width is `--hx-width-modal` (36rem, like `md`) and the heigh
 </hx-modal>`}
 />
 
+### Modeless
+
+`modeless` opens the modal without a backdrop: the rest of the page stays interactive and scrollable, and the modal only closes through its close button or its actions.
+
+<Preview
+    code={`<hx-modal modeless>
+    <hx-button slot="trigger">Modeless</hx-button>
+    <hx-modal-header>
+        <hx-modal-title>Modeless</hx-modal-title>
+        <hx-modal-description>The page behind stays usable.</hx-modal-description>
+    </hx-modal-header>
+    <hx-modal-content>
+        <hx-skeleton class="h-32"></hx-skeleton>
+    </hx-modal-content>
+</hx-modal>`}
+/>
+
 ### Scroll
 
 The content scrolls when it overflows.
@@ -305,6 +322,7 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 | `label`        | `label`         | `string`                                         | `""`    | Accessible name of the dialog when there is no title                                                                                                                                                            |
 | `persistent`   | `persistent`    | `boolean`                                        | `false` | Ignores backdrop clicks                                                                                                                                                                                         |
 | `withoutClose` | `without-close` | `boolean`                                        | `false` | Hides the close button                                                                                                                                                                                          |
+| `modeless`     | `modeless`      | `boolean`                                        | `false` | Opens without a backdrop and keeps the rest of the page interactive and scrollable                                                                                                                              |
 | `open`         | `open`          | `boolean`                                        | `false` | Whether it is open. Setting it directly skips `hx-show` / `hx-hide`                                                                                                                                             |
 
 #### Methods

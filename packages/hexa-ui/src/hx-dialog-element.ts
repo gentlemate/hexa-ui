@@ -53,6 +53,7 @@ function releaseScrollLock() {
  * @property label - Accessible name of the dialog when there is no title.
  * @property persistent - Ignores backdrop clicks.
  * @property withoutClose - Hides the close button.
+ * @property modeless - Opens without a backdrop and keeps the rest of the page interactive and scrollable.
  */
 export abstract class HxDialogElement extends HxOverlayElement {
     static override styles = [
@@ -67,6 +68,7 @@ export abstract class HxDialogElement extends HxOverlayElement {
     @property() label = "";
     @property({ type: Boolean, reflect: true }) persistent = false;
     @property({ type: Boolean, reflect: true, attribute: "without-close" }) withoutClose = false;
+    @property({ type: Boolean, reflect: true }) modeless = false;
 
     @query("dialog") protected overlay!: HTMLDialogElement;
 
@@ -283,8 +285,11 @@ export abstract class HxDialogElement extends HxOverlayElement {
 
     protected override present() {
         this.syncLabels();
-        if (!this.overlay.open) this.overlay.showModal();
-        this.lockScroll(true);
+        if (!this.overlay.open) {
+            if (this.modeless) this.overlay.show();
+            else this.overlay.showModal();
+        }
+        this.lockScroll(!this.modeless);
     }
 
     protected override dismiss() {
@@ -353,7 +358,7 @@ export abstract class HxDialogElement extends HxOverlayElement {
                 part="base"
                 data-state=${this.open ? "open" : "closed"}
                 aria-label=${this.label || nothing}
-                class="${this.dialogClass} ${top} ${this.hasFooter ? "" : "pb-(--panel-spacing)"} ${
+                class="${this.dialogClass} ${this.modeless ? "fixed inset-0 z-50" : ""} ${top} ${this.hasFooter ? "" : "pb-(--panel-spacing)"} ${
                     this.withoutClose ? "[--panel-header-end:0px]" : "[--panel-header-end:1.75rem]"
                 } bg-surface text-surface-foreground border-border animate-in data-[state=closed]:animate-out backdrop:animate-in backdrop:fade-in-0 data-[state=closed]:backdrop:animate-out data-[state=closed]:backdrop:fade-out-0 flex-col overflow-hidden p-0 shadow-lg outline-none [--panel-footer-justify:flex-end] [--panel-radius:0px] backdrop:bg-black/50 open:flex"
                 @pointerdown=${this.onPointerDown}
