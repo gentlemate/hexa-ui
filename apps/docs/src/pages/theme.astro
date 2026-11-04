@@ -1,0 +1,31 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { getCollection } from "astro:content";
+import Preview from "../components/Preview.astro";
+
+const pages = await getCollection("docs", ({ id }) => id.startsWith("components/") && id !== "components/label");
+
+const examples = pages
+    .sort((a, b) => a.data.title.localeCompare(b.data.title))
+    .flatMap((page) => {
+        const match = page.body?.match(/<Preview\b([\s\S]*?)code=\{`([\s\S]*?)`\}([\s\S]*?)\/>/);
+        if (!match) return [];
+        const [, before, code, after] = match;
+        return [{ title: page.data.title, href: `/${page.id}/`, code, stack: /\bstack\b/.test(before + after) }];
+    });
+---
+
+<StarlightPage
+    frontmatter={{ title: "Theme builder", description: "Customize the design tokens and see every component." }}
+>
+    <div class="not-content flex flex-col gap-6">
+        {examples.map(({ title, href, code, stack }) => (
+            <section class="flex flex-col gap-2">
+                <a href={href} class="font-medium text-(--sl-color-white) no-underline hover:underline">
+                    {title}
+                </a>
+                <Preview bare stack={stack} code={code} />
+            </section>
+        ))}
+    </div>
+</StarlightPage>

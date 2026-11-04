@@ -1,0 +1,322 @@
+---
+import css from "hexa-ui/theme.css?raw";
+import { parseTheme } from "../theme";
+
+const defaults = parseTheme(css);
+
+const colors = Object.keys(defaults.dark);
+const radii: Record<string, number> = {
+    "--hx-radius-control": 2,
+    "--hx-radius-field": 2,
+    "--hx-radius-option": 2,
+    "--hx-radius-panel": 2,
+    "--hx-radius-popup": 2,
+    "--hx-radius-checkbox": 1,
+    "--hx-radius-pill": 1,
+};
+const sizes: Record<string, [min: number, max: number, step?: number]> = {
+    "--hx-height-control": [1.5, 4],
+    "--hx-spacing-control": [0.25, 4],
+    "--hx-height-field": [1.5, 4],
+    "--hx-spacing-field": [0.25, 2],
+    "--hx-height-option": [1.25, 3],
+    "--hx-spacing-option": [0.125, 1.5, 0.125],
+    "--hx-spacing-panel": [0.5, 3],
+    "--hx-spacing-popup": [0, 1],
+};
+const fonts: Record<string, { fallback: string; names: string[] }> = {
+    Sans: {
+        fallback: "sans-serif",
+        names: ["Inter", "Open Sans", "Outfit", "Oxanium", "Quicksand", "Raleway", "Rubik", "Space Grotesk"],
+    },
+    Mono: { fallback: "monospace", names: ["JetBrains Mono"] },
+    Serif: { fallback: "serif", names: ["Lora", "Playfair Display", "Roboto Slab"] },
+};
+
+function familyOf(name: string, fallback: string) {
+    return `'${name} Variable', ${fallback}`;
+}
+
+function labelOf(token: string) {
+    const words = token.replace("--hx-", "").split("-");
+    if (words[0] === "height" || words[0] === "spacing") words.push(words.shift()!);
+    if (words[0] === "radius") words.shift();
+    const label = words.join(" ");
+    return label[0].toUpperCase() + label.slice(1);
+}
+
+function remOf(token: string) {
+    return parseFloat(defaults.light[token]);
+}
+---
+
+<div class="theme-editor group font-sans">
+    <div class="flex flex-col gap-4 group-data-ready:hidden" aria-hidden="true">
+        <div class="flex justify-between gap-2">
+            <div class="bg-accent rounded-control h-10 w-32 animate-pulse motion-reduce:animate-none"></div>
+            <div class="bg-accent rounded-control size-10 animate-pulse motion-reduce:animate-none"></div>
+        </div>
+        {Array.from({ length: 4 }, () => (
+            <div class="bg-accent rounded-control h-12 animate-pulse motion-reduce:animate-none" />
+        ))}
+    </div>
+    <div class="hidden flex-col gap-4 group-data-ready:flex">
+        <div class="flex items-center justify-between gap-2">
+            <hx-tabs class="theme-editor-mode" value="light">
+                <hx-tab value="light">Light</hx-tab>
+                <hx-tab value="dark">Dark</hx-tab>
+            </hx-tabs>
+            <hx-dropdown class="theme-editor-actions">
+                <hx-button slot="trigger" square variant="outline" title="Actions">
+                    <hx-icon data-icon="Ellipsis" label="Actions"></hx-icon>
+                </hx-button>
+                <hx-dropdown-item value="copy" data-icon="Copy">
+                    Copy CSS
+                </hx-dropdown-item>
+                <hx-dropdown-item value="download" data-icon="Download">
+                    Download theme.css
+                </hx-dropdown-item>
+                <hx-dropdown-separator></hx-dropdown-separator>
+                <hx-dropdown-item value="reset" variant="destructive" data-icon="RotateCcw">
+                    Reset
+                </hx-dropdown-item>
+            </hx-dropdown>
+        </div>
+
+        <hx-accordion collapsible>
+            <hx-accordion-item value="colors">
+                <span slot="title">Colors</span>
+                <div class="flex flex-col gap-3">
+                    {colors.map((token) => (
+                        <div class="flex items-end gap-2" data-color={token}>
+                            <label
+                                class="rounded-field border-border relative size-(--hx-height-field) shrink-0 cursor-pointer border"
+                                style={`background: var(${token})`}
+                                title={`Pick ${labelOf(token).toLowerCase()}`}
+                            >
+                                <input type="color" class="sr-only" />
+                            </label>
+                            <hx-input class="grow" label={labelOf(token)} value={defaults.light[token]} />
+                        </div>
+                    ))}
+                </div>
+            </hx-accordion-item>
+
+            <hx-accordion-item value="radius">
+                <span slot="title">Radius</span>
+                <div class="flex flex-col gap-4">
+                    {Object.entries(radii).map(([token, max]) => (
+                        <hx-slider
+                            data-token={token}
+                            data-unit="rem"
+                            label={`${labelOf(token)} (rem)`}
+                            min="0"
+                            max={max}
+                            step="0.125"
+                            value={Math.min(remOf(token), max)}
+                        />
+                    ))}
+                </div>
+            </hx-accordion-item>
+
+            <hx-accordion-item value="sizes">
+                <span slot="title">Sizes and spacing</span>
+                <div class="flex flex-col gap-4">
+                    {Object.entries(sizes).map(([token, [min, max, step = 0.25]]) => (
+                        <hx-slider
+                            data-token={token}
+                            data-unit="rem"
+                            label={`${labelOf(token)} (rem)`}
+                            min={min}
+                            max={max}
+                            step={step}
+                            value={remOf(token)}
+                        />
+                    ))}
+                    <hx-slider
+                        data-token="--hx-border-width"
+                        data-unit="px"
+                        label="Border width (px)"
+                        min="0"
+                        max="3"
+                        step="1"
+                        value={parseFloat(defaults.light["--hx-border-width"])}
+                    />
+                </div>
+            </hx-accordion-item>
+
+            <hx-accordion-item value="typography">
+                <span slot="title">Typography</span>
+                <div class="flex flex-col gap-3">
+                    <hx-select class="theme-editor-font-size" label="Font size">
+                        <hx-select-option value="small">Small</hx-select-option>
+                        <hx-select-option value="medium">Medium</hx-select-option>
+                        <hx-select-option value="large">Large</hx-select-option>
+                    </hx-select>
+                    <hx-select data-token="--hx-font-sans" label="Font family" value={defaults.light["--hx-font-sans"]}>
+                        <hx-select-option value={defaults.light["--hx-font-sans"]}>System UI</hx-select-option>
+                        {Object.entries(fonts).map(([group, { fallback, names }]) => (
+                            <hx-select-group label={group}>
+                                {names.map((name) => (
+                                    <hx-select-option
+                                        value={familyOf(name, fallback)}
+                                        style={`font-family: ${familyOf(name, fallback)}`}
+                                    >
+                                        {name}
+                                    </hx-select-option>
+                                ))}
+                            </hx-select-group>
+                        ))}
+                    </hx-select>
+                </div>
+            </hx-accordion-item>
+        </hx-accordion>
+    </div>
+</div>
+
+<script>
+    import "hexa-ui";
+    import { toggleColorMode } from "hexa-ui/color-mode";
+    import css from "hexa-ui/theme.css?raw";
+    import { icons } from "lucide";
+    import { parseTheme, themeStorageKey, themeToCss, type Theme, type ThemeMode } from "../theme";
+
+    const defaults = parseTheme(css);
+    const editors = [...document.querySelectorAll<HTMLElement>(".theme-editor")];
+    const context = document.createElement("canvas").getContext("2d", { willReadFrequently: true })!;
+    const fontSizeTokens = ["sm", "base", "lg"].flatMap((size) => [`--hx-text-${size}`, `--hx-leading-${size}`]);
+    const fontSizes: Record<string, string[]> = {
+        small: ["0.75rem", "calc(1 / 0.75)", "0.875rem", "calc(1.25 / 0.875)", "1rem", "calc(1.5 / 1)"],
+        medium: fontSizeTokens.map((token) => defaults.light[token]),
+        large: ["1rem", "calc(1.5 / 1)", "1.125rem", "calc(1.75 / 1.125)", "1.25rem", "calc(1.75 / 1.25)"],
+    };
+
+    let theme: Theme = { light: {}, dark: {} };
+    try {
+        theme = parseTheme(localStorage.getItem(themeStorageKey) ?? "");
+    } catch {}
+
+    function currentMode(): ThemeMode {
+        return document.documentElement.classList.contains("dark") ? "dark" : "light";
+    }
+
+    function valueOf(mode: ThemeMode, token: string) {
+        return theme[mode][token] ?? defaults[mode][token] ?? defaults.light[token];
+    }
+
+    function hexOf(color: string) {
+        context.clearRect(0, 0, 1, 1);
+        context.fillStyle = "#000";
+        context.fillStyle = color;
+        context.fillRect(0, 0, 1, 1);
+        const [r, g, b] = context.getImageData(0, 0, 1, 1).data;
+        return `#${[r, g, b].map((channel) => channel.toString(16).padStart(2, "0")).join("")}`;
+    }
+
+    function setColor(token: string, value: string) {
+        const mode = currentMode();
+        const other = mode === "light" ? "dark" : "light";
+        theme[other][token] ??= valueOf(other, token);
+        theme[mode][token] = value;
+        apply();
+    }
+
+    function setTokens(tokens: Record<string, string>) {
+        for (const [token, value] of Object.entries(tokens)) {
+            if (value === defaults.light[token]) delete theme.light[token];
+            else theme.light[token] = value;
+        }
+        apply();
+    }
+
+    function apply() {
+        const css = themeToCss(theme);
+        document.getElementById("hx-docs-theme")!.textContent = css;
+        try {
+            if (css) localStorage.setItem(themeStorageKey, css);
+            else localStorage.removeItem(themeStorageKey);
+        } catch {}
+        editors.forEach(sync);
+    }
+
+    function sync(editor: HTMLElement) {
+        const mode = currentMode();
+        editor.querySelector<HTMLElement & { value: string }>(".theme-editor-mode")!.value = mode;
+        for (const row of editor.querySelectorAll<HTMLElement>("[data-color]")) {
+            const value = valueOf(mode, row.dataset.color!);
+            row.querySelector<HTMLElement & { value: string }>("hx-input")!.value = value;
+            row.querySelector<HTMLInputElement>("input[type=color]")!.value = hexOf(value);
+        }
+        for (const control of editor.querySelectorAll<HTMLElement & { value: unknown; max: number }>("[data-token]")) {
+            const value = valueOf("light", control.dataset.token!.split(" ")[0]);
+            control.value = control.dataset.unit ? Math.min(parseFloat(value), control.max) : value;
+        }
+        const fontSize = valueOf("light", "--hx-text-base");
+        editor.querySelector<HTMLElement & { value: string }>(".theme-editor-font-size")!.value =
+            Object.keys(fontSizes).find((name) => fontSizes[name][2] === fontSize) ?? "";
+        const empty = !themeToCss(theme);
+        for (const item of editor.querySelectorAll<HTMLElement & { disabled: boolean }>(
+            ".theme-editor-actions :is([value=copy], [value=download])",
+        )) {
+            item.disabled = empty;
+        }
+    }
+
+    function download() {
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(new Blob([themeToCss(theme)], { type: "text/css" }));
+        link.download = "theme.css";
+        link.click();
+        URL.revokeObjectURL(link.href);
+    }
+
+    for (const editor of editors) {
+        editor.querySelector(".theme-editor-mode")!.addEventListener("hx-tab-change", (event) => {
+            if ((event as CustomEvent<{ value: ThemeMode }>).detail.value !== currentMode()) toggleColorMode();
+        });
+
+        for (const row of editor.querySelectorAll<HTMLElement>("[data-color]")) {
+            const token = row.dataset.color!;
+            const input = row.querySelector<HTMLElement & { value: string }>("hx-input")!;
+            const picker = row.querySelector<HTMLInputElement>("input[type=color]")!;
+            picker.addEventListener("input", () => setColor(token, picker.value));
+            input.addEventListener("change", () => setColor(token, input.value));
+        }
+
+        for (const control of editor.querySelectorAll<HTMLElement & { value: unknown }>("[data-token]")) {
+            const unit = control.dataset.unit;
+            control.addEventListener(unit ? "input" : "change", () => {
+                const value = unit ? `${control.value}${unit}` : String(control.value);
+                setTokens(Object.fromEntries(control.dataset.token!.split(" ").map((token) => [token, value])));
+            });
+        }
+
+        const fontSize = editor.querySelector<HTMLElement & { value: string }>(".theme-editor-font-size")!;
+        fontSize.addEventListener("change", () => {
+            const values = fontSizes[fontSize.value];
+            setTokens(Object.fromEntries(fontSizeTokens.map((token, index) => [token, values[index]])));
+        });
+
+        for (const element of editor.querySelectorAll<HTMLElement & { icon?: unknown }>("[data-icon]")) {
+            element.icon = icons[element.dataset.icon as keyof typeof icons];
+        }
+
+        editor.querySelector(".theme-editor-actions")!.addEventListener("hx-select", (event) => {
+            const { value } = (event as CustomEvent<{ value: string }>).detail;
+            if (value === "copy") navigator.clipboard.writeText(themeToCss(theme));
+            else if (value === "download") download();
+            else if (value === "reset") {
+                theme = { light: {}, dark: {} };
+                apply();
+            }
+        });
+
+        sync(editor);
+        editor.dataset.ready = "";
+    }
+
+    new MutationObserver(() => editors.forEach(sync)).observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class"],
+    });
+</script>

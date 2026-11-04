@@ -4,9 +4,10 @@ import { Code } from "@astrojs/starlight/components";
 interface Props {
     code: string;
     stack?: boolean;
+    bare?: boolean;
 }
 
-const { code, stack = false } = Astro.props;
+const { code, stack = false, bare = false } = Astro.props;
 
 const iconPattern = /data-icon="(\w+)"/g;
 const icons = [...new Set([...code.matchAll(iconPattern)].map(([, name]) => name))].sort();
@@ -23,8 +24,17 @@ const maxLines = 10;
 const collapsible = source.split("\n").length > maxLines + 5;
 ---
 
-<div class="preview not-content bg-background text-foreground group relative rounded-[0.5rem] border border-(--sl-color-gray-5) font-sans">
-    <hx-color-mode-button class="absolute top-2 right-2 opacity-0 transition-opacity group-hover:opacity-100"></hx-color-mode-button>
+<div class="preview not-content bg-background text-foreground group relative rounded-[0.5rem] border-[1px] border-(--sl-color-gray-5) font-sans">
+    {!bare && (
+        <hx-button
+            square
+            variant="ghost"
+            title="Customize theme"
+            class="preview-theme absolute top-2 right-2 opacity-0 transition-opacity group-hover:opacity-100"
+        >
+            <hx-icon data-icon="Palette" size="20" label="Customize theme" />
+        </hx-button>
+    )}
     <div class="bg-accent absolute -inset-px animate-pulse rounded-[inherit] group-data-ready:hidden motion-reduce:animate-none"></div>
     <div
         class:list={[
@@ -34,27 +44,30 @@ const collapsible = source.split("\n").length > maxLines + 5;
         set:html={code}
     />
 </div>
-<div
-    class:list={[
-        "preview-code not-content group relative",
-        collapsible &&
-            "[&_pre]:pb-14 data-collapsed:[&_pre]:max-h-[calc(var(--max-lines)*var(--ec-codeFontSize)*var(--ec-codeLineHt)+2*var(--ec-codePadBlk))] data-collapsed:[&_pre]:overflow-y-hidden data-collapsed:[&_pre]:pb-0",
-    ]}
-    style={`--max-lines: ${maxLines}`}
-    data-collapsed={collapsible || undefined}
->
-    <Code code={source} lang={icons.length ? "js" : "html"} />
-    {collapsible && (
-        <div class="group-data-collapsed:from-(--ec-frm-edBg) absolute inset-x-px bottom-px flex justify-center pb-3 group-data-collapsed:bg-linear-to-t group-data-collapsed:pt-16">
-            <hx-button class="preview-code-toggle [--hx-primary-foreground:var(--sl-color-black)] [--hx-primary:var(--sl-color-text-accent)]">
-                Expand code
-            </hx-button>
-        </div>
-    )}
-</div>
+{!bare && (
+    <div
+        class:list={[
+            "preview-code not-content group relative",
+            collapsible &&
+                "[&_pre]:pb-14 data-collapsed:[&_pre]:max-h-[calc(var(--max-lines)*var(--ec-codeFontSize)*var(--ec-codeLineHt)+2*var(--ec-codePadBlk))] data-collapsed:[&_pre]:overflow-y-hidden data-collapsed:[&_pre]:pb-0",
+        ]}
+        style={`--max-lines: ${maxLines}`}
+        data-collapsed={collapsible || undefined}
+    >
+        <Code code={source} lang={icons.length ? "js" : "html"} />
+        {collapsible && (
+            <div class="group-data-collapsed:from-(--ec-frm-edBg) absolute inset-x-px bottom-px flex justify-center pb-3 group-data-collapsed:bg-linear-to-t group-data-collapsed:pt-16">
+                <hx-button class="preview-code-toggle [--hx-primary-foreground:var(--sl-color-black)] [--hx-primary:var(--sl-color-text-accent)]">
+                    Expand code
+                </hx-button>
+            </div>
+        )}
+    </div>
+)}
 
 <script>
     import "hexa-ui";
+    import type { HxDrawer } from "hexa-ui";
     import { icons } from "lucide";
 
     for (const element of document.querySelectorAll<HTMLElement & { icon?: unknown }>(".preview [data-icon]")) {
@@ -63,6 +76,10 @@ const collapsible = source.split("\n").length > maxLines + 5;
 
     for (const preview of document.querySelectorAll<HTMLElement>(".preview")) {
         preview.dataset.ready = "";
+    }
+
+    for (const button of document.querySelectorAll<HTMLElement>(".preview-theme")) {
+        button.addEventListener("click", () => document.querySelector<HxDrawer>("#theme-drawer")!.show());
     }
 
     for (const toggle of document.querySelectorAll<HTMLElement>(".preview-code-toggle")) {

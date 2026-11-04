@@ -1,6 +1,17 @@
 @layer base, starlight, theme, components, utilities;
 
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource-variable/lora";
+@import "@fontsource-variable/open-sans";
 @import "@fontsource-variable/outfit";
+@import "@fontsource-variable/oxanium";
+@import "@fontsource-variable/playfair-display";
+@import "@fontsource-variable/quicksand";
+@import "@fontsource-variable/raleway";
+@import "@fontsource-variable/roboto-slab";
+@import "@fontsource-variable/rubik";
+@import "@fontsource-variable/space-grotesk";
 @import "hexa-ui/theme.css";
 @import "@astrojs/starlight-tailwind";
 @import "tailwindcss/theme.css" layer(theme);
@@ -8,16 +19,16 @@
 @import "../../../../packages/hexa-ui/src/styles/tailwind-theme.css";
 
 :root {
-    --hx-font-sans: "Outfit Variable", system-ui, sans-serif;
-    --sl-color-accent-low: oklch(0.205 0 0);
-    --sl-color-accent: oklch(0.922 0 0);
-    --sl-color-accent-high: oklch(0.922 0 0);
+    --sl-font: "Outfit Variable", system-ui, sans-serif;
+    --sl-color-accent-low: var(--hx-primary-foreground);
+    --sl-color-accent: var(--hx-primary);
+    --sl-color-accent-high: var(--hx-primary);
 }
 
 :root[data-theme="light"] {
-    --sl-color-accent-low: oklch(0.97 0 0);
-    --sl-color-accent: oklch(0.205 0 0);
-    --sl-color-accent-high: oklch(0.145 0 0);
+    --sl-color-accent-low: var(--hx-accent);
+    --sl-color-accent: var(--hx-primary);
+    --sl-color-accent-high: var(--hx-foreground);
 }
 
 .sl-markdown-content kbd:not(:where(.not-content *)) {

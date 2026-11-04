@@ -200,7 +200,40 @@ importers:
       '@astrojs/starlight-tailwind':
         specifier: ^5.0.0
         version: 5.0.0(@astrojs/starlight@0.42.7(astro@7.4.2(@types/node@24.19.2)(jiti@2.7.0)(yaml@2.9.1))(typescript@7.0.2))(tailwindcss@4.3.3)
+      '@fontsource-variable/inter':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/jetbrains-mono':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/lora':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/open-sans':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@fontsource-variable/outfit':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/oxanium':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/playfair-display':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/quicksand':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/raleway':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/roboto-slab':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/rubik':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/space-grotesk':
         specifier: ^5.3.0
         version: 5.3.0
       '@tailwindcss/vite':
@@ -503,8 +536,41 @@ packages:
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
 
+  '@fontsource-variable/inter@5.3.0':
+    resolution: {integrity: sha512-OupL48va4JNofb97w6NYeF9S7W/kHNKM0Er8Dem5nqi4jeOLrVJDoE8tZEpnMJmtkvNbB1EIPPwHcdkF6b1oUA==}
+
+  '@fontsource-variable/jetbrains-mono@5.3.0':
+    resolution: {integrity: sha512-F32xpS2NsGYoQi2ADSkKTgpJj7ozajsGgDJ8woTnqjmIB+dxDIqImjl4pXZVEExu8UFZ2ndhmX18EBS/hdz3Lw==}
+
+  '@fontsource-variable/lora@5.3.0':
+    resolution: {integrity: sha512-2ph8KiZ8Bn141hWuC3ErtpJ+Ui8p2MJQn8TJNRSRmLmnCIOCtHfiBM9R7WLRPeUG/q6hXyHOxWQ8DvRSX+ixvQ==}
+
+  '@fontsource-variable/open-sans@5.3.0':
+    resolution: {integrity: sha512-VOfhZfLIOBVa6K/dTEu7scqQXYdGa4jBX8quFpQ0S6574B+W2EOBJf9PkqyVtMEI7WWIWNEbpvPc3vY1mN2mmQ==}
+
   '@fontsource-variable/outfit@5.3.0':
     resolution: {integrity: sha512-fPb5XnYK0k7SbR++HEmm4+ZqDszmLKQ+sPRUr8oQ/KNC0vy6r6hazJFe8iYozv4cqlHbvJ/JECkJWrfDodUMVQ==}
+
+  '@fontsource-variable/oxanium@5.3.0':
+    resolution: {integrity: sha512-oVOH5mHRMDLQsxG6h2XAOCxyD+uQL2w5zAjy1FgnAlqt183JDVGPxy9FWK7dDnhEO8huXfP6V2C3QJUj1Ac/Sw==}
+
+  '@fontsource-variable/playfair-display@5.3.0':
+    resolution: {integrity: sha512-IHdzTvE8eGIXHteZql7KXoqdc3Gfm+Zs1u4XlSC3MeplkwviT3sx/P6gI0tLwg/xIYLF4ZJYveZ5V+bl9cnDwA==}
+
+  '@fontsource-variable/quicksand@5.3.0':
+    resolution: {integrity: sha512-EMyoXnGC0uIbjyHDB01MTJoQuODsMo7Q/4XLEwN97YJEeV1WIVFI0QBiW2exGnxvhnMHb+IwQ9E5QZDgGMWCHw==}
+
+  '@fontsource-variable/raleway@5.3.0':
+    resolution: {integrity: sha512-aSV2k+V6Zz+od0dHpBOzkVxEzmgEdiXcxDfant39jLOx+T89dielQRrZylukwK3Fp+FY255gPqz67ruOfs1rqA==}
+
+  '@fontsource-variable/roboto-slab@5.3.0':
+    resolution: {integrity: sha512-eByKAjLM9td0qsXCOZhlUGfhsjen//epd6/cAJOg+o73RtYBijrI1jz+lTp2X0ebwTCLmKB1+Kt/QiRMgmNPTw==}
+
+  '@fontsource-variable/rubik@5.3.0':
+    resolution: {integrity: sha512-yQUf8qle24MJYA+EuauyF+cqjjN6I715nGjitt3sGmwZA0XfA4fWJcLq1C/diREZl4Qzn1E80nLMc0ipC/a4Lg==}
+
+  '@fontsource-variable/space-grotesk@5.3.0':
+    resolution: {integrity: sha512-2IxmvfB08i9vnGB3Ym/AXvhRE+8XOjWMXIyDum03c+tPwH0FUoMNQfGpU8NXPxjbws0Vvss3AH0Zqt4oJBBAdw==}
 
   '@github/catalyst@1.8.1':
     resolution: {integrity: sha512-dnN4WWpbeuQvA17LvsGdlXEueJdBk9y+I+WO5pdNpoHNOXPsFcz3hJrq1iRmdsNgQOf4S8e83axtwIxvG62eWA==}
@@ -2866,7 +2932,29 @@ snapshots:
 
   '@floating-ui/utils@0.2.12': {}
 
+  '@fontsource-variable/inter@5.3.0': {}
+
+  '@fontsource-variable/jetbrains-mono@5.3.0': {}
+
+  '@fontsource-variable/lora@5.3.0': {}
+
+  '@fontsource-variable/open-sans@5.3.0': {}
+
   '@fontsource-variable/outfit@5.3.0': {}
+
+  '@fontsource-variable/oxanium@5.3.0': {}
+
+  '@fontsource-variable/playfair-display@5.3.0': {}
+
+  '@fontsource-variable/quicksand@5.3.0': {}
+
+  '@fontsource-variable/raleway@5.3.0': {}
+
+  '@fontsource-variable/roboto-slab@5.3.0': {}
+
+  '@fontsource-variable/rubik@5.3.0': {}
+
+  '@fontsource-variable/space-grotesk@5.3.0': {}
 
   '@github/catalyst@1.8.1': {}
 

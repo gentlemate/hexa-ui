@@ -1,0 +1,36 @@
+---
+import Default from "@astrojs/starlight/components/PageSidebar.astro";
+import ThemeEditor from "./ThemeEditor.astro";
+---
+
+{Astro.locals.starlightRoute.id === "theme" ? (
+    <>
+        <nav class="fixed inset-x-0 top-[calc(var(--sl-nav-height)-1px)] z-(--sl-z-index-toc) flex h-(--sl-mobile-toc-height) items-center border-t border-b border-t-(--sl-color-gray-5) border-b-(--sl-color-hairline-shade) bg-(--sl-color-bg-nav) px-4 min-[50rem]:start-[var(--sl-content-inline-start,0)] min-[72rem]:hidden">
+            <button
+                type="button"
+                class="theme-builder-open cursor-pointer rounded-[0.5rem] border border-(--sl-color-gray-5) bg-(--sl-color-black) px-3 py-2 text-(length:--sl-text-xs) leading-none hover:border-(--sl-color-gray-2) hover:text-(--sl-color-white)"
+            >
+                Customize theme
+            </button>
+        </nav>
+        <div class="theme-builder-sidebar hidden w-[calc(100cqw-1px)] px-(--sl-sidebar-pad-x) py-4 min-[72rem]:block">
+            <ThemeEditor />
+        </div>
+    </>
+) : (
+    <Default />
+)}
+
+<style>
+    :global(.right-sidebar-container:has(.theme-builder-sidebar)) {
+        container-type: inline-size;
+    }
+</style>
+
+<script>
+    import type { HxDrawer } from "hexa-ui";
+
+    document.querySelector(".theme-builder-open")?.addEventListener("click", () => {
+        document.querySelector<HxDrawer>("#theme-drawer")!.show();
+    });
+</script>

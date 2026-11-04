@@ -11,7 +11,17 @@ import Preview from "../../../components/Preview.astro";
 import "hexa-ui/skeleton";
 ```
 
-<Preview stack code={`<hx-skeleton class="h-32"></hx-skeleton>`} />
+<Preview
+    stack
+    code={`<div class="flex items-center gap-4">
+    <hx-skeleton circle class="size-12"></hx-skeleton>
+    <div class="flex flex-1 flex-col gap-2">
+        <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+        <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+    </div>
+</div>
+<hx-skeleton class="h-16"></hx-skeleton>`}
+/>
 
 ## Structure
 
