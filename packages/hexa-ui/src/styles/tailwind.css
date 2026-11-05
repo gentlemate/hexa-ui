@@ -3,6 +3,16 @@
 @import "tw-animate-css";
 @import "./tailwind-theme.css";
 
+@utility bg-checkerboard {
+    background: repeating-conic-gradient(#ccc 0 25%, #fff 0 50%) 0 0 / 0.5rem 0.5rem padding-box;
+}
+
+@utility bg-swatch {
+    background:
+        linear-gradient(var(--swatch-color), var(--swatch-color)) border-box,
+        repeating-conic-gradient(#ccc 0 25%, #fff 0 50%) 0 0 / 0.5rem 0.5rem padding-box;
+}
+
 @layer base {
     :host {
         font-size: var(--hx-text-base);

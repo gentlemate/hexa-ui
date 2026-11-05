@@ -38,6 +38,12 @@
     --hx-height-badge: 1.5rem;
     --hx-spacing-badge: 0.5rem;
     --hx-size-calendar-day: 2.25rem;
+    --hx-height-color-area: 10rem;
+    --hx-width-color-popup: 16rem;
+    --hx-spacing-color-popup: 0.75rem;
+    --hx-height-color-slider: 0.75rem;
+    --hx-size-color-swatch: 1.25rem;
+    --hx-size-color-thumb: 1.25rem;
     --hx-size-checkbox: 1.25rem;
     --hx-width-drawer: 36rem;
     --hx-min-width-drawer: 16rem;

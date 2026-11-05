@@ -123,6 +123,14 @@
             "types": "./dist/components/range-calendar/index.d.ts",
             "import": "./dist/range-calendar.js"
         },
+        "./color-field": {
+            "types": "./dist/components/color-field/index.d.ts",
+            "import": "./dist/color-field.js"
+        },
+        "./color-picker": {
+            "types": "./dist/components/color-picker/index.d.ts",
+            "import": "./dist/color-picker.js"
+        },
         "./date-picker": {
             "types": "./dist/components/date-picker/index.d.ts",
             "import": "./dist/date-picker.js"

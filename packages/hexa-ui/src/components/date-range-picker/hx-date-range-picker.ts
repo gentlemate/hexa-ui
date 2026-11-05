@@ -2,7 +2,7 @@ import type { Placement } from "@floating-ui/dom";
 import { html, type PropertyValues } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { parseDate } from "../../date.js";
-import { HxPickerElement, type HxDateStyle } from "../../hx-picker-element.js";
+import { HxDatePickerElement, type HxDateStyle } from "../../hx-date-picker-element.js";
 import "../range-calendar/hx-range-calendar.js";
 import type { HxRangeCalendar } from "../range-calendar/hx-range-calendar.js";
 
@@ -33,7 +33,7 @@ export type HxDateRangePickerDateStyle = HxDateStyle;
  * @csspart calendar - The `hx-range-calendar`.
  */
 @customElement("hx-date-range-picker")
-export class HxDateRangePicker extends HxPickerElement {
+export class HxDateRangePicker extends HxDatePickerElement {
     @property({ attribute: "start-name", reflect: true }) startName = "";
     @property({ attribute: "end-name", reflect: true }) endName = "";
     @property() start = "";

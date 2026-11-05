@@ -1,0 +1,114 @@
+---
+title: Color field
+description: A color typed as text, with a preview swatch.
+---
+
+import Preview from "../../../components/Preview.astro";
+
+## Import
+
+```js
+import "hexa-ui/color-field";
+```
+
+<Preview stack code={`<hx-color-field label="Brand" value="#2b7fff"></hx-color-field>`} />
+
+## Structure
+
+```html
+<hx-color-field></hx-color-field>
+```
+
+## Examples
+
+### Hint and error
+
+<Preview
+    stack
+    code={`<hx-color-field label="Brand" placeholder="#000000" hint="Hex, rgb(), hsl() or oklch()."></hx-color-field>
+<hx-color-field label="Destructive" value="#fb2c36" error="This color is not accessible."></hx-color-field>`}
+/>
+
+### Format
+
+The field accepts hex, `rgb()`, `hsl()` and `oklch()` colors, whatever its `format`. Once the user edits it, the color is converted to `format`: `hex` (default), `rgb`, `hsl` or `oklch`. Try typing `rgb(43 127 255)` in these fields.
+
+<Preview
+    stack
+    code={`<hx-color-field label="HEX" value="#2b7fff"></hx-color-field>
+<hx-color-field label="RGB" format="rgb" value="rgb(43 127 255)"></hx-color-field>
+<hx-color-field label="HSL" format="hsl" value="hsl(216 100% 58%)"></hx-color-field>
+<hx-color-field label="OKLCH" format="oklch" value="oklch(0.623 0.214 259.815)"></hx-color-field>`}
+/>
+
+### Alpha
+
+Without `alpha`, the transparency of a typed color is dropped.
+
+<Preview stack code={`<hx-color-field label="Overlay" value="#2b7fff80" alpha></hx-color-field>`} />
+
+### Disabled
+
+<Preview stack code={`<hx-color-field label="Brand" value="#00c950" disabled></hx-color-field>`} />
+
+### Form
+
+`name` submits `value` with the form.
+
+<Preview
+    stack
+    code={`<form onsubmit="event.preventDefault(); this.querySelector('p').textContent = 'brand=' + new FormData(this).get('brand')">
+    <hx-color-field label="Brand" name="brand" value="#2b7fff"></hx-color-field>
+    <hx-button type="submit" class="mt-3">Submit</hx-button>
+    <p class="mt-2 text-sm"></p>
+</form>`}
+/>
+
+## Behavior
+
+The value changes on blur or with the Enter key, not at each keystroke. A text that is not a color is discarded and the previous value comes back, and an empty text clears the value. The `#` of a hex color is optional.
+
+`value` is kept as is until the user edits it, so an `oklch()` color outside the sRGB gamut is not altered by displaying it. Editing it brings it back into sRGB.
+
+## API
+
+### hx-color-field
+
+#### Properties
+
+| Property      | Attribute     | Type                                 | Default | Description                                                                                       |
+| ------------- | ------------- | ------------------------------------ | ------- | ------------------------------------------------------------------------------------------------- |
+| `name`        | `name`        | `string`                             | `""`    | Name submitted with the form                                                                      |
+| `value`       | `value`       | `string`                             | `""`    | Current color, as a hex, `rgb()`, `hsl()` or `oklch()` string; kept as is until the user edits it |
+| `format`      | `format`      | `"hex" \| "rgb" \| "hsl" \| "oklch"` | `"hex"` | Format of the value once the user edits it                                                        |
+| `alpha`       | `alpha`       | `boolean`                            | `false` | Keeps the transparency of the typed color                                                         |
+| `label`       | `label`       | `string`                             | `""`    | Label displayed above the field                                                                   |
+| `placeholder` | `placeholder` | `string`                             | `""`    | Text shown when the field is empty                                                                |
+| `hint`        | `hint`        | `string`                             | `""`    | Help text under the field, replaced by `error` when set                                           |
+| `error`       | `error`       | `string`                             | `""`    | Error message under the field; also marks the field as invalid                                    |
+| `disabled`    | `disabled`    | `boolean`                            | `false` | Prevents user interaction                                                                         |
+| `required`    | `required`    | `boolean`                            | `false` | Marks the field as required for form validation                                                   |
+
+#### Events
+
+| Name     | Description                                      |
+| -------- | ------------------------------------------------ |
+| `input`  | The value changed, on blur or with the Enter key |
+| `change` | The value changed, on blur or with the Enter key |
+
+#### CSS custom properties
+
+| Name                       | Default                   | Description                 |
+| -------------------------- | ------------------------- | --------------------------- |
+| `--hx-height-color-field`  | `var(--hx-height-field)`  | Height                      |
+| `--hx-spacing-color-field` | `var(--hx-spacing-field)` | Horizontal padding          |
+| `--hx-radius-color-field`  | `var(--hx-radius-field)`  | Border radius               |
+| `--hx-size-color-swatch`   | `1.25rem`                 | Size of the swatch          |
+| `--hx-radius-color-swatch` | `var(--hx-radius-pill)`   | Border radius of the swatch |
+
+#### CSS parts
+
+| Name      | Description                 |
+| --------- | --------------------------- |
+| `control` | The inner `<input>` element |
+| `swatch`  | The preview of the color    |

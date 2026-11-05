@@ -1,0 +1,374 @@
+import type { Placement } from "@floating-ui/dom";
+import { html, nothing, type PropertyValues } from "lit";
+import { customElement, property, query, state } from "lit/decorators.js";
+import { styleMap } from "lit/directives/style-map.js";
+import { Check } from "lucide";
+import { clamp, formatColor, parseColor, type HsvaColor, type HxColorFormat } from "../../color.js";
+import { renderSwatch } from "../../color-swatch.js";
+import { HxPickerElement } from "../../hx-picker-element.js";
+import "../color-field/hx-color-field.js";
+import type { HxColorField } from "../color-field/hx-color-field.js";
+import "../icon/hx-icon.js";
+import "../select/hx-select.js";
+import type { HxSelect } from "../select/hx-select.js";
+
+export type HxColorPickerFormat = HxColorFormat;
+export type HxColorPickerPlacement = Placement;
+
+type ColorControl = "area" | "hue" | "alpha";
+
+interface ColorSliderOptions {
+    label: string;
+    fraction: number;
+    max: number;
+    unit: string;
+    fill: string;
+    thumb: string;
+}
+
+const defaultColor: HsvaColor = { h: 0, s: 1, v: 1, a: 1 };
+
+const formats: HxColorFormat[] = ["hex", "rgb", "hsl", "oklch"];
+
+const keySteps: Record<string, number> = {
+    ArrowRight: 0.01,
+    ArrowUp: 0.01,
+    ArrowLeft: -0.01,
+    ArrowDown: -0.01,
+    PageUp: 0.1,
+    PageDown: -0.1,
+    Home: -Infinity,
+    End: Infinity,
+};
+
+const thumbClass =
+    "size-color-thumb rounded-color-thumb focus-visible:ring-ring/50 absolute -translate-x-1/2 -translate-y-1/2 border-2 border-white shadow-md outline-none focus-visible:ring-[3px]";
+
+const stop = (event: Event) => event.stopPropagation();
+
+function channelOf(control: ColorControl, key: string) {
+    if (control === "area") return /Up|Down/.test(key) ? "v" : "s";
+    return control === "hue" ? "h" : "a";
+}
+
+/**
+ * @element hx-color-picker
+ * @property name - Name submitted with the form.
+ * @property value - Selected color, as a hex, `rgb()`, `hsl()` or `oklch()` string; kept as is until the user edits it.
+ * @property format - Format of the value once the user edits it.
+ * @property alpha - Shows the transparency slider and keeps the transparency of the color.
+ * @property swatches - Colors offered in the popup, as JSON in the attribute.
+ * @property formatSelect - Shows a select in the popup to display the color in another format; `value` stays in `format`.
+ * @property placement - Position of the popup relative to the trigger.
+ * @property distance - Gap in pixels between the trigger and the popup.
+ * @fires input - The color changed, while dragging or from the keyboard.
+ * @fires change - The color changed, once the pointer is released or from the keyboard.
+ * @fires hx-show - The popup is about to open. Cancelable.
+ * @fires hx-after-show - The popup is open and its enter animation finished.
+ * @fires hx-hide - The popup is about to close. Cancelable.
+ * @fires hx-after-hide - The popup is closed and its exit animation finished.
+ * @cssprop [--hx-height-color-picker=var(--hx-height-field)] - Height of the trigger.
+ * @cssprop [--hx-spacing-color-picker=var(--hx-spacing-field)] - Horizontal padding of the trigger.
+ * @cssprop [--hx-radius-color-picker=var(--hx-radius-field)] - Border radius of the trigger.
+ * @cssprop [--hx-width-color-popup=16rem] - Width of the popup.
+ * @cssprop [--hx-spacing-color-popup=0.75rem] - Padding of the popup.
+ * @cssprop [--hx-height-color-area=10rem] - Height of the saturation and brightness area.
+ * @cssprop [--hx-radius-color-area=var(--hx-radius-field)] - Border radius of the saturation and brightness area.
+ * @cssprop [--hx-height-color-slider=0.75rem] - Height of the hue and transparency sliders.
+ * @cssprop [--hx-radius-color-slider=var(--hx-radius-pill)] - Border radius of the hue and transparency sliders.
+ * @cssprop [--hx-size-color-thumb=1.25rem] - Size of the thumbs.
+ * @cssprop [--hx-radius-color-thumb=var(--hx-radius-pill)] - Border radius of the thumbs.
+ * @cssprop [--hx-size-color-swatch=1.25rem] - Size of the swatches.
+ * @cssprop [--hx-radius-color-swatch=var(--hx-radius-pill)] - Border radius of the swatches.
+ * @csspart trigger - The button showing the selected color.
+ * @csspart swatch - The preview of the color in the trigger.
+ * @csspart value - The selected color, or the placeholder.
+ * @csspart popup - The panel holding the controls.
+ * @csspart area - The saturation and brightness area.
+ * @csspart area-thumb - The thumb of the area.
+ * @csspart hue - The hue slider.
+ * @csspart hue-thumb - The thumb of the hue slider.
+ * @csspart alpha - The transparency slider, shown with `alpha`.
+ * @csspart alpha-thumb - The thumb of the transparency slider.
+ * @csspart swatches - The list of colors, shown with `swatches`.
+ * @csspart preset - A color of the list.
+ * @csspart preset-check - The check drawn on the selected color of the list.
+ * @csspart formats - The `hx-select` choosing the format of the field, shown with `format-select`.
+ * @csspart field - The `hx-color-field`.
+ */
+@customElement("hx-color-picker")
+export class HxColorPicker extends HxPickerElement {
+    @property({ reflect: true }) name = "";
+    @property() value = "";
+    @property({ reflect: true }) format: HxColorFormat = "hex";
+    @property({ type: Boolean, reflect: true }) alpha = false;
+    @property({ type: Array }) swatches: string[] = [];
+    @property({ type: Boolean, attribute: "format-select" }) formatSelect = false;
+
+    @query("[part=area-thumb]") private areaThumb!: HTMLElement;
+
+    @state() private color = defaultColor;
+    @state() private displayFormat?: HxColorFormat;
+
+    private dragStart?: string;
+
+    protected get triggerClass() {
+        return "rounded-color-picker h-color-picker px-color-picker";
+    }
+
+    protected get popupClass() {
+        return "p-color-popup w-color-popup";
+    }
+
+    protected get displayText() {
+        return this.value;
+    }
+
+    private get fieldFormat() {
+        return this.displayFormat ?? this.format;
+    }
+
+    private get fieldValue() {
+        if (!this.value || this.fieldFormat === this.format) return this.value;
+        return formatColor(this.color, this.fieldFormat, this.alpha);
+    }
+
+    private notify(commit: boolean) {
+        this.dispatchEvent(new Event("input", { bubbles: true, composed: true }));
+        if (commit) this.dispatchEvent(new Event("change", { bubbles: true, composed: true }));
+    }
+
+    private setColor(channels: Partial<HsvaColor>, commit: boolean) {
+        this.color = { ...this.color, ...channels };
+        const value = formatColor(this.color, this.format, this.alpha);
+        if (value === this.value) return;
+        this.value = value;
+        this.notify(commit);
+    }
+
+    private moveTo(event: PointerEvent) {
+        const element = event.currentTarget as HTMLElement;
+        const { left, top, width, height } = element.getBoundingClientRect();
+        const x = clamp((event.clientX - left) / width);
+        const y = clamp(1 - (event.clientY - top) / height);
+        const control = element.dataset.control as ColorControl;
+        if (control === "area") this.setColor({ s: x, v: y }, false);
+        else this.setColor(control === "hue" ? { h: x * 360 } : { a: x }, false);
+    }
+
+    private onPointerDown(event: PointerEvent) {
+        if (event.button !== 0) return;
+        event.preventDefault();
+        const element = event.currentTarget as HTMLElement;
+        element.querySelector<HTMLElement>("[role=slider]")!.focus();
+        element.setPointerCapture(event.pointerId);
+        this.dragStart = this.value;
+        this.moveTo(event);
+    }
+
+    private onPointerMove(event: PointerEvent) {
+        if (this.dragStart !== undefined) this.moveTo(event);
+    }
+
+    private onPointerEnd() {
+        if (this.dragStart !== undefined && this.dragStart !== this.value)
+            this.dispatchEvent(new Event("change", { bubbles: true, composed: true }));
+        this.dragStart = undefined;
+    }
+
+    private onKeyDown(event: KeyboardEvent) {
+        const step = keySteps[event.key];
+        if (!step) return;
+        event.preventDefault();
+        const control = (event.currentTarget as HTMLElement).dataset.control as ColorControl;
+        const channel = channelOf(control, event.key);
+        const range = channel === "h" ? 360 : 1;
+        this.setColor({ [channel]: clamp(this.color[channel] / range + step) * range }, true);
+    }
+
+    private onFieldChange(event: Event) {
+        event.stopPropagation();
+        const color = parseColor((event.target as HxColorField).value);
+        if (color) return this.setColor(color, true);
+        this.value = "";
+        this.notify(true);
+    }
+
+    private onFormatChange(event: Event) {
+        event.stopPropagation();
+        this.displayFormat = (event.target as HxSelect).value as HxColorFormat;
+    }
+
+    protected focusPopup() {
+        this.areaThumb.focus({ preventScroll: true });
+    }
+
+    protected override willUpdate(changed: PropertyValues<this>) {
+        if (changed.has("value") && this.value !== formatColor(this.color, this.format, this.alpha))
+            this.color = parseColor(this.value) ?? defaultColor;
+    }
+
+    protected override updated(changed: PropertyValues<this>) {
+        super.updated(changed);
+        this.internals.setFormValue(this.value);
+    }
+
+    formResetCallback() {
+        this.value = this.getAttribute("value") ?? "";
+    }
+
+    protected renderTrigger() {
+        return html`${renderSwatch(this.value)}${this.renderValue()}`;
+    }
+
+    private renderArea(opaque: string) {
+        const { h, s, v } = this.color;
+        const saturation = Math.round(s * 100);
+        const brightness = Math.round(v * 100);
+        return html`<div
+            part="area"
+            data-control="area"
+            class="rounded-color-area h-color-area relative cursor-crosshair touch-none"
+            style=${styleMap({
+                background: `linear-gradient(to top, #000, transparent), linear-gradient(to right, #fff, transparent), hsl(${h} 100% 50%)`,
+            })}
+            @pointerdown=${this.onPointerDown}
+            @pointermove=${this.onPointerMove}
+            @lostpointercapture=${this.onPointerEnd}
+            @keydown=${this.onKeyDown}
+        >
+            <div
+                part="area-thumb"
+                role="slider"
+                tabindex="0"
+                aria-label="Saturation and brightness"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow=${saturation}
+                aria-valuetext="Saturation ${saturation}%, brightness ${brightness}%"
+                class=${thumbClass}
+                style=${styleMap({ left: `${s * 100}%`, top: `${(1 - v) * 100}%`, background: opaque })}
+            ></div>
+        </div>`;
+    }
+
+    private renderSlider(control: "hue" | "alpha", { label, fraction, max, unit, fill, thumb }: ColorSliderOptions) {
+        const now = Math.round(fraction * max);
+        return html`<div
+            part=${control}
+            data-control=${control}
+            class="${
+                control === "alpha" ? "bg-checkerboard" : ""
+            } rounded-color-slider h-color-slider relative cursor-pointer touch-none"
+            @pointerdown=${this.onPointerDown}
+            @pointermove=${this.onPointerMove}
+            @lostpointercapture=${this.onPointerEnd}
+            @keydown=${this.onKeyDown}
+        >
+            <div class="size-full rounded-[inherit]" style=${styleMap({ background: fill })}></div>
+            <div
+                part="${control}-thumb"
+                role="slider"
+                tabindex="0"
+                aria-label=${label}
+                aria-valuemin="0"
+                aria-valuemax=${max}
+                aria-valuenow=${now}
+                aria-valuetext="${now}${unit}"
+                class="${thumbClass} top-1/2"
+                style=${styleMap({ left: `${fraction * 100}%`, background: thumb })}
+            ></div>
+        </div>`;
+    }
+
+    private renderSwatches() {
+        if (!this.swatches?.length) return nothing;
+        return html`<div part="swatches" role="group" aria-label="Swatches" class="flex flex-wrap gap-1.5">
+            ${this.swatches.map((swatch) => {
+                const color = parseColor(swatch);
+                if (!color) return nothing;
+                const selected = formatColor(color, this.format, this.alpha) === this.value;
+                return html`<button
+                    type="button"
+                    aria-label=${swatch}
+                    aria-pressed=${selected ? "true" : "false"}
+                    class="rounded-color-swatch focus-visible:ring-ring/50 aria-pressed:not-focus-visible:ring-ring relative block cursor-pointer outline-none focus-visible:ring-[3px] aria-pressed:not-focus-visible:ring-2"
+                    @click=${() => this.setColor(color, true)}
+                >
+                    ${renderSwatch(swatch, "preset")}
+                    ${
+                        selected
+                            ? html`<span
+                                  part="preset-check"
+                                  class="text-surface absolute inset-0 flex items-center justify-center"
+                              >
+                                  <hx-icon .icon=${Check} size="10" stroke-width="3.5"></hx-icon>
+                              </span>`
+                            : nothing
+                    }
+                </button>`;
+            })}
+        </div>`;
+    }
+
+    private renderFormats() {
+        if (!this.formatSelect) return nothing;
+        return html`<hx-select
+            part="formats"
+            .value=${this.fieldFormat}
+            @input=${stop}
+            @change=${this.onFormatChange}
+            @hx-show=${stop}
+            @hx-after-show=${stop}
+            @hx-hide=${stop}
+            @hx-after-hide=${stop}
+        >
+            ${formats.map(
+                (format) => html`<hx-select-option value=${format}>${format.toUpperCase()}</hx-select-option>`,
+            )}
+        </hx-select>`;
+    }
+
+    protected renderPopup() {
+        const { h, a } = this.color;
+        const opaque = formatColor(this.color, "rgb", false);
+        return html`<div class="flex flex-col gap-3">
+            ${this.renderArea(opaque)}
+            ${this.renderSlider("hue", {
+                label: "Hue",
+                fraction: h / 360,
+                max: 360,
+                unit: "°",
+                fill: "linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00)",
+                thumb: `hsl(${h} 100% 50%)`,
+            })}
+            ${
+                this.alpha
+                    ? this.renderSlider("alpha", {
+                          label: "Transparency",
+                          fraction: a,
+                          max: 100,
+                          unit: "%",
+                          fill: `linear-gradient(to right, transparent, ${opaque})`,
+                          thumb: opaque,
+                      })
+                    : nothing
+            }
+            ${this.renderSwatches()} ${this.renderFormats()}
+            <hx-color-field
+                part="field"
+                .value=${this.fieldValue}
+                format=${this.fieldFormat}
+                ?alpha=${this.alpha}
+                @input=${stop}
+                @change=${this.onFieldChange}
+            ></hx-color-field>
+        </div>`;
+    }
+}
+
+declare global {
+    interface HTMLElementTagNameMap {
+        "hx-color-picker": HxColorPicker;
+    }
+}
