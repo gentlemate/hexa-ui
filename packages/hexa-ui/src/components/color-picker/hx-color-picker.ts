@@ -2,18 +2,19 @@ import type { Placement } from "@floating-ui/dom";
 import { html, nothing, type PropertyValues } from "lit";
 import { customElement, property, query, state } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
-import { Check } from "lucide";
 import { clamp, formatColor, parseColor, type HsvaColor, type HxColorFormat } from "../../color.js";
 import { renderSwatch } from "../../color-swatch.js";
 import { HxPickerElement } from "../../hx-picker-element.js";
 import "../color-field/hx-color-field.js";
 import type { HxColorField } from "../color-field/hx-color-field.js";
-import "../icon/hx-icon.js";
+import "../color-swatch-picker/hx-color-swatch-picker.js";
+import type { HxColorSwatchPicker, HxColorSwatchPickerSize } from "../color-swatch-picker/hx-color-swatch-picker.js";
 import "../select/hx-select.js";
 import type { HxSelect } from "../select/hx-select.js";
 
 export type HxColorPickerFormat = HxColorFormat;
 export type HxColorPickerPlacement = Placement;
+export type HxColorPickerSwatchSize = HxColorSwatchPickerSize;
 
 type ColorControl = "area" | "hue" | "alpha";
 
@@ -58,6 +59,7 @@ function channelOf(control: ColorControl, key: string) {
  * @property format - Format of the value once the user edits it.
  * @property alpha - Shows the transparency slider and keeps the transparency of the color.
  * @property swatches - Colors offered in the popup, as JSON in the attribute.
+ * @property swatchSize - Size of the swatches in the popup.
  * @property formatSelect - Shows a select in the popup to display the color in another format; `value` stays in `format`.
  * @property placement - Position of the popup relative to the trigger.
  * @property distance - Gap in pixels between the trigger and the popup.
@@ -78,8 +80,8 @@ function channelOf(control: ColorControl, key: string) {
  * @cssprop [--hx-radius-color-slider=var(--hx-radius-pill)] - Border radius of the hue and transparency sliders.
  * @cssprop [--hx-size-color-thumb=1.25rem] - Size of the thumbs.
  * @cssprop [--hx-radius-color-thumb=var(--hx-radius-pill)] - Border radius of the thumbs.
- * @cssprop [--hx-size-color-swatch=1.25rem] - Size of the swatches.
- * @cssprop [--hx-radius-color-swatch=var(--hx-radius-pill)] - Border radius of the swatches.
+ * @cssprop [--hx-size-color-swatch=1.25rem] - Size of the preview in the trigger and the field.
+ * @cssprop [--hx-radius-color-swatch=var(--hx-radius-pill)] - Border radius of the preview and the swatches.
  * @csspart trigger - The button showing the selected color.
  * @csspart swatch - The preview of the color in the trigger.
  * @csspart value - The selected color, or the placeholder.
@@ -90,9 +92,8 @@ function channelOf(control: ColorControl, key: string) {
  * @csspart hue-thumb - The thumb of the hue slider.
  * @csspart alpha - The transparency slider, shown with `alpha`.
  * @csspart alpha-thumb - The thumb of the transparency slider.
- * @csspart swatches - The list of colors, shown with `swatches`.
- * @csspart preset - A color of the list.
- * @csspart preset-check - The check drawn on the selected color of the list.
+ * @csspart swatches - The `hx-color-swatch-picker`, shown with `swatches`.
+ * @csspart preset - An `hx-color-swatch` of the list.
  * @csspart formats - The `hx-select` choosing the format of the field, shown with `format-select`.
  * @csspart field - The `hx-color-field`.
  */
@@ -103,6 +104,7 @@ export class HxColorPicker extends HxPickerElement {
     @property({ reflect: true }) format: HxColorFormat = "hex";
     @property({ type: Boolean, reflect: true }) alpha = false;
     @property({ type: Array }) swatches: string[] = [];
+    @property({ attribute: "swatch-size" }) swatchSize: HxColorSwatchPickerSize = "sm";
     @property({ type: Boolean, attribute: "format-select" }) formatSelect = false;
 
     @query("[part=area-thumb]") private areaThumb!: HTMLElement;
@@ -194,6 +196,12 @@ export class HxColorPicker extends HxPickerElement {
         this.notify(true);
     }
 
+    private onSwatchChange(event: Event) {
+        event.stopPropagation();
+        const color = parseColor((event.target as HxColorSwatchPicker).value);
+        if (color) this.setColor(color, true);
+    }
+
     private onFormatChange(event: Event) {
         event.stopPropagation();
         this.displayFormat = (event.target as HxSelect).value as HxColorFormat;
@@ -283,32 +291,20 @@ export class HxColorPicker extends HxPickerElement {
 
     private renderSwatches() {
         if (!this.swatches?.length) return nothing;
-        return html`<div part="swatches" role="group" aria-label="Swatches" class="flex flex-wrap gap-1.5">
-            ${this.swatches.map((swatch) => {
-                const color = parseColor(swatch);
-                if (!color) return nothing;
-                const selected = formatColor(color, this.format, this.alpha) === this.value;
-                return html`<button
-                    type="button"
-                    aria-label=${swatch}
-                    aria-pressed=${selected ? "true" : "false"}
-                    class="rounded-color-swatch focus-visible:ring-ring/50 aria-pressed:not-focus-visible:ring-ring relative block cursor-pointer outline-none focus-visible:ring-[3px] aria-pressed:not-focus-visible:ring-2"
-                    @click=${() => this.setColor(color, true)}
-                >
-                    ${renderSwatch(swatch, "preset")}
-                    ${
-                        selected
-                            ? html`<span
-                                  part="preset-check"
-                                  class="text-surface absolute inset-0 flex items-center justify-center"
-                              >
-                                  <hx-icon .icon=${Check} size="10" stroke-width="3.5"></hx-icon>
-                              </span>`
-                            : nothing
-                    }
-                </button>`;
-            })}
-        </div>`;
+        const swatches = this.swatches.filter((swatch) => parseColor(swatch));
+        const selected = swatches.find(
+            (swatch) => formatColor(parseColor(swatch)!, this.format, this.alpha) === this.value,
+        );
+        return html`<hx-color-swatch-picker
+            part="swatches"
+            aria-label="Swatches"
+            size=${this.swatchSize}
+            .value=${selected ?? ""}
+            @input=${stop}
+            @change=${this.onSwatchChange}
+        >
+            ${swatches.map((swatch) => html`<hx-color-swatch part="preset" value=${swatch}></hx-color-swatch>`)}
+        </hx-color-swatch-picker>`;
     }
 
     private renderFormats() {

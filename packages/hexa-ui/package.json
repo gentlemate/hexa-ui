@@ -131,6 +131,10 @@
             "types": "./dist/components/color-picker/index.d.ts",
             "import": "./dist/color-picker.js"
         },
+        "./color-swatch-picker": {
+            "types": "./dist/components/color-swatch-picker/index.d.ts",
+            "import": "./dist/color-swatch-picker.js"
+        },
         "./date-picker": {
             "types": "./dist/components/date-picker/index.d.ts",
             "import": "./dist/date-picker.js"

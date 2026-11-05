@@ -37,6 +37,7 @@ export default defineConfig({
                 "range-calendar": "src/components/range-calendar/index.ts",
                 "color-field": "src/components/color-field/index.ts",
                 "color-picker": "src/components/color-picker/index.ts",
+                "color-swatch-picker": "src/components/color-swatch-picker/index.ts",
                 "date-picker": "src/components/date-picker/index.ts",
                 "date-range-picker": "src/components/date-range-picker/index.ts",
             },

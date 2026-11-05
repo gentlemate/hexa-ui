@@ -43,6 +43,8 @@
     --hx-spacing-color-popup: 0.75rem;
     --hx-height-color-slider: 0.75rem;
     --hx-size-color-swatch: 1.25rem;
+    --hx-size-color-swatch-picker: 2rem;
+    --hx-gap-color-swatch-picker: 0.625rem;
     --hx-size-color-thumb: 1.25rem;
     --hx-size-checkbox: 1.25rem;
     --hx-width-drawer: 36rem;

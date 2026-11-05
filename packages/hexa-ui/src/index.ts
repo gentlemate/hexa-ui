@@ -28,5 +28,6 @@ export * from "./components/slider/index.js";
 export * from "./components/range-calendar/index.js";
 export * from "./components/color-field/index.js";
 export * from "./components/color-picker/index.js";
+export * from "./components/color-swatch-picker/index.js";
 export * from "./components/date-picker/index.js";
 export * from "./components/date-range-picker/index.js";

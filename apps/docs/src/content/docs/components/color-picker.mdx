@@ -55,7 +55,7 @@ import "hexa-ui/color-picker";
 
 ### Swatches
 
-`swatches` takes a JSON array of colors, offered in the popup.
+`swatches` takes a JSON array of colors, offered in the popup. `swatch-size` sets their size: `xs`, `sm` (default), `md`, `lg` or `xl`.
 
 <Preview
     stack
@@ -100,6 +100,7 @@ The controls work in sRGB. `value` is kept as is until the user edits it, so an 
 | `format`       | `format`        | `"hex" \| "rgb" \| "hsl" \| "oklch"`                                                                                                                                 | `"hex"`          | Format of the value once the user edits it                                                         |
 | `alpha`        | `alpha`         | `boolean`                                                                                                                                                            | `false`          | Shows the transparency slider and keeps the transparency of the color                              |
 | `swatches`     | `swatches`      | `string[]`                                                                                                                                                           | `[]`             | Colors offered in the popup, as JSON in the attribute                                              |
+| `swatchSize`   | `swatch-size`   | `"xs" \| "sm" \| "md" \| "lg" \| "xl"`                                                                                                                               | `"sm"`           | Size of the swatches in the popup                                                                  |
 | `formatSelect` | `format-select` | `boolean`                                                                                                                                                            | `false`          | Shows a select in the popup to display the color in another format; `value` stays in `format`      |
 | `placement`    | `placement`     | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"bottom-start"` | Position of the popup relative to the trigger                                                      |
 | `distance`     | `distance`      | `number`                                                                                                                                                             | `4`              | Gap in pixels between the trigger and the popup                                                    |
@@ -145,25 +146,24 @@ The controls work in sRGB. `value` is kept as is until the user edits it, so an 
 | `--hx-radius-color-slider`  | `var(--hx-radius-pill)`   | Border radius of the hue and transparency sliders   |
 | `--hx-size-color-thumb`     | `1.25rem`                 | Size of the thumbs                                  |
 | `--hx-radius-color-thumb`   | `var(--hx-radius-pill)`   | Border radius of the thumbs                         |
-| `--hx-size-color-swatch`    | `1.25rem`                 | Size of the swatches                                |
-| `--hx-radius-color-swatch`  | `var(--hx-radius-pill)`   | Border radius of the swatches                       |
+| `--hx-size-color-swatch`    | `1.25rem`                 | Size of the preview in the trigger and the field    |
+| `--hx-radius-color-swatch`  | `var(--hx-radius-pill)`   | Border radius of the preview and the swatches       |
 
 #### CSS parts
 
-| Name           | Description                                                                  |
-| -------------- | ---------------------------------------------------------------------------- |
-| `trigger`      | The button showing the selected color                                        |
-| `swatch`       | The preview of the color in the trigger                                      |
-| `value`        | The selected color, or the placeholder                                       |
-| `popup`        | The panel holding the controls                                               |
-| `area`         | The saturation and brightness area                                           |
-| `area-thumb`   | The thumb of the area                                                        |
-| `hue`          | The hue slider                                                               |
-| `hue-thumb`    | The thumb of the hue slider                                                  |
-| `alpha`        | The transparency slider, shown with `alpha`                                  |
-| `alpha-thumb`  | The thumb of the transparency slider                                         |
-| `swatches`     | The list of colors, shown with `swatches`                                    |
-| `preset`       | A color of the list                                                          |
-| `preset-check` | The check drawn on the selected color of the list                            |
-| `formats`      | The `hx-select` choosing the format of the field, shown with `format-select` |
-| `field`        | The `hx-color-field`                                                         |
+| Name          | Description                                                                  |
+| ------------- | ---------------------------------------------------------------------------- |
+| `trigger`     | The button showing the selected color                                        |
+| `swatch`      | The preview of the color in the trigger                                      |
+| `value`       | The selected color, or the placeholder                                       |
+| `popup`       | The panel holding the controls                                               |
+| `area`        | The saturation and brightness area                                           |
+| `area-thumb`  | The thumb of the area                                                        |
+| `hue`         | The hue slider                                                               |
+| `hue-thumb`   | The thumb of the hue slider                                                  |
+| `alpha`       | The transparency slider, shown with `alpha`                                  |
+| `alpha-thumb` | The thumb of the transparency slider                                         |
+| `swatches`    | The `hx-color-swatch-picker`, shown with `swatches`                          |
+| `preset`      | An `hx-color-swatch` of the list                                             |
+| `formats`     | The `hx-select` choosing the format of the field, shown with `format-select` |
+| `field`       | The `hx-color-field`                                                         |
