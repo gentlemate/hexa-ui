@@ -1,4 +1,4 @@
-import { css, html, nothing } from "lit";
+import { css, html } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { HxElement } from "../../hx-element.js";
@@ -20,18 +20,15 @@ const layouts: Record<HxColorSwatchPickerLayout, string> = {
  * @property value - Value of the selected `hx-color-swatch`.
  * @property layout - `horizontal` wraps on several lines if needed, `vertical` stacks the swatches, `grid` arranges them in a square.
  * @property size - Size of the swatches, from `xs` 1rem to `xl` 3rem. The gap follows, from 0.5rem to 0.75rem. Without it, `--hx-size-color-swatch-picker` and `--hx-gap-color-swatch-picker` apply.
- * @property label - Label displayed above the swatches.
- * @property hint - Help text under the swatches, replaced by `error` when set.
- * @property error - Error message under the swatches; also marks the group as invalid.
  * @property disabled - Prevents user interaction.
  * @property required - Marks the group as required for form validation.
+ * @property invalid - Marks the field as invalid without displaying a message.
  * @property focusTarget - The swatch that receives the focus (read-only).
  * @slot - The `hx-color-swatch` elements.
  * @fires input - The user selected another swatch.
  * @fires change - The user selected another swatch.
  * @cssprop [--hx-size-color-swatch-picker=2rem] - Size of the swatches.
  * @cssprop [--hx-gap-color-swatch-picker=0.625rem] - Gap between the swatches.
- * @csspart label - The label.
  * @csspart swatches - The wrapper of the swatches.
  */
 @customElement("hx-color-swatch-picker")
@@ -76,11 +73,9 @@ export class HxColorSwatchPicker extends HxElement {
     @property() value = "";
     @property({ reflect: true }) layout: HxColorSwatchPickerLayout = "horizontal";
     @property({ reflect: true }) size?: HxColorSwatchPickerSize;
-    @property() label = "";
-    @property() hint = "";
-    @property() error = "";
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) required = false;
+    @property({ type: Boolean, reflect: true }) invalid = false;
 
     @state() private columns = 1;
 
@@ -168,9 +163,8 @@ export class HxColorSwatchPicker extends HxElement {
         if (this.required && !this.value)
             this.internals.setValidity({ valueMissing: true }, "Please select a color.", this.focusTarget);
         else this.internals.setValidity({});
-        this.internals.ariaLabel = this.label || null;
         this.internals.ariaRequired = String(this.required);
-        this.internals.ariaInvalid = String(!!this.error);
+        this.internals.ariaInvalid = String(this.invalid);
         this.internals.ariaDisabled = String(this.disabled);
     }
 
@@ -179,34 +173,14 @@ export class HxColorSwatchPicker extends HxElement {
     }
 
     override render() {
-        return html`<div class="text-foreground flex flex-col gap-1.5">
-            ${
-                this.label
-                    ? html`<span id="label" part="label" @click=${() => this.focusTarget?.focus()}
-                          >${this.label}${
-                              this.required
-                                  ? html`<span class="text-destructive ml-0.5" aria-hidden="true">*</span>`
-                                  : nothing
-                          }</span
-                      >`
-                    : nothing
-            }
-            <div
-                part="swatches"
-                class="${layouts[this.layout]} gap-(--swatch-gap)"
-                style=${styleMap({
-                    gridTemplateColumns: this.layout === "grid" ? `repeat(${this.columns}, max-content)` : undefined,
-                })}
-            >
-                <slot @slotchange=${this.onSlotChange}></slot>
-            </div>
-            ${
-                this.error
-                    ? html`<p class="text-destructive text-sm" role="alert">${this.error}</p>`
-                    : this.hint
-                      ? html`<p class="text-muted-foreground text-sm">${this.hint}</p>`
-                      : nothing
-            }
+        return html`<div
+            part="swatches"
+            class="text-foreground ${layouts[this.layout]} gap-(--swatch-gap)"
+            style=${styleMap({
+                gridTemplateColumns: this.layout === "grid" ? `repeat(${this.columns}, max-content)` : undefined,
+            })}
+        >
+            <slot @slotchange=${this.onSlotChange}></slot>
         </div>`;
     }
 }

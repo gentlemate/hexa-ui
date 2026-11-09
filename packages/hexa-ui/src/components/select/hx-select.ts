@@ -1,5 +1,5 @@
 import type { Placement } from "@floating-ui/dom";
-import { css, html, nothing, type PropertyValues } from "lit";
+import { css, html, type PropertyValues } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { ChevronDown } from "lucide";
@@ -19,14 +19,13 @@ export type HxSelectPlacement = Placement;
  * @element hx-select
  * @property name - Name submitted with the form.
  * @property value - Value of the selected option.
- * @property label - Label displayed above the field.
  * @property placeholder - Text shown when no option is selected.
- * @property hint - Help text under the field, replaced by `error` when set.
- * @property error - Error message under the field; also marks the field as invalid.
  * @property placement - Position of the listbox relative to the trigger.
  * @property distance - Gap in pixels between the trigger and the listbox.
  * @property disabled - Prevents user interaction.
  * @property required - Marks the field as required for form validation.
+ * @property invalid - Marks the field as invalid without displaying a message.
+ * @property ariaLabel - Accessible name of the field, set with the `aria-label` attribute.
  * @property focusTarget - The inner element that receives the focus (read-only).
  * @slot - The `hx-select-option`, `hx-select-group` and `hx-select-separator` elements.
  * @fires input - The user selected another option.
@@ -58,14 +57,13 @@ export class HxSelect extends HxOverlayElement {
 
     @property({ reflect: true }) name = "";
     @property() value = "";
-    @property() label = "";
     @property() placeholder = "";
-    @property() hint = "";
-    @property() error = "";
     @property({ reflect: true }) placement: HxSelectPlacement = "bottom-start";
     @property({ type: Number }) distance = 4;
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) required = false;
+    @property({ type: Boolean, reflect: true }) invalid = false;
+    @property({ attribute: "aria-label" }) override ariaLabel: string | null = null;
 
     @query("#trigger") focusTarget!: HTMLButtonElement;
     @query("#popup") protected overlay!: HTMLElement;
@@ -194,11 +192,6 @@ export class HxSelect extends HxOverlayElement {
         if (this.optionFrom(document.activeElement)) this.overlay.focus();
     }
 
-    private onLabelClick(event: MouseEvent) {
-        event.preventDefault();
-        this.focusTarget.focus();
-    }
-
     override show() {
         if (!this.disabled) super.show();
     }
@@ -240,52 +233,32 @@ export class HxSelect extends HxOverlayElement {
     override render() {
         const selected = this.selectedOption;
         return html`
-            <div class="text-foreground flex flex-col gap-1.5">
-                ${
-                    this.label
-                        ? html`<label id="label" for="trigger" @click=${this.onLabelClick}
-                              >${this.label}${
-                                  this.required
-                                      ? html`<span class="text-destructive ml-0.5" aria-hidden="true">*</span>`
-                                      : nothing
-                              }</label
-                          >`
-                        : nothing
-                }
-                <button
-                    id="trigger"
-                    part="trigger"
-                    type="button"
-                    role="combobox"
-                    aria-haspopup="listbox"
-                    aria-controls="popup"
-                    aria-expanded=${this.open ? "true" : "false"}
-                    aria-labelledby=${ifDefined(this.label ? "label" : undefined)}
-                    aria-required=${this.required ? "true" : "false"}
-                    aria-invalid=${this.error ? "true" : "false"}
-                    class="border-border bg-field focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 rounded-select h-select px-select flex w-full cursor-pointer items-center justify-between gap-2 border text-left shadow-xs outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
-                    ?disabled=${this.disabled}
+            <button
+                id="trigger"
+                part="trigger"
+                type="button"
+                role="combobox"
+                aria-haspopup="listbox"
+                aria-controls="popup"
+                aria-expanded=${this.open ? "true" : "false"}
+                aria-label=${ifDefined(this.ariaLabel || undefined)}
+                aria-required=${this.required ? "true" : "false"}
+                aria-invalid=${this.invalid ? "true" : "false"}
+                class="text-foreground border-border bg-field focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 rounded-select h-select px-select flex w-full cursor-pointer items-center justify-between gap-2 border text-left shadow-xs outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
+                ?disabled=${this.disabled}
+            >
+                <span part="value" class="${selected ? "" : "text-muted-foreground"} truncate"
+                    >${selected ? selected.label : this.placeholder}</span
                 >
-                    <span part="value" class="${selected ? "" : "text-muted-foreground"} truncate"
-                        >${selected ? selected.label : this.placeholder}</span
-                    >
-                    <hx-icon part="chevron" .icon=${ChevronDown} class="text-muted-foreground"></hx-icon>
-                </button>
-                ${
-                    this.error
-                        ? html`<p class="text-destructive text-sm" role="alert">${this.error}</p>`
-                        : this.hint
-                          ? html`<p class="text-muted-foreground text-sm">${this.hint}</p>`
-                          : nothing
-                }
-            </div>
+                <hx-icon part="chevron" .icon=${ChevronDown} class="text-muted-foreground"></hx-icon>
+            </button>
             <div
                 part="popup"
                 id="popup"
                 popover="auto"
                 role="listbox"
                 tabindex="-1"
-                aria-labelledby=${ifDefined(this.label ? "label" : undefined)}
+                aria-label=${ifDefined(this.ariaLabel || undefined)}
                 data-state=${this.open ? "open" : "closed"}
                 class="bg-surface text-surface-foreground border-border animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-popup p-popup inset-auto m-0 overflow-x-hidden overflow-y-auto border shadow-md outline-none"
                 @pointerleave=${this.onPointerLeave}

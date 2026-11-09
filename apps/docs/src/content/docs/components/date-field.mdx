@@ -9,9 +9,17 @@ import Preview from "../../../components/Preview.astro";
 
 ```js
 import "hexa-ui/date-field";
+import "hexa-ui/form-field";
 ```
 
-<Preview stack code={`<hx-date-field label="Birthday"></hx-date-field>`} />
+The label, the description, the hint and the error come from [`hx-form-field`](../form-field/).
+
+<Preview
+    stack
+    code={`<hx-form-field label="Birthday">
+    <hx-date-field></hx-date-field>
+</hx-form-field>`}
+/>
 
 ## Structure
 
@@ -21,28 +29,32 @@ import "hexa-ui/date-field";
 
 ## Examples
 
-### Hint and error
-
-<Preview
-    stack
-    code={`<hx-date-field label="Birthday" hint="Used to wish you a happy birthday."></hx-date-field>
-<hx-date-field label="Event" value="2025-10-25" error="The event cannot be in the past."></hx-date-field>`}
-/>
-
 ### Locale
 
 The order of the segments, their separators and their placeholders (`dd/mm/yyyy`, `jj/mm/aaaa`…) follow `locale`, or the closest `lang` attribute. Languages without letter case (Japanese, Chinese, Arabic…) show dashes.
 
 <Preview
     stack
-    code={`<hx-date-field label="French" locale="fr-FR" value="2026-10-25"></hx-date-field>
-<hx-date-field label="American" locale="en-US" value="2026-10-25"></hx-date-field>
-<hx-date-field label="Japanese" locale="ja-JP" value="2026-10-25"></hx-date-field>`}
+    code={`<hx-form-field label="French">
+    <hx-date-field locale="fr-FR" value="2026-10-25"></hx-date-field>
+</hx-form-field>
+<hx-form-field label="American">
+    <hx-date-field locale="en-US" value="2026-10-25"></hx-date-field>
+</hx-form-field>
+<hx-form-field label="Japanese">
+    <hx-date-field locale="ja-JP" value="2026-10-25"></hx-date-field>
+</hx-form-field>`}
 />
 
 ### Disabled
 
-<Preview stack code={`<hx-date-field label="Date" value="2026-10-25" disabled></hx-date-field>`} />
+<Preview stack code={`<hx-date-field aria-label="Disabled" value="2026-10-25" disabled></hx-date-field>`} />
+
+### Invalid
+
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+
+<Preview stack code={`<hx-date-field aria-label="Invalid" invalid></hx-date-field>`} />
 
 ### Input event
 
@@ -50,12 +62,26 @@ The order of the segments, their separators and their placeholders (`dd/mm/yyyy`
 
 <Preview
     stack
-    code={`<hx-date-field
-    label="Date"
-    value="2026-10-25"
-    hint="Sunday, 25 October 2026"
-    oninput="this.hint = this.value ? new Date(this.value + 'T00:00').toLocaleDateString('en-GB', { dateStyle: 'full' }) : ''"
-></hx-date-field>`}
+    code={`<hx-form-field label="Date" hint="Sunday, 25 October 2026">
+    <hx-date-field
+        value="2026-10-25"
+        oninput="this.parentElement.hint = this.value ? new Date(this.value + 'T00:00').toLocaleDateString('en-GB', { dateStyle: 'full' }) : ''"
+    ></hx-date-field>
+</hx-form-field>`}
+/>
+
+### Form field
+
+In a form, [`hx-form-field`](../form-field/) adds the label, the hint and the error message.
+
+<Preview
+    stack
+    code={`<hx-form-field label="Birthday" hint="Used to wish you a happy birthday.">
+    <hx-date-field></hx-date-field>
+</hx-form-field>
+<hx-form-field label="Event" error="The event cannot be in the past.">
+    <hx-date-field value="2025-10-25"></hx-date-field>
+</hx-form-field>`}
 />
 
 ## Behavior
@@ -74,18 +100,17 @@ Each segment is a tab stop. Digits fill the focused segment and move to the next
 
 #### Properties
 
-| Property      | Attribute  | Type                  | Default | Description                                                                                  |
-| ------------- | ---------- | --------------------- | ------- | -------------------------------------------------------------------------------------------- |
-| `name`        | `name`     | `string`              | `""`    | Name submitted with the form                                                                 |
-| `value`       | `value`    | `string`              | `""`    | Current date, as `YYYY-MM-DD`; empty while the date is incomplete                            |
-| `label`       | `label`    | `string`              | `""`    | Label displayed above the field                                                              |
-| `hint`        | `hint`     | `string`              | `""`    | Help text under the field, replaced by `error` when set                                      |
-| `error`       | `error`    | `string`              | `""`    | Error message under the field; also marks the field as invalid                               |
-| `locale`      | `locale`   | `string`              | `""`    | Order, separators and placeholders of the segments; defaults to the closest `lang` attribute |
-| `disabled`    | `disabled` | `boolean`             | `false` | Prevents user interaction                                                                    |
-| `required`    | `required` | `boolean`             | `false` | Marks the field as required for form validation                                              |
-| `focusTarget` | —          | `HTMLElement`         | —       | The group of segments, which holds the focus (read-only)                                     |
-| `incomplete`  | —          | `boolean` (read-only) | —       | Whether some segments are filled but not all, while `value` is empty                         |
+| Property      | Attribute    | Type                  | Default | Description                                                                                  |
+| ------------- | ------------ | --------------------- | ------- | -------------------------------------------------------------------------------------------- |
+| `name`        | `name`       | `string`              | `""`    | Name submitted with the form                                                                 |
+| `value`       | `value`      | `string`              | `""`    | Current date, as `YYYY-MM-DD`; empty while the date is incomplete                            |
+| `locale`      | `locale`     | `string`              | `""`    | Order, separators and placeholders of the segments; defaults to the closest `lang` attribute |
+| `disabled`    | `disabled`   | `boolean`             | `false` | Prevents user interaction                                                                    |
+| `required`    | `required`   | `boolean`             | `false` | Marks the field as required for form validation                                              |
+| `invalid`     | `invalid`    | `boolean`             | `false` | Marks the field as invalid without displaying a message                                      |
+| `ariaLabel`   | `aria-label` | `string \| null`      | `null`  | Accessible name of the field, set with the `aria-label` attribute                            |
+| `focusTarget` | —            | `HTMLElement`         | —       | The group of segments, which holds the focus (read-only)                                     |
+| `incomplete`  | —            | `boolean` (read-only) | —       | Whether some segments are filled but not all, while `value` is empty                         |
 
 #### Events
 

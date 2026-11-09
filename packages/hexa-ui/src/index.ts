@@ -31,3 +31,5 @@ export * from "./components/color-picker/index.js";
 export * from "./components/color-swatch-picker/index.js";
 export * from "./components/date-picker/index.js";
 export * from "./components/date-range-picker/index.js";
+export * from "./components/form-field/index.js";
+export * from "./components/form/index.js";

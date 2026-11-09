@@ -40,6 +40,8 @@ export default defineConfig({
                 "color-swatch-picker": "src/components/color-swatch-picker/index.ts",
                 "date-picker": "src/components/date-picker/index.ts",
                 "date-range-picker": "src/components/date-range-picker/index.ts",
+                "form-field": "src/components/form-field/index.ts",
+                form: "src/components/form/index.ts",
             },
             formats: ["es"],
             fileName: (_format, name) => `${name}.js`,

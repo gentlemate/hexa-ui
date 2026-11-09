@@ -9,9 +9,17 @@ import Preview from "../../../components/Preview.astro";
 
 ```js
 import "hexa-ui/number-field";
+import "hexa-ui/form-field";
 ```
 
-<Preview stack code={`<hx-number-field label="Quantity" value="1" min="0"></hx-number-field>`} />
+The label, the description, the hint and the error come from [`hx-form-field`](../form-field/).
+
+<Preview
+    stack
+    code={`<hx-form-field label="Quantity">
+    <hx-number-field value="1" min="0"></hx-number-field>
+</hx-form-field>`}
+/>
 
 ## Structure
 
@@ -23,11 +31,21 @@ import "hexa-ui/number-field";
 
 ### Variants
 
-<Preview stack code={`<hx-number-field label="Number" value="1" variant="secondary"></hx-number-field>`} />
+<Preview
+    stack
+    code={`<hx-form-field label="Number">
+    <hx-number-field value="1" variant="secondary"></hx-number-field>
+</hx-form-field>`}
+/>
 
 ### Min, max and step
 
-<Preview stack code={`<hx-number-field label="Rating" value="2.5" min="-5" max="5" step="0.5"></hx-number-field>`} />
+<Preview
+    stack
+    code={`<hx-form-field label="Rating">
+    <hx-number-field value="2.5" min="-5" max="5" step="0.5"></hx-number-field>
+</hx-form-field>`}
+/>
 
 ### Format
 
@@ -35,9 +53,15 @@ import "hexa-ui/number-field";
 
 <Preview
     stack
-    code={`<hx-number-field label="Price" value="49.9" min="0" format-options='{"style":"currency","currency":"EUR"}'></hx-number-field>
-<hx-number-field label="Percentage" value="0.25" min="0" max="1" step="0.01" format-options='{"style":"percent"}'></hx-number-field>
-<hx-number-field label="Distance" value="12" min="0" format-options='{"style":"unit","unit":"kilometer"}'></hx-number-field>`}
+    code={`<hx-form-field label="Price">
+    <hx-number-field value="49.9" min="0" format-options='{"style":"currency","currency":"EUR"}'></hx-number-field>
+</hx-form-field>
+<hx-form-field label="Percentage">
+    <hx-number-field value="0.25" min="0" max="1" step="0.01" format-options='{"style":"percent"}'></hx-number-field>
+</hx-form-field>
+<hx-form-field label="Distance">
+    <hx-number-field value="12" min="0" format-options='{"style":"unit","unit":"kilometer"}'></hx-number-field>
+</hx-form-field>`}
 />
 
 ### Locale
@@ -46,23 +70,29 @@ The separators and the digits follow `locale`, or the closest `lang` attribute.
 
 <Preview
     stack
-    code={`<hx-number-field label="French" locale="fr-FR" value="1234.5" step="0.1"></hx-number-field>
-<hx-number-field label="German" locale="de-DE" value="1234.5" step="0.1"></hx-number-field>
-<hx-number-field label="American" locale="en-US" value="1234.5" step="0.1"></hx-number-field>
-<hx-number-field label="Arabic" locale="ar-EG" value="1234.5" step="0.1"></hx-number-field>`}
-/>
-
-### Hint and error
-
-<Preview
-    stack
-    code={`<hx-number-field label="Guests" min="1" max="10" hint="Up to 10 guests."></hx-number-field>
-<hx-number-field label="Age" value="15" error="You must be at least 18." required></hx-number-field>`}
+    code={`<hx-form-field label="French">
+    <hx-number-field locale="fr-FR" value="1234.5" step="0.1"></hx-number-field>
+</hx-form-field>
+<hx-form-field label="German">
+    <hx-number-field locale="de-DE" value="1234.5" step="0.1"></hx-number-field>
+</hx-form-field>
+<hx-form-field label="American">
+    <hx-number-field locale="en-US" value="1234.5" step="0.1"></hx-number-field>
+</hx-form-field>
+<hx-form-field label="Arabic">
+    <hx-number-field locale="ar-EG" value="1234.5" step="0.1"></hx-number-field>
+</hx-form-field>`}
 />
 
 ### Disabled
 
-<Preview stack code={`<hx-number-field label="Number" value="1" disabled></hx-number-field>`} />
+<Preview stack code={`<hx-number-field aria-label="Disabled" value="1" disabled></hx-number-field>`} />
+
+### Invalid
+
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+
+<Preview stack code={`<hx-number-field aria-label="Invalid" invalid></hx-number-field>`} />
 
 ### Input event
 
@@ -70,13 +100,27 @@ The separators and the digits follow `locale`, or the closest `lang` attribute.
 
 <Preview
     stack
-    code={`<hx-number-field
-    label="Quantity"
-    value="1"
-    min="0"
-    hint="Total: 12.00 €"
-    oninput="this.hint = 'Total: ' + ((this.value ?? 0) * 12).toFixed(2) + ' €'"
-></hx-number-field>`}
+    code={`<hx-form-field label="Quantity" hint="Total: 12.00 €">
+    <hx-number-field
+        value="1"
+        min="0"
+        oninput="this.parentElement.hint = 'Total: ' + ((this.value ?? 0) * 12).toFixed(2) + ' €'"
+    ></hx-number-field>
+</hx-form-field>`}
+/>
+
+### Form field
+
+In a form, [`hx-form-field`](../form-field/) adds the label, the hint and the error message.
+
+<Preview
+    stack
+    code={`<hx-form-field label="Guests" hint="Up to 10 guests.">
+    <hx-number-field min="1" max="10"></hx-number-field>
+</hx-form-field>
+<hx-form-field label="Age" error="You must be at least 18." required>
+    <hx-number-field value="15"></hx-number-field>
+</hx-form-field>`}
 />
 
 ## Behavior
@@ -102,15 +146,15 @@ The field is a single tab stop: the buttons are not focusable. <kbd>↑</kbd> / 
 | `min`           | `min`            | `number`                   | —           | Smallest allowed value                                                                            |
 | `max`           | `max`            | `number`                   | —           | Largest allowed value                                                                             |
 | `step`          | `step`           | `number`                   | `1`         | Amount added or removed by the buttons, the arrow keys and the mouse wheel                        |
-| `label`         | `label`          | `string`                   | `""`        | Label displayed above the field                                                                   |
 | `placeholder`   | `placeholder`    | `string`                   | `""`        | Text shown when the field is empty                                                                |
-| `hint`          | `hint`           | `string`                   | `""`        | Help text under the field, replaced by `error` when set                                           |
-| `error`         | `error`          | `string`                   | `""`        | Error message under the field; also marks the field as invalid                                    |
 | `locale`        | `locale`         | `string`                   | `""`        | Separators and digits of the number; defaults to the closest `lang` attribute                     |
 | `formatOptions` | `format-options` | `Intl.NumberFormatOptions` | `{}`        | `Intl.NumberFormat` options (currency, percent, unit, fraction digits…), as JSON in the attribute |
 | `variant`       | `variant`        | `"default" \| "secondary"` | `"default"` | `default` puts − and + on each side, `secondary` stacks two chevrons on the right                 |
 | `disabled`      | `disabled`       | `boolean`                  | `false`     | Prevents user interaction                                                                         |
 | `required`      | `required`       | `boolean`                  | `false`     | Marks the field as required for form validation                                                   |
+| `invalid`       | `invalid`        | `boolean`                  | `false`     | Marks the field as invalid without displaying a message                                           |
+| `ariaLabel`     | `aria-label`     | `string \| null`           | `null`      | Accessible name of the field, set with the `aria-label` attribute                                 |
+| `focusTarget`   | —                | `HTMLInputElement`         | —           | The inner element that receives the focus (read-only)                                             |
 
 #### Events
 

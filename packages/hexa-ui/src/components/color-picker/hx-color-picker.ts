@@ -219,6 +219,9 @@ export class HxColorPicker extends HxPickerElement {
     protected override updated(changed: PropertyValues<this>) {
         super.updated(changed);
         this.internals.setFormValue(this.value);
+        if (this.required && !this.value)
+            this.internals.setValidity({ valueMissing: true }, "Please select a color.", this.focusTarget);
+        else this.internals.setValidity({});
     }
 
     formResetCallback() {

@@ -59,14 +59,15 @@ When the progress is unknown, `indeterminate` animates the bar and hides the val
 
 | Property                 | Attribute                 | Type                       | Default | Description                                                                                                                                                |
 | ------------------------ | ------------------------- | -------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `label`                  | `label`                   | `string`                   | `""`    | Label displayed above the bar, next to the formatted value                                                                                                 |
 | `indeterminate`          | `indeterminate`           | `boolean`                  | `false` | The progress is unknown: the bar is animated and no value is displayed                                                                                     |
 | `indeterminateAlternate` | `indeterminate-alternate` | `boolean`                  | `false` | Same as `indeterminate`, but the bar goes back and forth across the track                                                                                  |
 | `value`                  | `value`                   | `number`                   | `0`     | Current number                                                                                                                                             |
 | `min`                    | `min`                     | `number`                   | `0`     | Smallest value                                                                                                                                             |
 | `max`                    | `max`                     | `number`                   | `100`   | Largest value                                                                                                                                              |
-| `label`                  | `label`                   | `string`                   | `""`    | Label displayed above the bar, next to the formatted value                                                                                                 |
 | `locale`                 | `locale`                  | `string`                   | `""`    | Separators and digits of the displayed value; defaults to the closest `lang` attribute                                                                     |
 | `formatOptions`          | `format-options`          | `Intl.NumberFormatOptions` | `{}`    | `Intl.NumberFormat` options of the displayed value, as JSON in the attribute. With `"style": "percent"`, the position between `min` and `max` is displayed |
+| `valueText`              | —                         | — (read-only)              | —       | The formatted value (read-only)                                                                                                                            |
 
 #### CSS custom properties
 

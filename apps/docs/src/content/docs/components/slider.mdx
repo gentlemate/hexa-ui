@@ -9,9 +9,17 @@ import Preview from "../../../components/Preview.astro";
 
 ```js
 import "hexa-ui/slider";
+import "hexa-ui/form-field";
 ```
 
-<Preview stack code={`<hx-slider label="Volume" value="50"></hx-slider>`} />
+The label, the description, the hint, the error and the formatted value come from [`hx-form-field`](../form-field/).
+
+<Preview
+    stack
+    code={`<hx-form-field label="Volume">
+    <hx-slider value="50"></hx-slider>
+</hx-form-field>`}
+/>
 
 ## Structure
 
@@ -23,13 +31,23 @@ import "hexa-ui/slider";
 
 ### Min, max and step
 
-<Preview stack code={`<hx-slider label="Rating" value="2.5" min="0" max="5" step="0.5"></hx-slider>`} />
+<Preview
+    stack
+    code={`<hx-form-field label="Rating">
+    <hx-slider value="2.5" min="0" max="5" step="0.5"></hx-slider>
+</hx-form-field>`}
+/>
 
 ### Steps
 
 `show-steps` shows a dot on the track at each step between `min` and `max`.
 
-<Preview stack code={`<hx-slider label="Rating" value="3" max="10" show-steps></hx-slider>`} />
+<Preview
+    stack
+    code={`<hx-form-field label="Rating">
+    <hx-slider value="2.5" min="0" max="5" step="0.5" show-steps></hx-slider>
+</hx-form-field>`}
+/>
 
 ### Format
 
@@ -37,13 +55,23 @@ import "hexa-ui/slider";
 
 <Preview
     stack
-    code={`<hx-slider label="Price" value="20" max="100" format-options='{"style":"currency","currency":"EUR"}'></hx-slider>
-<hx-slider label="Opacity" value="0.8" max="1" step="0.01" format-options='{"style":"percent"}'></hx-slider>`}
+    code={`<hx-form-field label="Price">
+    <hx-slider value="20" max="100" format-options='{"style":"currency","currency":"EUR"}'></hx-slider>
+</hx-form-field>
+<hx-form-field label="Opacity">
+    <hx-slider value="0.8" max="1" step="0.01" format-options='{"style":"percent"}'></hx-slider>
+</hx-form-field>`}
 />
 
 ### Disabled
 
-<Preview stack code={`<hx-slider label="Volume" value="50" disabled></hx-slider>`} />
+<Preview stack code={`<hx-slider aria-label="Disabled" value="50" disabled></hx-slider>`} />
+
+### Invalid
+
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+
+<Preview stack code={`<hx-slider aria-label="Invalid" invalid></hx-slider>`} />
 
 ### Input event
 
@@ -52,7 +80,9 @@ import "hexa-ui/slider";
 <Preview
     stack
     code={`<div class="flex flex-col gap-3">
-    <hx-slider label="Brightness" value="50" oninput="this.nextElementSibling.style.opacity = this.value / 100"></hx-slider>
+    <hx-form-field label="Brightness">
+        <hx-slider value="50" oninput="this.nextElementSibling.style.opacity = this.value / 100"></hx-slider>
+    </hx-form-field>
     <div class="bg-primary h-16 rounded-lg" style="opacity: 0.5"></div>
 </div>`}
 />
@@ -78,19 +108,23 @@ import "hexa-ui/slider";
 | `step`          | `step`           | `number`                   | `1`     | Interval between two values, also added or removed by the arrow keys                                                                                       |
 | `showSteps`     | `show-steps`     | `boolean`                  | `false` | Shows a dot on the track at each step                                                                                                                      |
 | `disabled`      | `disabled`       | `boolean`                  | `false` | Prevents user interaction                                                                                                                                  |
+| `invalid`       | `invalid`        | `boolean`                  | `false` | Marks the field as invalid without displaying a message                                                                                                    |
+| `ariaLabel`     | `aria-label`     | `string \| null`           | `null`  | Accessible name of the field, set with the `aria-label` attribute                                                                                          |
+| `focusTarget`   | —                | `HTMLElement`              | —       | The thumb, which holds the focus (read-only)                                                                                                               |
 | `value`         | `value`          | `number`                   | `0`     | Current number                                                                                                                                             |
 | `min`           | `min`            | `number`                   | `0`     | Smallest value                                                                                                                                             |
 | `max`           | `max`            | `number`                   | `100`   | Largest value                                                                                                                                              |
-| `label`         | `label`          | `string`                   | `""`    | Label displayed above the bar, next to the formatted value                                                                                                 |
 | `locale`        | `locale`         | `string`                   | `""`    | Separators and digits of the displayed value; defaults to the closest `lang` attribute                                                                     |
 | `formatOptions` | `format-options` | `Intl.NumberFormatOptions` | `{}`    | `Intl.NumberFormat` options of the displayed value, as JSON in the attribute. With `"style": "percent"`, the position between `min` and `max` is displayed |
+| `valueText`     | —                | — (read-only)              | —       | The formatted value (read-only)                                                                                                                            |
 
 #### Events
 
-| Name     | Description                                                        |
-| -------- | ------------------------------------------------------------------ |
-| `input`  | The value changed, while dragging or from the keyboard             |
-| `change` | The value changed, once the thumb is released or from the keyboard |
+| Name              | Description                                                        |
+| ----------------- | ------------------------------------------------------------------ |
+| `input`           | The value changed, while dragging or from the keyboard             |
+| `change`          | The value changed, once the thumb is released or from the keyboard |
+| `hx-value-change` | `valueText` changed, by the user or from code                      |
 
 #### CSS custom properties
 
@@ -105,8 +139,6 @@ import "hexa-ui/slider";
 
 | Name    | Description                                 |
 | ------- | ------------------------------------------- |
-| `label` | The label                                   |
-| `value` | The formatted value                         |
 | `track` | The track                                   |
 | `fill`  | The filled part of the track                |
 | `step`  | A dot on the track, shown with `show-steps` |

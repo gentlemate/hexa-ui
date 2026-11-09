@@ -16,8 +16,12 @@ import "hexa-ui/popover";
     <hx-button slot="trigger">Open</hx-button>
     <div class="flex w-64 flex-col gap-3">
         <p class="text-muted-foreground text-sm">Set the dimensions for the layer.</p>
-        <hx-input label="Width" value="100%"></hx-input>
-        <hx-input label="Height" value="50px"></hx-input>
+        <hx-form-field label="Width">
+            <hx-input value="100%"></hx-input>
+        </hx-form-field>
+        <hx-form-field label="Height">
+            <hx-input value="50px"></hx-input>
+        </hx-form-field>
     </div>
 </hx-popover>`}
 />

@@ -41,7 +41,9 @@ export class HxLabel extends HxElement {
 
     protected override updated() {
         const control = this.control;
-        if (control) control.ariaLabelledByElements = [this];
+        if (!control) return;
+        control.ariaLabelledByElements = [this];
+        control.ariaLabel = this.textContent.trim();
     }
 
     override render() {

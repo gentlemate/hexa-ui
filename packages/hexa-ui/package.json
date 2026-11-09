@@ -142,6 +142,14 @@
         "./date-range-picker": {
             "types": "./dist/components/date-range-picker/index.d.ts",
             "import": "./dist/date-range-picker.js"
+        },
+        "./form-field": {
+            "types": "./dist/components/form-field/index.d.ts",
+            "import": "./dist/form-field.js"
+        },
+        "./form": {
+            "types": "./dist/components/form/index.d.ts",
+            "import": "./dist/form.js"
         }
     },
     "scripts": {

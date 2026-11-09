@@ -96,7 +96,9 @@ function remOf(token: string) {
                             >
                                 <input type="color" class="sr-only" />
                             </label>
-                            <hx-input class="grow" label={labelOf(token)} value={defaults.light[token]} />
+                            <hx-form-field class="grow" label={labelOf(token)}>
+                                <hx-input value={defaults.light[token]} />
+                            </hx-form-field>
                         </div>
                     ))}
                 </div>
@@ -106,15 +108,16 @@ function remOf(token: string) {
                 <span slot="title">Radius</span>
                 <div class="flex flex-col gap-4">
                     {Object.entries(radii).map(([token, max]) => (
-                        <hx-slider
-                            data-token={token}
-                            data-unit="rem"
-                            label={`${labelOf(token)} (rem)`}
-                            min="0"
-                            max={max}
-                            step="0.125"
-                            value={Math.min(remOf(token), max)}
-                        />
+                        <hx-form-field label={`${labelOf(token)} (rem)`}>
+                            <hx-slider
+                                data-token={token}
+                                data-unit="rem"
+                                min="0"
+                                max={max}
+                                step="0.125"
+                                value={Math.min(remOf(token), max)}
+                            />
+                        </hx-form-field>
                     ))}
                 </div>
             </hx-accordion-item>
@@ -123,51 +126,57 @@ function remOf(token: string) {
                 <span slot="title">Sizes and spacing</span>
                 <div class="flex flex-col gap-4">
                     {Object.entries(sizes).map(([token, [min, max, step = 0.25]]) => (
-                        <hx-slider
-                            data-token={token}
-                            data-unit="rem"
-                            label={`${labelOf(token)} (rem)`}
-                            min={min}
-                            max={max}
-                            step={step}
-                            value={remOf(token)}
-                        />
+                        <hx-form-field label={`${labelOf(token)} (rem)`}>
+                            <hx-slider
+                                data-token={token}
+                                data-unit="rem"
+                                min={min}
+                                max={max}
+                                step={step}
+                                value={remOf(token)}
+                            />
+                        </hx-form-field>
                     ))}
-                    <hx-slider
-                        data-token="--hx-border-width"
-                        data-unit="px"
-                        label="Border width (px)"
-                        min="0"
-                        max="3"
-                        step="1"
-                        value={parseFloat(defaults.light["--hx-border-width"])}
-                    />
+                    <hx-form-field label="Border width (px)">
+                        <hx-slider
+                            data-token="--hx-border-width"
+                            data-unit="px"
+                            min="0"
+                            max="3"
+                            step="1"
+                            value={parseFloat(defaults.light["--hx-border-width"])}
+                        />
+                    </hx-form-field>
                 </div>
             </hx-accordion-item>
 
             <hx-accordion-item value="typography">
                 <span slot="title">Typography</span>
                 <div class="flex flex-col gap-3">
-                    <hx-select class="theme-editor-font-size" label="Font size">
-                        <hx-select-option value="small">Small</hx-select-option>
-                        <hx-select-option value="medium">Medium</hx-select-option>
-                        <hx-select-option value="large">Large</hx-select-option>
-                    </hx-select>
-                    <hx-select data-token="--hx-font-sans" label="Font family" value={defaults.light["--hx-font-sans"]}>
-                        <hx-select-option value={defaults.light["--hx-font-sans"]}>System UI</hx-select-option>
-                        {Object.entries(fonts).map(([group, { fallback, names }]) => (
-                            <hx-select-group label={group}>
-                                {names.map((name) => (
-                                    <hx-select-option
-                                        value={familyOf(name, fallback)}
-                                        style={`font-family: ${familyOf(name, fallback)}`}
-                                    >
-                                        {name}
-                                    </hx-select-option>
-                                ))}
-                            </hx-select-group>
-                        ))}
-                    </hx-select>
+                    <hx-form-field label="Font size">
+                        <hx-select class="theme-editor-font-size">
+                            <hx-select-option value="small">Small</hx-select-option>
+                            <hx-select-option value="medium">Medium</hx-select-option>
+                            <hx-select-option value="large">Large</hx-select-option>
+                        </hx-select>
+                    </hx-form-field>
+                    <hx-form-field label="Font family">
+                        <hx-select data-token="--hx-font-sans" value={defaults.light["--hx-font-sans"]}>
+                            <hx-select-option value={defaults.light["--hx-font-sans"]}>System UI</hx-select-option>
+                            {Object.entries(fonts).map(([group, { fallback, names }]) => (
+                                <hx-select-group label={group}>
+                                    {names.map((name) => (
+                                        <hx-select-option
+                                            value={familyOf(name, fallback)}
+                                            style={`font-family: ${familyOf(name, fallback)}`}
+                                        >
+                                            {name}
+                                        </hx-select-option>
+                                    ))}
+                                </hx-select-group>
+                            ))}
+                        </hx-select>
+                    </hx-form-field>
                 </div>
             </hx-accordion-item>
         </hx-accordion>

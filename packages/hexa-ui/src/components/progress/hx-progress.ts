@@ -1,9 +1,10 @@
-import { css, html, type PropertyValues } from "lit";
+import { css, html, nothing, type PropertyValues } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { HxRangeElement } from "../../hx-range-element.js";
 
 /**
  * @element hx-progress
+ * @property label - Label displayed above the bar, next to the formatted value.
  * @property indeterminate - The progress is unknown: the bar is animated and no value is displayed.
  * @property indeterminateAlternate - Same as `indeterminate`, but the bar goes back and forth across the track.
  * @cssprop [--hx-height-progress=0.5rem] - Height of the track.
@@ -32,6 +33,7 @@ export class HxProgress extends HxRangeElement {
         `,
     ];
 
+    @property() label = "";
     @property({ type: Boolean, reflect: true }) indeterminate = false;
     @property({ type: Boolean, reflect: true, attribute: "indeterminate-alternate" }) indeterminateAlternate = false;
 
@@ -53,6 +55,14 @@ export class HxProgress extends HxRangeElement {
         this.internals.ariaValueMax = String(this.max);
         this.internals.ariaValueNow = this.unknown ? null : String(this.clamp(this.value));
         this.internals.ariaValueText = this.unknown ? null : this.valueText;
+    }
+
+    protected renderHeader(showValue: boolean) {
+        if (!this.label) return nothing;
+        return html`<div class="flex items-center justify-between gap-3">
+            <span id="label" part="label">${this.label}</span>
+            ${showValue ? html`<span part="value" class="text-muted-foreground tabular-nums">${this.valueText}</span>` : nothing}
+        </div>`;
     }
 
     override render() {

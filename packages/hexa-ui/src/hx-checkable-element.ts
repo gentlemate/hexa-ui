@@ -6,6 +6,7 @@ import { HxElement } from "./hx-element.js";
  * @property name - Name submitted with the form.
  * @property disabled - Prevents user interaction.
  * @property required - Marks the field as required for form validation.
+ * @property invalid - Marks the field as invalid without displaying a message.
  */
 export abstract class HxCheckableElement extends HxElement {
     static formAssociated = true;
@@ -29,6 +30,9 @@ export abstract class HxCheckableElement extends HxElement {
                 cursor: not-allowed;
                 opacity: 0.5;
             }
+            :host([invalid]) [part~="control"] {
+                border-color: var(--hx-destructive);
+            }
             :host(:focus-visible) [part~="control"] {
                 border-color: var(--hx-ring);
                 box-shadow: 0 0 0 3px color-mix(in oklab, var(--hx-ring) 50%, transparent);
@@ -41,6 +45,7 @@ export abstract class HxCheckableElement extends HxElement {
     @property({ type: Boolean }) checked = false;
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) required = false;
+    @property({ type: Boolean, reflect: true }) invalid = false;
 
     protected internals = this.attachInternals();
 
@@ -76,6 +81,7 @@ export abstract class HxCheckableElement extends HxElement {
         this.internals.ariaChecked = this.checkedState;
         this.internals.ariaDisabled = String(this.disabled);
         this.internals.ariaRequired = String(this.required);
+        this.internals.ariaInvalid = String(this.invalid);
         if (this.checked) this.internals.states.add("checked");
         else this.internals.states.delete("checked");
 

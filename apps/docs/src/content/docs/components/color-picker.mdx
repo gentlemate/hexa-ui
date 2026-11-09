@@ -9,9 +9,17 @@ import Preview from "../../../components/Preview.astro";
 
 ```js
 import "hexa-ui/color-picker";
+import "hexa-ui/form-field";
 ```
 
-<Preview stack code={`<hx-color-picker label="Brand" placeholder="Pick a color"></hx-color-picker>`} />
+The label, the description, the hint and the error come from [`hx-form-field`](../form-field/).
+
+<Preview
+    stack
+    code={`<hx-form-field label="Brand">
+    <hx-color-picker placeholder="Pick a color"></hx-color-picker>
+</hx-form-field>`}
+/>
 
 ## Structure
 
@@ -21,37 +29,47 @@ import "hexa-ui/color-picker";
 
 ## Examples
 
-### Hint and error
-
-<Preview
-    stack
-    code={`<hx-color-picker label="Brand" placeholder="Pick a color" hint="Used throughout your app."></hx-color-picker>
-<hx-color-picker label="Destructive" value="#fb2c36" error="This color is not accessible."></hx-color-picker>`}
-/>
-
 ### Format
 
 `value` accepts hex, `rgb()`, `hsl()` and `oklch()` colors, whatever the `format`. Once the user edits the color, it is converted to `format`: `hex` (default), `rgb`, `hsl` or `oklch`.
 
 <Preview
     stack
-    code={`<hx-color-picker label="HEX" value="#2b7fff"></hx-color-picker>
-<hx-color-picker label="RGB" format="rgb" value="rgb(43 127 255)"></hx-color-picker>
-<hx-color-picker label="HSL" format="hsl" value="hsl(216 100% 58%)"></hx-color-picker>
-<hx-color-picker label="OKLCH" format="oklch" value="oklch(0.623 0.214 259.815)"></hx-color-picker>`}
+    code={`<hx-form-field label="HEX">
+    <hx-color-picker value="#2b7fff"></hx-color-picker>
+</hx-form-field>
+<hx-form-field label="RGB">
+    <hx-color-picker format="rgb" value="rgb(43 127 255)"></hx-color-picker>
+</hx-form-field>
+<hx-form-field label="HSL">
+    <hx-color-picker format="hsl" value="hsl(216 100% 58%)"></hx-color-picker>
+</hx-form-field>
+<hx-form-field label="OKLCH">
+    <hx-color-picker format="oklch" value="oklch(0.623 0.214 259.815)"></hx-color-picker>
+</hx-form-field>`}
 />
 
 ### Format select
 
 `format-select` adds a select in the popup to display the color in another format. It only changes the text field: `value` stays in `format`, and changing the format fires no event.
 
-<Preview stack code={`<hx-color-picker label="Brand" value="#2b7fff" format-select></hx-color-picker>`} />
+<Preview
+    stack
+    code={`<hx-form-field label="Brand">
+    <hx-color-picker value="#2b7fff" format-select></hx-color-picker>
+</hx-form-field>`}
+/>
 
 ### Alpha
 
 `alpha` adds a transparency slider. Without it, the transparency of the color is dropped once the user edits it.
 
-<Preview stack code={`<hx-color-picker label="Overlay" value="#2b7fff80" alpha></hx-color-picker>`} />
+<Preview
+    stack
+    code={`<hx-form-field label="Overlay">
+    <hx-color-picker value="#2b7fff80" alpha></hx-color-picker>
+</hx-form-field>`}
+/>
 
 ### Swatches
 
@@ -59,12 +77,20 @@ import "hexa-ui/color-picker";
 
 <Preview
     stack
-    code={`<hx-color-picker label="Brand" value="#2b7fff" swatches='["#fb2c36", "#fe9a00", "#00c950", "#2b7fff", "#ad46ff"]'></hx-color-picker>`}
+    code={`<hx-form-field label="Brand">
+    <hx-color-picker value="#2b7fff" swatches='["#fb2c36", "#fe9a00", "#00c950", "#2b7fff", "#ad46ff"]'></hx-color-picker>
+</hx-form-field>`}
 />
 
 ### Disabled
 
-<Preview stack code={`<hx-color-picker label="Brand" value="#00c950" disabled></hx-color-picker>`} />
+<Preview stack code={`<hx-color-picker aria-label="Disabled" value="#00c950" disabled></hx-color-picker>`} />
+
+### Invalid
+
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+
+<Preview stack code={`<hx-color-picker aria-label="Invalid" invalid></hx-color-picker>`} />
 
 ### Form
 
@@ -73,10 +99,26 @@ import "hexa-ui/color-picker";
 <Preview
     stack
     code={`<form onsubmit="event.preventDefault(); this.querySelector('p').textContent = 'brand=' + new FormData(this).get('brand')">
-    <hx-color-picker label="Brand" name="brand" value="#2b7fff"></hx-color-picker>
+    <hx-form-field label="Brand">
+        <hx-color-picker name="brand" value="#2b7fff"></hx-color-picker>
+    </hx-form-field>
     <hx-button type="submit" class="mt-3">Submit</hx-button>
     <p class="mt-2 text-sm"></p>
 </form>`}
+/>
+
+### Form field
+
+In a form, [`hx-form-field`](../form-field/) adds the label, the hint and the error message.
+
+<Preview
+    stack
+    code={`<hx-form-field label="Brand" hint="Used throughout your app.">
+    <hx-color-picker placeholder="Pick a color"></hx-color-picker>
+</hx-form-field>
+<hx-form-field label="Destructive" error="This color is not accessible.">
+    <hx-color-picker value="#fb2c36"></hx-color-picker>
+</hx-form-field>`}
 />
 
 ## Behavior
@@ -104,12 +146,11 @@ The controls work in sRGB. `value` is kept as is until the user edits it, so an 
 | `formatSelect` | `format-select` | `boolean`                                                                                                                                                            | `false`          | Shows a select in the popup to display the color in another format; `value` stays in `format`      |
 | `placement`    | `placement`     | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"bottom-start"` | Position of the popup relative to the trigger                                                      |
 | `distance`     | `distance`      | `number`                                                                                                                                                             | `4`              | Gap in pixels between the trigger and the popup                                                    |
-| `label`        | `label`         | `string`                                                                                                                                                             | `""`             | Label displayed above the field                                                                    |
 | `placeholder`  | `placeholder`   | `string`                                                                                                                                                             | `""`             | Text shown when nothing is selected                                                                |
-| `hint`         | `hint`          | `string`                                                                                                                                                             | `""`             | Help text under the field, replaced by `error` when set                                            |
-| `error`        | `error`         | `string`                                                                                                                                                             | `""`             | Error message under the field; also marks the field as invalid                                     |
 | `disabled`     | `disabled`      | `boolean`                                                                                                                                                            | `false`          | Prevents user interaction                                                                          |
-| `required`     | `required`      | `boolean`                                                                                                                                                            | `false`          | Adds an asterisk to the label and marks the field as required for assistive technologies           |
+| `required`     | `required`      | `boolean`                                                                                                                                                            | `false`          | Marks the field as required for form validation                                                    |
+| `invalid`      | `invalid`       | `boolean`                                                                                                                                                            | `false`          | Marks the field as invalid without displaying a message                                            |
+| `ariaLabel`    | `aria-label`    | `string \| null`                                                                                                                                                     | `null`           | Accessible name of the field, set with the `aria-label` attribute                                  |
 | `focusTarget`  | —               | `HTMLButtonElement`                                                                                                                                                  | —                | The inner element that receives the focus (read-only)                                              |
 | `open`         | `open`          | `boolean`                                                                                                                                                            | `false`          | Whether it is open. Setting it directly skips `hx-show` / `hx-hide`                                |
 

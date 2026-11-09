@@ -9,9 +9,17 @@ import Preview from "../../../components/Preview.astro";
 
 ```js
 import "hexa-ui/date-range-picker";
+import "hexa-ui/form-field";
 ```
 
-<Preview stack code={`<hx-date-range-picker label="Stay" placeholder="Pick a range"></hx-date-range-picker>`} />
+The label, the description, the hint and the error come from [`hx-form-field`](../form-field/).
+
+<Preview
+    stack
+    code={`<hx-form-field label="Stay">
+    <hx-date-range-picker placeholder="Pick a range"></hx-date-range-picker>
+</hx-form-field>`}
+/>
 
 ## Structure
 
@@ -21,29 +29,37 @@ import "hexa-ui/date-range-picker";
 
 ## Examples
 
-### Hint and error
-
-<Preview
-    stack
-    code={`<hx-date-range-picker label="Stay" placeholder="Pick a range" hint="Check-in from 3 pm, check-out by 11 am."></hx-date-range-picker>
-<hx-date-range-picker label="Stay" start="2025-10-25" end="2025-10-26" error="Your stay must be at least 2 nights."></hx-date-range-picker>`}
-/>
-
 ### Date style
 
 `date-style` sets the format of the displayed range: `full`, `long`, `medium` (default) or `short`.
 
 <Preview
     stack
-    code={`<hx-date-range-picker label="Full" start="2025-01-01" end="2026-12-31" date-style="full"></hx-date-range-picker>
-<hx-date-range-picker label="Long" start="2025-01-01" end="2026-12-31" date-style="long"></hx-date-range-picker>
-<hx-date-range-picker label="Medium" start="2025-01-01" end="2026-12-31"></hx-date-range-picker>
-<hx-date-range-picker label="Short" start="2025-01-01" end="2026-12-31" date-style="short"></hx-date-range-picker>
+    code={`<hx-form-field label="Full">
+    <hx-date-range-picker start="2025-01-01" end="2026-12-31" date-style="full"></hx-date-range-picker>
+</hx-form-field>
+<hx-form-field label="Long">
+    <hx-date-range-picker start="2025-01-01" end="2026-12-31" date-style="long"></hx-date-range-picker>
+</hx-form-field>
+<hx-form-field label="Medium">
+    <hx-date-range-picker start="2025-01-01" end="2026-12-31"></hx-date-range-picker>
+</hx-form-field>
+<hx-form-field label="Short">
+    <hx-date-range-picker start="2025-01-01" end="2026-12-31" date-style="short"></hx-date-range-picker>
+</hx-form-field>
 <hx-separator></hx-separator>
-<hx-date-range-picker label="Full" start="2026-10-01" end="2026-10-31" date-style="full"></hx-date-range-picker>
-<hx-date-range-picker label="Long" start="2026-10-01" end="2026-10-31" date-style="long"></hx-date-range-picker>
-<hx-date-range-picker label="Medium" start="2026-10-01" end="2026-10-31"></hx-date-range-picker>
-<hx-date-range-picker label="Short" start="2026-10-01" end="2026-10-31" date-style="short"></hx-date-range-picker>`}
+<hx-form-field label="Full">
+    <hx-date-range-picker start="2026-10-01" end="2026-10-31" date-style="full"></hx-date-range-picker>
+</hx-form-field>
+<hx-form-field label="Long">
+    <hx-date-range-picker start="2026-10-01" end="2026-10-31" date-style="long"></hx-date-range-picker>
+</hx-form-field>
+<hx-form-field label="Medium">
+    <hx-date-range-picker start="2026-10-01" end="2026-10-31"></hx-date-range-picker>
+</hx-form-field>
+<hx-form-field label="Short">
+    <hx-date-range-picker start="2026-10-01" end="2026-10-31" date-style="short"></hx-date-range-picker>
+</hx-form-field>`}
 />
 
 ### Min and max
@@ -52,7 +68,9 @@ Days outside the range are disabled in the calendar, and so are the navigation b
 
 <Preview
     stack
-    code={`<hx-date-range-picker label="Date range" placeholder="Pick a range" min="2026-01-01" max="2026-12-31"></hx-date-range-picker>`}
+    code={`<hx-form-field label="Date range">
+    <hx-date-range-picker placeholder="Pick a range" min="2026-01-01" max="2026-12-31"></hx-date-range-picker>
+</hx-form-field>`}
 />
 
 ### Month and year selects
@@ -61,9 +79,15 @@ Days outside the range are disabled in the calendar, and so are the navigation b
 
 <Preview
     stack
-    code={`<hx-date-range-picker label="Month select" placeholder="Pick a range" month-select></hx-date-range-picker>
-<hx-date-range-picker label="Year select" placeholder="Pick a range" year-select></hx-date-range-picker>
-<hx-date-range-picker label="Both" placeholder="Pick a range" month-select year-select></hx-date-range-picker>`}
+    code={`<hx-form-field label="Month select">
+    <hx-date-range-picker placeholder="Pick a range" month-select></hx-date-range-picker>
+</hx-form-field>
+<hx-form-field label="Year select">
+    <hx-date-range-picker placeholder="Pick a range" year-select></hx-date-range-picker>
+</hx-form-field>
+<hx-form-field label="Both">
+    <hx-date-range-picker placeholder="Pick a range" month-select year-select></hx-date-range-picker>
+</hx-form-field>`}
 />
 
 ### Locale
@@ -72,16 +96,31 @@ The displayed range, the month and weekday names, and the first day of the week 
 
 <Preview
     stack
-    code={`<hx-date-range-picker label="French" locale="fr-FR" start="2026-01-01" end="2026-12-31"></hx-date-range-picker>
-<hx-date-range-picker label="American" locale="en-US" start="2026-01-01" end="2026-12-31"></hx-date-range-picker>
-<hx-date-range-picker label="Japanese" locale="ja-JP" start="2026-01-01" end="2026-12-31"></hx-date-range-picker>`}
+    code={`<hx-form-field label="French">
+    <hx-date-range-picker locale="fr-FR" start="2026-01-01" end="2026-12-31"></hx-date-range-picker>
+</hx-form-field>
+<hx-form-field label="American">
+    <hx-date-range-picker locale="en-US" start="2026-01-01" end="2026-12-31"></hx-date-range-picker>
+</hx-form-field>
+<hx-form-field label="Japanese">
+    <hx-date-range-picker locale="ja-JP" start="2026-01-01" end="2026-12-31"></hx-date-range-picker>
+</hx-form-field>`}
 />
 
 ### Disabled
 
 <Preview
     stack
-    code={`<hx-date-range-picker label="Date range" start="2026-01-01" end="2026-12-31" disabled></hx-date-range-picker>`}
+    code={`<hx-date-range-picker aria-label="Disabled" start="2026-01-01" end="2026-12-31" disabled></hx-date-range-picker>`}
+/>
+
+### Invalid
+
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+
+<Preview
+    stack
+    code={`<hx-date-range-picker aria-label="Invalid" placeholder="Pick a range" invalid></hx-date-range-picker>`}
 />
 
 ### Change event
@@ -90,13 +129,13 @@ The displayed range, the month and weekday names, and the first day of the week 
 
 <Preview
     stack
-    code={`<hx-date-range-picker
-    label="Date range"
-    start="2026-01-01"
-    end="2026-12-31"
-    hint="Thursday 1 January – Thursday 31 December 2026"
-    onchange="this.hint = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full' }).formatRange(new Date(this.start + 'T00:00'), new Date(this.end + 'T00:00'))"
-></hx-date-range-picker>`}
+    code={`<hx-form-field label="Date range" hint="Thursday 1 January – Thursday 31 December 2026">
+    <hx-date-range-picker
+        start="2026-01-01"
+        end="2026-12-31"
+        onchange="this.parentElement.hint = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full' }).formatRange(new Date(this.start + 'T00:00'), new Date(this.end + 'T00:00'))"
+    ></hx-date-range-picker>
+</hx-form-field>`}
 />
 
 ### Form
@@ -106,10 +145,26 @@ The displayed range, the month and weekday names, and the first day of the week 
 <Preview
     stack
     code={`<form onsubmit="event.preventDefault(); this.querySelector('p').textContent = new URLSearchParams(new FormData(this))">
-    <hx-date-range-picker label="Stay" start-name="from" end-name="to" start="2026-01-01" end="2026-12-31"></hx-date-range-picker>
+    <hx-form-field label="Stay">
+        <hx-date-range-picker start-name="from" end-name="to" start="2026-01-01" end="2026-12-31"></hx-date-range-picker>
+    </hx-form-field>
     <hx-button type="submit" class="mt-3">Submit</hx-button>
     <p class="mt-2 text-sm"></p>
 </form>`}
+/>
+
+### Form field
+
+In a form, [`hx-form-field`](../form-field/) adds the label, the hint and the error message.
+
+<Preview
+    stack
+    code={`<hx-form-field label="Stay" hint="Check-in from 3 pm, check-out by 11 am.">
+    <hx-date-range-picker placeholder="Pick a range"></hx-date-range-picker>
+</hx-form-field>
+<hx-form-field label="Stay" error="Your stay must be at least 2 nights.">
+    <hx-date-range-picker start="2025-10-25" end="2025-10-26"></hx-date-range-picker>
+</hx-form-field>`}
 />
 
 ## Behavior
@@ -144,12 +199,11 @@ cancels a range in progress, otherwise closes the calendar.
 | `yearSelect`  | `year-select`  | `boolean`                                                                                                                                                            | `false`          | Shows the year of the calendar as a select                                                   |
 | `placement`   | `placement`    | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"bottom-start"` | Position of the calendar relative to the trigger                                             |
 | `distance`    | `distance`     | `number`                                                                                                                                                             | `4`              | Gap in pixels between the trigger and the calendar                                           |
-| `label`       | `label`        | `string`                                                                                                                                                             | `""`             | Label displayed above the field                                                              |
 | `placeholder` | `placeholder`  | `string`                                                                                                                                                             | `""`             | Text shown when nothing is selected                                                          |
-| `hint`        | `hint`         | `string`                                                                                                                                                             | `""`             | Help text under the field, replaced by `error` when set                                      |
-| `error`       | `error`        | `string`                                                                                                                                                             | `""`             | Error message under the field; also marks the field as invalid                               |
 | `disabled`    | `disabled`     | `boolean`                                                                                                                                                            | `false`          | Prevents user interaction                                                                    |
-| `required`    | `required`     | `boolean`                                                                                                                                                            | `false`          | Adds an asterisk to the label and marks the field as required for assistive technologies     |
+| `required`    | `required`     | `boolean`                                                                                                                                                            | `false`          | Marks the field as required for form validation                                              |
+| `invalid`     | `invalid`      | `boolean`                                                                                                                                                            | `false`          | Marks the field as invalid without displaying a message                                      |
+| `ariaLabel`   | `aria-label`   | `string \| null`                                                                                                                                                     | `null`           | Accessible name of the field, set with the `aria-label` attribute                            |
 | `focusTarget` | —              | `HTMLButtonElement`                                                                                                                                                  | —                | The inner element that receives the focus (read-only)                                        |
 | `open`        | `open`         | `boolean`                                                                                                                                                            | `false`          | Whether it is open. Setting it directly skips `hx-show` / `hx-hide`                          |
 

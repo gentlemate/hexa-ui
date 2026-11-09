@@ -9,16 +9,21 @@ import Preview from "../../../components/Preview.astro";
 
 ```js
 import "hexa-ui/select";
+import "hexa-ui/form-field";
 ```
+
+The label, the description, the hint and the error come from [`hx-form-field`](../form-field/).
 
 <Preview
     stack
-    code={`<hx-select label="Framework" placeholder="Select a framework">
-    <hx-select-option value="react">React</hx-select-option>
-    <hx-select-option value="angular">Angular</hx-select-option>
-    <hx-select-option value="vue">Vue</hx-select-option>
-    <hx-select-option value="svelte">Svelte</hx-select-option>
-</hx-select>`}
+    code={`<hx-form-field label="Framework">
+    <hx-select placeholder="Select a framework">
+        <hx-select-option value="react">React</hx-select-option>
+        <hx-select-option value="angular">Angular</hx-select-option>
+        <hx-select-option value="vue">Vue</hx-select-option>
+        <hx-select-option value="svelte">Svelte</hx-select-option>
+    </hx-select>
+</hx-form-field>`}
 />
 
 ## Structure
@@ -41,37 +46,57 @@ import "hexa-ui/select";
 
 <Preview
     stack
-    code={`<hx-select label="City" placeholder="Select a city">
-    <hx-select-group label="France">
-        <hx-select-option value="paris">Paris</hx-select-option>
-        <hx-select-option value="marseille">Marseille</hx-select-option>
-        <hx-select-option value="lyon">Lyon</hx-select-option>
-    </hx-select-group>
-    <hx-select-separator></hx-select-separator>
-    <hx-select-group label="Spain">
-        <hx-select-option value="madrid">Madrid</hx-select-option>
-        <hx-select-option value="barcelona">Barcelona</hx-select-option>
-    </hx-select-group>
-</hx-select>`}
+    code={`<hx-form-field label="City">
+    <hx-select placeholder="Select a city">
+        <hx-select-group label="France">
+            <hx-select-option value="paris">Paris</hx-select-option>
+            <hx-select-option value="marseille">Marseille</hx-select-option>
+            <hx-select-option value="lyon">Lyon</hx-select-option>
+        </hx-select-group>
+        <hx-select-separator></hx-select-separator>
+        <hx-select-group label="Spain">
+            <hx-select-option value="madrid">Madrid</hx-select-option>
+            <hx-select-option value="barcelona">Barcelona</hx-select-option>
+        </hx-select-group>
+    </hx-select>
+</hx-form-field>`}
 />
 
-### Hint and error
+### Disabled
+
+<Preview stack code={`<hx-select aria-label="Disabled" placeholder="Select a framework" disabled></hx-select>`} />
+
+### Invalid
+
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
 
 <Preview
     stack
-    code={`<hx-select label="Country" placeholder="Select a country" hint="Used for shipping.">
-    <hx-select-option value="fr">France</hx-select-option>
-    <hx-select-option value="es">Spain</hx-select-option>
-</hx-select>
-<hx-select label="Plan" placeholder="Select a plan" error="You must select a plan." required>
+    code={`<hx-select aria-label="Invalid" placeholder="Select a plan" invalid>
     <hx-select-option value="free">Free</hx-select-option>
     <hx-select-option value="pro">Pro</hx-select-option>
 </hx-select>`}
 />
 
-### Disabled
+### Form field
 
-<Preview stack code={`<hx-select label="Framework" placeholder="Select a framework" disabled></hx-select>`} />
+In a form, [`hx-form-field`](../form-field/) adds the label, the hint and the error message.
+
+<Preview
+    stack
+    code={`<hx-form-field label="Country" hint="Used for shipping.">
+    <hx-select placeholder="Select a country">
+        <hx-select-option value="fr">France</hx-select-option>
+        <hx-select-option value="es">Spain</hx-select-option>
+    </hx-select>
+</hx-form-field>
+<hx-form-field label="Plan" error="You must select a plan." required>
+    <hx-select placeholder="Select a plan">
+        <hx-select-option value="free">Free</hx-select-option>
+        <hx-select-option value="pro">Pro</hx-select-option>
+    </hx-select>
+</hx-form-field>`}
+/>
 
 ## Keyboard
 
@@ -87,14 +112,13 @@ The trigger opens a listbox and moves the focus to the selected option. <kbd>↑
 | ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------- |
 | `name`        | `name`        | `string`                                                                                                                                                             | `""`             | Name submitted with the form                                        |
 | `value`       | `value`       | `string`                                                                                                                                                             | `""`             | Value of the selected option                                        |
-| `label`       | `label`       | `string`                                                                                                                                                             | `""`             | Label displayed above the field                                     |
 | `placeholder` | `placeholder` | `string`                                                                                                                                                             | `""`             | Text shown when no option is selected                               |
-| `hint`        | `hint`        | `string`                                                                                                                                                             | `""`             | Help text under the field, replaced by `error` when set             |
-| `error`       | `error`       | `string`                                                                                                                                                             | `""`             | Error message under the field; also marks the field as invalid      |
 | `placement`   | `placement`   | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"bottom-start"` | Position of the listbox relative to the trigger                     |
 | `distance`    | `distance`    | `number`                                                                                                                                                             | `4`              | Gap in pixels between the trigger and the listbox                   |
 | `disabled`    | `disabled`    | `boolean`                                                                                                                                                            | `false`          | Prevents user interaction                                           |
 | `required`    | `required`    | `boolean`                                                                                                                                                            | `false`          | Marks the field as required for form validation                     |
+| `invalid`     | `invalid`     | `boolean`                                                                                                                                                            | `false`          | Marks the field as invalid without displaying a message             |
+| `ariaLabel`   | `aria-label`  | `string \| null`                                                                                                                                                     | `null`           | Accessible name of the field, set with the `aria-label` attribute   |
 | `focusTarget` | —             | `HTMLButtonElement`                                                                                                                                                  | —                | The inner element that receives the focus (read-only)               |
 | `open`        | `open`        | `boolean`                                                                                                                                                            | `false`          | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
 

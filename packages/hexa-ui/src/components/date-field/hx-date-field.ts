@@ -43,12 +43,11 @@ function valueOf({ day, month, year }: Segments) {
  * @element hx-date-field
  * @property name - Name submitted with the form.
  * @property value - Current date, as `YYYY-MM-DD`; empty while the date is incomplete.
- * @property label - Label displayed above the field.
- * @property hint - Help text under the field, replaced by `error` when set.
- * @property error - Error message under the field; also marks the field as invalid.
  * @property locale - Order, separators and placeholders of the segments; defaults to the closest `lang` attribute.
  * @property disabled - Prevents user interaction.
  * @property required - Marks the field as required for form validation.
+ * @property invalid - Marks the field as invalid without displaying a message.
+ * @property ariaLabel - Accessible name of the field, set with the `aria-label` attribute.
  * @property focusTarget - The group of segments, which holds the focus (read-only).
  * @property incomplete - Whether some segments are filled but not all, while `value` is empty.
  * @fires input - The value changed.
@@ -75,12 +74,11 @@ export class HxDateField extends HxElement {
 
     @property({ reflect: true }) name = "";
     @property() value = "";
-    @property() label = "";
-    @property() hint = "";
-    @property() error = "";
     @property() locale = "";
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) required = false;
+    @property({ type: Boolean, reflect: true }) invalid = false;
+    @property({ attribute: "aria-label" }) override ariaLabel: string | null = null;
 
     @query("#control") focusTarget!: HTMLElement;
 
@@ -176,6 +174,10 @@ export class HxDateField extends HxElement {
                 this.buffer = undefined;
                 this.setSegment(type, undefined);
                 break;
+            case "Enter":
+                this.commit();
+                this.updateComplete.then(() => this.internals.form?.requestSubmit());
+                break;
             default:
                 return;
         }
@@ -190,11 +192,6 @@ export class HxDateField extends HxElement {
 
     private onControlMouseDown(event: MouseEvent) {
         if (this.disabled || (event.target as HTMLElement).dataset.segment) return;
-        event.preventDefault();
-        this.focusFirstSegment();
-    }
-
-    private onLabelClick(event: MouseEvent) {
         event.preventDefault();
         this.focusFirstSegment();
     }
@@ -214,6 +211,9 @@ export class HxDateField extends HxElement {
 
     protected override updated() {
         this.internals.setFormValue(this.value);
+        if (this.required && !this.value)
+            this.internals.setValidity({ valueMissing: true }, "Please fill out this field.", this.focusTarget);
+        else this.internals.setValidity({});
     }
 
     formResetCallback() {
@@ -246,7 +246,7 @@ export class HxDateField extends HxElement {
             aria-valuenow=${ifDefined(value)}
             aria-valuetext=${padded ?? "Empty"}
             aria-required=${this.required ? "true" : "false"}
-            aria-invalid=${this.error ? "true" : "false"}
+            aria-invalid=${this.invalid ? "true" : "false"}
             aria-disabled=${this.disabled ? "true" : "false"}
             class="${empty ? "text-muted-foreground" : ""} focus:bg-accent focus:text-accent-foreground rounded-[calc(var(--hx-radius-field)-0.125rem)] px-0.5 tabular-nums caret-transparent outline-none"
             @focus=${() => this.activate(type)}
@@ -268,51 +268,28 @@ export class HxDateField extends HxElement {
         }).formatToParts(today());
         const empty = segmentTypes.every((type) => this.segments[type] === undefined);
         return html`
-            <div class="text-foreground flex flex-col gap-1.5">
-                ${
-                    this.label
-                        ? html`<label id="label" @click=${this.onLabelClick}
-                              >${this.label}${
-                                  this.required
-                                      ? html`<span class="text-destructive ml-0.5" aria-hidden="true">*</span>`
-                                      : nothing
-                              }</label
-                          >`
-                        : nothing
-                }
-                <div
-                    id="control"
-                    part="control"
-                    role="group"
-                    aria-labelledby=${ifDefined(this.label ? "label" : undefined)}
-                    ?data-invalid=${!!this.error}
-                    ?data-disabled=${this.disabled}
-                    class="border-border bg-field focus-within:border-ring focus-within:ring-ring/50 data-invalid:border-destructive data-invalid:ring-destructive/20 rounded-date-field h-date-field px-date-field flex w-full cursor-text items-center border shadow-xs focus-within:ring-[3px] data-disabled:cursor-not-allowed data-disabled:opacity-50"
-                    @mousedown=${this.onControlMouseDown}
-                >
-                    ${parts.map((part) =>
-                        segmentTypes.includes(part.type as SegmentType)
-                            ? this.renderSegment(
-                                  part.type as SegmentType,
-                                  placeholderOf(part.type as SegmentType, locale, names),
-                              )
-                            : part.type === "literal"
-                              ? html`<span
-                                    part="separator"
-                                    aria-hidden="true"
-                                    class=${empty ? "text-muted-foreground" : ""}
-                                    >${part.value}</span
-                                >`
-                              : nothing,
-                    )}
-                </div>
-                ${
-                    this.error
-                        ? html`<p class="text-destructive text-sm" role="alert">${this.error}</p>`
-                        : this.hint
-                          ? html`<p class="text-muted-foreground text-sm">${this.hint}</p>`
-                          : nothing
-                }
+            <div
+                id="control"
+                part="control"
+                role="group"
+                aria-label=${ifDefined(this.ariaLabel || undefined)}
+                ?data-invalid=${this.invalid}
+                ?data-disabled=${this.disabled}
+                class="text-foreground border-border bg-field focus-within:border-ring focus-within:ring-ring/50 data-invalid:border-destructive data-invalid:ring-destructive/20 rounded-date-field h-date-field px-date-field flex w-full cursor-text items-center border shadow-xs focus-within:ring-[3px] data-disabled:cursor-not-allowed data-disabled:opacity-50"
+                @mousedown=${this.onControlMouseDown}
+            >
+                ${parts.map((part) =>
+                    segmentTypes.includes(part.type as SegmentType)
+                        ? this.renderSegment(
+                              part.type as SegmentType,
+                              placeholderOf(part.type as SegmentType, locale, names),
+                          )
+                        : part.type === "literal"
+                          ? html`<span part="separator" aria-hidden="true" class=${empty ? "text-muted-foreground" : ""}
+                                >${part.value}</span
+                            >`
+                          : nothing,
+                )}
             </div>
         `;
     }

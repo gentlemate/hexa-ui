@@ -52,6 +52,15 @@ import "hexa-ui/button";
 </hx-button>`}
 />
 
+### Loading
+
+`loading` shows a spinner in place of the icon and ignores clicks, while the button stays focusable. [`hx-form`](../form/) sets it on its submit buttons during a submission.
+
+<Preview
+    code={`<hx-button loading>Saving</hx-button>
+<hx-button variant="outline" loading>Saving</hx-button>`}
+/>
+
 ### Disabled
 
 <Preview
@@ -73,6 +82,7 @@ import "hexa-ui/button";
 | `variant`       | `variant`        | `"primary" \| "secondary" \| "outline" \| "ghost" \| "destructive"` | `"primary"` | Visual style                                                |
 | `type`          | `type`           | `"button" \| "submit" \| "reset"`                                   | `"button"`  | `submit` and `reset` act on the parent `<form>`             |
 | `disabled`      | `disabled`       | `boolean`                                                           | `false`     | Disables the button                                         |
+| `loading`       | `loading`        | `boolean`                                                           | `false`     | Shows a spinner in place of the icon and ignores clicks     |
 | `square`        | `square`         | `boolean`                                                           | `false`     | Square button without horizontal padding, for an icon alone |
 | `icon`          | —                | `IconNode`                                                          | —           | Lucide icon, set as a JS property                           |
 | `iconPlacement` | `icon-placement` | `"left" \| "right"`                                                 | `"left"`    | Side of the icon relative to the label                      |

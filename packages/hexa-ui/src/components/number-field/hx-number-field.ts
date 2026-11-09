@@ -1,4 +1,4 @@
-import { css, html, nothing } from "lit";
+import { css, html } from "lit";
 import { customElement, property, query, state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { ChevronDown, ChevronUp, Minus, Plus, type IconNode } from "lucide";
@@ -33,15 +33,15 @@ function parseNumber(text: string, format: Intl.NumberFormat) {
  * @property min - Smallest allowed value.
  * @property max - Largest allowed value.
  * @property step - Amount added or removed by the buttons, the arrow keys and the mouse wheel.
- * @property label - Label displayed above the field.
  * @property placeholder - Text shown when the field is empty.
- * @property hint - Help text under the field, replaced by `error` when set.
- * @property error - Error message under the field; also marks the field as invalid.
  * @property locale - Separators and digits of the number; defaults to the closest `lang` attribute.
  * @property formatOptions - `Intl.NumberFormat` options (currency, percent, unit, fraction digits…), as JSON in the attribute.
  * @property variant - `default` puts − and + on each side, `secondary` stacks two chevrons on the right.
  * @property disabled - Prevents user interaction.
  * @property required - Marks the field as required for form validation.
+ * @property invalid - Marks the field as invalid without displaying a message.
+ * @property ariaLabel - Accessible name of the field, set with the `aria-label` attribute.
+ * @property focusTarget - The inner element that receives the focus (read-only).
  * @fires input - The value changed.
  * @fires change - The value changed.
  * @cssprop [--hx-height-number-field=var(--hx-height-field)] - Height.
@@ -69,17 +69,16 @@ export class HxNumberField extends HxElement {
     @property({ type: Number }) min?: number;
     @property({ type: Number }) max?: number;
     @property({ type: Number }) step = 1;
-    @property() label = "";
     @property() placeholder = "";
-    @property() hint = "";
-    @property() error = "";
     @property() locale = "";
     @property({ type: Object, attribute: "format-options" }) formatOptions: Intl.NumberFormatOptions = {};
     @property({ reflect: true }) variant: HxNumberFieldVariant = "default";
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) required = false;
+    @property({ type: Boolean, reflect: true }) invalid = false;
+    @property({ attribute: "aria-label" }) override ariaLabel: string | null = null;
 
-    @query("#control") private input!: HTMLInputElement;
+    @query("#control") focusTarget!: HTMLInputElement;
 
     @state() private text?: string;
 
@@ -137,6 +136,7 @@ export class HxNumberField extends HxElement {
             }
             case "Enter":
                 this.commit();
+                this.updateComplete.then(() => this.internals.form?.requestSubmit());
                 break;
             default:
                 return;
@@ -145,13 +145,14 @@ export class HxNumberField extends HxElement {
     }
 
     private onWheel(event: WheelEvent) {
-        if (!event.deltaY || this.shadowRoot?.activeElement !== this.input) return;
+        if (!event.deltaY || this.shadowRoot?.activeElement !== this.focusTarget) return;
         event.preventDefault();
         this.increment(event.deltaY < 0 ? 1 : -1);
     }
 
     protected override updated() {
         this.internals.setFormValue(this.value == null ? "" : String(this.value));
+        this.internals.setValidity(this.focusTarget.validity, this.focusTarget.validationMessage, this.focusTarget);
     }
 
     formResetCallback() {
@@ -175,7 +176,7 @@ export class HxNumberField extends HxElement {
             } text-muted-foreground hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-center disabled:pointer-events-none"
             @mousedown=${(event: MouseEvent) => {
                 event.preventDefault();
-                this.input.focus();
+                this.focusTarget.focus();
             }}
             @click=${() => this.increment(direction)}
         >
@@ -206,7 +207,8 @@ export class HxNumberField extends HxElement {
             aria-valuetext=${ifDefined(formatted || undefined)}
             aria-valuemin=${ifDefined(this.min ?? undefined)}
             aria-valuemax=${ifDefined(this.max ?? undefined)}
-            aria-invalid=${this.error ? "true" : "false"}
+            aria-label=${ifDefined(this.ariaLabel || undefined)}
+            aria-invalid=${this.invalid ? "true" : "false"}
             @input=${(event: Event) => {
                 event.stopPropagation();
                 this.text = (event.target as HTMLInputElement).value;
@@ -216,41 +218,21 @@ export class HxNumberField extends HxElement {
             @wheel=${this.onWheel}
         />`;
         return html`
-            <div class="text-foreground flex flex-col gap-1.5">
+            <div
+                ?data-invalid=${this.invalid}
+                ?data-disabled=${this.disabled}
+                class="text-foreground border-border bg-field focus-within:border-ring focus-within:ring-ring/50 data-invalid:border-destructive data-invalid:ring-destructive/20 rounded-number-field h-number-field flex w-full overflow-hidden border shadow-xs focus-within:ring-[3px] data-disabled:cursor-not-allowed data-disabled:opacity-50"
+            >
                 ${
-                    this.label
-                        ? html`<label for="control"
-                              >${this.label}${
-                                  this.required
-                                      ? html`<span class="text-destructive ml-0.5" aria-hidden="true">*</span>`
-                                      : nothing
-                              }</label
-                          >`
-                        : nothing
-                }
-                <div
-                    ?data-invalid=${!!this.error}
-                    ?data-disabled=${this.disabled}
-                    class="border-border bg-field focus-within:border-ring focus-within:ring-ring/50 data-invalid:border-destructive data-invalid:ring-destructive/20 rounded-number-field h-number-field flex w-full overflow-hidden border shadow-xs focus-within:ring-[3px] data-disabled:cursor-not-allowed data-disabled:opacity-50"
-                >
-                    ${
-                        secondary
-                            ? html`${input}
-                                  <div class="border-border flex flex-col border-l">
-                                      ${this.renderStepper(1, ChevronUp, 14, "flex-1 px-1.5")}
-                                      ${this.renderStepper(-1, ChevronDown, 14, "border-border flex-1 border-t px-1.5")}
-                                  </div>`
-                            : html`${this.renderStepper(-1, Minus, 16, "border-border w-(--height-number-field) border-r")}
-                              ${input}
-                              ${this.renderStepper(1, Plus, 16, "border-border w-(--height-number-field) border-l")}`
-                    }
-                </div>
-                ${
-                    this.error
-                        ? html`<p class="text-destructive text-sm" role="alert">${this.error}</p>`
-                        : this.hint
-                          ? html`<p class="text-muted-foreground text-sm">${this.hint}</p>`
-                          : nothing
+                    secondary
+                        ? html`${input}
+                              <div class="border-border flex flex-col border-l">
+                                  ${this.renderStepper(1, ChevronUp, 14, "flex-1 px-1.5")}
+                                  ${this.renderStepper(-1, ChevronDown, 14, "border-border flex-1 border-t px-1.5")}
+                              </div>`
+                        : html`${this.renderStepper(-1, Minus, 16, "border-border w-(--height-number-field) border-r")}
+                          ${input}
+                          ${this.renderStepper(1, Plus, 16, "border-border w-(--height-number-field) border-l")}`
                 }
             </div>
         `;

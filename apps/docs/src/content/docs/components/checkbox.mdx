@@ -40,6 +40,12 @@ import "hexa-ui/checkbox";
 <hx-checkbox checked disabled>Checked and disabled</hx-checkbox>`}
 />
 
+### Invalid
+
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+
+<Preview code={`<hx-checkbox invalid>Invalid</hx-checkbox>`} />
+
 ### Change event
 
 `change` fires each time the checkbox is toggled.
@@ -64,6 +70,7 @@ import "hexa-ui/checkbox";
 | `name`          | `name`          | `string`  | `""`    | Name submitted with the form                                             |
 | `disabled`      | `disabled`      | `boolean` | `false` | Prevents user interaction                                                |
 | `required`      | `required`      | `boolean` | `false` | Marks the field as required for form validation                          |
+| `invalid`       | `invalid`       | `boolean` | `false` | Marks the field as invalid without displaying a message                  |
 
 #### Events
 

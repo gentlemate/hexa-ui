@@ -1,0 +1,270 @@
+---
+title: Form
+description: Validates a form and displays the errors on its fields.
+---
+
+import FormDemos from "../../../components/FormDemos.astro";
+import Preview from "../../../components/Preview.astro";
+
+<FormDemos />
+
+## Import
+
+```js
+import "hexa-ui/form";
+```
+
+`hx-form` also loads [`hx-form-field`](../form-field/). Import the controls you use.
+
+<Preview
+    stack
+    code={`<hx-form data-demo="signup">
+    <form class="flex flex-col gap-4">
+        <hx-form-field name="email" label="Email" required>
+            <hx-input type="email" placeholder="you@example.com"></hx-input>
+        </hx-form-field>
+        <hx-form-field name="password" label="Password" hint="At least 8 characters." required>
+            <hx-input type="password"></hx-input>
+        </hx-form-field>
+        <hx-button type="submit">Create account</hx-button>
+        <p data-result class="text-muted-foreground text-sm"></p>
+    </form>
+</hx-form>`}
+/>
+
+```js
+import * as v from "valibot";
+
+const form = document.querySelector("hx-form");
+
+form.schema = v.object({
+    email: v.pipe(v.string(), v.email("Enter a valid email address.")),
+    password: v.pipe(v.string(), v.minLength(8, "Use at least 8 characters.")),
+});
+
+form.addEventListener("hx-submit", (event) => {
+    console.log(event.detail.data);
+});
+```
+
+## Structure
+
+```html
+<hx-form>
+    <form>
+        <hx-form-field>
+            <hx-input></hx-input>
+        </hx-form-field>
+        <hx-button type="submit"></hx-button>
+    </form>
+</hx-form>
+```
+
+The `<form>` is required: inside the Shadow DOM of `hx-form`, it would not own the controls. The browser never submits it, so `action` and `method` have no effect.
+
+## Examples
+
+### Schema
+
+`schema` takes any [Standard Schema](https://standardschema.dev/): Valibot, Zod, ArkType… No validation library is bundled. Errors go to the `hx-form-field` of the same `name`. `event.detail.data` is the output of the schema, with its transformations.
+
+Without `schema` nor `validator`, the browser checks the controls, and `required` blocks the submission.
+
+### Custom validation
+
+`validator` receives the state and returns a list of errors, or a promise of one. It is combined with `schema`. Try `admin` here.
+
+<Preview
+    stack
+    code={`<hx-form data-demo="validator">
+    <form class="flex flex-col gap-4">
+        <hx-form-field name="login" label="Login">
+            <hx-input></hx-input>
+        </hx-form-field>
+        <hx-button type="submit">Check</hx-button>
+        <p data-result class="text-muted-foreground text-sm"></p>
+    </form>
+</hx-form>`}
+/>
+
+```js
+form.validator = async ({ login }) => {
+    const taken = await isTaken(login);
+    return taken ? [{ name: "login", message: "This login is already used." }] : [];
+};
+```
+
+### Validation triggers
+
+`validate-on` lists the events of a field that validate it, among `blur`, `change` and `input`. Submitting always validates.
+
+Validation on `input` waits for the first blur of the field, then runs `validate-on-input-delay` milliseconds after the last keystroke. A field with [`eager-validation`](../form-field/#eager-validation) or with an error does not wait for the blur.
+
+<Preview
+    stack
+    code={`<hx-form data-demo="signup" validate-on="input" validate-on-input-delay="0">
+    <form class="flex flex-col gap-4">
+        <hx-form-field name="email" label="Email" eager-validation>
+            <hx-input type="email"></hx-input>
+        </hx-form-field>
+        <hx-form-field name="password" label="Password" eager-validation>
+            <hx-input type="password"></hx-input>
+        </hx-form-field>
+        <hx-button type="submit">Create account</hx-button>
+        <p data-result class="text-muted-foreground text-sm"></p>
+    </form>
+</hx-form>`}
+/>
+
+### State
+
+`state` reads and writes the values of the named controls. Values are typed: a number for `hx-number-field` and `hx-slider`, a boolean for `hx-checkbox` and `hx-switch`. Dots in a name create nested objects.
+
+The initial values, also restored on reset, can be set in three ways:
+
+- `value` or `checked` on each control, without JavaScript.
+- The `state` attribute, as JSON.
+- The `state` property, for example with the response of an API. The last assigned state is the one restored on reset.
+
+<Preview
+    stack
+    code={`<hx-form data-demo="state" state='{"name": "John Doe", "newsletter": true, "address": {"number": 10, "street": "Downing Street", "city": "London"}}'>
+    <form class="flex flex-col gap-4">
+        <hx-form-field name="name" label="Name">
+            <hx-input></hx-input>
+        </hx-form-field>
+        <hx-form-field name="address.number" label="Street number">
+            <hx-number-field></hx-number-field>
+        </hx-form-field>
+        <hx-form-field name="address.street" label="Street">
+            <hx-input></hx-input>
+        </hx-form-field>
+        <hx-form-field name="address.city" label="City">
+            <hx-input></hx-input>
+        </hx-form-field>
+        <hx-form-field name="newsletter">
+            <hx-checkbox>Newsletter</hx-checkbox>
+        </hx-form-field>
+        <hx-button type="reset" variant="outline">Reset</hx-button>
+        <p data-result class="text-muted-foreground text-sm"></p>
+    </form>
+</hx-form>`}
+/>
+
+`dirty` tells whether the user changed a control since the last reset or assignment of `state`.
+
+### Asynchronous submission
+
+The promise given to `event.detail.waitUntil()` keeps the form `submitting` until it settles: the submit buttons show their `loading` state and a new submission is ignored. The controls stay enabled. A rejected promise ends the submission and is not caught.
+
+<Preview
+    stack
+    code={`<hx-form data-demo="async">
+    <form class="flex flex-col gap-4">
+        <hx-form-field name="email" label="Email" required>
+            <hx-input type="email" value="you@example.com"></hx-input>
+        </hx-form-field>
+        <hx-form-field name="password" label="Password" hint="At least 8 characters." required>
+            <hx-input type="password" value="12345678"></hx-input>
+        </hx-form-field>
+        <hx-button type="submit">Create account</hx-button>
+        <p data-result class="text-muted-foreground text-sm"></p>
+    </form>
+</hx-form>`}
+/>
+
+```js
+form.addEventListener("hx-submit", (event) => {
+    event.detail.waitUntil(save(event.detail.data));
+});
+```
+
+### Server errors
+
+`setErrors()` displays errors coming from elsewhere, such as a server response. `clear()` removes them. Both take an optional name, or list of names, to act on these fields only.
+
+<Preview
+    stack
+    code={`<hx-form data-demo="server">
+    <form class="flex flex-col gap-4">
+        <hx-form-field name="email" label="Email">
+            <hx-input type="email" value="you@example.com"></hx-input>
+        </hx-form-field>
+        <hx-button type="submit">Register</hx-button>
+        <p data-result class="text-muted-foreground text-sm"></p>
+    </form>
+</hx-form>`}
+/>
+
+```js
+form.addEventListener("hx-submit", (event) => {
+    event.detail.waitUntil(
+        register(event.detail.data).catch((error) => {
+            form.setErrors([{ name: "email", message: error.message }]);
+        }),
+    );
+});
+```
+
+### Disabled
+
+`disabled` disables all the controls and prevents submission. Controls that were already disabled stay so when it is removed.
+
+<Preview
+    stack
+    code={`<hx-form disabled>
+    <form class="flex flex-col gap-4">
+        <hx-form-field name="email" label="Email">
+            <hx-input value="you@example.com"></hx-input>
+        </hx-form-field>
+        <hx-button type="submit">Save</hx-button>
+    </form>
+</hx-form>`}
+/>
+
+## Usage
+
+After a failed submission, `hx-error` fires and the focus moves to the first field in error. An error that matches no `hx-form-field`, such as a global error of the schema, is only available in `errors` and in `event.detail.errors`.
+
+Only controls inside an `hx-form-field` are validated while the user types and display an error. The others are part of `state` and of the validation on submit.
+
+`validate()` returns the errors instead of throwing them. Each validation of a field runs the whole schema and `validator`, so a `validator` calling a server runs on each trigger.
+
+## API
+
+### hx-form
+
+#### Properties
+
+| Property               | Attribute                 | Type                        | Default                       | Description                                                                                                                                                                                                            |
+| ---------------------- | ------------------------- | --------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `schema`               | —                         | `HxFormSchema`              | —                             | Standard Schema (Valibot, Zod…) checking the state. Set as a JS property                                                                                                                                               |
+| `validator`            | —                         | `HxFormValidator`           | —                             | Custom validation, combined with `schema`. Set as a JS property                                                                                                                                                        |
+| `validateOn`           | `validate-on`             | `HxFormValidateOn[]`        | `["blur", "change", "input"]` | Events of a field that validate it, as a space-separated list in the attribute. Validation on `input` waits for the first blur of the field, unless it has `eager-validation` or an error. Submitting always validates |
+| `validateOnInputDelay` | `validate-on-input-delay` | `number`                    | `300`                         | Delay in milliseconds before validating on `input`                                                                                                                                                                     |
+| `disabled`             | `disabled`                | `boolean`                   | `false`                       | Disables all the controls of the form                                                                                                                                                                                  |
+| `submitting`           | `submitting`              | `boolean`                   | `false`                       | Whether a submission is running, from its validation to the end of its `waitUntil` promises (read-only)                                                                                                                |
+| `dirty`                | `dirty`                   | `boolean`                   | `false`                       | Whether the user changed a control since the last reset or assignment of `state` (read-only)                                                                                                                           |
+| `state`                | `state`                   | `HxFormState`               | —                             | Values of the named controls, typed and nested by the dots of their names. The attribute takes the initial values as JSON. The last assigned state is restored on reset                                                |
+| `errors`               | —                         | `HxFormError[]` (read-only) | —                             | Current errors (read-only)                                                                                                                                                                                             |
+
+#### Methods
+
+| Name          | Description                                                                                                                       |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `validate()`  | Checks the state and displays the errors, of the whole form or only of the given name or names. Returns a promise of these errors |
+| `setErrors()` | Replaces all the errors, or those of the given name or names                                                                      |
+| `clear()`     | Removes all the errors, or those of the given name or names                                                                       |
+
+#### Events
+
+| Name        | Description                                                                                                                                                                                |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `hx-error`  | The state is invalid; `event.detail.errors` lists the errors                                                                                                                               |
+| `hx-submit` | The state is valid; `event.detail.data` is the output of the schema, or the state without schema. A promise given to `event.detail.waitUntil()` keeps the form submitting until it settles |
+
+#### Slots
+
+| Name      | Description  |
+| --------- | ------------ |
+| (default) | The `<form>` |

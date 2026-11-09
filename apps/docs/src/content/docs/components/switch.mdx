@@ -35,6 +35,12 @@ import "hexa-ui/switch";
 <hx-switch checked disabled>Checked and disabled</hx-switch>`}
 />
 
+### Invalid
+
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+
+<Preview code={`<hx-switch invalid>Invalid</hx-switch>`} />
+
 ### Change event
 
 `change` fires each time the switch is toggled.
@@ -58,6 +64,7 @@ import "hexa-ui/switch";
 | `name`     | `name`     | `string`  | `""`    | Name submitted with the form                             |
 | `disabled` | `disabled` | `boolean` | `false` | Prevents user interaction                                |
 | `required` | `required` | `boolean` | `false` | Marks the field as required for form validation          |
+| `invalid`  | `invalid`  | `boolean` | `false` | Marks the field as invalid without displaying a message  |
 
 #### Events
 

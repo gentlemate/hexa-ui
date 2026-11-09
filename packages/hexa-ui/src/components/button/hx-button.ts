@@ -1,6 +1,6 @@
 import { css, html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
-import type { IconNode } from "lucide";
+import { LoaderCircle, type IconNode } from "lucide";
 import { HxElement } from "../../hx-element.js";
 import "../icon/hx-icon.js";
 
@@ -8,7 +8,7 @@ export type HxButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "d
 export type HxButtonIconPlacement = "left" | "right";
 
 const base =
-    "inline-flex h-button cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-button outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50";
+    "inline-flex h-button cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-button outline-none transition-colors focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-busy:pointer-events-none";
 
 const variants: Record<HxButtonVariant, string> = {
     primary: "bg-primary text-primary-foreground hover:bg-primary/90",
@@ -23,6 +23,7 @@ const variants: Record<HxButtonVariant, string> = {
  * @property variant - Visual style.
  * @property type - `submit` and `reset` act on the parent `<form>`.
  * @property disabled - Disables the button.
+ * @property loading - Shows a spinner in place of the icon and ignores clicks.
  * @property square - Square button without horizontal padding, for an icon alone.
  * @property icon - Lucide icon, set as a JS property.
  * @property iconPlacement - Side of the icon relative to the label.
@@ -50,6 +51,7 @@ export class HxButton extends HxElement {
     @property({ reflect: true }) variant: HxButtonVariant = "primary";
     @property() type: "button" | "submit" | "reset" = "button";
     @property({ type: Boolean, reflect: true }) disabled = false;
+    @property({ type: Boolean, reflect: true }) loading = false;
     @property({ type: Boolean, reflect: true }) square = false;
     @property({ attribute: false }) icon?: IconNode;
     @property({ attribute: "icon-placement", reflect: true }) iconPlacement: HxButtonIconPlacement = "left";
@@ -61,18 +63,23 @@ export class HxButton extends HxElement {
     constructor() {
         super();
         this.addEventListener("click", (event) => {
-            if (this.disabled) return event.stopImmediatePropagation();
+            if (this.disabled || this.loading) return event.stopImmediatePropagation();
             if (this.type === "submit") this.internals.form?.requestSubmit();
             if (this.type === "reset") this.internals.form?.reset();
         });
     }
 
     override render() {
-        const icon = this.icon ? html`<hx-icon part="icon" .icon=${this.icon}></hx-icon>` : nothing;
+        const icon = this.loading
+            ? html`<hx-icon part="icon" class="animate-spin" .icon=${LoaderCircle}></hx-icon>`
+            : this.icon
+              ? html`<hx-icon part="icon" .icon=${this.icon}></hx-icon>`
+              : nothing;
         return html`<button
             part="base"
             class="${base} ${variants[this.variant]} ${this.square ? "aspect-square" : "px-button"}"
             type="button"
+            aria-busy=${this.loading ? "true" : "false"}
             ?disabled=${this.disabled}
         >
             ${this.iconPlacement === "left" ? icon : nothing}<slot></slot>${

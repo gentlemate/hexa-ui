@@ -9,14 +9,16 @@ import { HxRangeElement } from "../../hx-range-element.js";
  * @property step - Interval between two values, also added or removed by the arrow keys.
  * @property showSteps - Shows a dot on the track at each step.
  * @property disabled - Prevents user interaction.
+ * @property invalid - Marks the field as invalid without displaying a message.
+ * @property ariaLabel - Accessible name of the field, set with the `aria-label` attribute.
+ * @property focusTarget - The thumb, which holds the focus (read-only).
  * @fires input - The value changed, while dragging or from the keyboard.
  * @fires change - The value changed, once the thumb is released or from the keyboard.
+ * @fires hx-value-change - `valueText` changed, by the user or from code.
  * @cssprop [--hx-height-slider=0.5rem] - Height of the track.
  * @cssprop [--hx-size-slider-thumb=1.25rem] - Size of the thumb.
  * @cssprop [--hx-radius-slider=var(--hx-radius-pill)] - Border radius of the track.
  * @cssprop [--hx-radius-slider-thumb=var(--hx-radius-slider)] - Border radius of the thumb.
- * @csspart label - The label.
- * @csspart value - The formatted value.
  * @csspart track - The track.
  * @csspart fill - The filled part of the track.
  * @csspart step - A dot on the track, shown with `show-steps`.
@@ -43,9 +45,11 @@ export class HxSlider extends HxRangeElement {
     @property({ type: Number }) step = 1;
     @property({ type: Boolean, attribute: "show-steps" }) showSteps = false;
     @property({ type: Boolean, reflect: true }) disabled = false;
+    @property({ type: Boolean, reflect: true }) invalid = false;
+    @property({ attribute: "aria-label" }) override ariaLabel: string | null = null;
 
     @query("[part=track]") private track!: HTMLElement;
-    @query("[part=thumb]") private thumb!: HTMLElement;
+    @query("[part=thumb]") focusTarget!: HTMLElement;
 
     private internals = this.attachInternals();
     private dragStart?: number;
@@ -73,7 +77,7 @@ export class HxSlider extends HxRangeElement {
     private onPointerDown(event: PointerEvent) {
         if (this.disabled || event.button !== 0) return;
         event.preventDefault();
-        this.thumb.focus();
+        this.focusTarget.focus();
         (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
         this.dragStart = this.value;
         this.moveTo(event);
@@ -125,6 +129,7 @@ export class HxSlider extends HxRangeElement {
 
     protected override updated() {
         this.internals.setFormValue(String(this.value));
+        this.dispatchEvent(new Event("hx-value-change", { bubbles: true }));
     }
 
     formResetCallback() {
@@ -148,35 +153,33 @@ export class HxSlider extends HxRangeElement {
 
     override render() {
         const percent = this.fraction * 100;
-        return html`<div class="text-foreground flex flex-col gap-1.5">
-            ${this.renderHeader(true)}
-            <div
-                class="${
-                    this.disabled ? "pointer-events-none" : "cursor-pointer"
-                } relative flex h-(--size-slider-thumb) touch-none items-center"
-                @pointerdown=${this.onPointerDown}
-                @pointermove=${this.onPointerMove}
-                @lostpointercapture=${this.onPointerEnd}
-            >
-                <div part="track" class="bg-field h-slider rounded-slider relative w-full overflow-hidden">
-                    <div part="fill" class="bg-primary h-full" style="width: ${percent}%"></div>
-                    ${this.showSteps && this.max > this.min && this.step > 0 ? this.renderSteps(percent) : nothing}
-                </div>
-                <div
-                    part="thumb"
-                    role="slider"
-                    tabindex=${this.disabled ? -1 : 0}
-                    aria-labelledby=${ifDefined(this.label ? "label" : undefined)}
-                    aria-valuemin=${this.min}
-                    aria-valuemax=${this.max}
-                    aria-valuenow=${this.value}
-                    aria-valuetext=${this.valueText}
-                    aria-disabled=${this.disabled ? "true" : "false"}
-                    class="bg-background border-primary size-slider-thumb focus-visible:ring-ring/50 rounded-slider-thumb absolute top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 shadow-sm outline-none focus-visible:ring-[3px]"
-                    style="left: ${percent}%"
-                    @keydown=${this.onKeyDown}
-                ></div>
+        return html`<div
+            class="text-foreground ${
+                this.disabled ? "pointer-events-none" : "cursor-pointer"
+            } relative flex h-(--size-slider-thumb) touch-none items-center"
+            @pointerdown=${this.onPointerDown}
+            @pointermove=${this.onPointerMove}
+            @lostpointercapture=${this.onPointerEnd}
+        >
+            <div part="track" class="bg-field h-slider rounded-slider relative w-full overflow-hidden">
+                <div part="fill" class="bg-primary h-full" style="width: ${percent}%"></div>
+                ${this.showSteps && this.max > this.min && this.step > 0 ? this.renderSteps(percent) : nothing}
             </div>
+            <div
+                part="thumb"
+                role="slider"
+                tabindex=${this.disabled ? -1 : 0}
+                aria-label=${ifDefined(this.ariaLabel || undefined)}
+                aria-invalid=${this.invalid ? "true" : "false"}
+                aria-valuemin=${this.min}
+                aria-valuemax=${this.max}
+                aria-valuenow=${this.value}
+                aria-valuetext=${this.valueText}
+                aria-disabled=${this.disabled ? "true" : "false"}
+                class="bg-background border-primary aria-invalid:border-destructive size-slider-thumb focus-visible:ring-ring/50 rounded-slider-thumb absolute top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 shadow-sm outline-none focus-visible:ring-[3px]"
+                style="left: ${percent}%"
+                @keydown=${this.onKeyDown}
+            ></div>
         </div>`;
     }
 }

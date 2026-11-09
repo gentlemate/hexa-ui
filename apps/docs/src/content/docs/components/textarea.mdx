@@ -9,9 +9,17 @@ import Preview from "../../../components/Preview.astro";
 
 ```js
 import "hexa-ui/textarea";
+import "hexa-ui/form-field";
 ```
 
-<Preview stack code={`<hx-textarea label="Bio" placeholder="Tell us about yourself"></hx-textarea>`} />
+The label, the description, the hint and the error come from [`hx-form-field`](../form-field/).
+
+<Preview
+    stack
+    code={`<hx-form-field label="Bio">
+    <hx-textarea placeholder="Tell us about yourself"></hx-textarea>
+</hx-form-field>`}
+/>
 
 ## Structure
 
@@ -21,21 +29,24 @@ import "hexa-ui/textarea";
 
 ## Examples
 
-### Hint
-
-<Preview stack code={`<hx-textarea label="Comment" hint="Max 500 characters."></hx-textarea>`} />
-
-### Error
-
-<Preview stack code={`<hx-textarea label="Message" error="This field is required." required></hx-textarea>`} />
-
 ### Rows
 
-<Preview stack code={`<hx-textarea label="Bio" rows="8"></hx-textarea>`} />
+<Preview
+    stack
+    code={`<hx-form-field label="Bio">
+    <hx-textarea rows="8"></hx-textarea>
+</hx-form-field>`}
+/>
 
 ### Disabled
 
-<Preview stack code={`<hx-textarea label="Comment" disabled></hx-textarea>`} />
+<Preview stack code={`<hx-textarea aria-label="Disabled" disabled></hx-textarea>`} />
+
+### Invalid
+
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+
+<Preview stack code={`<hx-textarea aria-label="Invalid" invalid></hx-textarea>`} />
 
 ### Input event
 
@@ -43,11 +54,23 @@ import "hexa-ui/textarea";
 
 <Preview
     stack
-    code={`<hx-textarea
-    label="Comment"
-    hint="0 / 100 characters"
-    oninput="this.hint = this.value.length + ' / 100 characters'"
-></hx-textarea>`}
+    code={`<hx-form-field label="Comment" hint="0 / 100 characters">
+    <hx-textarea oninput="this.parentElement.hint = this.value.length + ' / 100 characters'"></hx-textarea>
+</hx-form-field>`}
+/>
+
+### Form field
+
+In a form, [`hx-form-field`](../form-field/) adds the label, the hint and the error message.
+
+<Preview
+    stack
+    code={`<hx-form-field label="Comment" hint="Max 500 characters.">
+    <hx-textarea></hx-textarea>
+</hx-form-field>
+<hx-form-field label="Message" error="This field is required." required>
+    <hx-textarea></hx-textarea>
+</hx-form-field>`}
 />
 
 ## API
@@ -56,17 +79,17 @@ import "hexa-ui/textarea";
 
 #### Properties
 
-| Property      | Attribute     | Type      | Default | Description                                                    |
-| ------------- | ------------- | --------- | ------- | -------------------------------------------------------------- |
-| `name`        | `name`        | `string`  | `""`    | Name submitted with the form                                   |
-| `value`       | `value`       | `string`  | `""`    | Current value                                                  |
-| `label`       | `label`       | `string`  | `""`    | Label displayed above the field                                |
-| `placeholder` | `placeholder` | `string`  | `""`    | Text shown when the field is empty                             |
-| `hint`        | `hint`        | `string`  | `""`    | Help text under the field, replaced by `error` when set        |
-| `error`       | `error`       | `string`  | `""`    | Error message under the field; also marks the field as invalid |
-| `rows`        | `rows`        | `number`  | `3`     | Number of visible text lines                                   |
-| `disabled`    | `disabled`    | `boolean` | `false` | Prevents user interaction                                      |
-| `required`    | `required`    | `boolean` | `false` | Marks the field as required for form validation                |
+| Property      | Attribute     | Type                  | Default | Description                                                       |
+| ------------- | ------------- | --------------------- | ------- | ----------------------------------------------------------------- |
+| `name`        | `name`        | `string`              | `""`    | Name submitted with the form                                      |
+| `value`       | `value`       | `string`              | `""`    | Current value                                                     |
+| `placeholder` | `placeholder` | `string`              | `""`    | Text shown when the field is empty                                |
+| `rows`        | `rows`        | `number`              | `3`     | Number of visible text lines                                      |
+| `disabled`    | `disabled`    | `boolean`             | `false` | Prevents user interaction                                         |
+| `required`    | `required`    | `boolean`             | `false` | Marks the field as required for form validation                   |
+| `invalid`     | `invalid`     | `boolean`             | `false` | Marks the field as invalid without displaying a message           |
+| `ariaLabel`   | `aria-label`  | `string \| null`      | `null`  | Accessible name of the field, set with the `aria-label` attribute |
+| `focusTarget` | —             | `HTMLTextAreaElement` | —       | The inner element that receives the focus (read-only)             |
 
 #### Events
 

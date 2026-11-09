@@ -63,6 +63,9 @@ export class HxDateRangePicker extends HxDatePickerElement {
         if (this.startName) data.append(this.startName, this.start);
         if (this.endName) data.append(this.endName, this.end);
         this.internals.setFormValue(data);
+        if (this.required && !(this.start && this.end))
+            this.internals.setValidity({ valueMissing: true }, "Please select a date range.", this.focusTarget);
+        else this.internals.setValidity({});
     }
 
     formResetCallback() {

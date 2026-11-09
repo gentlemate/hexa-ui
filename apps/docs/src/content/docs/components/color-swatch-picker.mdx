@@ -9,17 +9,22 @@ import Preview from "../../../components/Preview.astro";
 
 ```js
 import "hexa-ui/color-swatch-picker";
+import "hexa-ui/form-field";
 ```
+
+The label, the description, the hint and the error come from [`hx-form-field`](../form-field/).
 
 <Preview
     stack
-    code={`<hx-color-swatch-picker label="Brand" value="#2b7fff">
-    <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-    <hx-color-swatch value="#fe9a00"></hx-color-swatch>
-    <hx-color-swatch value="#00c950"></hx-color-swatch>
-    <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-    <hx-color-swatch value="#ad46ff"></hx-color-swatch>
-</hx-color-swatch-picker>`}
+    code={`<hx-form-field label="Brand">
+    <hx-color-swatch-picker value="#2b7fff">
+        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
+        <hx-color-swatch value="#fe9a00"></hx-color-swatch>
+        <hx-color-swatch value="#00c950"></hx-color-swatch>
+        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
+        <hx-color-swatch value="#ad46ff"></hx-color-swatch>
+    </hx-color-swatch-picker>
+</hx-form-field>`}
 />
 
 ## Structure
@@ -38,24 +43,28 @@ import "hexa-ui/color-swatch-picker";
 
 <Preview
     stack
-    code={`<hx-color-swatch-picker label="Vertical" layout="vertical" value="#2b7fff">
-    <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-    <hx-color-swatch value="#fe9a00"></hx-color-swatch>
-    <hx-color-swatch value="#00c950"></hx-color-swatch>
-    <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-    <hx-color-swatch value="#ad46ff"></hx-color-swatch>
-</hx-color-swatch-picker>
-<hx-color-swatch-picker label="Grid" layout="grid" value="#2b7fff">
-    <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-    <hx-color-swatch value="#ff6900"></hx-color-swatch>
-    <hx-color-swatch value="#fe9a00"></hx-color-swatch>
-    <hx-color-swatch value="#00c950"></hx-color-swatch>
-    <hx-color-swatch value="#00bba7"></hx-color-swatch>
-    <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-    <hx-color-swatch value="#615fff"></hx-color-swatch>
-    <hx-color-swatch value="#ad46ff"></hx-color-swatch>
-    <hx-color-swatch value="#f6339a"></hx-color-swatch>
-</hx-color-swatch-picker>`}
+    code={`<hx-form-field label="Vertical">
+    <hx-color-swatch-picker layout="vertical" value="#2b7fff">
+        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
+        <hx-color-swatch value="#fe9a00"></hx-color-swatch>
+        <hx-color-swatch value="#00c950"></hx-color-swatch>
+        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
+        <hx-color-swatch value="#ad46ff"></hx-color-swatch>
+    </hx-color-swatch-picker>
+</hx-form-field>
+<hx-form-field label="Grid">
+    <hx-color-swatch-picker layout="grid" value="#2b7fff">
+        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
+        <hx-color-swatch value="#ff6900"></hx-color-swatch>
+        <hx-color-swatch value="#fe9a00"></hx-color-swatch>
+        <hx-color-swatch value="#00c950"></hx-color-swatch>
+        <hx-color-swatch value="#00bba7"></hx-color-swatch>
+        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
+        <hx-color-swatch value="#615fff"></hx-color-swatch>
+        <hx-color-swatch value="#ad46ff"></hx-color-swatch>
+        <hx-color-swatch value="#f6339a"></hx-color-swatch>
+    </hx-color-swatch-picker>
+</hx-form-field>`}
 />
 
 ### Size
@@ -72,47 +81,41 @@ import "hexa-ui/color-swatch-picker";
 
 <Preview
     stack
-    code={`<hx-color-swatch-picker label="xs" size="xs" value="#2b7fff">
-    <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-    <hx-color-swatch value="#00c950"></hx-color-swatch>
-    <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-</hx-color-swatch-picker>
-<hx-color-swatch-picker label="sm" size="sm" value="#2b7fff">
-    <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-    <hx-color-swatch value="#00c950"></hx-color-swatch>
-    <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-</hx-color-swatch-picker>
-<hx-color-swatch-picker label="md" size="md" value="#2b7fff">
-    <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-    <hx-color-swatch value="#00c950"></hx-color-swatch>
-    <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-</hx-color-swatch-picker>
-<hx-color-swatch-picker label="lg" size="lg" value="#2b7fff">
-    <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-    <hx-color-swatch value="#00c950"></hx-color-swatch>
-    <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-</hx-color-swatch-picker>
-<hx-color-swatch-picker label="xl" size="xl" value="#2b7fff">
-    <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-    <hx-color-swatch value="#00c950"></hx-color-swatch>
-    <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-</hx-color-swatch-picker>`}
-/>
-
-### Hint and error
-
-<Preview
-    stack
-    code={`<hx-color-swatch-picker label="Brand" hint="Used throughout your app.">
-    <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-    <hx-color-swatch value="#00c950"></hx-color-swatch>
-    <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-</hx-color-swatch-picker>
-<hx-color-swatch-picker label="Brand" value="#fb2c36" error="This color is not accessible.">
-    <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-    <hx-color-swatch value="#00c950"></hx-color-swatch>
-    <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-</hx-color-swatch-picker>`}
+    code={`<hx-form-field label="xs">
+    <hx-color-swatch-picker size="xs" value="#2b7fff">
+        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
+        <hx-color-swatch value="#00c950"></hx-color-swatch>
+        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
+    </hx-color-swatch-picker>
+</hx-form-field>
+<hx-form-field label="sm">
+    <hx-color-swatch-picker size="sm" value="#2b7fff">
+        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
+        <hx-color-swatch value="#00c950"></hx-color-swatch>
+        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
+    </hx-color-swatch-picker>
+</hx-form-field>
+<hx-form-field label="md">
+    <hx-color-swatch-picker size="md" value="#2b7fff">
+        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
+        <hx-color-swatch value="#00c950"></hx-color-swatch>
+        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
+    </hx-color-swatch-picker>
+</hx-form-field>
+<hx-form-field label="lg">
+    <hx-color-swatch-picker size="lg" value="#2b7fff">
+        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
+        <hx-color-swatch value="#00c950"></hx-color-swatch>
+        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
+    </hx-color-swatch-picker>
+</hx-form-field>
+<hx-form-field label="xl">
+    <hx-color-swatch-picker size="xl" value="#2b7fff">
+        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
+        <hx-color-swatch value="#00c950"></hx-color-swatch>
+        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
+    </hx-color-swatch-picker>
+</hx-form-field>`}
 />
 
 ### Labels
@@ -121,11 +124,13 @@ import "hexa-ui/color-swatch-picker";
 
 <Preview
     stack
-    code={`<hx-color-swatch-picker label="Brand">
-    <hx-color-swatch value="#fb2c36" label="Red"></hx-color-swatch>
-    <hx-color-swatch value="#00c950" label="Green"></hx-color-swatch>
-    <hx-color-swatch value="#2b7fff" label="Blue"></hx-color-swatch>
-</hx-color-swatch-picker>`}
+    code={`<hx-form-field label="Brand">
+    <hx-color-swatch-picker>
+        <hx-color-swatch value="#fb2c36" label="Red"></hx-color-swatch>
+        <hx-color-swatch value="#00c950" label="Green"></hx-color-swatch>
+        <hx-color-swatch value="#2b7fff" label="Blue"></hx-color-swatch>
+    </hx-color-swatch-picker>
+</hx-form-field>`}
 />
 
 ### Disabled
@@ -134,17 +139,25 @@ import "hexa-ui/color-swatch-picker";
 
 <Preview
     stack
-    code={`<hx-color-swatch-picker label="Brand" value="#2b7fff" disabled>
-    <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-    <hx-color-swatch value="#00c950"></hx-color-swatch>
-    <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-</hx-color-swatch-picker>
-<hx-color-swatch-picker label="Destructive" value="#fb2c36">
-    <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-    <hx-color-swatch value="#00c950"></hx-color-swatch>
-    <hx-color-swatch value="#2b7fff" disabled></hx-color-swatch>
-</hx-color-swatch-picker>`}
+    code={`<hx-form-field label="Brand">
+    <hx-color-swatch-picker value="#2b7fff" disabled>
+        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
+        <hx-color-swatch value="#00c950"></hx-color-swatch>
+        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
+    </hx-color-swatch-picker>
+</hx-form-field>
+<hx-form-field label="Destructive">
+    <hx-color-swatch-picker value="#fb2c36">
+        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
+        <hx-color-swatch value="#00c950"></hx-color-swatch>
+        <hx-color-swatch value="#2b7fff" disabled></hx-color-swatch>
+    </hx-color-swatch-picker>
+</hx-form-field>`}
 />
+
+### Invalid
+
+`invalid` marks the field as invalid for assistive technologies, without any message or visual change. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
 
 ### Form
 
@@ -153,14 +166,38 @@ import "hexa-ui/color-swatch-picker";
 <Preview
     stack
     code={`<form onsubmit="event.preventDefault(); this.querySelector('p').textContent = 'brand=' + new FormData(this).get('brand')">
-    <hx-color-swatch-picker label="Brand" name="brand" value="#2b7fff">
+    <hx-form-field label="Brand">
+        <hx-color-swatch-picker name="brand" value="#2b7fff">
+            <hx-color-swatch value="#fb2c36"></hx-color-swatch>
+            <hx-color-swatch value="#00c950"></hx-color-swatch>
+            <hx-color-swatch value="#2b7fff"></hx-color-swatch>
+        </hx-color-swatch-picker>
+    </hx-form-field>
+    <hx-button type="submit" class="mt-3">Submit</hx-button>
+    <p class="mt-2 text-sm"></p>
+</form>`}
+/>
+
+### Form field
+
+In a form, [`hx-form-field`](../form-field/) adds the label, the hint and the error message.
+
+<Preview
+    stack
+    code={`<hx-form-field label="Brand" hint="Used throughout your app.">
+    <hx-color-swatch-picker>
         <hx-color-swatch value="#fb2c36"></hx-color-swatch>
         <hx-color-swatch value="#00c950"></hx-color-swatch>
         <hx-color-swatch value="#2b7fff"></hx-color-swatch>
     </hx-color-swatch-picker>
-    <hx-button type="submit" class="mt-3">Submit</hx-button>
-    <p class="mt-2 text-sm"></p>
-</form>`}
+</hx-form-field>
+<hx-form-field label="Brand" error="This color is not accessible.">
+    <hx-color-swatch-picker value="#fb2c36">
+        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
+        <hx-color-swatch value="#00c950"></hx-color-swatch>
+        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
+    </hx-color-swatch-picker>
+</hx-form-field>`}
 />
 
 ## Behavior
@@ -181,11 +218,9 @@ The group is a single tab stop. The arrow keys move the focus and select the swa
 | `value`       | `value`    | `string`                               | `""`           | Value of the selected `hx-color-swatch`                                                                                                                                          |
 | `layout`      | `layout`   | `"horizontal" \| "vertical" \| "grid"` | `"horizontal"` | `horizontal` wraps on several lines if needed, `vertical` stacks the swatches, `grid` arranges them in a square                                                                  |
 | `size`        | `size`     | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | —              | Size of the swatches, from `xs` 1rem to `xl` 3rem. The gap follows, from 0.5rem to 0.75rem. Without it, `--hx-size-color-swatch-picker` and `--hx-gap-color-swatch-picker` apply |
-| `label`       | `label`    | `string`                               | `""`           | Label displayed above the swatches                                                                                                                                               |
-| `hint`        | `hint`     | `string`                               | `""`           | Help text under the swatches, replaced by `error` when set                                                                                                                       |
-| `error`       | `error`    | `string`                               | `""`           | Error message under the swatches; also marks the group as invalid                                                                                                                |
 | `disabled`    | `disabled` | `boolean`                              | `false`        | Prevents user interaction                                                                                                                                                        |
 | `required`    | `required` | `boolean`                              | `false`        | Marks the group as required for form validation                                                                                                                                  |
+| `invalid`     | `invalid`  | `boolean`                              | `false`        | Marks the field as invalid without displaying a message                                                                                                                          |
 | `focusTarget` | —          | — (read-only)                          | —              | The swatch that receives the focus (read-only)                                                                                                                                   |
 
 #### Events
@@ -212,7 +247,6 @@ The group is a single tab stop. The arrow keys move the focus and select the swa
 
 | Name       | Description                 |
 | ---------- | --------------------------- |
-| `label`    | The label                   |
 | `swatches` | The wrapper of the swatches |
 
 ### hx-color-swatch
