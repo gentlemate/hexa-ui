@@ -1,0 +1,36 @@
+---
+import css from "hexa-ui/theme.css?raw";
+import { parseTheme } from "../theme";
+
+const systemFont = parseTheme(css).light["--hx-font-sans"];
+const fonts: Record<string, { fallback: string; names: string[] }> = {
+    Sans: {
+        fallback: "sans-serif",
+        names: ["Inter", "Open Sans", "Outfit", "Oxanium", "Quicksand", "Raleway", "Rubik", "Space Grotesk"],
+    },
+    Mono: { fallback: "monospace", names: ["JetBrains Mono"] },
+    Serif: { fallback: "serif", names: ["Lora", "Playfair Display", "Roboto Slab"] },
+};
+
+function familyOf(name: string, fallback: string) {
+    return `'${name} Variable', ${fallback}`;
+}
+---
+
+<hx-form-field label="Font family">
+    <hx-select data-token="--hx-font-sans" value={systemFont} placeholder="Custom">
+        <hx-select-option value={systemFont}>System UI</hx-select-option>
+        {Object.entries(fonts).map(([group, { fallback, names }]) => (
+            <hx-select-group label={group}>
+                {names.map((name) => (
+                    <hx-select-option
+                        value={familyOf(name, fallback)}
+                        style={`font-family: ${familyOf(name, fallback)}`}
+                    >
+                        {name}
+                    </hx-select-option>
+                ))}
+            </hx-select-group>
+        ))}
+    </hx-select>
+</hx-form-field>

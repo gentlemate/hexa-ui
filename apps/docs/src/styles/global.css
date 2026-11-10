@@ -19,7 +19,16 @@
 @import "../../../../packages/hexa-ui/src/styles/tailwind-theme.css";
 
 :root {
-    --sl-font: "Outfit Variable", system-ui, sans-serif;
+    --sl-font: var(--hx-font-sans);
+    --sl-color-white: var(--hx-foreground);
+    --sl-color-gray-1: color-mix(in oklab, var(--hx-foreground) 85%, var(--hx-background));
+    --sl-color-gray-2: color-mix(in oklab, var(--hx-foreground) 70%, var(--hx-background));
+    --sl-color-gray-3: var(--hx-muted-foreground);
+    --sl-color-gray-4: color-mix(in oklab, var(--hx-foreground) 35%, var(--hx-background));
+    --sl-color-gray-5: color-mix(in oklab, var(--hx-foreground) 20%, var(--hx-background));
+    --sl-color-gray-6: color-mix(in oklab, var(--hx-foreground) 10%, var(--hx-background));
+    --sl-color-gray-7: color-mix(in oklab, var(--hx-foreground) 4%, var(--hx-background));
+    --sl-color-black: var(--hx-background);
     --sl-color-accent-low: var(--hx-primary-foreground);
     --sl-color-accent: var(--hx-primary);
     --sl-color-accent-high: var(--hx-primary);
