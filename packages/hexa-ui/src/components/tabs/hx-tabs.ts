@@ -6,22 +6,27 @@ import type { HxTab } from "./hx-tab.js";
 import "./hx-tab-panel.js";
 import "./hx-tab.js";
 
-export type HxTabsVariant = "default" | "secondary";
+export type HxTabsVariant = "default" | "secondary" | "button";
 export type HxTabsDirection = "horizontal" | "vertical";
 
 const variants: Record<HxTabsVariant, Record<HxTabsDirection, string>> = {
     default: {
-        horizontal: "rounded-tabs bg-muted p-tabs text-muted-foreground",
+        horizontal: "auto-cols-[minmax(max-content,1fr)] rounded-tabs bg-muted p-tabs text-muted-foreground",
         vertical: "rounded-tabs bg-muted p-tabs text-muted-foreground",
     },
     secondary: {
-        horizontal: "shadow-[inset_0_calc(-1*var(--hx-border-width))_0_var(--hx-border)]",
+        horizontal:
+            "auto-cols-[minmax(max-content,1fr)] shadow-[inset_0_calc(-1*var(--hx-border-width))_0_var(--hx-border)]",
         vertical: "border-l border-border",
+    },
+    button: {
+        horizontal: "auto-cols-max gap-2",
+        vertical: "gap-2",
     },
 };
 
 const directions: Record<HxTabsDirection, { nav: string; body: string }> = {
-    horizontal: { nav: "auto-cols-[minmax(max-content,1fr)] grid-flow-col max-w-full overflow-x-auto", body: "mt-2" },
+    horizontal: { nav: "grid-flow-col max-w-full overflow-x-auto", body: "mt-2" },
     vertical: { nav: "auto-rows-fr grid-flow-row", body: "ml-2 min-w-0 flex-1" },
 };
 

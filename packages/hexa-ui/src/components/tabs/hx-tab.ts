@@ -20,6 +20,12 @@ const variants: Record<HxTabsVariant, { selected: string; idle: string } & Recor
         selected: "border-primary text-foreground",
         idle: "border-transparent text-muted-foreground hover:text-foreground",
     },
+    button: {
+        horizontal: "justify-center rounded-tab h-tabs gap-2 px-tab",
+        vertical: "justify-start rounded-tab h-tabs gap-2 px-tab",
+        selected: "bg-primary text-primary-foreground",
+        idle: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+    },
 };
 
 /**
@@ -86,7 +92,7 @@ export class HxTab extends HxElement {
             part="base"
             class="${variant[this.direction]} ${
                 this.selected ? variant.selected : variant.idle
-            } inline-flex flex-1 cursor-pointer items-center whitespace-nowrap transition-[color,box-shadow]"
+            } inline-flex flex-1 cursor-pointer items-center whitespace-nowrap transition-[color,background-color,box-shadow]"
         >
             ${this.iconPlacement === "left" ? icon : nothing}<slot></slot>${
                 this.iconPlacement === "right" ? icon : nothing
