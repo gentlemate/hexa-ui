@@ -106,6 +106,39 @@ import "hexa-ui/tabs";
 </hx-tabs>`}
 />
 
+### Overflow
+
+A horizontal tab list wider than the component scrolls horizontally.
+
+<Preview
+    stack
+    code={`<hx-tabs class="max-w-sm" value="tab-1">
+    <hx-tab value="tab-1">Tab 1</hx-tab>
+    <hx-tab value="tab-2">Tab 2</hx-tab>
+    <hx-tab value="tab-3">Tab 3</hx-tab>
+    <hx-tab value="tab-4">Tab 4</hx-tab>
+    <hx-tab value="tab-5">Tab 5</hx-tab>
+    <hx-tab value="tab-6">Tab 6</hx-tab>
+    <hx-tab value="tab-7">Tab 7</hx-tab>
+    <hx-tab value="tab-8">Tab 8</hx-tab>
+    <hx-tab value="tab-9">Tab 9</hx-tab>
+    <hx-tab value="tab-10">Tab 10</hx-tab>
+</hx-tabs>
+<hx-separator></hx-separator>
+<hx-tabs class="max-w-sm" variant="secondary" value="tab-1">
+    <hx-tab value="tab-1">Tab 1</hx-tab>
+    <hx-tab value="tab-2">Tab 2</hx-tab>
+    <hx-tab value="tab-3">Tab 3</hx-tab>
+    <hx-tab value="tab-4">Tab 4</hx-tab>
+    <hx-tab value="tab-5">Tab 5</hx-tab>
+    <hx-tab value="tab-6">Tab 6</hx-tab>
+    <hx-tab value="tab-7">Tab 7</hx-tab>
+    <hx-tab value="tab-8">Tab 8</hx-tab>
+    <hx-tab value="tab-9">Tab 9</hx-tab>
+    <hx-tab value="tab-10">Tab 10</hx-tab>
+</hx-tabs>`}
+/>
+
 ## Keyboard
 
 <kbd>←</kbd> / <kbd>→</kbd> (<kbd>↑</kbd> / <kbd>↓</kbd> with `direction="vertical"`) move to the previous / next tab,

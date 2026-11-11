@@ -15,13 +15,13 @@ const variants: Record<HxTabsVariant, Record<HxTabsDirection, string>> = {
         vertical: "rounded-tabs bg-muted p-tabs text-muted-foreground",
     },
     secondary: {
-        horizontal: "border-b border-border",
+        horizontal: "shadow-[inset_0_calc(-1*var(--hx-border-width))_0_var(--hx-border)]",
         vertical: "border-l border-border",
     },
 };
 
 const directions: Record<HxTabsDirection, { nav: string; body: string }> = {
-    horizontal: { nav: "auto-cols-[minmax(max-content,1fr)] grid-flow-col", body: "mt-2" },
+    horizontal: { nav: "auto-cols-[minmax(max-content,1fr)] grid-flow-col max-w-full overflow-x-auto", body: "mt-2" },
     vertical: { nav: "auto-rows-fr grid-flow-row", body: "ml-2 min-w-0 flex-1" },
 };
 

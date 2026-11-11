@@ -15,7 +15,7 @@ const variants: Record<HxTabsVariant, { selected: string; idle: string } & Recor
         idle: "hover:text-foreground",
     },
     secondary: {
-        horizontal: "justify-center -mb-(--hx-border-width) border-b-2 h-tabs gap-2 px-tab",
+        horizontal: "justify-center border-b-2 h-tabs gap-2 px-tab",
         vertical: "justify-start -ml-(--hx-border-width) border-l-2 h-tabs gap-2 px-tab",
         selected: "border-primary text-foreground",
         idle: "border-transparent text-muted-foreground hover:text-foreground",
