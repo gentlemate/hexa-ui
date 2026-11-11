@@ -41,26 +41,32 @@ export class HxColorSwatchPicker extends HxElement {
                 display: block;
                 --hx-size-color-swatch: var(--hx-size-color-swatch-picker);
                 --swatch-gap: var(--hx-gap-color-swatch-picker);
+                --swatch-ring: 2px;
             }
             :host([size="xs"]) {
                 --hx-size-color-swatch: 1rem;
                 --swatch-gap: 0.5rem;
+                --swatch-ring: 2px;
             }
             :host([size="sm"]) {
                 --hx-size-color-swatch: 1.5rem;
                 --swatch-gap: 0.5rem;
+                --swatch-ring: 2px;
             }
             :host([size="md"]) {
                 --hx-size-color-swatch: 2rem;
                 --swatch-gap: 0.625rem;
+                --swatch-ring: 2px;
             }
             :host([size="lg"]) {
                 --hx-size-color-swatch: 2.5rem;
                 --swatch-gap: 0.75rem;
+                --swatch-ring: 3px;
             }
             :host([size="xl"]) {
                 --hx-size-color-swatch: 3rem;
                 --swatch-gap: 0.75rem;
+                --swatch-ring: 3px;
             }
             :host([disabled]) [part="swatches"] {
                 pointer-events: none;
