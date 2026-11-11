@@ -40,7 +40,7 @@ export class HxCheckbox extends HxCheckableElement {
         return html`<span
                 part="control"
                 class="${
-                    on ? "border-primary bg-primary text-primary-foreground" : "border-field"
+                    on ? "border-primary bg-primary text-primary-foreground" : "border-border"
                 } rounded-checkbox size-checkbox flex shrink-0 items-center justify-center border shadow-xs transition-shadow"
             >
                 ${

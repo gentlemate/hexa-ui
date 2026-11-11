@@ -13,7 +13,7 @@ const base =
 const variants: Record<HxButtonVariant, string> = {
     primary: "bg-primary text-primary-foreground hover:bg-primary/90",
     secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-    outline: "border border-field bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
+    outline: "border border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
     ghost: "text-foreground hover:bg-accent hover:text-accent-foreground",
     destructive: "bg-destructive text-white hover:bg-destructive/90",
 };

@@ -28,7 +28,7 @@ export class HxSwitch extends HxCheckableElement {
         return html`<span
                 part="control"
                 class="${
-                    this.checked ? "bg-primary" : "bg-field"
+                    this.checked ? "bg-primary" : "bg-foreground/15"
                 } h-switch w-switch p-switch rounded-switch box-content inline-flex shrink-0 items-center border border-transparent shadow-xs transition-colors"
             >
                 <span

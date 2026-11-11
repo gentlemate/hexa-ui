@@ -161,7 +161,7 @@ export class HxSlider extends HxRangeElement {
             @pointermove=${this.onPointerMove}
             @lostpointercapture=${this.onPointerEnd}
         >
-            <div part="track" class="bg-field h-slider rounded-slider relative w-full overflow-hidden">
+            <div part="track" class="bg-muted h-slider rounded-slider relative w-full overflow-hidden">
                 <div part="fill" class="bg-primary h-full" style="width: ${percent}%"></div>
                 ${this.showSteps && this.max > this.min && this.step > 0 ? this.renderSteps(percent) : nothing}
             </div>

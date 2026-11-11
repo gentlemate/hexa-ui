@@ -68,11 +68,11 @@ function presetSelect(preset: string) {
         ))}
     </div>
     <div class="relative hidden group-data-ready:block">
-        <hx-tabs value="presets" variant="secondary">
-            <hx-tab value="presets">Presets</hx-tab>
-            <hx-tab value="tokens">Tokens</hx-tab>
+        <hx-tabs value="basic" variant="secondary">
+            <hx-tab value="basic">Basic</hx-tab>
+            <hx-tab value="advanced">Advanced</hx-tab>
 
-            <hx-tab-panel value="presets">
+            <hx-tab-panel value="basic">
                 <div class="flex flex-col gap-3 pt-2">
                     <hx-form-field label="Base color">
                         <hx-select class="theme-editor-base-color" value="neutral" placeholder="Custom">
@@ -103,7 +103,7 @@ function presetSelect(preset: string) {
                 </div>
             </hx-tab-panel>
 
-            <hx-tab-panel value="tokens">
+            <hx-tab-panel value="advanced">
                 <hx-accordion collapsible>
                     <hx-accordion-item value="colors">
                         <span slot="title">Colors</span>

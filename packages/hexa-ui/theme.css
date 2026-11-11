@@ -12,8 +12,8 @@
     --hx-accent: oklch(0.97 0 0);
     --hx-accent-foreground: oklch(0.205 0 0);
     --hx-destructive: oklch(0.577 0.245 27.325);
-    --hx-border: oklch(0.922 0 0);
-    --hx-field: oklch(0.922 0 0);
+    --hx-border: oklch(0.87 0 0);
+    --hx-field: oklch(0.97 0 0);
     --hx-ring: oklch(0.708 0 0);
 
     --hx-border-width: 1px;
@@ -92,7 +92,7 @@
     --hx-accent: oklch(0.269 0 0);
     --hx-accent-foreground: oklch(0.985 0 0);
     --hx-destructive: oklch(0.704 0.191 22.216);
-    --hx-border: oklch(1 0 0 / 10%);
-    --hx-field: oklch(1 0 0 / 15%);
+    --hx-border: oklch(1 0 0 / 15%);
+    --hx-field: oklch(1 0 0 / 8%);
     --hx-ring: oklch(0.556 0 0);
 }

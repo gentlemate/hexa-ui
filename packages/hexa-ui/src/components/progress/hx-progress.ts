@@ -68,7 +68,7 @@ export class HxProgress extends HxRangeElement {
     override render() {
         return html`<div class="text-foreground flex flex-col gap-1.5">
             ${this.renderHeader(!this.unknown)}
-            <div part="track" class="bg-field h-progress rounded-progress overflow-hidden">
+            <div part="track" class="bg-muted h-progress rounded-progress overflow-hidden">
                 <div
                     part="fill"
                     class="bg-primary ${
