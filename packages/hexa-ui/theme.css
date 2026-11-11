@@ -96,3 +96,10 @@
     --hx-field: oklch(1 0 0 / 8%);
     --hx-ring: oklch(0.556 0 0);
 }
+
+@layer base {
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--hx-border) transparent;
+    }
+}
