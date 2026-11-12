@@ -247,7 +247,7 @@ importers:
         version: 1.55.0
       onent-ui:
         specifier: workspace:*
-        version: link:../../packages/hexa-ui
+        version: link:../../packages/onent-ui
       sharp:
         specifier: ^0.35.3
         version: 0.35.5(@types/node@24.19.2)
@@ -259,7 +259,7 @@ importers:
         specifier: ^1.5.0
         version: 1.5.0(typescript@7.0.2)
 
-  packages/hexa-ui:
+  packages/onent-ui:
     dependencies:
       '@floating-ui/dom':
         specifier: ^1.8.0

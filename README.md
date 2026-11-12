@@ -3,7 +3,7 @@
 Lit-based Web Component library.
 
 ```
-packages/hexa-ui/   library
+packages/onent-ui/   library
 apps/demo/          demo page
 apps/docs/          documentation site
 ```
@@ -11,7 +11,7 @@ apps/docs/          documentation site
 ```bash
 pnpm install
 pnpm dev       # demo (apps/demo)
-pnpm build     # packages/hexa-ui/dist/ : ESM + .d.ts
+pnpm build     # packages/onent-ui/dist/ : ESM + .d.ts
 ```
 
 ```ts
@@ -21,7 +21,7 @@ import "onent-ui/button";
 
 ## Add a component
 
-In `packages/hexa-ui/`:
+In `packages/onent-ui/`:
 
 1. Create `src/components/<name>/oui-<name>.ts` (extending `OuiElement`) and `index.ts`.
 2. Export it from `src/index.ts`.

@@ -16,7 +16,7 @@
 @import "@astrojs/starlight-tailwind";
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
-@import "../../../../packages/hexa-ui/src/styles/tailwind-theme.css";
+@import "../../../../packages/onent-ui/src/styles/tailwind-theme.css";
 
 :root {
     --sl-font: var(--oui-font-sans);

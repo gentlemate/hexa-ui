@@ -4,7 +4,7 @@ import { format, resolveConfig } from "prettier";
 
 const root = new URL("../../../", import.meta.url);
 const pages = new URL("apps/docs/src/content/docs/components/", root);
-const manifest = JSON.parse(await readFile(new URL("packages/hexa-ui/custom-elements.json", root), "utf8"));
+const manifest = JSON.parse(await readFile(new URL("packages/onent-ui/custom-elements.json", root), "utf8"));
 const declarations = new Map(
     manifest.modules
         .flatMap((module) => module.declarations ?? [])

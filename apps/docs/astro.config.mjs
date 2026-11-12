@@ -22,7 +22,7 @@ export default defineConfig({
                 PageSidebar: "./src/components/PageSidebar.astro",
                 SocialIcons: "./src/components/SocialIcons.astro",
             },
-            social: [{ icon: "github", label: "GitHub", href: "https://github.com/gentlemate/hexa-ui" }],
+            social: [{ icon: "github", label: "GitHub", href: "https://github.com/gentlemate/onent-ui" }],
             sidebar: [
                 {
                     label: "Guides",
