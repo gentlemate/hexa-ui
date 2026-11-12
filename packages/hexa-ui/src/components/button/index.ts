@@ -1,2 +1,2 @@
-export { HxButton } from "./hx-button.js";
-export type { HxButtonIconPlacement, HxButtonVariant } from "./hx-button.js";
+export { OuiButton } from "./oui-button.js";
+export type { OuiButtonIconPlacement, OuiButtonVariant } from "./oui-button.js";

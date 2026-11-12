@@ -8,15 +8,15 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/checkbox";
+import "onent-ui/checkbox";
 ```
 
-<Preview code={`<hx-checkbox checked>Remember me</hx-checkbox>`} />
+<Preview code={`<oui-checkbox checked>Remember me</oui-checkbox>`} />
 
 ## Structure
 
 ```html
-<hx-checkbox></hx-checkbox>
+<oui-checkbox></oui-checkbox>
 ```
 
 ## Examples
@@ -27,30 +27,30 @@ import "hexa-ui/checkbox";
 
 <Preview
     code={`<div class="flex flex-col gap-3">
-    <hx-checkbox>Default</hx-checkbox>
-    <hx-checkbox indeterminate>Indeterminate</hx-checkbox>
-    <hx-checkbox checked>Checked</hx-checkbox>
+    <oui-checkbox>Default</oui-checkbox>
+    <oui-checkbox indeterminate>Indeterminate</oui-checkbox>
+    <oui-checkbox checked>Checked</oui-checkbox>
 </div>`}
 />
 
 ### Disabled
 
 <Preview
-    code={`<hx-checkbox disabled>Disabled</hx-checkbox>
-<hx-checkbox checked disabled>Checked and disabled</hx-checkbox>`}
+    code={`<oui-checkbox disabled>Disabled</oui-checkbox>
+<oui-checkbox checked disabled>Checked and disabled</oui-checkbox>`}
 />
 
 ### Invalid
 
-`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`oui-form-field`](../form-field/#error).
 
-<Preview code={`<hx-checkbox invalid>Invalid</hx-checkbox>`} />
+<Preview code={`<oui-checkbox invalid>Invalid</oui-checkbox>`} />
 
 ### Change event
 
 `change` fires each time the checkbox is toggled.
 
-<Preview code={`<hx-checkbox onchange="this.textContent = this.checked ? 'On' : 'Off'">Off</hx-checkbox>`} />
+<Preview code={`<oui-checkbox onchange="this.textContent = this.checked ? 'On' : 'Off'">Off</oui-checkbox>`} />
 
 ## Keyboard
 
@@ -58,7 +58,7 @@ import "hexa-ui/checkbox";
 
 ## API
 
-### hx-checkbox
+### oui-checkbox
 
 #### Properties
 
@@ -87,10 +87,10 @@ import "hexa-ui/checkbox";
 
 #### CSS custom properties
 
-| Name                   | Default    | Description                 |
-| ---------------------- | ---------- | --------------------------- |
-| `--hx-size-checkbox`   | `1.25rem`  | Width and height of the box |
-| `--hx-radius-checkbox` | `0.375rem` | Border radius of the box    |
+| Name                    | Default    | Description                 |
+| ----------------------- | ---------- | --------------------------- |
+| `--oui-size-checkbox`   | `1.25rem`  | Width and height of the box |
+| `--oui-radius-checkbox` | `0.375rem` | Border radius of the box    |
 
 #### CSS parts
 

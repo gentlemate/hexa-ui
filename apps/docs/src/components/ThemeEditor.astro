@@ -1,5 +1,5 @@
 ---
-import css from "hexa-ui/theme.css?raw";
+import css from "onent-ui/theme.css?raw";
 import { parseTheme } from "../theme";
 import { baseColors, primaryColors, tokenPresets } from "../theme-presets";
 import FontFamilySelect from "./FontFamilySelect.astro";
@@ -8,23 +8,23 @@ const defaults = parseTheme(css);
 
 const colors = Object.keys(defaults.dark);
 const radii: Record<string, number> = {
-    "--hx-radius-control": 2,
-    "--hx-radius-field": 2,
-    "--hx-radius-option": 2,
-    "--hx-radius-panel": 2,
-    "--hx-radius-popup": 2,
-    "--hx-radius-checkbox": 1,
-    "--hx-radius-pill": 1,
+    "--oui-radius-control": 2,
+    "--oui-radius-field": 2,
+    "--oui-radius-option": 2,
+    "--oui-radius-panel": 2,
+    "--oui-radius-popup": 2,
+    "--oui-radius-checkbox": 1,
+    "--oui-radius-pill": 1,
 };
 const sizes: Record<string, [min: number, max: number, step?: number]> = {
-    "--hx-height-control": [1.5, 4],
-    "--hx-spacing-control": [0.25, 4],
-    "--hx-height-field": [1.5, 4],
-    "--hx-spacing-field": [0.25, 2],
-    "--hx-height-option": [1.25, 3],
-    "--hx-spacing-option": [0.125, 1.5, 0.125],
-    "--hx-spacing-panel": [0.5, 3],
-    "--hx-spacing-popup": [0, 1],
+    "--oui-height-control": [1.5, 4],
+    "--oui-spacing-control": [0.25, 4],
+    "--oui-height-field": [1.5, 4],
+    "--oui-spacing-field": [0.25, 2],
+    "--oui-height-option": [1.25, 3],
+    "--oui-spacing-option": [0.125, 1.5, 0.125],
+    "--oui-spacing-panel": [0.5, 3],
+    "--oui-spacing-popup": [0, 1],
 };
 const presetDefaults: Record<string, string> = {
     radius: "default",
@@ -37,7 +37,7 @@ function capitalize(text: string) {
 }
 
 function labelOf(token: string) {
-    const words = token.replace("--hx-", "").split("-");
+    const words = token.replace("--oui-", "").split("-");
     if (words[0] === "height" || words[0] === "spacing") words.push(words.shift()!);
     if (words[0] === "radius") words.shift();
     return capitalize(words.join(" "));
@@ -68,69 +68,69 @@ function presetSelect(preset: string) {
         ))}
     </div>
     <div class="relative hidden group-data-ready:block">
-        <hx-tabs value="basic" variant="secondary">
-            <hx-tab value="basic">Basic</hx-tab>
-            <hx-tab value="advanced">Advanced</hx-tab>
+        <oui-tabs value="basic" variant="secondary">
+            <oui-tab value="basic">Basic</oui-tab>
+            <oui-tab value="advanced">Advanced</oui-tab>
 
-            <hx-tab-panel value="basic">
+            <oui-tab-panel value="basic">
                 <div class="flex flex-col gap-3 pt-2">
-                    <hx-form-field label="Base color">
-                        <hx-select class="theme-editor-base-color" value="neutral" placeholder="Custom">
+                    <oui-form-field label="Base color">
+                        <oui-select class="theme-editor-base-color" value="neutral" placeholder="Custom">
                             {baseColors.map((name) => (
-                                <hx-select-option value={name}>{capitalize(name)}</hx-select-option>
+                                <oui-select-option value={name}>{capitalize(name)}</oui-select-option>
                             ))}
-                        </hx-select>
-                    </hx-form-field>
-                    <hx-form-field label="Primary color">
-                        <hx-select class="theme-editor-primary-color" value="default" placeholder="Custom">
-                            <hx-select-option value="default">Neutral</hx-select-option>
-                            <hx-select-separator></hx-select-separator>
+                        </oui-select>
+                    </oui-form-field>
+                    <oui-form-field label="Primary color">
+                        <oui-select class="theme-editor-primary-color" value="default" placeholder="Custom">
+                            <oui-select-option value="default">Neutral</oui-select-option>
+                            <oui-select-separator></oui-select-separator>
                             {primaryColors.map((name) => (
-                                <hx-select-option value={name}>{capitalize(name)}</hx-select-option>
+                                <oui-select-option value={name}>{capitalize(name)}</oui-select-option>
                             ))}
-                        </hx-select>
-                    </hx-form-field>
+                        </oui-select>
+                    </oui-form-field>
                     {["radius", "size"].map(presetSelect).map(({ preset, label, value, options }) => (
-                        <hx-form-field label={label}>
-                            <hx-select data-preset={preset} value={value} placeholder="Custom">
+                        <oui-form-field label={label}>
+                            <oui-select data-preset={preset} value={value} placeholder="Custom">
                                 {options.map((option) => (
-                                    <hx-select-option value={option}>{capitalize(option)}</hx-select-option>
+                                    <oui-select-option value={option}>{capitalize(option)}</oui-select-option>
                                 ))}
-                            </hx-select>
-                        </hx-form-field>
+                            </oui-select>
+                        </oui-form-field>
                     ))}
                     <FontFamilySelect />
                 </div>
-            </hx-tab-panel>
+            </oui-tab-panel>
 
-            <hx-tab-panel value="advanced">
-                <hx-accordion collapsible>
-                    <hx-accordion-item value="colors">
+            <oui-tab-panel value="advanced">
+                <oui-accordion collapsible>
+                    <oui-accordion-item value="colors">
                         <span slot="title">Colors</span>
                         <div class="flex flex-col gap-3">
-                            <hx-tabs class="theme-editor-mode" value="light">
-                                <hx-tab value="light">Light</hx-tab>
-                                <hx-tab value="dark">Dark</hx-tab>
-                            </hx-tabs>
+                            <oui-tabs class="theme-editor-mode" value="light">
+                                <oui-tab value="light">Light</oui-tab>
+                                <oui-tab value="dark">Dark</oui-tab>
+                            </oui-tabs>
                             {colors.map((token) => (
-                                <hx-form-field label={labelOf(token)}>
-                                    <hx-color-picker
+                                <oui-form-field label={labelOf(token)}>
+                                    <oui-color-picker
                                         data-color={token}
                                         format="oklch"
                                         alpha
                                         value={defaults.light[token]}
                                     />
-                                </hx-form-field>
+                                </oui-form-field>
                             ))}
                         </div>
-                    </hx-accordion-item>
+                    </oui-accordion-item>
 
-                    <hx-accordion-item value="radius">
+                    <oui-accordion-item value="radius">
                         <span slot="title">Radius</span>
                         <div class="flex flex-col gap-4">
                             {Object.entries(radii).map(([token, max]) => (
-                                <hx-form-field label={`${labelOf(token)} (rem)`}>
-                                    <hx-slider
+                                <oui-form-field label={`${labelOf(token)} (rem)`}>
+                                    <oui-slider
                                         data-token={token}
                                         data-unit="rem"
                                         min="0"
@@ -138,17 +138,17 @@ function presetSelect(preset: string) {
                                         step="0.125"
                                         value={Math.min(remOf(token), max)}
                                     />
-                                </hx-form-field>
+                                </oui-form-field>
                             ))}
                         </div>
-                    </hx-accordion-item>
+                    </oui-accordion-item>
 
-                    <hx-accordion-item value="sizes">
+                    <oui-accordion-item value="sizes">
                         <span slot="title">Sizes and spacing</span>
                         <div class="flex flex-col gap-4">
                             {Object.entries(sizes).map(([token, [min, max, step = 0.25]]) => (
-                                <hx-form-field label={`${labelOf(token)} (rem)`}>
-                                    <hx-slider
+                                <oui-form-field label={`${labelOf(token)} (rem)`}>
+                                    <oui-slider
                                         data-token={token}
                                         data-unit="rem"
                                         min={min}
@@ -156,65 +156,65 @@ function presetSelect(preset: string) {
                                         step={step}
                                         value={remOf(token)}
                                     />
-                                </hx-form-field>
+                                </oui-form-field>
                             ))}
-                            <hx-form-field label="Border width (px)">
-                                <hx-slider
-                                    data-token="--hx-border-width"
+                            <oui-form-field label="Border width (px)">
+                                <oui-slider
+                                    data-token="--oui-border-width"
                                     data-unit="px"
                                     min="0"
                                     max="3"
                                     step="1"
-                                    value={parseFloat(defaults.light["--hx-border-width"])}
+                                    value={parseFloat(defaults.light["--oui-border-width"])}
                                 />
-                            </hx-form-field>
+                            </oui-form-field>
                         </div>
-                    </hx-accordion-item>
+                    </oui-accordion-item>
 
-                    <hx-accordion-item value="typography">
+                    <oui-accordion-item value="typography">
                         <span slot="title">Typography</span>
                         <div class="flex flex-col gap-3">
                             {[presetSelect("font-size")].map(({ preset, label, value, options }) => (
-                                <hx-form-field label={label}>
-                                    <hx-select data-preset={preset} value={value} placeholder="Custom">
+                                <oui-form-field label={label}>
+                                    <oui-select data-preset={preset} value={value} placeholder="Custom">
                                         {options.map((option) => (
-                                            <hx-select-option value={option}>{capitalize(option)}</hx-select-option>
+                                            <oui-select-option value={option}>{capitalize(option)}</oui-select-option>
                                         ))}
-                                    </hx-select>
-                                </hx-form-field>
+                                    </oui-select>
+                                </oui-form-field>
                             ))}
                             <FontFamilySelect />
                         </div>
-                    </hx-accordion-item>
-                </hx-accordion>
-            </hx-tab-panel>
-        </hx-tabs>
+                    </oui-accordion-item>
+                </oui-accordion>
+            </oui-tab-panel>
+        </oui-tabs>
 
         <div class="absolute top-0 right-0">
-            <hx-dropdown class="theme-editor-actions">
-                <hx-button slot="trigger" square variant="outline" title="Actions">
-                    <hx-icon data-icon="Ellipsis" label="Actions"></hx-icon>
-                </hx-button>
-                <hx-dropdown-item value="copy" data-icon="Copy">
+            <oui-dropdown class="theme-editor-actions">
+                <oui-button slot="trigger" square variant="outline" title="Actions">
+                    <oui-icon data-icon="Ellipsis" label="Actions"></oui-icon>
+                </oui-button>
+                <oui-dropdown-item value="copy" data-icon="Copy">
                     Copy CSS
-                </hx-dropdown-item>
-                <hx-dropdown-item value="download" data-icon="Download">
+                </oui-dropdown-item>
+                <oui-dropdown-item value="download" data-icon="Download">
                     Download theme.css
-                </hx-dropdown-item>
-                <hx-dropdown-separator></hx-dropdown-separator>
-                <hx-dropdown-item value="reset" variant="destructive" data-icon="RotateCcw">
+                </oui-dropdown-item>
+                <oui-dropdown-separator></oui-dropdown-separator>
+                <oui-dropdown-item value="reset" variant="destructive" data-icon="RotateCcw">
                     Reset
-                </hx-dropdown-item>
-            </hx-dropdown>
+                </oui-dropdown-item>
+            </oui-dropdown>
         </div>
     </div>
 </div>
 
 <script>
-    import "hexa-ui";
-    import type { HxColorPicker } from "hexa-ui";
-    import { toggleColorMode } from "hexa-ui/color-mode";
-    import css from "hexa-ui/theme.css?raw";
+    import "onent-ui";
+    import type { OuiColorPicker } from "onent-ui";
+    import { toggleColorMode } from "onent-ui/color-mode";
+    import css from "onent-ui/theme.css?raw";
     import { icons } from "lucide";
     import { parseTheme, themeStorageKey, themeToCss, type Theme, type ThemeMode } from "../theme";
     import { baseColorTheme, baseColors, primaryColorTheme, primaryColors, tokenPresets } from "../theme-presets";
@@ -223,7 +223,7 @@ function presetSelect(preset: string) {
 
     const defaults = parseTheme(css);
     const editors = [...document.querySelectorAll<HTMLElement>(".theme-editor")];
-    const primaryTokens = ["--hx-primary", "--hx-primary-foreground"];
+    const primaryTokens = ["--oui-primary", "--oui-primary-foreground"];
 
     let theme: Theme = { light: {}, dark: {} };
     try {
@@ -302,7 +302,7 @@ function presetSelect(preset: string) {
 
     function apply() {
         const css = themeToCss(theme);
-        document.getElementById("hx-docs-theme")!.textContent = css;
+        document.getElementById("oui-docs-theme")!.textContent = css;
         try {
             if (css) localStorage.setItem(themeStorageKey, css);
             else localStorage.removeItem(themeStorageKey);
@@ -322,7 +322,7 @@ function presetSelect(preset: string) {
         for (const select of editor.querySelectorAll<ValueElement>("[data-preset]")) {
             select.value = tokenPresetOf(select.dataset.preset!) ?? "";
         }
-        for (const picker of editor.querySelectorAll<HxColorPicker>("[data-color]")) {
+        for (const picker of editor.querySelectorAll<OuiColorPicker>("[data-color]")) {
             picker.value = valueOf(mode, picker.dataset.color!);
         }
         for (const control of editor.querySelectorAll<HTMLElement & { value: unknown; max: number }>("[data-token]")) {
@@ -346,7 +346,7 @@ function presetSelect(preset: string) {
     }
 
     for (const editor of editors) {
-        editor.querySelector(".theme-editor-mode")!.addEventListener("hx-tab-change", (event) => {
+        editor.querySelector(".theme-editor-mode")!.addEventListener("oui-tab-change", (event) => {
             if ((event as CustomEvent<{ value: ThemeMode }>).detail.value !== currentMode()) toggleColorMode();
         });
 
@@ -372,7 +372,7 @@ function presetSelect(preset: string) {
             select.addEventListener("change", () => setTokens(tokenPresets[select.dataset.preset!][select.value]));
         }
 
-        for (const picker of editor.querySelectorAll<HxColorPicker>("[data-color]")) {
+        for (const picker of editor.querySelectorAll<OuiColorPicker>("[data-color]")) {
             picker.addEventListener("input", () => setColor(picker.dataset.color!, picker.value));
         }
 
@@ -387,7 +387,7 @@ function presetSelect(preset: string) {
             element.icon = icons[element.dataset.icon as keyof typeof icons];
         }
 
-        editor.querySelector(".theme-editor-actions")!.addEventListener("hx-select", (event) => {
+        editor.querySelector(".theme-editor-actions")!.addEventListener("oui-select", (event) => {
             const { value } = (event as CustomEvent<{ value: string }>).detail;
             if (value === "copy") navigator.clipboard.writeText(themeToCss(theme));
             else if (value === "download") download();

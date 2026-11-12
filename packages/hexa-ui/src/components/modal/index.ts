@@ -1,6 +1,6 @@
-export { HxModal } from "./hx-modal.js";
-export { HxModalHeader } from "./hx-modal-header.js";
-export { HxModalTitle } from "./hx-modal-title.js";
-export { HxModalDescription } from "./hx-modal-description.js";
-export { HxModalContent } from "./hx-modal-content.js";
-export { HxModalFooter } from "./hx-modal-footer.js";
+export { OuiModal } from "./oui-modal.js";
+export { OuiModalHeader } from "./oui-modal-header.js";
+export { OuiModalTitle } from "./oui-modal-title.js";
+export { OuiModalDescription } from "./oui-modal-description.js";
+export { OuiModalContent } from "./oui-modal-content.js";
+export { OuiModalFooter } from "./oui-modal-footer.js";

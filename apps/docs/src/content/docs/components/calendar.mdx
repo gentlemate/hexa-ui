@@ -8,15 +8,15 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/calendar";
+import "onent-ui/calendar";
 ```
 
-<Preview code={`<hx-calendar value="2026-10-25"></hx-calendar>`} />
+<Preview code={`<oui-calendar value="2026-10-25"></oui-calendar>`} />
 
 ## Structure
 
 ```html
-<hx-calendar></hx-calendar>
+<oui-calendar></oui-calendar>
 ```
 
 ## Examples
@@ -25,23 +25,23 @@ import "hexa-ui/calendar";
 
 Days outside the range are disabled, and so are the navigation buttons that would leave it.
 
-<Preview code={`<hx-calendar min="2026-01-01" max="2026-12-31"></hx-calendar>`} />
+<Preview code={`<oui-calendar min="2026-01-01" max="2026-12-31"></oui-calendar>`} />
 
 ### Month and year selects
 
 `month-select` and `year-select` turn the month and the year of the heading into selects, independently. Without `min` / `max`, the years go from 100 years before to 100 years after today.
 
 <Preview
-    code={`<hx-calendar month-select></hx-calendar>
-<hx-calendar year-select></hx-calendar>
-<hx-calendar month-select year-select></hx-calendar>`}
+    code={`<oui-calendar month-select></oui-calendar>
+<oui-calendar year-select></oui-calendar>
+<oui-calendar month-select year-select></oui-calendar>`}
 />
 
 ### Locale
 
 Month and weekday names, and the first day of the week, follow `locale`, or the closest `lang` attribute.
 
-<Preview code={`<hx-calendar locale="en-US"></hx-calendar>`} />
+<Preview code={`<oui-calendar locale="en-US"></oui-calendar>`} />
 
 ### Change event
 
@@ -49,10 +49,10 @@ Month and weekday names, and the first day of the week, follow `locale`, or the 
 
 <Preview
     code={`<div>
-    <hx-calendar
+    <oui-calendar
         value="2026-10-25"
         onchange="this.nextElementSibling.textContent = new Date(this.value + 'T00:00').toLocaleDateString('en-GB', { dateStyle: 'full' })"
-    ></hx-calendar>
+    ></oui-calendar>
     <p class="mt-2 text-sm">Sunday, 25 October 2026</p>
 </div>`}
 />
@@ -69,7 +69,7 @@ start / end of the week, <kbd>Page Up</kbd> / <kbd>Page Down</kbd> by month and 
 
 ## API
 
-### hx-calendar
+### oui-calendar
 
 #### Properties
 
@@ -91,9 +91,9 @@ start / end of the week, <kbd>Page Up</kbd> / <kbd>Page Down</kbd> by month and 
 
 #### CSS custom properties
 
-| Name                     | Default   | Description                                                                 |
-| ------------------------ | --------- | --------------------------------------------------------------------------- |
-| `--hx-size-calendar-day` | `2.25rem` | Width and height of the day cells, and height of the month and year selects |
+| Name                      | Default   | Description                                                                 |
+| ------------------------- | --------- | --------------------------------------------------------------------------- |
+| `--oui-size-calendar-day` | `2.25rem` | Width and height of the day cells, and height of the month and year selects |
 
 #### CSS parts
 
@@ -101,8 +101,8 @@ start / end of the week, <kbd>Page Up</kbd> / <kbd>Page Down</kbd> by month and 
 | -------------- | ----------------------------------------------------------------------------------- |
 | `header`       | The month heading and the navigation buttons                                        |
 | `heading`      | The displayed month and year (visually hidden with `month-select` or `year-select`) |
-| `month-select` | The `hx-select` of the month                                                        |
-| `year-select`  | The `hx-select` of the year                                                         |
+| `month-select` | The `oui-select` of the month                                                       |
+| `year-select`  | The `oui-select` of the year                                                        |
 | `previous`     | The previous month button                                                           |
 | `next`         | The next month button                                                               |
 | `grid`         | The table of days                                                                   |

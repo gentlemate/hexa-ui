@@ -8,58 +8,58 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/dropdown";
+import "onent-ui/dropdown";
 ```
 
 <Preview
-    code={`<hx-dropdown>
-    <hx-button slot="trigger">Account</hx-button>
-    <hx-dropdown-group label="Account">
-        <hx-dropdown-item value="profile" data-icon="User">Profile</hx-dropdown-item>
-        <hx-dropdown-item value="settings" data-icon="Settings">Settings</hx-dropdown-item>
-        <hx-dropdown-item data-icon="Bell">
+    code={`<oui-dropdown>
+    <oui-button slot="trigger">Account</oui-button>
+    <oui-dropdown-group label="Account">
+        <oui-dropdown-item value="profile" data-icon="User">Profile</oui-dropdown-item>
+        <oui-dropdown-item value="settings" data-icon="Settings">Settings</oui-dropdown-item>
+        <oui-dropdown-item data-icon="Bell">
             Notifications
-            <hx-dropdown-submenu>
-                <hx-dropdown-item type="checkbox" value="email" checked>Email</hx-dropdown-item>
-                <hx-dropdown-item type="checkbox" value="sms">SMS</hx-dropdown-item>
-                <hx-dropdown-item type="checkbox" value="push">Push</hx-dropdown-item>
-            </hx-dropdown-submenu>
-        </hx-dropdown-item>
-    </hx-dropdown-group>
-    <hx-dropdown-separator></hx-dropdown-separator>
-    <hx-dropdown-item data-icon="SunMoon">
+            <oui-dropdown-submenu>
+                <oui-dropdown-item type="checkbox" value="email" checked>Email</oui-dropdown-item>
+                <oui-dropdown-item type="checkbox" value="sms">SMS</oui-dropdown-item>
+                <oui-dropdown-item type="checkbox" value="push">Push</oui-dropdown-item>
+            </oui-dropdown-submenu>
+        </oui-dropdown-item>
+    </oui-dropdown-group>
+    <oui-dropdown-separator></oui-dropdown-separator>
+    <oui-dropdown-item data-icon="SunMoon">
         Theme
-        <hx-dropdown-submenu>
-            <hx-dropdown-item type="radio" value="light">Light</hx-dropdown-item>
-            <hx-dropdown-item type="radio" value="dark">Dark</hx-dropdown-item>
-            <hx-dropdown-item type="radio" value="system" checked>System</hx-dropdown-item>
-        </hx-dropdown-submenu>
-    </hx-dropdown-item>
-    <hx-dropdown-separator></hx-dropdown-separator>
-    <hx-dropdown-item value="logout" variant="destructive" data-icon="LogOut">Log out</hx-dropdown-item>
-</hx-dropdown>`}
+        <oui-dropdown-submenu>
+            <oui-dropdown-item type="radio" value="light">Light</oui-dropdown-item>
+            <oui-dropdown-item type="radio" value="dark">Dark</oui-dropdown-item>
+            <oui-dropdown-item type="radio" value="system" checked>System</oui-dropdown-item>
+        </oui-dropdown-submenu>
+    </oui-dropdown-item>
+    <oui-dropdown-separator></oui-dropdown-separator>
+    <oui-dropdown-item value="logout" variant="destructive" data-icon="LogOut">Log out</oui-dropdown-item>
+</oui-dropdown>`}
 />
 
 ## Structure
 
 ```html
-<hx-dropdown>
-    <hx-button slot="trigger"></hx-button>
+<oui-dropdown>
+    <oui-button slot="trigger"></oui-button>
 
-    <hx-dropdown-group>
-        <hx-dropdown-item></hx-dropdown-item>
-    </hx-dropdown-group>
+    <oui-dropdown-group>
+        <oui-dropdown-item></oui-dropdown-item>
+    </oui-dropdown-group>
 
-    <hx-dropdown-item></hx-dropdown-item>
+    <oui-dropdown-item></oui-dropdown-item>
 
-    <hx-dropdown-item>
-        <hx-dropdown-submenu>
-            <hx-dropdown-item></hx-dropdown-item>
-        </hx-dropdown-submenu>
-    </hx-dropdown-item>
+    <oui-dropdown-item>
+        <oui-dropdown-submenu>
+            <oui-dropdown-item></oui-dropdown-item>
+        </oui-dropdown-submenu>
+    </oui-dropdown-item>
 
-    <hx-dropdown-separator></hx-dropdown-separator>
-</hx-dropdown>
+    <oui-dropdown-separator></oui-dropdown-separator>
+</oui-dropdown>
 ```
 
 ## Examples
@@ -67,40 +67,40 @@ import "hexa-ui/dropdown";
 ### Groups
 
 <Preview
-    code={`<hx-dropdown>
-    <hx-button slot="trigger">Account</hx-button>
-    <hx-dropdown-group label="Account">
-        <hx-dropdown-item value="profile">Profile</hx-dropdown-item>
-        <hx-dropdown-item value="settings">Settings</hx-dropdown-item>
-        <hx-dropdown-item value="notifications">Notifications</hx-dropdown-item>
-    </hx-dropdown-group>
-    <hx-dropdown-separator></hx-dropdown-separator>
-    <hx-dropdown-item value="delete" variant="destructive">Delete</hx-dropdown-item>
-</hx-dropdown>`}
+    code={`<oui-dropdown>
+    <oui-button slot="trigger">Account</oui-button>
+    <oui-dropdown-group label="Account">
+        <oui-dropdown-item value="profile">Profile</oui-dropdown-item>
+        <oui-dropdown-item value="settings">Settings</oui-dropdown-item>
+        <oui-dropdown-item value="notifications">Notifications</oui-dropdown-item>
+    </oui-dropdown-group>
+    <oui-dropdown-separator></oui-dropdown-separator>
+    <oui-dropdown-item value="delete" variant="destructive">Delete</oui-dropdown-item>
+</oui-dropdown>`}
 />
 
 ### Icon
 
 <Preview
-    code={`<hx-dropdown>
-    <hx-button slot="trigger">Account</hx-button>
-    <hx-dropdown-item value="profile" data-icon="User">Profile</hx-dropdown-item>
-    <hx-dropdown-item value="settings" data-icon="Settings">Settings</hx-dropdown-item>
-    <hx-dropdown-item value="notifications" data-icon="Bell">Notifications</hx-dropdown-item>
-    <hx-dropdown-separator></hx-dropdown-separator>
-    <hx-dropdown-item value="delete" variant="destructive" data-icon="Trash2">Delete</hx-dropdown-item>
-</hx-dropdown>`}
+    code={`<oui-dropdown>
+    <oui-button slot="trigger">Account</oui-button>
+    <oui-dropdown-item value="profile" data-icon="User">Profile</oui-dropdown-item>
+    <oui-dropdown-item value="settings" data-icon="Settings">Settings</oui-dropdown-item>
+    <oui-dropdown-item value="notifications" data-icon="Bell">Notifications</oui-dropdown-item>
+    <oui-dropdown-separator></oui-dropdown-separator>
+    <oui-dropdown-item value="delete" variant="destructive" data-icon="Trash2">Delete</oui-dropdown-item>
+</oui-dropdown>`}
 />
 
 ### Checkboxes
 
 <Preview
-    code={`<hx-dropdown>
-    <hx-button slot="trigger">Notifications</hx-button>
-    <hx-dropdown-item type="checkbox" value="email" checked>Email notifications</hx-dropdown-item>
-    <hx-dropdown-item type="checkbox" value="sms">SMS notifications</hx-dropdown-item>
-    <hx-dropdown-item type="checkbox" value="push">Push notifications</hx-dropdown-item>
-</hx-dropdown>`}
+    code={`<oui-dropdown>
+    <oui-button slot="trigger">Notifications</oui-button>
+    <oui-dropdown-item type="checkbox" value="email" checked>Email notifications</oui-dropdown-item>
+    <oui-dropdown-item type="checkbox" value="sms">SMS notifications</oui-dropdown-item>
+    <oui-dropdown-item type="checkbox" value="push">Push notifications</oui-dropdown-item>
+</oui-dropdown>`}
 />
 
 ### Radio group
@@ -108,61 +108,61 @@ import "hexa-ui/dropdown";
 Radio items are exclusive within their group.
 
 <Preview
-    code={`<hx-dropdown>
-    <hx-button slot="trigger">Theme</hx-button>
-    <hx-dropdown-group label="Theme">
-        <hx-dropdown-item type="radio" value="light">Light</hx-dropdown-item>
-        <hx-dropdown-item type="radio" value="dark">Dark</hx-dropdown-item>
-        <hx-dropdown-item type="radio" value="system" checked>System</hx-dropdown-item>
-    </hx-dropdown-group>
-</hx-dropdown>`}
+    code={`<oui-dropdown>
+    <oui-button slot="trigger">Theme</oui-button>
+    <oui-dropdown-group label="Theme">
+        <oui-dropdown-item type="radio" value="light">Light</oui-dropdown-item>
+        <oui-dropdown-item type="radio" value="dark">Dark</oui-dropdown-item>
+        <oui-dropdown-item type="radio" value="system" checked>System</oui-dropdown-item>
+    </oui-dropdown-group>
+</oui-dropdown>`}
 />
 
 ### Submenus
 
-Place an `hx-dropdown-submenu` inside an item, after its label.
+Place an `oui-dropdown-submenu` inside an item, after its label.
 
 <Preview
-    code={`<hx-dropdown>
-    <hx-button slot="trigger">Action</hx-button>
-    <hx-dropdown-item value="download">Download</hx-dropdown-item>
-    <hx-dropdown-item>
+    code={`<oui-dropdown>
+    <oui-button slot="trigger">Action</oui-button>
+    <oui-dropdown-item value="download">Download</oui-dropdown-item>
+    <oui-dropdown-item>
         Share
-        <hx-dropdown-submenu>
-            <hx-dropdown-item value="email">Email</hx-dropdown-item>
-            <hx-dropdown-item value="sms">SMS</hx-dropdown-item>
-            <hx-dropdown-separator></hx-dropdown-separator>
-            <hx-dropdown-item>
+        <oui-dropdown-submenu>
+            <oui-dropdown-item value="email">Email</oui-dropdown-item>
+            <oui-dropdown-item value="sms">SMS</oui-dropdown-item>
+            <oui-dropdown-separator></oui-dropdown-separator>
+            <oui-dropdown-item>
                 More
-                <hx-dropdown-submenu>
-                    <hx-dropdown-item value="link">Copy link</hx-dropdown-item>
-                </hx-dropdown-submenu>
-            </hx-dropdown-item>
-        </hx-dropdown-submenu>
-    </hx-dropdown-item>
-</hx-dropdown>`}
+                <oui-dropdown-submenu>
+                    <oui-dropdown-item value="link">Copy link</oui-dropdown-item>
+                </oui-dropdown-submenu>
+            </oui-dropdown-item>
+        </oui-dropdown-submenu>
+    </oui-dropdown-item>
+</oui-dropdown>`}
 />
 
 ### Placement
 
 <Preview
-    code={`<hx-dropdown placement="top-start">
-    <hx-button slot="trigger">Top</hx-button>
-    <hx-dropdown-item value="profile">Profile</hx-dropdown-item>
-    <hx-dropdown-item value="settings">Settings</hx-dropdown-item>
-    <hx-dropdown-item value="notifications">Notifications</hx-dropdown-item>
-</hx-dropdown>`}
+    code={`<oui-dropdown placement="top-start">
+    <oui-button slot="trigger">Top</oui-button>
+    <oui-dropdown-item value="profile">Profile</oui-dropdown-item>
+    <oui-dropdown-item value="settings">Settings</oui-dropdown-item>
+    <oui-dropdown-item value="notifications">Notifications</oui-dropdown-item>
+</oui-dropdown>`}
 />
 
 ### Disabled
 
 <Preview
-    code={`<hx-dropdown>
-    <hx-button slot="trigger">Account</hx-button>
-    <hx-dropdown-item value="profile">Profile</hx-dropdown-item>
-    <hx-dropdown-item value="settings">Settings</hx-dropdown-item>
-    <hx-dropdown-item value="notifications" disabled>Notifications</hx-dropdown-item>
-</hx-dropdown>`}
+    code={`<oui-dropdown>
+    <oui-button slot="trigger">Account</oui-button>
+    <oui-dropdown-item value="profile">Profile</oui-dropdown-item>
+    <oui-dropdown-item value="settings">Settings</oui-dropdown-item>
+    <oui-dropdown-item value="notifications" disabled>Notifications</oui-dropdown-item>
+</oui-dropdown>`}
 />
 
 ## Keyboard
@@ -174,47 +174,47 @@ closes the whole menu. When the menu closes, the focus returns to the trigger.
 
 ## API
 
-### hx-dropdown
+### oui-dropdown
 
 #### Properties
 
-| Property    | Attribute   | Type                                                                                                                                                                 | Default          | Description                                                         |
-| ----------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------- |
-| `placement` | `placement` | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"bottom-start"` | Position of the menu relative to the trigger                        |
-| `disabled`  | `disabled`  | `boolean`                                                                                                                                                            | `false`          | Prevents the trigger from opening the menu                          |
-| `distance`  | `distance`  | `number`                                                                                                                                                             | `4`              | Gap in pixels between the trigger and the popup                     |
-| `open`      | `open`      | `boolean`                                                                                                                                                            | `false`          | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
+| Property    | Attribute   | Type                                                                                                                                                                 | Default          | Description                                                           |
+| ----------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | --------------------------------------------------------------------- |
+| `placement` | `placement` | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"bottom-start"` | Position of the menu relative to the trigger                          |
+| `disabled`  | `disabled`  | `boolean`                                                                                                                                                            | `false`          | Prevents the trigger from opening the menu                            |
+| `distance`  | `distance`  | `number`                                                                                                                                                             | `4`              | Gap in pixels between the trigger and the popup                       |
+| `open`      | `open`      | `boolean`                                                                                                                                                            | `false`          | Whether it is open. Setting it directly skips `oui-show` / `oui-hide` |
 
 #### Methods
 
-| Name     | Description                 |
-| -------- | --------------------------- |
-| `show()` | Opens it (fires `hx-show`)  |
-| `hide()` | Closes it (fires `hx-hide`) |
+| Name     | Description                  |
+| -------- | ---------------------------- |
+| `show()` | Opens it (fires `oui-show`)  |
+| `hide()` | Closes it (fires `oui-hide`) |
 
 #### Events
 
-| Name            | Description                                                                                                                                                                     |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `hx-show`       | The menu is about to open. Cancelable                                                                                                                                           |
-| `hx-after-show` | The menu is open and its enter animation finished                                                                                                                               |
-| `hx-hide`       | The menu is about to close. Cancelable                                                                                                                                          |
-| `hx-after-hide` | The menu is closed and its exit animation finished                                                                                                                              |
-| `hx-select`     | An item was activated (fired by the `hx-dropdown-item`). Normal items close the menu, checkbox and radio items keep it open. Cancelable: `preventDefault()` keeps the menu open |
+| Name             | Description                                                                                                                                                                      |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `oui-show`       | The menu is about to open. Cancelable                                                                                                                                            |
+| `oui-after-show` | The menu is open and its enter animation finished                                                                                                                                |
+| `oui-hide`       | The menu is about to close. Cancelable                                                                                                                                           |
+| `oui-after-hide` | The menu is closed and its exit animation finished                                                                                                                               |
+| `oui-select`     | An item was activated (fired by the `oui-dropdown-item`). Normal items close the menu, checkbox and radio items keep it open. Cancelable: `preventDefault()` keeps the menu open |
 
 #### Slots
 
-| Name      | Description                                                                      |
-| --------- | -------------------------------------------------------------------------------- |
-| `trigger` | The element that opens the menu (e.g. an `hx-button`)                            |
-| (default) | The `hx-dropdown-item`, `hx-dropdown-group` and `hx-dropdown-separator` elements |
+| Name      | Description                                                                         |
+| --------- | ----------------------------------------------------------------------------------- |
+| `trigger` | The element that opens the menu (e.g. an `oui-button`)                              |
+| (default) | The `oui-dropdown-item`, `oui-dropdown-group` and `oui-dropdown-separator` elements |
 
 #### CSS custom properties
 
-| Name                    | Default                   | Description               |
-| ----------------------- | ------------------------- | ------------------------- |
-| `--hx-spacing-dropdown` | `var(--hx-spacing-popup)` | Padding of the menu       |
-| `--hx-radius-dropdown`  | `var(--hx-radius-popup)`  | Border radius of the menu |
+| Name                     | Default                    | Description               |
+| ------------------------ | -------------------------- | ------------------------- |
+| `--oui-spacing-dropdown` | `var(--oui-spacing-popup)` | Padding of the menu       |
+| `--oui-radius-dropdown`  | `var(--oui-radius-popup)`  | Border radius of the menu |
 
 #### CSS parts
 
@@ -222,37 +222,37 @@ closes the whole menu. When the menu closes, the focus returns to the trigger.
 | ------- | -------------- |
 | `popup` | The menu panel |
 
-### hx-dropdown-submenu
+### oui-dropdown-submenu
 
 #### Properties
 
-| Property    | Attribute   | Type                                                                                                                                                                 | Default         | Description                                                         |
-| ----------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------- |
-| `placement` | `placement` | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"right-start"` | Position of the submenu relative to its item                        |
-| `distance`  | `distance`  | `number`                                                                                                                                                             | `4`             | Gap in pixels between the item and the submenu                      |
-| `open`      | `open`      | `boolean`                                                                                                                                                            | `false`         | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
+| Property    | Attribute   | Type                                                                                                                                                                 | Default         | Description                                                           |
+| ----------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | --------------------------------------------------------------------- |
+| `placement` | `placement` | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"right-start"` | Position of the submenu relative to its item                          |
+| `distance`  | `distance`  | `number`                                                                                                                                                             | `4`             | Gap in pixels between the item and the submenu                        |
+| `open`      | `open`      | `boolean`                                                                                                                                                            | `false`         | Whether it is open. Setting it directly skips `oui-show` / `oui-hide` |
 
 #### Methods
 
-| Name     | Description                 |
-| -------- | --------------------------- |
-| `show()` | Opens it (fires `hx-show`)  |
-| `hide()` | Closes it (fires `hx-hide`) |
+| Name     | Description                  |
+| -------- | ---------------------------- |
+| `show()` | Opens it (fires `oui-show`)  |
+| `hide()` | Closes it (fires `oui-hide`) |
 
 #### Events
 
-| Name            | Description                                        |
-| --------------- | -------------------------------------------------- |
-| `hx-show`       | The menu is about to open. Cancelable              |
-| `hx-after-show` | The menu is open and its enter animation finished  |
-| `hx-hide`       | The menu is about to close. Cancelable             |
-| `hx-after-hide` | The menu is closed and its exit animation finished |
+| Name             | Description                                        |
+| ---------------- | -------------------------------------------------- |
+| `oui-show`       | The menu is about to open. Cancelable              |
+| `oui-after-show` | The menu is open and its enter animation finished  |
+| `oui-hide`       | The menu is about to close. Cancelable             |
+| `oui-after-hide` | The menu is closed and its exit animation finished |
 
 #### Slots
 
-| Name      | Description                                                                      |
-| --------- | -------------------------------------------------------------------------------- |
-| (default) | The `hx-dropdown-item`, `hx-dropdown-group` and `hx-dropdown-separator` elements |
+| Name      | Description                                                                         |
+| --------- | ----------------------------------------------------------------------------------- |
+| (default) | The `oui-dropdown-item`, `oui-dropdown-group` and `oui-dropdown-separator` elements |
 
 #### CSS parts
 
@@ -260,7 +260,7 @@ closes the whole menu. When the menu closes, the focus returns to the trigger.
 | ------- | -------------- |
 | `popup` | The menu panel |
 
-### hx-dropdown-item
+### oui-dropdown-item
 
 #### Properties
 
@@ -270,20 +270,20 @@ closes the whole menu. When the menu closes, the focus returns to the trigger.
 | `checked`  | `checked`  | `boolean`                           | `false`     | Whether a checkbox or radio item is checked                          |
 | `variant`  | `variant`  | `"default" \| "destructive"`        | `"default"` | `destructive` shows the item in the destructive color                |
 | `icon`     | —          | `IconNode`                          | —           | Lucide icon, set as a JS property                                    |
-| `value`    | `value`    | `string`                            | `""`        | Sent as `event.detail.value` in `hx-select`                          |
+| `value`    | `value`    | `string`                            | `""`        | Sent as `event.detail.value` in `oui-select`                         |
 | `disabled` | `disabled` | `boolean`                           | `false`     | Prevents activating the item                                         |
 
 #### Events
 
-| Name        | Description                                                                                                                                                                                                               |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `hx-select` | The item was activated; `event.detail` is `{ item, value }`. Cancelable: `preventDefault()` keeps the menu open (checkbox and radio items keep it open anyway). Checkbox and radio items update `checked` before it fires |
+| Name         | Description                                                                                                                                                                                                               |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `oui-select` | The item was activated; `event.detail` is `{ item, value }`. Cancelable: `preventDefault()` keeps the menu open (checkbox and radio items keep it open anyway). Checkbox and radio items update `checked` before it fires |
 
 #### Slots
 
-| Name      | Description                                                                 |
-| --------- | --------------------------------------------------------------------------- |
-| (default) | The item label, and an optional `hx-dropdown-submenu` opened from this item |
+| Name      | Description                                                                  |
+| --------- | ---------------------------------------------------------------------------- |
+| (default) | The item label, and an optional `oui-dropdown-submenu` opened from this item |
 
 #### CSS parts
 
@@ -291,7 +291,7 @@ closes the whole menu. When the menu closes, the focus returns to the trigger.
 | ----------- | ------------------------------------------------- |
 | `base`      | The item wrapper                                  |
 | `indicator` | The check mark or dot of checkbox and radio items |
-| `icon`      | The `hx-icon` rendered from the `icon` property   |
+| `icon`      | The `oui-icon` rendered from the `icon` property  |
 | `chevron`   | The chevron of an item with a submenu             |
 
 #### CSS states
@@ -300,7 +300,7 @@ closes the whole menu. When the menu closes, the focus returns to the trigger.
 | ---------- | ------------------------------- |
 | `expanded` | The submenu of the item is open |
 
-### hx-dropdown-group
+### oui-dropdown-group
 
 #### Properties
 
@@ -310,9 +310,9 @@ closes the whole menu. When the menu closes, the focus returns to the trigger.
 
 #### Slots
 
-| Name      | Description                                                                           |
-| --------- | ------------------------------------------------------------------------------------- |
-| (default) | The grouped `hx-dropdown-item` elements. Radio items are exclusive within their group |
+| Name      | Description                                                                            |
+| --------- | -------------------------------------------------------------------------------------- |
+| (default) | The grouped `oui-dropdown-item` elements. Radio items are exclusive within their group |
 
 #### CSS parts
 
@@ -320,7 +320,7 @@ closes the whole menu. When the menu closes, the focus returns to the trigger.
 | ------- | ----------------------------------------------- |
 | `label` | The group heading, rendered when `label` is set |
 
-### hx-dropdown-separator
+### oui-dropdown-separator
 
 #### CSS parts
 

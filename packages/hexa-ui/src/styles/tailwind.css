@@ -15,13 +15,13 @@
 
 @layer base {
     :host {
-        font-size: var(--hx-text-base);
-        line-height: var(--hx-leading-base);
+        font-size: var(--oui-text-base);
+        line-height: var(--oui-leading-base);
     }
 
     :host,
     * {
         scrollbar-width: thin;
-        scrollbar-color: var(--hx-border) transparent;
+        scrollbar-color: var(--oui-border) transparent;
     }
 }

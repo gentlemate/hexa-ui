@@ -1,2 +1,2 @@
-export { HxPopover } from "./hx-popover.js";
-export type { HxPopoverPlacement, HxPopoverTrigger } from "./hx-popover.js";
+export { OuiPopover } from "./oui-popover.js";
+export type { OuiPopoverPlacement, OuiPopoverTrigger } from "./oui-popover.js";

@@ -8,30 +8,30 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/popover";
+import "onent-ui/popover";
 ```
 
 <Preview
-    code={`<hx-popover>
-    <hx-button slot="trigger">Open</hx-button>
+    code={`<oui-popover>
+    <oui-button slot="trigger">Open</oui-button>
     <div class="flex w-64 flex-col gap-3">
         <p class="text-muted-foreground text-sm">Set the dimensions for the layer.</p>
-        <hx-form-field label="Width">
-            <hx-input value="100%"></hx-input>
-        </hx-form-field>
-        <hx-form-field label="Height">
-            <hx-input value="50px"></hx-input>
-        </hx-form-field>
+        <oui-form-field label="Width">
+            <oui-input value="100%"></oui-input>
+        </oui-form-field>
+        <oui-form-field label="Height">
+            <oui-input value="50px"></oui-input>
+        </oui-form-field>
     </div>
-</hx-popover>`}
+</oui-popover>`}
 />
 
 ## Structure
 
 ```html
-<hx-popover>
-    <hx-button slot="trigger"></hx-button>
-</hx-popover>
+<oui-popover>
+    <oui-button slot="trigger"></oui-button>
+</oui-popover>
 ```
 
 ## Examples
@@ -39,22 +39,22 @@ import "hexa-ui/popover";
 ### Placement
 
 <Preview
-    code={`<hx-popover placement="top">
-    <hx-button slot="trigger">Top</hx-button>
+    code={`<oui-popover placement="top">
+    <oui-button slot="trigger">Top</oui-button>
     <p class="text-sm">Top</p>
-</hx-popover>
-<hx-popover>
-    <hx-button slot="trigger">Bottom</hx-button>
+</oui-popover>
+<oui-popover>
+    <oui-button slot="trigger">Bottom</oui-button>
     <p class="text-sm">Bottom</p>
-</hx-popover>
-<hx-popover placement="left">
-    <hx-button slot="trigger">Left</hx-button>
+</oui-popover>
+<oui-popover placement="left">
+    <oui-button slot="trigger">Left</oui-button>
     <p class="text-sm">Left</p>
-</hx-popover>
-<hx-popover placement="right">
-    <hx-button slot="trigger">Right</hx-button>
+</oui-popover>
+<oui-popover placement="right">
+    <oui-button slot="trigger">Right</oui-button>
     <p class="text-sm">Right</p>
-</hx-popover>`}
+</oui-popover>`}
 />
 
 ### Distance
@@ -62,10 +62,10 @@ import "hexa-ui/popover";
 `distance` sets the gap in pixels between the trigger and the popover (`8` by default).
 
 <Preview
-    code={`<hx-popover distance="16">
-    <hx-button slot="trigger">Distance</hx-button>
+    code={`<oui-popover distance="16">
+    <oui-button slot="trigger">Distance</oui-button>
     <p class="text-sm">16px away</p>
-</hx-popover>`}
+</oui-popover>`}
 />
 
 ### Hover
@@ -73,10 +73,10 @@ import "hexa-ui/popover";
 `trigger="hover"` opens the popover when the pointer rests on the trigger, and closes it when the pointer leaves both the trigger and the popover.
 
 <Preview
-    code={`<hx-popover trigger="hover">
-    <hx-button slot="trigger">Hover me</hx-button>
+    code={`<oui-popover trigger="hover">
+    <oui-button slot="trigger">Hover me</oui-button>
     <p class="w-64 text-sm">Opens on hover, closes when the pointer leaves.</p>
-</hx-popover>`}
+</oui-popover>`}
 />
 
 ### Open and close delays
@@ -84,19 +84,19 @@ import "hexa-ui/popover";
 `open-delay` sets the delay in milliseconds before the popover opens on hover (`300` by default), and `close-delay` the delay before it closes once the pointer has left (`100` by default).
 
 <Preview
-    code={`<hx-popover trigger="hover" open-delay="0" close-delay="0">
-    <hx-button slot="trigger">No delay</hx-button>
+    code={`<oui-popover trigger="hover" open-delay="0" close-delay="0">
+    <oui-button slot="trigger">No delay</oui-button>
     <p class="text-sm">No delay</p>
-</hx-popover>`}
+</oui-popover>`}
 />
 
 ### Without arrow
 
 <Preview
-    code={`<hx-popover without-arrow>
-    <hx-button slot="trigger">Without arrow</hx-button>
+    code={`<oui-popover without-arrow>
+    <oui-button slot="trigger">Without arrow</oui-button>
     <p class="text-sm">No arrow</p>
-</hx-popover>`}
+</oui-popover>`}
 />
 
 ## Usage
@@ -105,7 +105,7 @@ The popover opens on click of the trigger and moves the focus to its panel. It c
 
 ## API
 
-### hx-popover
+### oui-popover
 
 #### Properties
 
@@ -117,37 +117,37 @@ The popover opens on click of the trigger and moves the focus to its panel. It c
 | `openDelay`    | `open-delay`    | `number`                                                                                                                                                             | `300`      | Delay in milliseconds before opening on hover (with `trigger="hover"`)         |
 | `closeDelay`   | `close-delay`   | `number`                                                                                                                                                             | `100`      | Delay in milliseconds before closing on pointer leave (with `trigger="hover"`) |
 | `withoutArrow` | `without-arrow` | `boolean`                                                                                                                                                            | `false`    | Hides the arrow                                                                |
-| `open`         | `open`          | `boolean`                                                                                                                                                            | `false`    | Whether it is open. Setting it directly skips `hx-show` / `hx-hide`            |
+| `open`         | `open`          | `boolean`                                                                                                                                                            | `false`    | Whether it is open. Setting it directly skips `oui-show` / `oui-hide`          |
 
 #### Methods
 
-| Name     | Description                 |
-| -------- | --------------------------- |
-| `show()` | Opens it (fires `hx-show`)  |
-| `hide()` | Closes it (fires `hx-hide`) |
+| Name     | Description                  |
+| -------- | ---------------------------- |
+| `show()` | Opens it (fires `oui-show`)  |
+| `hide()` | Closes it (fires `oui-hide`) |
 
 #### Events
 
-| Name            | Description                                           |
-| --------------- | ----------------------------------------------------- |
-| `hx-show`       | The popover is about to open. Cancelable              |
-| `hx-after-show` | The popover is open and its enter animation finished  |
-| `hx-hide`       | The popover is about to close. Cancelable             |
-| `hx-after-hide` | The popover is closed and its exit animation finished |
+| Name             | Description                                           |
+| ---------------- | ----------------------------------------------------- |
+| `oui-show`       | The popover is about to open. Cancelable              |
+| `oui-after-show` | The popover is open and its enter animation finished  |
+| `oui-hide`       | The popover is about to close. Cancelable             |
+| `oui-after-hide` | The popover is closed and its exit animation finished |
 
 #### Slots
 
-| Name      | Description                                              |
-| --------- | -------------------------------------------------------- |
-| `trigger` | The element that opens the popover (e.g. an `hx-button`) |
-| (default) | The popover content                                      |
+| Name      | Description                                               |
+| --------- | --------------------------------------------------------- |
+| `trigger` | The element that opens the popover (e.g. an `oui-button`) |
+| (default) | The popover content                                       |
 
 #### CSS custom properties
 
-| Name                   | Default                  | Description   |
-| ---------------------- | ------------------------ | ------------- |
-| `--hx-spacing-popover` | `1.25rem`                | Padding       |
-| `--hx-radius-popover`  | `var(--hx-radius-popup)` | Border radius |
+| Name                    | Default                   | Description   |
+| ----------------------- | ------------------------- | ------------- |
+| `--oui-spacing-popover` | `1.25rem`                 | Padding       |
+| `--oui-radius-popover`  | `var(--oui-radius-popup)` | Border radius |
 
 #### CSS parts
 

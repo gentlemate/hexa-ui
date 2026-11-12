@@ -1,13 +1,13 @@
 export type ThemeMode = "light" | "dark";
 export type Theme = Record<ThemeMode, Record<string, string>>;
 
-export const themeStorageKey = "hx-docs-theme";
+export const themeStorageKey = "oui-docs-theme";
 
 export function parseTheme(css: string): Theme {
     const theme: Theme = { light: {}, dark: {} };
     for (const [, selector, body] of css.matchAll(/([^{}]+)\{([^}]*)\}/g)) {
         const tokens = theme[selector.includes(".dark") ? "dark" : "light"];
-        for (const [, name, value] of body.matchAll(/(--hx-[\w-]+)\s*:\s*([^;]+);/g)) tokens[name] = value.trim();
+        for (const [, name, value] of body.matchAll(/(--oui-[\w-]+)\s*:\s*([^;]+);/g)) tokens[name] = value.trim();
     }
     return theme;
 }
@@ -36,12 +36,12 @@ export function syncColorMode() {
         stored = localStorage.getItem("starlight-theme");
     } catch {}
     root.classList.toggle("dark", stored ? stored === "dark" : !matchMedia("(prefers-color-scheme: light)").matches);
-    store("hx-color-mode", root.classList.contains("dark") ? "dark" : "light");
+    store("oui-color-mode", root.classList.contains("dark") ? "dark" : "light");
     new MutationObserver((mutations) => {
         const theme = root.classList.contains("dark") ? "dark" : "light";
         if (mutations.some(({ attributeName }) => attributeName === "data-theme")) {
             root.classList.toggle("dark", root.dataset.theme === "dark");
-            store("hx-color-mode", root.dataset.theme === "dark" ? "dark" : "light");
+            store("oui-color-mode", root.dataset.theme === "dark" ? "dark" : "light");
         } else if (root.dataset.theme !== theme) {
             root.dataset.theme = theme;
             store("starlight-theme", theme);
@@ -52,9 +52,9 @@ export function syncColorMode() {
 
 export function initTheme() {
     const style = document.createElement("style");
-    style.id = "hx-docs-theme";
+    style.id = "oui-docs-theme";
     try {
-        style.textContent = localStorage.getItem("hx-docs-theme");
+        style.textContent = localStorage.getItem("oui-docs-theme");
     } catch {}
     document.documentElement.append(style);
 }

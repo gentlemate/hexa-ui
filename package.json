@@ -1,13 +1,13 @@
 {
-    "name": "hexa-ui-workspace",
+    "name": "onent-ui-workspace",
     "private": true,
     "type": "module",
     "scripts": {
         "dev": "pnpm --filter demo dev",
         "dev:docs": "pnpm --filter ./apps/docs dev",
-        "build": "pnpm --filter hexa-ui build",
-        "typecheck": "pnpm --filter hexa-ui typecheck",
-        "docs:api": "pnpm --filter hexa-ui analyze && pnpm --filter ./apps/docs api",
+        "build": "pnpm --filter onent-ui build",
+        "typecheck": "pnpm --filter onent-ui typecheck",
+        "docs:api": "pnpm --filter onent-ui analyze && pnpm --filter ./apps/docs api",
         "build:all": "pnpm build && pnpm docs:api",
         "format": "prettier --write .",
         "format:check": "prettier --check ."

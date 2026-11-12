@@ -8,15 +8,18 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/progress";
+import "onent-ui/progress";
 ```
 
-<Preview stack code={`<hx-progress label="Loading…" value="50" format-options='{"style":"percent"}'></hx-progress>`} />
+<Preview
+    stack
+    code={`<oui-progress label="Loading…" value="50" format-options='{"style":"percent"}'></oui-progress>`}
+/>
 
 ## Structure
 
 ```html
-<hx-progress></hx-progress>
+<oui-progress></oui-progress>
 ```
 
 ## Examples
@@ -25,21 +28,21 @@ import "hexa-ui/progress";
 
 Without `label`, only the bar is displayed: give it an `aria-label` for screen readers.
 
-<Preview stack code={`<hx-progress value="50" aria-label="Loading"></hx-progress>`} />
+<Preview stack code={`<oui-progress value="50" aria-label="Loading"></oui-progress>`} />
 
 ### Indeterminate
 
 When the progress is unknown, `indeterminate` animates the bar and hides the value.
 
-<Preview stack code={`<hx-progress label="Loading…" indeterminate></hx-progress>`} />
+<Preview stack code={`<oui-progress label="Loading…" indeterminate></oui-progress>`} />
 
 `indeterminate-alternate` does the same, but the bar goes back and forth across the track.
 
-<Preview stack code={`<hx-progress label="Loading…" indeterminate-alternate></hx-progress>`} />
+<Preview stack code={`<oui-progress label="Loading…" indeterminate-alternate></oui-progress>`} />
 
 ### Min and max
 
-<Preview stack code={`<hx-progress label="Files" value="3" min="0" max="10"></hx-progress>`} />
+<Preview stack code={`<oui-progress label="Files" value="3" min="0" max="10"></oui-progress>`} />
 
 ### Format
 
@@ -47,13 +50,13 @@ When the progress is unknown, `indeterminate` animates the bar and hides the val
 
 <Preview
     stack
-    code={`<hx-progress label="Uploading…" value="40" format-options='{"style":"percent"}'></hx-progress>
-<hx-progress label="Download" value="200" max="1000" format-options='{"style":"unit","unit":"megabyte"}'></hx-progress>`}
+    code={`<oui-progress label="Uploading…" value="40" format-options='{"style":"percent"}'></oui-progress>
+<oui-progress label="Download" value="200" max="1000" format-options='{"style":"unit","unit":"megabyte"}'></oui-progress>`}
 />
 
 ## API
 
-### hx-progress
+### oui-progress
 
 #### Properties
 
@@ -71,10 +74,10 @@ When the progress is unknown, `indeterminate` animates the bar and hides the val
 
 #### CSS custom properties
 
-| Name                   | Default                 | Description                             |
-| ---------------------- | ----------------------- | --------------------------------------- |
-| `--hx-height-progress` | `0.5rem`                | Height of the track                     |
-| `--hx-radius-progress` | `var(--hx-radius-pill)` | Border radius of the track and the fill |
+| Name                    | Default                  | Description                             |
+| ----------------------- | ------------------------ | --------------------------------------- |
+| `--oui-height-progress` | `0.5rem`                 | Height of the track                     |
+| `--oui-radius-progress` | `var(--oui-radius-pill)` | Border radius of the track and the fill |
 
 #### CSS parts
 

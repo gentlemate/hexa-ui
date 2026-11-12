@@ -1,8 +1,8 @@
-export { HxCard } from "./hx-card.js";
-export type { HxCardVariant } from "./hx-card.js";
-export { HxCardHeader } from "./hx-card-header.js";
-export { HxCardTitle } from "./hx-card-title.js";
-export { HxCardDescription } from "./hx-card-description.js";
-export { HxCardAction } from "./hx-card-action.js";
-export { HxCardContent } from "./hx-card-content.js";
-export { HxCardFooter } from "./hx-card-footer.js";
+export { OuiCard } from "./oui-card.js";
+export type { OuiCardVariant } from "./oui-card.js";
+export { OuiCardHeader } from "./oui-card-header.js";
+export { OuiCardTitle } from "./oui-card-title.js";
+export { OuiCardDescription } from "./oui-card-description.js";
+export { OuiCardAction } from "./oui-card-action.js";
+export { OuiCardContent } from "./oui-card-content.js";
+export { OuiCardFooter } from "./oui-card-footer.js";

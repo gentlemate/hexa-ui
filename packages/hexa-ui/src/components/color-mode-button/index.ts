@@ -1,2 +1,2 @@
-export { HxColorModeButton } from "./hx-color-mode-button.js";
-export type { HxColorMode } from "../../color-mode.js";
+export { OuiColorModeButton } from "./oui-color-mode-button.js";
+export type { OuiColorMode } from "../../color-mode.js";

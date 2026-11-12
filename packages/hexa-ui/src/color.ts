@@ -1,4 +1,4 @@
-export type HxColorFormat = "hex" | "rgb" | "hsl" | "oklch";
+export type OuiColorFormat = "hex" | "rgb" | "hsl" | "oklch";
 
 export interface HsvaColor {
     h: number;
@@ -125,7 +125,7 @@ export function parseColor(value: string): HsvaColor | undefined {
     return name ? parseFunction(name.toLowerCase().replace(/a$/, ""), args) : undefined;
 }
 
-export function formatColor(color: HsvaColor, format: HxColorFormat, alpha: boolean) {
+export function formatColor(color: HsvaColor, format: OuiColorFormat, alpha: boolean) {
     const a = alpha ? color.a : 1;
     const opacity = a < 1 ? ` / ${round(a * 100)}%` : "";
     const rgb = hsvToRgb(color);

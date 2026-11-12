@@ -1,1 +1,1 @@
-export { HxProgress } from "./hx-progress.js";
+export { OuiProgress } from "./oui-progress.js";

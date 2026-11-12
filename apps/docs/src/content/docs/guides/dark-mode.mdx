@@ -1,9 +1,9 @@
 ---
 title: Dark mode
-description: Switch Hexa UI between light and dark tokens.
+description: Switch Onent UI between light and dark tokens.
 ---
 
-`hexa-ui/theme.css` defines a dark value for every color token under the `dark` class. Adding `dark` to `<html>` switches every component to dark mode.
+`onent-ui/theme.css` defines a dark value for every color token under the `dark` class. Adding `dark` to `<html>` switches every component to dark mode.
 
 ```html
 <html class="dark"></html>
@@ -13,32 +13,32 @@ Components do not style the page itself. Use the tokens so the page follows the 
 
 ```css
 body {
-    background: var(--hx-background);
-    color: var(--hx-foreground);
+    background: var(--oui-background);
+    color: var(--oui-foreground);
 }
 ```
 
 ## Color mode button
 
-[`<hx-color-mode-button>`](/components/color-mode-button/) toggles the `dark` class and stores the choice in `localStorage`, under the `hx-color-mode` key. Without a stored choice, it follows the system preference (`prefers-color-scheme`).
+[`<oui-color-mode-button>`](/components/color-mode-button/) toggles the `dark` class and stores the choice in `localStorage`, under the `oui-color-mode` key. Without a stored choice, it follows the system preference (`prefers-color-scheme`).
 
 ```html
-<hx-color-mode-button></hx-color-mode-button>
+<oui-color-mode-button></oui-color-mode-button>
 ```
 
 ## Custom toggle
 
-`hexa-ui/color-mode` exposes the same logic for your own controls. `toggleColorMode()` switches the mode, stores it and returns the new mode.
+`onent-ui/color-mode` exposes the same logic for your own controls. `toggleColorMode()` switches the mode, stores it and returns the new mode.
 
 ```js
-import { toggleColorMode } from "hexa-ui/color-mode";
+import { toggleColorMode } from "onent-ui/color-mode";
 
 button.addEventListener("click", () => {
     toggleColorMode();
 });
 ```
 
-Every `<hx-color-mode-button>` on the page stays in sync, whatever changes the `dark` class.
+Every `<oui-color-mode-button>` on the page stays in sync, whatever changes the `dark` class.
 
 ## Avoiding a flash
 
@@ -46,7 +46,7 @@ Components apply the stored mode once they are loaded. Until then, the page rend
 
 ```astro
 ---
-import { initColorMode } from "hexa-ui/color-mode";
+import { initColorMode } from "onent-ui/color-mode";
 ---
 
 <head>
@@ -60,6 +60,6 @@ The `dark` class works on any element, for the components it contains.
 
 ```html
 <section class="dark">
-    <hx-button>Dark button</hx-button>
+    <oui-button>Dark button</oui-button>
 </section>
 ```

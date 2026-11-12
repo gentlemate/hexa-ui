@@ -8,36 +8,36 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/select";
-import "hexa-ui/form-field";
+import "onent-ui/select";
+import "onent-ui/form-field";
 ```
 
-The label, the description, the hint and the error come from [`hx-form-field`](../form-field/).
+The label, the description, the hint and the error come from [`oui-form-field`](../form-field/).
 
 <Preview
     stack
-    code={`<hx-form-field label="Framework">
-    <hx-select placeholder="Select a framework">
-        <hx-select-option value="react">React</hx-select-option>
-        <hx-select-option value="angular">Angular</hx-select-option>
-        <hx-select-option value="vue">Vue</hx-select-option>
-        <hx-select-option value="svelte">Svelte</hx-select-option>
-    </hx-select>
-</hx-form-field>`}
+    code={`<oui-form-field label="Framework">
+    <oui-select placeholder="Select a framework">
+        <oui-select-option value="react">React</oui-select-option>
+        <oui-select-option value="angular">Angular</oui-select-option>
+        <oui-select-option value="vue">Vue</oui-select-option>
+        <oui-select-option value="svelte">Svelte</oui-select-option>
+    </oui-select>
+</oui-form-field>`}
 />
 
 ## Structure
 
 ```html
-<hx-select>
-    <hx-select-group>
-        <hx-select-option></hx-select-option>
-    </hx-select-group>
+<oui-select>
+    <oui-select-group>
+        <oui-select-option></oui-select-option>
+    </oui-select-group>
 
-    <hx-select-option></hx-select-option>
+    <oui-select-option></oui-select-option>
 
-    <hx-select-separator></hx-select-separator>
-</hx-select>
+    <oui-select-separator></oui-select-separator>
+</oui-select>
 ```
 
 ## Examples
@@ -46,56 +46,56 @@ The label, the description, the hint and the error come from [`hx-form-field`](.
 
 <Preview
     stack
-    code={`<hx-form-field label="City">
-    <hx-select placeholder="Select a city">
-        <hx-select-group label="France">
-            <hx-select-option value="paris">Paris</hx-select-option>
-            <hx-select-option value="marseille">Marseille</hx-select-option>
-            <hx-select-option value="lyon">Lyon</hx-select-option>
-        </hx-select-group>
-        <hx-select-separator></hx-select-separator>
-        <hx-select-group label="Spain">
-            <hx-select-option value="madrid">Madrid</hx-select-option>
-            <hx-select-option value="barcelona">Barcelona</hx-select-option>
-        </hx-select-group>
-    </hx-select>
-</hx-form-field>`}
+    code={`<oui-form-field label="City">
+    <oui-select placeholder="Select a city">
+        <oui-select-group label="France">
+            <oui-select-option value="paris">Paris</oui-select-option>
+            <oui-select-option value="marseille">Marseille</oui-select-option>
+            <oui-select-option value="lyon">Lyon</oui-select-option>
+        </oui-select-group>
+        <oui-select-separator></oui-select-separator>
+        <oui-select-group label="Spain">
+            <oui-select-option value="madrid">Madrid</oui-select-option>
+            <oui-select-option value="barcelona">Barcelona</oui-select-option>
+        </oui-select-group>
+    </oui-select>
+</oui-form-field>`}
 />
 
 ### Disabled
 
-<Preview stack code={`<hx-select aria-label="Disabled" placeholder="Select a framework" disabled></hx-select>`} />
+<Preview stack code={`<oui-select aria-label="Disabled" placeholder="Select a framework" disabled></oui-select>`} />
 
 ### Invalid
 
-`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`oui-form-field`](../form-field/#error).
 
 <Preview
     stack
-    code={`<hx-select aria-label="Invalid" placeholder="Select a plan" invalid>
-    <hx-select-option value="free">Free</hx-select-option>
-    <hx-select-option value="pro">Pro</hx-select-option>
-</hx-select>`}
+    code={`<oui-select aria-label="Invalid" placeholder="Select a plan" invalid>
+    <oui-select-option value="free">Free</oui-select-option>
+    <oui-select-option value="pro">Pro</oui-select-option>
+</oui-select>`}
 />
 
 ### Form field
 
-In a form, [`hx-form-field`](../form-field/) adds the label, the hint and the error message.
+In a form, [`oui-form-field`](../form-field/) adds the label, the hint and the error message.
 
 <Preview
     stack
-    code={`<hx-form-field label="Country" hint="Used for shipping.">
-    <hx-select placeholder="Select a country">
-        <hx-select-option value="fr">France</hx-select-option>
-        <hx-select-option value="es">Spain</hx-select-option>
-    </hx-select>
-</hx-form-field>
-<hx-form-field label="Plan" error="You must select a plan." required>
-    <hx-select placeholder="Select a plan">
-        <hx-select-option value="free">Free</hx-select-option>
-        <hx-select-option value="pro">Pro</hx-select-option>
-    </hx-select>
-</hx-form-field>`}
+    code={`<oui-form-field label="Country" hint="Used for shipping.">
+    <oui-select placeholder="Select a country">
+        <oui-select-option value="fr">France</oui-select-option>
+        <oui-select-option value="es">Spain</oui-select-option>
+    </oui-select>
+</oui-form-field>
+<oui-form-field label="Plan" error="You must select a plan." required>
+    <oui-select placeholder="Select a plan">
+        <oui-select-option value="free">Free</oui-select-option>
+        <oui-select-option value="pro">Pro</oui-select-option>
+    </oui-select>
+</oui-form-field>`}
 />
 
 ## Keyboard
@@ -104,55 +104,55 @@ The trigger opens a listbox and moves the focus to the selected option. <kbd>↑
 
 ## API
 
-### hx-select
+### oui-select
 
 #### Properties
 
-| Property      | Attribute     | Type                                                                                                                                                                 | Default          | Description                                                         |
-| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------- |
-| `name`        | `name`        | `string`                                                                                                                                                             | `""`             | Name submitted with the form                                        |
-| `value`       | `value`       | `string`                                                                                                                                                             | `""`             | Value of the selected option                                        |
-| `placeholder` | `placeholder` | `string`                                                                                                                                                             | `""`             | Text shown when no option is selected                               |
-| `placement`   | `placement`   | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"bottom-start"` | Position of the listbox relative to the trigger                     |
-| `distance`    | `distance`    | `number`                                                                                                                                                             | `4`              | Gap in pixels between the trigger and the listbox                   |
-| `disabled`    | `disabled`    | `boolean`                                                                                                                                                            | `false`          | Prevents user interaction                                           |
-| `required`    | `required`    | `boolean`                                                                                                                                                            | `false`          | Marks the field as required for form validation                     |
-| `invalid`     | `invalid`     | `boolean`                                                                                                                                                            | `false`          | Marks the field as invalid without displaying a message             |
-| `ariaLabel`   | `aria-label`  | `string \| null`                                                                                                                                                     | `null`           | Accessible name of the field, set with the `aria-label` attribute   |
-| `focusTarget` | —             | `HTMLButtonElement`                                                                                                                                                  | —                | The inner element that receives the focus (read-only)               |
-| `open`        | `open`        | `boolean`                                                                                                                                                            | `false`          | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
+| Property      | Attribute     | Type                                                                                                                                                                 | Default          | Description                                                           |
+| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | --------------------------------------------------------------------- |
+| `name`        | `name`        | `string`                                                                                                                                                             | `""`             | Name submitted with the form                                          |
+| `value`       | `value`       | `string`                                                                                                                                                             | `""`             | Value of the selected option                                          |
+| `placeholder` | `placeholder` | `string`                                                                                                                                                             | `""`             | Text shown when no option is selected                                 |
+| `placement`   | `placement`   | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"bottom-start"` | Position of the listbox relative to the trigger                       |
+| `distance`    | `distance`    | `number`                                                                                                                                                             | `4`              | Gap in pixels between the trigger and the listbox                     |
+| `disabled`    | `disabled`    | `boolean`                                                                                                                                                            | `false`          | Prevents user interaction                                             |
+| `required`    | `required`    | `boolean`                                                                                                                                                            | `false`          | Marks the field as required for form validation                       |
+| `invalid`     | `invalid`     | `boolean`                                                                                                                                                            | `false`          | Marks the field as invalid without displaying a message               |
+| `ariaLabel`   | `aria-label`  | `string \| null`                                                                                                                                                     | `null`           | Accessible name of the field, set with the `aria-label` attribute     |
+| `focusTarget` | —             | `HTMLButtonElement`                                                                                                                                                  | —                | The inner element that receives the focus (read-only)                 |
+| `open`        | `open`        | `boolean`                                                                                                                                                            | `false`          | Whether it is open. Setting it directly skips `oui-show` / `oui-hide` |
 
 #### Methods
 
-| Name     | Description                 |
-| -------- | --------------------------- |
-| `show()` | Opens it (fires `hx-show`)  |
-| `hide()` | Closes it (fires `hx-hide`) |
+| Name     | Description                  |
+| -------- | ---------------------------- |
+| `show()` | Opens it (fires `oui-show`)  |
+| `hide()` | Closes it (fires `oui-hide`) |
 
 #### Events
 
-| Name            | Description                                           |
-| --------------- | ----------------------------------------------------- |
-| `input`         | The user selected another option                      |
-| `change`        | The user selected another option                      |
-| `hx-show`       | The listbox is about to open. Cancelable              |
-| `hx-after-show` | The listbox is open and its enter animation finished  |
-| `hx-hide`       | The listbox is about to close. Cancelable             |
-| `hx-after-hide` | The listbox is closed and its exit animation finished |
+| Name             | Description                                           |
+| ---------------- | ----------------------------------------------------- |
+| `input`          | The user selected another option                      |
+| `change`         | The user selected another option                      |
+| `oui-show`       | The listbox is about to open. Cancelable              |
+| `oui-after-show` | The listbox is open and its enter animation finished  |
+| `oui-hide`       | The listbox is about to close. Cancelable             |
+| `oui-after-hide` | The listbox is closed and its exit animation finished |
 
 #### Slots
 
-| Name      | Description                                                                  |
-| --------- | ---------------------------------------------------------------------------- |
-| (default) | The `hx-select-option`, `hx-select-group` and `hx-select-separator` elements |
+| Name      | Description                                                                     |
+| --------- | ------------------------------------------------------------------------------- |
+| (default) | The `oui-select-option`, `oui-select-group` and `oui-select-separator` elements |
 
 #### CSS custom properties
 
-| Name                  | Default                   | Description                       |
-| --------------------- | ------------------------- | --------------------------------- |
-| `--hx-height-select`  | `var(--hx-height-field)`  | Height of the trigger             |
-| `--hx-spacing-select` | `var(--hx-spacing-field)` | Horizontal padding of the trigger |
-| `--hx-radius-select`  | `var(--hx-radius-field)`  | Border radius of the trigger      |
+| Name                   | Default                    | Description                       |
+| ---------------------- | -------------------------- | --------------------------------- |
+| `--oui-height-select`  | `var(--oui-height-field)`  | Height of the trigger             |
+| `--oui-spacing-select` | `var(--oui-spacing-field)` | Horizontal padding of the trigger |
+| `--oui-radius-select`  | `var(--oui-radius-field)`  | Border radius of the trigger      |
 
 #### CSS parts
 
@@ -163,15 +163,15 @@ The trigger opens a listbox and moves the focus to the selected option. <kbd>↑
 | `chevron` | The chevron of the trigger                    |
 | `popup`   | The listbox panel                             |
 
-### hx-select-option
+### oui-select-option
 
 #### Properties
 
-| Property   | Attribute  | Type      | Default | Description                                             |
-| ---------- | ---------- | --------- | ------- | ------------------------------------------------------- |
-| `selected` | `selected` | `boolean` | `false` | Whether the option is selected (set by the `hx-select`) |
-| `value`    | `value`    | `string`  | `""`    | Value of the option                                     |
-| `disabled` | `disabled` | `boolean` | `false` | Prevents selecting the option                           |
+| Property   | Attribute  | Type      | Default | Description                                              |
+| ---------- | ---------- | --------- | ------- | -------------------------------------------------------- |
+| `selected` | `selected` | `boolean` | `false` | Whether the option is selected (set by the `oui-select`) |
+| `value`    | `value`    | `string`  | `""`    | Value of the option                                      |
+| `disabled` | `disabled` | `boolean` | `false` | Prevents selecting the option                            |
 
 #### Slots
 
@@ -186,7 +186,7 @@ The trigger opens a listbox and moves the focus to the selected option. <kbd>↑
 | `base`      | The option wrapper                    |
 | `indicator` | The check mark of the selected option |
 
-### hx-select-group
+### oui-select-group
 
 #### Properties
 
@@ -196,9 +196,9 @@ The trigger opens a listbox and moves the focus to the selected option. <kbd>↑
 
 #### Slots
 
-| Name      | Description                             |
-| --------- | --------------------------------------- |
-| (default) | The grouped `hx-select-option` elements |
+| Name      | Description                              |
+| --------- | ---------------------------------------- |
+| (default) | The grouped `oui-select-option` elements |
 
 #### CSS parts
 
@@ -206,7 +206,7 @@ The trigger opens a listbox and moves the focus to the selected option. <kbd>↑
 | ------- | ----------------------------------------------- |
 | `label` | The group heading, rendered when `label` is set |
 
-### hx-select-separator
+### oui-select-separator
 
 #### CSS parts
 

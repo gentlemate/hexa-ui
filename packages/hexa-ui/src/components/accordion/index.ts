@@ -1,3 +1,3 @@
-export { HxAccordion } from "./hx-accordion.js";
-export type { HxAccordionTrigger, HxAccordionType, HxAccordionVariant } from "./hx-accordion.js";
-export { HxAccordionItem } from "./hx-accordion-item.js";
+export { OuiAccordion } from "./oui-accordion.js";
+export type { OuiAccordionTrigger, OuiAccordionType, OuiAccordionVariant } from "./oui-accordion.js";
+export { OuiAccordionItem } from "./oui-accordion-item.js";

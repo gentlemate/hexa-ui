@@ -8,35 +8,35 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/accordion";
+import "onent-ui/accordion";
 ```
 
 <Preview
     stack
-    code={`<hx-accordion collapsible>
-    <hx-accordion-item value="shipping">
+    code={`<oui-accordion collapsible>
+    <oui-accordion-item value="shipping">
         <span slot="title">What are your shipping options?</span>
         We offer standard (5-7 days), express (2-3 days) and overnight shipping.
-    </hx-accordion-item>
-    <hx-accordion-item value="returns">
+    </oui-accordion-item>
+    <oui-accordion-item value="returns">
         <span slot="title">What is your return policy?</span>
         Returns are accepted within 30 days of purchase, in their original packaging.
-    </hx-accordion-item>
-    <hx-accordion-item value="support">
+    </oui-accordion-item>
+    <oui-accordion-item value="support">
         <span slot="title">How can I contact support?</span>
         Reach us by email or chat, 24/7.
-    </hx-accordion-item>
-</hx-accordion>`}
+    </oui-accordion-item>
+</oui-accordion>`}
 />
 
 ## Structure
 
 ```html
-<hx-accordion>
-    <hx-accordion-item>
+<oui-accordion>
+    <oui-accordion-item>
         <span slot="title"></span>
-    </hx-accordion-item>
-</hx-accordion>
+    </oui-accordion-item>
+</oui-accordion>
 ```
 
 ## Examples
@@ -47,40 +47,40 @@ import "hexa-ui/accordion";
 
 <Preview
     stack
-    code={`<hx-accordion type="multiple">
-    <hx-accordion-item value="shipping" open>
+    code={`<oui-accordion type="multiple">
+    <oui-accordion-item value="shipping" open>
         <span slot="title">What are your shipping options?</span>
         We offer standard (5-7 days), express (2-3 days) and overnight shipping.
-    </hx-accordion-item>
-    <hx-accordion-item value="returns" open>
+    </oui-accordion-item>
+    <oui-accordion-item value="returns" open>
         <span slot="title">What is your return policy?</span>
         Returns are accepted within 30 days of purchase, in their original packaging.
-    </hx-accordion-item>
-    <hx-accordion-item value="support">
+    </oui-accordion-item>
+    <oui-accordion-item value="support">
         <span slot="title">How can I contact support?</span>
         Reach us by email or chat, 24/7.
-    </hx-accordion-item>
-</hx-accordion>`}
+    </oui-accordion-item>
+</oui-accordion>`}
 />
 
 ### Variants
 
 <Preview
     stack
-    code={`<hx-accordion collapsible variant="secondary">
-    <hx-accordion-item value="shipping">
+    code={`<oui-accordion collapsible variant="secondary">
+    <oui-accordion-item value="shipping">
         <span slot="title">What are your shipping options?</span>
         We offer standard (5-7 days), express (2-3 days) and overnight shipping.
-    </hx-accordion-item>
-    <hx-accordion-item value="returns">
+    </oui-accordion-item>
+    <oui-accordion-item value="returns">
         <span slot="title">What is your return policy?</span>
         Returns are accepted within 30 days of purchase, in their original packaging.
-    </hx-accordion-item>
-    <hx-accordion-item value="support">
+    </oui-accordion-item>
+    <oui-accordion-item value="support">
         <span slot="title">How can I contact support?</span>
         Reach us by email or chat, 24/7.
-    </hx-accordion-item>
-</hx-accordion>`}
+    </oui-accordion-item>
+</oui-accordion>`}
 />
 
 ### Hover
@@ -89,60 +89,60 @@ import "hexa-ui/accordion";
 
 <Preview
     stack
-    code={`<hx-accordion collapsible trigger="hover">
-    <hx-accordion-item value="shipping">
+    code={`<oui-accordion collapsible trigger="hover">
+    <oui-accordion-item value="shipping">
         <span slot="title">What are your shipping options?</span>
         We offer standard (5-7 days), express (2-3 days) and overnight shipping.
-    </hx-accordion-item>
-    <hx-accordion-item value="returns">
+    </oui-accordion-item>
+    <oui-accordion-item value="returns">
         <span slot="title">What is your return policy?</span>
         Returns are accepted within 30 days of purchase, in their original packaging.
-    </hx-accordion-item>
-    <hx-accordion-item value="support">
+    </oui-accordion-item>
+    <oui-accordion-item value="support">
         <span slot="title">How can I contact support?</span>
         Reach us by email or chat, 24/7.
-    </hx-accordion-item>
-</hx-accordion>`}
+    </oui-accordion-item>
+</oui-accordion>`}
 />
 
 ### Icon
 
 <Preview
     stack
-    code={`<hx-accordion collapsible>
-    <hx-accordion-item value="shipping" data-icon="Package">
+    code={`<oui-accordion collapsible>
+    <oui-accordion-item value="shipping" data-icon="Package">
         <span slot="title">What are your shipping options?</span>
         We offer standard (5-7 days), express (2-3 days) and overnight shipping.
-    </hx-accordion-item>
-    <hx-accordion-item value="returns" data-icon="Undo2">
+    </oui-accordion-item>
+    <oui-accordion-item value="returns" data-icon="Undo2">
         <span slot="title">What is your return policy?</span>
         Returns are accepted within 30 days of purchase, in their original packaging.
-    </hx-accordion-item>
-    <hx-accordion-item value="support" data-icon="Headset">
+    </oui-accordion-item>
+    <oui-accordion-item value="support" data-icon="Headset">
         <span slot="title">How can I contact support?</span>
         Reach us by email or chat, 24/7.
-    </hx-accordion-item>
-</hx-accordion>`}
+    </oui-accordion-item>
+</oui-accordion>`}
 />
 
 ### Disabled
 
 <Preview
     stack
-    code={`<hx-accordion collapsible>
-    <hx-accordion-item value="shipping">
+    code={`<oui-accordion collapsible>
+    <oui-accordion-item value="shipping">
         <span slot="title">What are your shipping options?</span>
         We offer standard (5-7 days), express (2-3 days) and overnight shipping.
-    </hx-accordion-item>
-    <hx-accordion-item value="returns">
+    </oui-accordion-item>
+    <oui-accordion-item value="returns">
         <span slot="title">What is your return policy?</span>
         Returns are accepted within 30 days of purchase, in their original packaging.
-    </hx-accordion-item>
-    <hx-accordion-item value="support" disabled>
+    </oui-accordion-item>
+    <oui-accordion-item value="support" disabled>
         <span slot="title">How can I contact support?</span>
         Reach us by email or chat, 24/7.
-    </hx-accordion-item>
-</hx-accordion>`}
+    </oui-accordion-item>
+</oui-accordion>`}
 />
 
 ## Keyboard
@@ -152,7 +152,7 @@ the first / last one. <kbd>Enter</kbd> / <kbd>Space</kbd> toggle the focused ite
 
 ## API
 
-### hx-accordion
+### oui-accordion
 
 #### Properties
 
@@ -166,22 +166,22 @@ the first / last one. <kbd>Enter</kbd> / <kbd>Space</kbd> toggle the focused ite
 
 #### Events
 
-| Name                  | Description                                                     |
-| --------------------- | --------------------------------------------------------------- |
-| `hx-accordion-change` | The open items changed; `event.detail.value` lists their values |
+| Name                   | Description                                                     |
+| ---------------------- | --------------------------------------------------------------- |
+| `oui-accordion-change` | The open items changed; `event.detail.value` lists their values |
 
 #### Slots
 
-| Name      | Description                      |
-| --------- | -------------------------------- |
-| (default) | The `hx-accordion-item` elements |
+| Name      | Description                       |
+| --------- | --------------------------------- |
+| (default) | The `oui-accordion-item` elements |
 
 #### CSS custom properties
 
-| Name                     | Default                  | Description                                                                         |
-| ------------------------ | ------------------------ | ----------------------------------------------------------------------------------- |
-| `--hx-spacing-accordion` | `1rem`                   | Padding of the triggers and contents. The top padding of the contents is half of it |
-| `--hx-radius-accordion`  | `var(--hx-radius-panel)` | Border radius of the `secondary` variant                                            |
+| Name                      | Default                   | Description                                                                         |
+| ------------------------- | ------------------------- | ----------------------------------------------------------------------------------- |
+| `--oui-spacing-accordion` | `1rem`                    | Padding of the triggers and contents. The top padding of the contents is half of it |
+| `--oui-radius-accordion`  | `var(--oui-radius-panel)` | Border radius of the `secondary` variant                                            |
 
 #### CSS parts
 
@@ -189,30 +189,30 @@ the first / last one. <kbd>Enter</kbd> / <kbd>Space</kbd> toggle the focused ite
 | ------ | ----------------- |
 | `base` | The items wrapper |
 
-### hx-accordion-item
+### oui-accordion-item
 
 #### Properties
 
-| Property   | Attribute  | Type                       | Default     | Description                                                     |
-| ---------- | ---------- | -------------------------- | ----------- | --------------------------------------------------------------- |
-| `value`    | `value`    | `string`                   | `""`        | Identifies the item in `hx-accordion-change`                    |
-| `open`     | `open`     | `boolean`                  | `false`     | Whether the item is open                                        |
-| `disabled` | `disabled` | `boolean`                  | `false`     | Prevents opening or closing the item                            |
-| `variant`  | `variant`  | `"default" \| "secondary"` | `"default"` | Visual style (set by the `hx-accordion`)                        |
-| `trigger`  | `trigger`  | `"click" \| "hover"`       | `"click"`   | Opens the item on click or on hover (set by the `hx-accordion`) |
-| `icon`     | —          | `IconNode`                 | —           | Lucide icon shown before the title, set as a JS property        |
+| Property   | Attribute  | Type                       | Default     | Description                                                      |
+| ---------- | ---------- | -------------------------- | ----------- | ---------------------------------------------------------------- |
+| `value`    | `value`    | `string`                   | `""`        | Identifies the item in `oui-accordion-change`                    |
+| `open`     | `open`     | `boolean`                  | `false`     | Whether the item is open                                         |
+| `disabled` | `disabled` | `boolean`                  | `false`     | Prevents opening or closing the item                             |
+| `variant`  | `variant`  | `"default" \| "secondary"` | `"default"` | Visual style (set by the `oui-accordion`)                        |
+| `trigger`  | `trigger`  | `"click" \| "hover"`       | `"click"`   | Opens the item on click or on hover (set by the `oui-accordion`) |
+| `icon`     | —          | `IconNode`                 | —           | Lucide icon shown before the title, set as a JS property         |
 
 #### Methods
 
-| Name       | Description                                            |
-| ---------- | ------------------------------------------------------ |
-| `toggle()` | Opens or closes the item (fires `hx-accordion-toggle`) |
+| Name       | Description                                             |
+| ---------- | ------------------------------------------------------- |
+| `toggle()` | Opens or closes the item (fires `oui-accordion-toggle`) |
 
 #### Events
 
-| Name                  | Description                                                                                                                      |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `hx-accordion-toggle` | The item is about to open or close; `event.detail.open` is the new state. Cancelable: `preventDefault()` keeps the current state |
+| Name                   | Description                                                                                                                      |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `oui-accordion-toggle` | The item is about to open or close; `event.detail.open` is the new state. Cancelable: `preventDefault()` keeps the current state |
 
 #### Slots
 
@@ -223,11 +223,11 @@ the first / last one. <kbd>Enter</kbd> / <kbd>Space</kbd> toggle the focused ite
 
 #### CSS parts
 
-| Name        | Description                                                       |
-| ----------- | ----------------------------------------------------------------- |
-| `base`      | The item wrapper                                                  |
-| `trigger`   | The `<button>` that toggles the item                              |
-| `icon`      | The `hx-icon` rendered from the `icon` property, before the title |
-| `chevron`   | The chevron                                                       |
-| `content`   | The content wrapper                                               |
-| `separator` | The line under the item (hidden on the last one)                  |
+| Name        | Description                                                        |
+| ----------- | ------------------------------------------------------------------ |
+| `base`      | The item wrapper                                                   |
+| `trigger`   | The `<button>` that toggles the item                               |
+| `icon`      | The `oui-icon` rendered from the `icon` property, before the title |
+| `chevron`   | The chevron                                                        |
+| `content`   | The content wrapper                                                |
+| `separator` | The line under the item (hidden on the last one)                   |

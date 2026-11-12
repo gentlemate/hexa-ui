@@ -1,1 +1,1 @@
-export { HxSlider } from "./hx-slider.js";
+export { OuiSlider } from "./oui-slider.js";

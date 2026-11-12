@@ -1,5 +1,5 @@
 <script>
-    import type { HxForm, HxFormSubmitDetail } from "hexa-ui";
+    import type { OuiForm, OuiFormSubmitDetail } from "onent-ui";
     import * as v from "valibot";
 
     const schema = v.object({
@@ -9,27 +9,27 @@
 
     const wait = (duration: number) => new Promise((resolve) => setTimeout(resolve, duration));
 
-    function report(form: HxForm, text: string) {
+    function report(form: OuiForm, text: string) {
         form.querySelector("[data-result]")!.textContent = text;
     }
 
-    function onSubmit(form: HxForm, save: (data: unknown) => Promise<void>) {
-        form.addEventListener("hx-submit", (event) => {
-            const { data, waitUntil } = (event as CustomEvent<HxFormSubmitDetail>).detail;
+    function onSubmit(form: OuiForm, save: (data: unknown) => Promise<void>) {
+        form.addEventListener("oui-submit", (event) => {
+            const { data, waitUntil } = (event as CustomEvent<OuiFormSubmitDetail>).detail;
             report(form, "");
             waitUntil(save(data));
         });
     }
 
-    for (const form of document.querySelectorAll<HxForm>("[data-demo=signup]")) {
+    for (const form of document.querySelectorAll<OuiForm>("[data-demo=signup]")) {
         form.schema = schema;
-        form.addEventListener("hx-submit", (event) => {
-            const { data } = (event as CustomEvent<HxFormSubmitDetail>).detail;
+        form.addEventListener("oui-submit", (event) => {
+            const { data } = (event as CustomEvent<OuiFormSubmitDetail>).detail;
             report(form, `Submitted: ${JSON.stringify(data)}`);
         });
     }
 
-    for (const form of document.querySelectorAll<HxForm>("[data-demo=async]")) {
+    for (const form of document.querySelectorAll<OuiForm>("[data-demo=async]")) {
         form.schema = schema;
         onSubmit(form, async (data) => {
             await wait(1000);
@@ -37,7 +37,7 @@
         });
     }
 
-    for (const form of document.querySelectorAll<HxForm>("[data-demo=validator]")) {
+    for (const form of document.querySelectorAll<OuiForm>("[data-demo=validator]")) {
         form.validator = async ({ login }) => {
             await wait(300);
             return login === "admin" ? [{ name: "login", message: "This login is already used." }] : [];
@@ -45,14 +45,14 @@
         onSubmit(form, async (data) => report(form, `Submitted: ${JSON.stringify(data)}`));
     }
 
-    for (const form of document.querySelectorAll<HxForm>("[data-demo=state]")) {
+    for (const form of document.querySelectorAll<OuiForm>("[data-demo=state]")) {
         const show = () => report(form, JSON.stringify(form.state));
         form.addEventListener("input", show);
         form.addEventListener("reset", () => setTimeout(show));
-        customElements.whenDefined("hx-form-field").then(() => setTimeout(show));
+        customElements.whenDefined("oui-form-field").then(() => setTimeout(show));
     }
 
-    for (const form of document.querySelectorAll<HxForm>("[data-demo=server]")) {
+    for (const form of document.querySelectorAll<OuiForm>("[data-demo=server]")) {
         onSubmit(form, async () => {
             await wait(1000);
             form.setErrors([{ name: "email", message: "This address is already registered." }]);

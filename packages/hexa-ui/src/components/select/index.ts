@@ -1,5 +1,5 @@
-export { HxSelect } from "./hx-select.js";
-export type { HxSelectPlacement } from "./hx-select.js";
-export { HxSelectOption } from "./hx-select-option.js";
-export { HxSelectGroup } from "./hx-select-group.js";
-export { HxSelectSeparator } from "./hx-select-separator.js";
+export { OuiSelect } from "./oui-select.js";
+export type { OuiSelectPlacement } from "./oui-select.js";
+export { OuiSelectOption } from "./oui-select-option.js";
+export { OuiSelectGroup } from "./oui-select-group.js";
+export { OuiSelectSeparator } from "./oui-select-separator.js";

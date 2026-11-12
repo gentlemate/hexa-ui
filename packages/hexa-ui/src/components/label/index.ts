@@ -1,1 +1,1 @@
-export { HxLabel } from "./hx-label.js";
+export { OuiLabel } from "./oui-label.js";

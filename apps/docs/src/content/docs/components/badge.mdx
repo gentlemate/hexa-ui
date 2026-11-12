@@ -8,15 +8,15 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/badge";
+import "onent-ui/badge";
 ```
 
-<Preview code={`<hx-badge>Badge</hx-badge>`} />
+<Preview code={`<oui-badge>Badge</oui-badge>`} />
 
 ## Structure
 
 ```html
-<hx-badge></hx-badge>
+<oui-badge></oui-badge>
 ```
 
 ## Examples
@@ -24,22 +24,22 @@ import "hexa-ui/badge";
 ### Variants
 
 <Preview
-    code={`<hx-badge>Primary</hx-badge>
-<hx-badge variant="secondary">Secondary</hx-badge>
-<hx-badge variant="outline">Outline</hx-badge>
-<hx-badge variant="destructive">Destructive</hx-badge>`}
+    code={`<oui-badge>Primary</oui-badge>
+<oui-badge variant="secondary">Secondary</oui-badge>
+<oui-badge variant="outline">Outline</oui-badge>
+<oui-badge variant="destructive">Destructive</oui-badge>`}
 />
 
 ### Icon
 
 <Preview
-    code={`<hx-badge data-icon="Heart" icon-placement="right">Favorite</hx-badge>
-<hx-badge variant="destructive" data-icon="CircleAlert">Error</hx-badge>`}
+    code={`<oui-badge data-icon="Heart" icon-placement="right">Favorite</oui-badge>
+<oui-badge variant="destructive" data-icon="CircleAlert">Error</oui-badge>`}
 />
 
 ## API
 
-### hx-badge
+### oui-badge
 
 #### Properties
 
@@ -57,15 +57,15 @@ import "hexa-ui/badge";
 
 #### CSS custom properties
 
-| Name                 | Default                 | Description        |
-| -------------------- | ----------------------- | ------------------ |
-| `--hx-height-badge`  | `1.5rem`                | Height             |
-| `--hx-spacing-badge` | `0.5rem`                | Horizontal padding |
-| `--hx-radius-badge`  | `var(--hx-radius-pill)` | Border radius      |
+| Name                  | Default                  | Description        |
+| --------------------- | ------------------------ | ------------------ |
+| `--oui-height-badge`  | `1.5rem`                 | Height             |
+| `--oui-spacing-badge` | `0.5rem`                 | Horizontal padding |
+| `--oui-radius-badge`  | `var(--oui-radius-pill)` | Border radius      |
 
 #### CSS parts
 
-| Name   | Description                                     |
-| ------ | ----------------------------------------------- |
-| `base` | The inner wrapper                               |
-| `icon` | The `hx-icon` rendered from the `icon` property |
+| Name   | Description                                      |
+| ------ | ------------------------------------------------ |
+| `base` | The inner wrapper                                |
+| `icon` | The `oui-icon` rendered from the `icon` property |

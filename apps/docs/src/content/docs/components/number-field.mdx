@@ -8,23 +8,23 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/number-field";
-import "hexa-ui/form-field";
+import "onent-ui/number-field";
+import "onent-ui/form-field";
 ```
 
-The label, the description, the hint and the error come from [`hx-form-field`](../form-field/).
+The label, the description, the hint and the error come from [`oui-form-field`](../form-field/).
 
 <Preview
     stack
-    code={`<hx-form-field label="Quantity">
-    <hx-number-field value="1" min="0"></hx-number-field>
-</hx-form-field>`}
+    code={`<oui-form-field label="Quantity">
+    <oui-number-field value="1" min="0"></oui-number-field>
+</oui-form-field>`}
 />
 
 ## Structure
 
 ```html
-<hx-number-field></hx-number-field>
+<oui-number-field></oui-number-field>
 ```
 
 ## Examples
@@ -33,18 +33,18 @@ The label, the description, the hint and the error come from [`hx-form-field`](.
 
 <Preview
     stack
-    code={`<hx-form-field label="Number">
-    <hx-number-field value="1" variant="secondary"></hx-number-field>
-</hx-form-field>`}
+    code={`<oui-form-field label="Number">
+    <oui-number-field value="1" variant="secondary"></oui-number-field>
+</oui-form-field>`}
 />
 
 ### Min, max and step
 
 <Preview
     stack
-    code={`<hx-form-field label="Rating">
-    <hx-number-field value="2.5" min="-5" max="5" step="0.5"></hx-number-field>
-</hx-form-field>`}
+    code={`<oui-form-field label="Rating">
+    <oui-number-field value="2.5" min="-5" max="5" step="0.5"></oui-number-field>
+</oui-form-field>`}
 />
 
 ### Format
@@ -53,15 +53,15 @@ The label, the description, the hint and the error come from [`hx-form-field`](.
 
 <Preview
     stack
-    code={`<hx-form-field label="Price">
-    <hx-number-field value="49.9" min="0" format-options='{"style":"currency","currency":"EUR"}'></hx-number-field>
-</hx-form-field>
-<hx-form-field label="Percentage">
-    <hx-number-field value="0.25" min="0" max="1" step="0.01" format-options='{"style":"percent"}'></hx-number-field>
-</hx-form-field>
-<hx-form-field label="Distance">
-    <hx-number-field value="12" min="0" format-options='{"style":"unit","unit":"kilometer"}'></hx-number-field>
-</hx-form-field>`}
+    code={`<oui-form-field label="Price">
+    <oui-number-field value="49.9" min="0" format-options='{"style":"currency","currency":"EUR"}'></oui-number-field>
+</oui-form-field>
+<oui-form-field label="Percentage">
+    <oui-number-field value="0.25" min="0" max="1" step="0.01" format-options='{"style":"percent"}'></oui-number-field>
+</oui-form-field>
+<oui-form-field label="Distance">
+    <oui-number-field value="12" min="0" format-options='{"style":"unit","unit":"kilometer"}'></oui-number-field>
+</oui-form-field>`}
 />
 
 ### Locale
@@ -70,29 +70,29 @@ The separators and the digits follow `locale`, or the closest `lang` attribute.
 
 <Preview
     stack
-    code={`<hx-form-field label="French">
-    <hx-number-field locale="fr-FR" value="1234.5" step="0.1"></hx-number-field>
-</hx-form-field>
-<hx-form-field label="German">
-    <hx-number-field locale="de-DE" value="1234.5" step="0.1"></hx-number-field>
-</hx-form-field>
-<hx-form-field label="American">
-    <hx-number-field locale="en-US" value="1234.5" step="0.1"></hx-number-field>
-</hx-form-field>
-<hx-form-field label="Arabic">
-    <hx-number-field locale="ar-EG" value="1234.5" step="0.1"></hx-number-field>
-</hx-form-field>`}
+    code={`<oui-form-field label="French">
+    <oui-number-field locale="fr-FR" value="1234.5" step="0.1"></oui-number-field>
+</oui-form-field>
+<oui-form-field label="German">
+    <oui-number-field locale="de-DE" value="1234.5" step="0.1"></oui-number-field>
+</oui-form-field>
+<oui-form-field label="American">
+    <oui-number-field locale="en-US" value="1234.5" step="0.1"></oui-number-field>
+</oui-form-field>
+<oui-form-field label="Arabic">
+    <oui-number-field locale="ar-EG" value="1234.5" step="0.1"></oui-number-field>
+</oui-form-field>`}
 />
 
 ### Disabled
 
-<Preview stack code={`<hx-number-field aria-label="Disabled" value="1" disabled></hx-number-field>`} />
+<Preview stack code={`<oui-number-field aria-label="Disabled" value="1" disabled></oui-number-field>`} />
 
 ### Invalid
 
-`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`oui-form-field`](../form-field/#error).
 
-<Preview stack code={`<hx-number-field aria-label="Invalid" invalid></hx-number-field>`} />
+<Preview stack code={`<oui-number-field aria-label="Invalid" invalid></oui-number-field>`} />
 
 ### Input event
 
@@ -100,27 +100,27 @@ The separators and the digits follow `locale`, or the closest `lang` attribute.
 
 <Preview
     stack
-    code={`<hx-form-field label="Quantity" hint="Total: 12.00 €">
-    <hx-number-field
+    code={`<oui-form-field label="Quantity" hint="Total: 12.00 €">
+    <oui-number-field
         value="1"
         min="0"
         oninput="this.parentElement.hint = 'Total: ' + ((this.value ?? 0) * 12).toFixed(2) + ' €'"
-    ></hx-number-field>
-</hx-form-field>`}
+    ></oui-number-field>
+</oui-form-field>`}
 />
 
 ### Form field
 
-In a form, [`hx-form-field`](../form-field/) adds the label, the hint and the error message.
+In a form, [`oui-form-field`](../form-field/) adds the label, the hint and the error message.
 
 <Preview
     stack
-    code={`<hx-form-field label="Guests" hint="Up to 10 guests.">
-    <hx-number-field min="1" max="10"></hx-number-field>
-</hx-form-field>
-<hx-form-field label="Age" error="You must be at least 18." required>
-    <hx-number-field value="15"></hx-number-field>
-</hx-form-field>`}
+    code={`<oui-form-field label="Guests" hint="Up to 10 guests.">
+    <oui-number-field min="1" max="10"></oui-number-field>
+</oui-form-field>
+<oui-form-field label="Age" error="You must be at least 18." required>
+    <oui-number-field value="15"></oui-number-field>
+</oui-form-field>`}
 />
 
 ## Behavior
@@ -135,7 +135,7 @@ The field is a single tab stop: the buttons are not focusable. <kbd>↑</kbd> / 
 
 ## API
 
-### hx-number-field
+### oui-number-field
 
 #### Properties
 
@@ -165,11 +165,11 @@ The field is a single tab stop: the buttons are not focusable. <kbd>↑</kbd> / 
 
 #### CSS custom properties
 
-| Name                        | Default                   | Description        |
-| --------------------------- | ------------------------- | ------------------ |
-| `--hx-height-number-field`  | `var(--hx-height-field)`  | Height             |
-| `--hx-spacing-number-field` | `var(--hx-spacing-field)` | Horizontal padding |
-| `--hx-radius-number-field`  | `var(--hx-radius-field)`  | Border radius      |
+| Name                         | Default                    | Description        |
+| ---------------------------- | -------------------------- | ------------------ |
+| `--oui-height-number-field`  | `var(--oui-height-field)`  | Height             |
+| `--oui-spacing-number-field` | `var(--oui-spacing-field)` | Horizontal padding |
+| `--oui-radius-number-field`  | `var(--oui-radius-field)`  | Border radius      |
 
 #### CSS parts
 

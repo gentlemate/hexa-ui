@@ -8,40 +8,40 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/modal";
+import "onent-ui/modal";
 ```
 
 <Preview
-    code={`<hx-modal>
-    <hx-button slot="trigger">Open</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>Create project</hx-modal-title>
-        <hx-modal-description>Create a new project in one click.</hx-modal-description>
-    </hx-modal-header>
-    <hx-modal-content>
-        <hx-form-field class="mb-1" label="Name">
-            <hx-input></hx-input>
-        </hx-form-field>
-    </hx-modal-content>
-    <hx-modal-footer>
-        <hx-button data-close>Create</hx-button>
-    </hx-modal-footer>
-</hx-modal>`}
+    code={`<oui-modal>
+    <oui-button slot="trigger">Open</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>Create project</oui-modal-title>
+        <oui-modal-description>Create a new project in one click.</oui-modal-description>
+    </oui-modal-header>
+    <oui-modal-content>
+        <oui-form-field class="mb-1" label="Name">
+            <oui-input></oui-input>
+        </oui-form-field>
+    </oui-modal-content>
+    <oui-modal-footer>
+        <oui-button data-close>Create</oui-button>
+    </oui-modal-footer>
+</oui-modal>`}
 />
 
 ## Structure
 
 ```html
-<hx-modal>
-    <hx-button slot="trigger"></hx-button>
+<oui-modal>
+    <oui-button slot="trigger"></oui-button>
 
-    <hx-modal-header>
-        <hx-modal-title></hx-modal-title>
-        <hx-modal-description></hx-modal-description>
-    </hx-modal-header>
-    <hx-modal-content></hx-modal-content>
-    <hx-modal-footer></hx-modal-footer>
-</hx-modal>
+    <oui-modal-header>
+        <oui-modal-title></oui-modal-title>
+        <oui-modal-description></oui-modal-description>
+    </oui-modal-header>
+    <oui-modal-content></oui-modal-content>
+    <oui-modal-footer></oui-modal-footer>
+</oui-modal>
 ```
 
 ## Examples
@@ -59,130 +59,130 @@ import "hexa-ui/modal";
 | `xl`   | 80rem |
 | `full` | 100%  |
 
-Without `size`, the width is `--hx-width-modal` (36rem, like `md`) and the height `--hx-height-modal` (the height of the content). The modal never exceeds the screen.
+Without `size`, the width is `--oui-width-modal` (36rem, like `md`) and the height `--oui-height-modal` (the height of the content). The modal never exceeds the screen.
 
 <Preview
-    code={`<hx-modal size="xs">
-    <hx-button slot="trigger">xs</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>xs</hx-modal-title>
-    </hx-modal-header>
-    <hx-modal-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-modal-content>
-</hx-modal>
-<hx-modal size="sm">
-    <hx-button slot="trigger">sm</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>sm</hx-modal-title>
-    </hx-modal-header>
-    <hx-modal-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-modal-content>
-</hx-modal>
-<hx-modal size="md">
-    <hx-button slot="trigger">md</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>md</hx-modal-title>
-    </hx-modal-header>
-    <hx-modal-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-modal-content>
-</hx-modal>
-<hx-modal size="lg">
-    <hx-button slot="trigger">lg</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>lg</hx-modal-title>
-    </hx-modal-header>
-    <hx-modal-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-modal-content>
-</hx-modal>
-<hx-modal size="xl">
-    <hx-button slot="trigger">xl</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>xl</hx-modal-title>
-    </hx-modal-header>
-    <hx-modal-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-modal-content>
-</hx-modal>
-<hx-modal size="full">
-    <hx-button slot="trigger">full</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>full</hx-modal-title>
-    </hx-modal-header>
-    <hx-modal-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-modal-content>
-</hx-modal>`}
+    code={`<oui-modal size="xs">
+    <oui-button slot="trigger">xs</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>xs</oui-modal-title>
+    </oui-modal-header>
+    <oui-modal-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-modal-content>
+</oui-modal>
+<oui-modal size="sm">
+    <oui-button slot="trigger">sm</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>sm</oui-modal-title>
+    </oui-modal-header>
+    <oui-modal-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-modal-content>
+</oui-modal>
+<oui-modal size="md">
+    <oui-button slot="trigger">md</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>md</oui-modal-title>
+    </oui-modal-header>
+    <oui-modal-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-modal-content>
+</oui-modal>
+<oui-modal size="lg">
+    <oui-button slot="trigger">lg</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>lg</oui-modal-title>
+    </oui-modal-header>
+    <oui-modal-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-modal-content>
+</oui-modal>
+<oui-modal size="xl">
+    <oui-button slot="trigger">xl</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>xl</oui-modal-title>
+    </oui-modal-header>
+    <oui-modal-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-modal-content>
+</oui-modal>
+<oui-modal size="full">
+    <oui-button slot="trigger">full</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>full</oui-modal-title>
+    </oui-modal-header>
+    <oui-modal-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-modal-content>
+</oui-modal>`}
 />
 
 ### Resizable
 
-`resizable` makes the corners resize the modal in every direction, without visible handles. `resizable-x` adds handles on the left and right edges to resize the width only, `resizable-y` on the top and bottom edges to resize the height only. The modal stays centered and grows on both sides. Drag a corner or a handle, or focus the bottom right corner, the right handle or the bottom handle and use the arrow keys (<kbd>Home</kbd> and <kbd>End</kbd> jump to the bounds). The size stays above `--hx-min-width-modal` and `--hx-min-height-modal`, and within the screen. `hx-resize` gives the new size to save it.
+`resizable` makes the corners resize the modal in every direction, without visible handles. `resizable-x` adds handles on the left and right edges to resize the width only, `resizable-y` on the top and bottom edges to resize the height only. The modal stays centered and grows on both sides. Drag a corner or a handle, or focus the bottom right corner, the right handle or the bottom handle and use the arrow keys (<kbd>Home</kbd> and <kbd>End</kbd> jump to the bounds). The size stays above `--oui-min-width-modal` and `--oui-min-height-modal`, and within the screen. `oui-resize` gives the new size to save it.
 
 <Preview
-    code={`<hx-modal resizable-x>
-    <hx-button slot="trigger">Width</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>Resizable</hx-modal-title>
-    </hx-modal-header>
-    <hx-modal-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-modal-content>
-</hx-modal>
-<hx-modal resizable-y>
-    <hx-button slot="trigger">Height</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>Resizable</hx-modal-title>
-    </hx-modal-header>
-    <hx-modal-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-modal-content>
-</hx-modal>
-<hx-modal resizable>
-    <hx-button slot="trigger">Both</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>Resizable</hx-modal-title>
-    </hx-modal-header>
-    <hx-modal-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-modal-content>
-</hx-modal>`}
+    code={`<oui-modal resizable-x>
+    <oui-button slot="trigger">Width</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>Resizable</oui-modal-title>
+    </oui-modal-header>
+    <oui-modal-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-modal-content>
+</oui-modal>
+<oui-modal resizable-y>
+    <oui-button slot="trigger">Height</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>Resizable</oui-modal-title>
+    </oui-modal-header>
+    <oui-modal-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-modal-content>
+</oui-modal>
+<oui-modal resizable>
+    <oui-button slot="trigger">Both</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>Resizable</oui-modal-title>
+    </oui-modal-header>
+    <oui-modal-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-modal-content>
+</oui-modal>`}
 />
 
 ### Movable
 
-`movable` lets the modal be dragged by its empty areas: around the sections, the header (title and description included) and the footer. The content and the interactive elements are not grab areas, so text stays selectable and fields usable. Without a header, the space above the content and the close button still works. The modal stays within the screen and keeps its position when reopened. `hx-move` gives its offset from the center.
+`movable` lets the modal be dragged by its empty areas: around the sections, the header (title and description included) and the footer. The content and the interactive elements are not grab areas, so text stays selectable and fields usable. Without a header, the space above the content and the close button still works. The modal stays within the screen and keeps its position when reopened. `oui-move` gives its offset from the center.
 
 <Preview
-    code={`<hx-modal movable>
-    <hx-button slot="trigger">Movable</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>Movable</hx-modal-title>
-        <hx-modal-description>Drag the modal by its header or footer.</hx-modal-description>
-    </hx-modal-header>
-    <hx-modal-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-modal-content>
-    <hx-modal-footer>
-        <hx-button data-close>Close</hx-button>
-    </hx-modal-footer>
-</hx-modal>
-<hx-modal movable resizable>
-    <hx-button slot="trigger">Movable & resizable</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>Movable & resizable</hx-modal-title>
-        <hx-modal-description>Drag the modal by its header or footer.</hx-modal-description>
-    </hx-modal-header>
-    <hx-modal-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-modal-content>
-    <hx-modal-footer>
-        <hx-button data-close>Close</hx-button>
-    </hx-modal-footer>
-</hx-modal>`}
+    code={`<oui-modal movable>
+    <oui-button slot="trigger">Movable</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>Movable</oui-modal-title>
+        <oui-modal-description>Drag the modal by its header or footer.</oui-modal-description>
+    </oui-modal-header>
+    <oui-modal-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-modal-content>
+    <oui-modal-footer>
+        <oui-button data-close>Close</oui-button>
+    </oui-modal-footer>
+</oui-modal>
+<oui-modal movable resizable>
+    <oui-button slot="trigger">Movable & resizable</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>Movable & resizable</oui-modal-title>
+        <oui-modal-description>Drag the modal by its header or footer.</oui-modal-description>
+    </oui-modal-header>
+    <oui-modal-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-modal-content>
+    <oui-modal-footer>
+        <oui-button data-close>Close</oui-button>
+    </oui-modal-footer>
+</oui-modal>`}
 />
 
 ### Persistent
@@ -190,17 +190,17 @@ Without `size`, the width is `--hx-width-modal` (36rem, like `md`) and the heigh
 `persistent` ignores backdrop clicks and `without-close` removes the close button: the modal only closes through its actions or <kbd>Escape</kbd>.
 
 <Preview
-    code={`<hx-modal persistent without-close>
-    <hx-button slot="trigger" variant="destructive">Delete</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>Delete project?</hx-modal-title>
-        <hx-modal-description>This action cannot be undone.</hx-modal-description>
-    </hx-modal-header>
-    <hx-modal-footer>
-        <hx-button variant="outline" data-close>Cancel</hx-button>
-        <hx-button variant="destructive" data-close>Delete</hx-button>
-    </hx-modal-footer>
-</hx-modal>`}
+    code={`<oui-modal persistent without-close>
+    <oui-button slot="trigger" variant="destructive">Delete</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>Delete project?</oui-modal-title>
+        <oui-modal-description>This action cannot be undone.</oui-modal-description>
+    </oui-modal-header>
+    <oui-modal-footer>
+        <oui-button variant="outline" data-close>Cancel</oui-button>
+        <oui-button variant="destructive" data-close>Delete</oui-button>
+    </oui-modal-footer>
+</oui-modal>`}
 />
 
 ### Modeless
@@ -208,16 +208,16 @@ Without `size`, the width is `--hx-width-modal` (36rem, like `md`) and the heigh
 `modeless` opens the modal without a backdrop: the rest of the page stays interactive and scrollable, and the modal only closes through its close button or its actions.
 
 <Preview
-    code={`<hx-modal modeless>
-    <hx-button slot="trigger">Modeless</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>Modeless</hx-modal-title>
-        <hx-modal-description>The page behind stays usable.</hx-modal-description>
-    </hx-modal-header>
-    <hx-modal-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-modal-content>
-</hx-modal>`}
+    code={`<oui-modal modeless>
+    <oui-button slot="trigger">Modeless</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>Modeless</oui-modal-title>
+        <oui-modal-description>The page behind stays usable.</oui-modal-description>
+    </oui-modal-header>
+    <oui-modal-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-modal-content>
+</oui-modal>`}
 />
 
 ### Scroll
@@ -225,98 +225,98 @@ Without `size`, the width is `--hx-width-modal` (36rem, like `md`) and the heigh
 The content scrolls when it overflows.
 
 <Preview
-    code={`<hx-modal>
-    <hx-button slot="trigger">Terms of service</hx-button>
-    <hx-modal-header>
-        <hx-modal-title>Terms of service</hx-modal-title>
-    </hx-modal-header>
-    <hx-modal-content>
+    code={`<oui-modal>
+    <oui-button slot="trigger">Terms of service</oui-button>
+    <oui-modal-header>
+        <oui-modal-title>Terms of service</oui-modal-title>
+    </oui-modal-header>
+    <oui-modal-content>
     <div class="flex flex-col gap-6">
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
         </div>
-    </hx-modal-content>
-    <hx-modal-footer>
-        <hx-button data-close>Accept</hx-button>
-    </hx-modal-footer>
-</hx-modal>`}
+    </oui-modal-content>
+    <oui-modal-footer>
+        <oui-button data-close>Accept</oui-button>
+    </oui-modal-footer>
+</oui-modal>`}
 />
 
 ### Opening from code
 
 <Preview
-    code={`<hx-modal id="welcome">
-    <hx-modal-header>
-        <hx-modal-title>Welcome</hx-modal-title>
-    </hx-modal-header>
-    <hx-modal-footer>
-        <hx-button data-close>Close</hx-button>
-    </hx-modal-footer>
-</hx-modal>
-<hx-button onclick="document.querySelector('#welcome').show()">Open</hx-button>`}
+    code={`<oui-modal id="welcome">
+    <oui-modal-header>
+        <oui-modal-title>Welcome</oui-modal-title>
+    </oui-modal-header>
+    <oui-modal-footer>
+        <oui-button data-close>Close</oui-button>
+    </oui-modal-footer>
+</oui-modal>
+<oui-button onclick="document.querySelector('#welcome').show()">Open</oui-button>`}
 />
 
 ## Usage
 
-The modal closes on <kbd>Escape</kbd>, on a backdrop click (unless `persistent`), with the close button and on a click on any element with a `data-close` attribute. All of them go through `hide()`, so `hx-hide` can cancel them.
+The modal closes on <kbd>Escape</kbd>, on a backdrop click (unless `persistent`), with the close button and on a click on any element with a `data-close` attribute. All of them go through `hide()`, so `oui-hide` can cancel them.
 
 While open, the rest of the page is inert and does not scroll. On close, the focus returns to the element that had it before opening. The title and the description label and describe the dialog; without a title, `label` does.
 
 ## API
 
-### hx-modal
+### oui-modal
 
 #### Properties
 
 | Property       | Attribute       | Type                                             | Default | Description                                                                                                                                                                                                     |
 | -------------- | --------------- | ------------------------------------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `size`         | `size`          | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "full"` | —       | Width, from `xs` 16rem to `xl` 80rem. `full` covers the whole screen. Without it, `--hx-width-modal` applies                                                                                                    |
+| `size`         | `size`          | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "full"` | —       | Width, from `xs` 16rem to `xl` 80rem. `full` covers the whole screen. Without it, `--oui-width-modal` applies                                                                                                   |
 | `resizable`    | `resizable`     | `boolean`                                        | `false` | Makes the corners resize the width and the height with the pointer, or the arrow keys from the bottom right corner                                                                                              |
 | `resizableX`   | `resizable-x`   | `boolean`                                        | `false` | Adds handles on the left and right edges to resize the width with the pointer or the arrow keys                                                                                                                 |
 | `resizableY`   | `resizable-y`   | `boolean`                                        | `false` | Adds handles on the top and bottom edges to resize the height with the pointer or the arrow keys                                                                                                                |
@@ -325,43 +325,43 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 | `persistent`   | `persistent`    | `boolean`                                        | `false` | Ignores backdrop clicks                                                                                                                                                                                         |
 | `withoutClose` | `without-close` | `boolean`                                        | `false` | Hides the close button                                                                                                                                                                                          |
 | `modeless`     | `modeless`      | `boolean`                                        | `false` | Opens without a backdrop and keeps the rest of the page interactive and scrollable                                                                                                                              |
-| `open`         | `open`          | `boolean`                                        | `false` | Whether it is open. Setting it directly skips `hx-show` / `hx-hide`                                                                                                                                             |
+| `open`         | `open`          | `boolean`                                        | `false` | Whether it is open. Setting it directly skips `oui-show` / `oui-hide`                                                                                                                                           |
 
 #### Methods
 
-| Name     | Description                 |
-| -------- | --------------------------- |
-| `show()` | Opens it (fires `hx-show`)  |
-| `hide()` | Closes it (fires `hx-hide`) |
+| Name     | Description                  |
+| -------- | ---------------------------- |
+| `show()` | Opens it (fires `oui-show`)  |
+| `hide()` | Closes it (fires `oui-hide`) |
 
 #### Events
 
-| Name            | Description                                                                                                                          |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `hx-move`       | The modal was moved, once released. `detail.x` and `detail.y` are its offset from the center in pixels                               |
-| `hx-show`       | The modal is about to open. Cancelable                                                                                               |
-| `hx-after-show` | The modal is open and its enter animation finished                                                                                   |
-| `hx-hide`       | The modal is about to close (Escape, backdrop, close button, `data-close`…). Cancelable                                              |
-| `hx-after-hide` | The modal is closed and its exit animation finished                                                                                  |
-| `hx-resize`     | The modal was resized, once a handle is released or from the keyboard. `detail.width` and `detail.height` are the new size in pixels |
+| Name             | Description                                                                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `oui-move`       | The modal was moved, once released. `detail.x` and `detail.y` are its offset from the center in pixels                               |
+| `oui-show`       | The modal is about to open. Cancelable                                                                                               |
+| `oui-after-show` | The modal is open and its enter animation finished                                                                                   |
+| `oui-hide`       | The modal is about to close (Escape, backdrop, close button, `data-close`…). Cancelable                                              |
+| `oui-after-hide` | The modal is closed and its exit animation finished                                                                                  |
+| `oui-resize`     | The modal was resized, once a handle is released or from the keyboard. `detail.width` and `detail.height` are the new size in pixels |
 
 #### Slots
 
-| Name      | Description                                                                                                 |
-| --------- | ----------------------------------------------------------------------------------------------------------- |
-| `trigger` | The element that opens the modal on click (e.g. an `hx-button`). Optional: `show()` and `open` also open it |
-| (default) | The modal sections: `hx-modal-header`, `hx-modal-content` and `hx-modal-footer`                             |
+| Name      | Description                                                                                                  |
+| --------- | ------------------------------------------------------------------------------------------------------------ |
+| `trigger` | The element that opens the modal on click (e.g. an `oui-button`). Optional: `show()` and `open` also open it |
+| (default) | The modal sections: `oui-modal-header`, `oui-modal-content` and `oui-modal-footer`                           |
 
 #### CSS custom properties
 
-| Name                    | Default                   | Description                  |
-| ----------------------- | ------------------------- | ---------------------------- |
-| `--hx-spacing-modal`    | `var(--hx-spacing-panel)` | Padding                      |
-| `--hx-radius-modal`     | `var(--hx-radius-panel)`  | Border radius                |
-| `--hx-width-modal`      | `36rem`                   | Width                        |
-| `--hx-min-width-modal`  | `16rem`                   | Minimum width when resizing  |
-| `--hx-height-modal`     | `fit-content`             | Height                       |
-| `--hx-min-height-modal` | `10rem`                   | Minimum height when resizing |
+| Name                     | Default                    | Description                  |
+| ------------------------ | -------------------------- | ---------------------------- |
+| `--oui-spacing-modal`    | `var(--oui-spacing-panel)` | Padding                      |
+| `--oui-radius-modal`     | `var(--oui-radius-panel)`  | Border radius                |
+| `--oui-width-modal`      | `36rem`                    | Width                        |
+| `--oui-min-width-modal`  | `16rem`                    | Minimum width when resizing  |
+| `--oui-height-modal`     | `fit-content`              | Height                       |
+| `--oui-min-height-modal` | `10rem`                    | Minimum height when resizing |
 
 #### CSS parts
 
@@ -371,15 +371,15 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 | `close-button` | The close button (not rendered with `without-close`)                                        |
 | `handle`       | The resize handles and corners (rendered with `resizable`, `resizable-x` and `resizable-y`) |
 
-### hx-modal-header
+### oui-modal-header
 
 #### Slots
 
-| Name      | Description                                                                  |
-| --------- | ---------------------------------------------------------------------------- |
-| (default) | The `hx-modal-title` and `hx-modal-description` elements, or a custom header |
+| Name      | Description                                                                    |
+| --------- | ------------------------------------------------------------------------------ |
+| (default) | The `oui-modal-title` and `oui-modal-description` elements, or a custom header |
 
-### hx-modal-title
+### oui-modal-title
 
 #### Slots
 
@@ -387,7 +387,7 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 | --------- | ------------------------------------- |
 | (default) | The modal title. It labels the dialog |
 
-### hx-modal-description
+### oui-modal-description
 
 #### Slots
 
@@ -395,7 +395,7 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 | --------- | ----------------------------------------------------- |
 | (default) | A short text under the title. It describes the dialog |
 
-### hx-modal-content
+### oui-modal-content
 
 #### Slots
 
@@ -403,7 +403,7 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 | --------- | ----------------------------------------------- |
 | (default) | The modal content, scrollable when it overflows |
 
-### hx-modal-footer
+### oui-modal-footer
 
 #### Slots
 

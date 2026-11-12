@@ -8,23 +8,23 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/slider";
-import "hexa-ui/form-field";
+import "onent-ui/slider";
+import "onent-ui/form-field";
 ```
 
-The label, the description, the hint, the error and the formatted value come from [`hx-form-field`](../form-field/).
+The label, the description, the hint, the error and the formatted value come from [`oui-form-field`](../form-field/).
 
 <Preview
     stack
-    code={`<hx-form-field label="Volume">
-    <hx-slider value="50"></hx-slider>
-</hx-form-field>`}
+    code={`<oui-form-field label="Volume">
+    <oui-slider value="50"></oui-slider>
+</oui-form-field>`}
 />
 
 ## Structure
 
 ```html
-<hx-slider></hx-slider>
+<oui-slider></oui-slider>
 ```
 
 ## Examples
@@ -33,9 +33,9 @@ The label, the description, the hint, the error and the formatted value come fro
 
 <Preview
     stack
-    code={`<hx-form-field label="Rating">
-    <hx-slider value="2.5" min="0" max="5" step="0.5"></hx-slider>
-</hx-form-field>`}
+    code={`<oui-form-field label="Rating">
+    <oui-slider value="2.5" min="0" max="5" step="0.5"></oui-slider>
+</oui-form-field>`}
 />
 
 ### Steps
@@ -44,9 +44,9 @@ The label, the description, the hint, the error and the formatted value come fro
 
 <Preview
     stack
-    code={`<hx-form-field label="Rating">
-    <hx-slider value="2.5" min="0" max="5" step="0.5" show-steps></hx-slider>
-</hx-form-field>`}
+    code={`<oui-form-field label="Rating">
+    <oui-slider value="2.5" min="0" max="5" step="0.5" show-steps></oui-slider>
+</oui-form-field>`}
 />
 
 ### Format
@@ -55,23 +55,23 @@ The label, the description, the hint, the error and the formatted value come fro
 
 <Preview
     stack
-    code={`<hx-form-field label="Price">
-    <hx-slider value="20" max="100" format-options='{"style":"currency","currency":"EUR"}'></hx-slider>
-</hx-form-field>
-<hx-form-field label="Opacity">
-    <hx-slider value="0.8" max="1" step="0.01" format-options='{"style":"percent"}'></hx-slider>
-</hx-form-field>`}
+    code={`<oui-form-field label="Price">
+    <oui-slider value="20" max="100" format-options='{"style":"currency","currency":"EUR"}'></oui-slider>
+</oui-form-field>
+<oui-form-field label="Opacity">
+    <oui-slider value="0.8" max="1" step="0.01" format-options='{"style":"percent"}'></oui-slider>
+</oui-form-field>`}
 />
 
 ### Disabled
 
-<Preview stack code={`<hx-slider aria-label="Disabled" value="50" disabled></hx-slider>`} />
+<Preview stack code={`<oui-slider aria-label="Disabled" value="50" disabled></oui-slider>`} />
 
 ### Invalid
 
-`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`oui-form-field`](../form-field/#error).
 
-<Preview stack code={`<hx-slider aria-label="Invalid" invalid></hx-slider>`} />
+<Preview stack code={`<oui-slider aria-label="Invalid" invalid></oui-slider>`} />
 
 ### Input event
 
@@ -80,9 +80,9 @@ The label, the description, the hint, the error and the formatted value come fro
 <Preview
     stack
     code={`<div class="flex flex-col gap-3">
-    <hx-form-field label="Brightness">
-        <hx-slider value="50" oninput="this.nextElementSibling.style.opacity = this.value / 100"></hx-slider>
-    </hx-form-field>
+    <oui-form-field label="Brightness">
+        <oui-slider value="50" oninput="this.nextElementSibling.style.opacity = this.value / 100"></oui-slider>
+    </oui-form-field>
     <div class="bg-primary h-16 rounded-lg" style="opacity: 0.5"></div>
 </div>`}
 />
@@ -98,7 +98,7 @@ The label, the description, the hint, the error and the formatted value come fro
 
 ## API
 
-### hx-slider
+### oui-slider
 
 #### Properties
 
@@ -120,20 +120,20 @@ The label, the description, the hint, the error and the formatted value come fro
 
 #### Events
 
-| Name              | Description                                                        |
-| ----------------- | ------------------------------------------------------------------ |
-| `input`           | The value changed, while dragging or from the keyboard             |
-| `change`          | The value changed, once the thumb is released or from the keyboard |
-| `hx-value-change` | `valueText` changed, by the user or from code                      |
+| Name               | Description                                                        |
+| ------------------ | ------------------------------------------------------------------ |
+| `input`            | The value changed, while dragging or from the keyboard             |
+| `change`           | The value changed, once the thumb is released or from the keyboard |
+| `oui-value-change` | `valueText` changed, by the user or from code                      |
 
 #### CSS custom properties
 
-| Name                       | Default                   | Description                |
-| -------------------------- | ------------------------- | -------------------------- |
-| `--hx-height-slider`       | `0.5rem`                  | Height of the track        |
-| `--hx-size-slider-thumb`   | `1.25rem`                 | Size of the thumb          |
-| `--hx-radius-slider`       | `var(--hx-radius-pill)`   | Border radius of the track |
-| `--hx-radius-slider-thumb` | `var(--hx-radius-slider)` | Border radius of the thumb |
+| Name                        | Default                    | Description                |
+| --------------------------- | -------------------------- | -------------------------- |
+| `--oui-height-slider`       | `0.5rem`                   | Height of the track        |
+| `--oui-size-slider-thumb`   | `1.25rem`                  | Size of the thumb          |
+| `--oui-radius-slider`       | `var(--oui-radius-pill)`   | Border radius of the track |
+| `--oui-radius-slider-thumb` | `var(--oui-radius-slider)` | Border radius of the thumb |
 
 #### CSS parts
 

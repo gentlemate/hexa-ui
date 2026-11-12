@@ -8,15 +8,15 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/switch";
+import "onent-ui/switch";
 ```
 
-<Preview code={`<hx-switch checked>Notifications</hx-switch>`} />
+<Preview code={`<oui-switch checked>Notifications</oui-switch>`} />
 
 ## Structure
 
 ```html
-<hx-switch></hx-switch>
+<oui-switch></oui-switch>
 ```
 
 ## Examples
@@ -24,28 +24,28 @@ import "hexa-ui/switch";
 ### States
 
 <Preview
-    code={`<hx-switch>Default</hx-switch>
-<hx-switch checked>Checked</hx-switch>`}
+    code={`<oui-switch>Default</oui-switch>
+<oui-switch checked>Checked</oui-switch>`}
 />
 
 ### Disabled
 
 <Preview
-    code={`<hx-switch disabled>Disabled</hx-switch>
-<hx-switch checked disabled>Checked and disabled</hx-switch>`}
+    code={`<oui-switch disabled>Disabled</oui-switch>
+<oui-switch checked disabled>Checked and disabled</oui-switch>`}
 />
 
 ### Invalid
 
-`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`oui-form-field`](../form-field/#error).
 
-<Preview code={`<hx-switch invalid>Invalid</hx-switch>`} />
+<Preview code={`<oui-switch invalid>Invalid</oui-switch>`} />
 
 ### Change event
 
 `change` fires each time the switch is toggled.
 
-<Preview code={`<hx-switch onchange="this.textContent = this.checked ? 'On' : 'Off'">Off</hx-switch>`} />
+<Preview code={`<oui-switch onchange="this.textContent = this.checked ? 'On' : 'Off'">Off</oui-switch>`} />
 
 ## Keyboard
 
@@ -53,7 +53,7 @@ import "hexa-ui/switch";
 
 ## API
 
-### hx-switch
+### oui-switch
 
 #### Properties
 
@@ -81,12 +81,12 @@ import "hexa-ui/switch";
 
 #### CSS custom properties
 
-| Name                       | Default                   | Description                                       |
-| -------------------------- | ------------------------- | ------------------------------------------------- |
-| `--hx-size-switch`         | `1.25rem`                 | Size of the thumb. The track is twice as wide     |
-| `--hx-spacing-switch`      | `1px`                     | Space between the thumb and the edge of the track |
-| `--hx-radius-switch`       | `var(--hx-radius-pill)`   | Border radius of the track                        |
-| `--hx-radius-switch-thumb` | `var(--hx-radius-switch)` | Border radius of the thumb                        |
+| Name                        | Default                    | Description                                       |
+| --------------------------- | -------------------------- | ------------------------------------------------- |
+| `--oui-size-switch`         | `1.25rem`                  | Size of the thumb. The track is twice as wide     |
+| `--oui-spacing-switch`      | `1px`                      | Space between the thumb and the edge of the track |
+| `--oui-radius-switch`       | `var(--oui-radius-pill)`   | Border radius of the track                        |
+| `--oui-radius-switch-thumb` | `var(--oui-radius-switch)` | Border radius of the thumb                        |
 
 #### CSS parts
 

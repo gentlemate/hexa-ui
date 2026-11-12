@@ -1,7 +1,7 @@
-export { HxDrawer } from "./hx-drawer.js";
-export type { HxDrawerPlacement } from "./hx-drawer.js";
-export { HxDrawerHeader } from "./hx-drawer-header.js";
-export { HxDrawerTitle } from "./hx-drawer-title.js";
-export { HxDrawerDescription } from "./hx-drawer-description.js";
-export { HxDrawerContent } from "./hx-drawer-content.js";
-export { HxDrawerFooter } from "./hx-drawer-footer.js";
+export { OuiDrawer } from "./oui-drawer.js";
+export type { OuiDrawerPlacement } from "./oui-drawer.js";
+export { OuiDrawerHeader } from "./oui-drawer-header.js";
+export { OuiDrawerTitle } from "./oui-drawer-title.js";
+export { OuiDrawerDescription } from "./oui-drawer-description.js";
+export { OuiDrawerContent } from "./oui-drawer-content.js";
+export { OuiDrawerFooter } from "./oui-drawer-footer.js";

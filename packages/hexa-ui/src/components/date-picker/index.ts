@@ -1,2 +1,2 @@
-export { HxDatePicker } from "./hx-date-picker.js";
-export type { HxDatePickerDateStyle, HxDatePickerPlacement } from "./hx-date-picker.js";
+export { OuiDatePicker } from "./oui-date-picker.js";
+export type { OuiDatePickerDateStyle, OuiDatePickerPlacement } from "./oui-date-picker.js";

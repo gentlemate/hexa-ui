@@ -1,8 +1,8 @@
-export { HxDropdown } from "./hx-dropdown.js";
-export type { HxDropdownPlacement } from "./hx-dropdown.js";
-export { HxDropdownSubmenu } from "./hx-dropdown-submenu.js";
-export type { HxDropdownFocus, HxDropdownSubmenuPlacement } from "./hx-dropdown-submenu.js";
-export { HxDropdownItem } from "./hx-dropdown-item.js";
-export type { HxDropdownItemType, HxDropdownItemVariant } from "./hx-dropdown-item.js";
-export { HxDropdownGroup } from "./hx-dropdown-group.js";
-export { HxDropdownSeparator } from "./hx-dropdown-separator.js";
+export { OuiDropdown } from "./oui-dropdown.js";
+export type { OuiDropdownPlacement } from "./oui-dropdown.js";
+export { OuiDropdownSubmenu } from "./oui-dropdown-submenu.js";
+export type { OuiDropdownFocus, OuiDropdownSubmenuPlacement } from "./oui-dropdown-submenu.js";
+export { OuiDropdownItem } from "./oui-dropdown-item.js";
+export type { OuiDropdownItemType, OuiDropdownItemVariant } from "./oui-dropdown-item.js";
+export { OuiDropdownGroup } from "./oui-dropdown-group.js";
+export { OuiDropdownSeparator } from "./oui-dropdown-separator.js";

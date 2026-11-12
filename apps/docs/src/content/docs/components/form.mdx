@@ -11,38 +11,38 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/form";
+import "onent-ui/form";
 ```
 
-`hx-form` also loads [`hx-form-field`](../form-field/). Import the controls you use.
+`oui-form` also loads [`oui-form-field`](../form-field/). Import the controls you use.
 
 <Preview
     stack
-    code={`<hx-form data-demo="signup">
+    code={`<oui-form data-demo="signup">
     <form class="flex flex-col gap-4">
-        <hx-form-field name="email" label="Email" required>
-            <hx-input type="email" placeholder="you@example.com"></hx-input>
-        </hx-form-field>
-        <hx-form-field name="password" label="Password" hint="At least 8 characters." required>
-            <hx-input type="password"></hx-input>
-        </hx-form-field>
-        <hx-button type="submit">Create account</hx-button>
+        <oui-form-field name="email" label="Email" required>
+            <oui-input type="email" placeholder="you@example.com"></oui-input>
+        </oui-form-field>
+        <oui-form-field name="password" label="Password" hint="At least 8 characters." required>
+            <oui-input type="password"></oui-input>
+        </oui-form-field>
+        <oui-button type="submit">Create account</oui-button>
         <p data-result class="text-muted-foreground text-sm"></p>
     </form>
-</hx-form>`}
+</oui-form>`}
 />
 
 ```js
 import * as v from "valibot";
 
-const form = document.querySelector("hx-form");
+const form = document.querySelector("oui-form");
 
 form.schema = v.object({
     email: v.pipe(v.string(), v.email("Enter a valid email address.")),
     password: v.pipe(v.string(), v.minLength(8, "Use at least 8 characters.")),
 });
 
-form.addEventListener("hx-submit", (event) => {
+form.addEventListener("oui-submit", (event) => {
     console.log(event.detail.data);
 });
 ```
@@ -50,23 +50,23 @@ form.addEventListener("hx-submit", (event) => {
 ## Structure
 
 ```html
-<hx-form>
+<oui-form>
     <form>
-        <hx-form-field>
-            <hx-input></hx-input>
-        </hx-form-field>
-        <hx-button type="submit"></hx-button>
+        <oui-form-field>
+            <oui-input></oui-input>
+        </oui-form-field>
+        <oui-button type="submit"></oui-button>
     </form>
-</hx-form>
+</oui-form>
 ```
 
-The `<form>` is required: inside the Shadow DOM of `hx-form`, it would not own the controls. The browser never submits it, so `action` and `method` have no effect.
+The `<form>` is required: inside the Shadow DOM of `oui-form`, it would not own the controls. The browser never submits it, so `action` and `method` have no effect.
 
 ## Examples
 
 ### Schema
 
-`schema` takes any [Standard Schema](https://standardschema.dev/): Valibot, Zod, ArkType… No validation library is bundled. Errors go to the `hx-form-field` of the same `name`. `event.detail.data` is the output of the schema, with its transformations.
+`schema` takes any [Standard Schema](https://standardschema.dev/): Valibot, Zod, ArkType… No validation library is bundled. Errors go to the `oui-form-field` of the same `name`. `event.detail.data` is the output of the schema, with its transformations.
 
 Without `schema` nor `validator`, the browser checks the controls, and `required` blocks the submission.
 
@@ -76,15 +76,15 @@ Without `schema` nor `validator`, the browser checks the controls, and `required
 
 <Preview
     stack
-    code={`<hx-form data-demo="validator">
+    code={`<oui-form data-demo="validator">
     <form class="flex flex-col gap-4">
-        <hx-form-field name="login" label="Login">
-            <hx-input></hx-input>
-        </hx-form-field>
-        <hx-button type="submit">Check</hx-button>
+        <oui-form-field name="login" label="Login">
+            <oui-input></oui-input>
+        </oui-form-field>
+        <oui-button type="submit">Check</oui-button>
         <p data-result class="text-muted-foreground text-sm"></p>
     </form>
-</hx-form>`}
+</oui-form>`}
 />
 
 ```js
@@ -102,23 +102,23 @@ Validation on `input` waits for the first blur of the field, then runs `validate
 
 <Preview
     stack
-    code={`<hx-form data-demo="signup" validate-on="input" validate-on-input-delay="0">
+    code={`<oui-form data-demo="signup" validate-on="input" validate-on-input-delay="0">
     <form class="flex flex-col gap-4">
-        <hx-form-field name="email" label="Email" eager-validation>
-            <hx-input type="email"></hx-input>
-        </hx-form-field>
-        <hx-form-field name="password" label="Password" eager-validation>
-            <hx-input type="password"></hx-input>
-        </hx-form-field>
-        <hx-button type="submit">Create account</hx-button>
+        <oui-form-field name="email" label="Email" eager-validation>
+            <oui-input type="email"></oui-input>
+        </oui-form-field>
+        <oui-form-field name="password" label="Password" eager-validation>
+            <oui-input type="password"></oui-input>
+        </oui-form-field>
+        <oui-button type="submit">Create account</oui-button>
         <p data-result class="text-muted-foreground text-sm"></p>
     </form>
-</hx-form>`}
+</oui-form>`}
 />
 
 ### State
 
-`state` reads and writes the values of the named controls. Values are typed: a number for `hx-number-field` and `hx-slider`, a boolean for `hx-checkbox` and `hx-switch`. Dots in a name create nested objects.
+`state` reads and writes the values of the named controls. Values are typed: a number for `oui-number-field` and `oui-slider`, a boolean for `oui-checkbox` and `oui-switch`. Dots in a name create nested objects.
 
 The initial values, also restored on reset, can be set in three ways:
 
@@ -128,27 +128,27 @@ The initial values, also restored on reset, can be set in three ways:
 
 <Preview
     stack
-    code={`<hx-form data-demo="state" state='{"name": "John Doe", "newsletter": true, "address": {"number": 10, "street": "Downing Street", "city": "London"}}'>
+    code={`<oui-form data-demo="state" state='{"name": "John Doe", "newsletter": true, "address": {"number": 10, "street": "Downing Street", "city": "London"}}'>
     <form class="flex flex-col gap-4">
-        <hx-form-field name="name" label="Name">
-            <hx-input></hx-input>
-        </hx-form-field>
-        <hx-form-field name="address.number" label="Street number">
-            <hx-number-field></hx-number-field>
-        </hx-form-field>
-        <hx-form-field name="address.street" label="Street">
-            <hx-input></hx-input>
-        </hx-form-field>
-        <hx-form-field name="address.city" label="City">
-            <hx-input></hx-input>
-        </hx-form-field>
-        <hx-form-field name="newsletter">
-            <hx-checkbox>Newsletter</hx-checkbox>
-        </hx-form-field>
-        <hx-button type="reset" variant="outline">Reset</hx-button>
+        <oui-form-field name="name" label="Name">
+            <oui-input></oui-input>
+        </oui-form-field>
+        <oui-form-field name="address.number" label="Street number">
+            <oui-number-field></oui-number-field>
+        </oui-form-field>
+        <oui-form-field name="address.street" label="Street">
+            <oui-input></oui-input>
+        </oui-form-field>
+        <oui-form-field name="address.city" label="City">
+            <oui-input></oui-input>
+        </oui-form-field>
+        <oui-form-field name="newsletter">
+            <oui-checkbox>Newsletter</oui-checkbox>
+        </oui-form-field>
+        <oui-button type="reset" variant="outline">Reset</oui-button>
         <p data-result class="text-muted-foreground text-sm"></p>
     </form>
-</hx-form>`}
+</oui-form>`}
 />
 
 `dirty` tells whether the user changed a control since the last reset or assignment of `state`.
@@ -159,22 +159,22 @@ The promise given to `event.detail.waitUntil()` keeps the form `submitting` unti
 
 <Preview
     stack
-    code={`<hx-form data-demo="async">
+    code={`<oui-form data-demo="async">
     <form class="flex flex-col gap-4">
-        <hx-form-field name="email" label="Email" required>
-            <hx-input type="email" value="you@example.com"></hx-input>
-        </hx-form-field>
-        <hx-form-field name="password" label="Password" hint="At least 8 characters." required>
-            <hx-input type="password" value="12345678"></hx-input>
-        </hx-form-field>
-        <hx-button type="submit">Create account</hx-button>
+        <oui-form-field name="email" label="Email" required>
+            <oui-input type="email" value="you@example.com"></oui-input>
+        </oui-form-field>
+        <oui-form-field name="password" label="Password" hint="At least 8 characters." required>
+            <oui-input type="password" value="12345678"></oui-input>
+        </oui-form-field>
+        <oui-button type="submit">Create account</oui-button>
         <p data-result class="text-muted-foreground text-sm"></p>
     </form>
-</hx-form>`}
+</oui-form>`}
 />
 
 ```js
-form.addEventListener("hx-submit", (event) => {
+form.addEventListener("oui-submit", (event) => {
     event.detail.waitUntil(save(event.detail.data));
 });
 ```
@@ -185,19 +185,19 @@ form.addEventListener("hx-submit", (event) => {
 
 <Preview
     stack
-    code={`<hx-form data-demo="server">
+    code={`<oui-form data-demo="server">
     <form class="flex flex-col gap-4">
-        <hx-form-field name="email" label="Email">
-            <hx-input type="email" value="you@example.com"></hx-input>
-        </hx-form-field>
-        <hx-button type="submit">Register</hx-button>
+        <oui-form-field name="email" label="Email">
+            <oui-input type="email" value="you@example.com"></oui-input>
+        </oui-form-field>
+        <oui-button type="submit">Register</oui-button>
         <p data-result class="text-muted-foreground text-sm"></p>
     </form>
-</hx-form>`}
+</oui-form>`}
 />
 
 ```js
-form.addEventListener("hx-submit", (event) => {
+form.addEventListener("oui-submit", (event) => {
     event.detail.waitUntil(
         register(event.detail.data).catch((error) => {
             form.setErrors([{ name: "email", message: error.message }]);
@@ -212,41 +212,41 @@ form.addEventListener("hx-submit", (event) => {
 
 <Preview
     stack
-    code={`<hx-form disabled>
+    code={`<oui-form disabled>
     <form class="flex flex-col gap-4">
-        <hx-form-field name="email" label="Email">
-            <hx-input value="you@example.com"></hx-input>
-        </hx-form-field>
-        <hx-button type="submit">Save</hx-button>
+        <oui-form-field name="email" label="Email">
+            <oui-input value="you@example.com"></oui-input>
+        </oui-form-field>
+        <oui-button type="submit">Save</oui-button>
     </form>
-</hx-form>`}
+</oui-form>`}
 />
 
 ## Usage
 
-After a failed submission, `hx-error` fires and the focus moves to the first field in error. An error that matches no `hx-form-field`, such as a global error of the schema, is only available in `errors` and in `event.detail.errors`.
+After a failed submission, `oui-error` fires and the focus moves to the first field in error. An error that matches no `oui-form-field`, such as a global error of the schema, is only available in `errors` and in `event.detail.errors`.
 
-Only controls inside an `hx-form-field` are validated while the user types and display an error. The others are part of `state` and of the validation on submit.
+Only controls inside an `oui-form-field` are validated while the user types and display an error. The others are part of `state` and of the validation on submit.
 
 `validate()` returns the errors instead of throwing them. Each validation of a field runs the whole schema and `validator`, so a `validator` calling a server runs on each trigger.
 
 ## API
 
-### hx-form
+### oui-form
 
 #### Properties
 
-| Property               | Attribute                 | Type                        | Default                       | Description                                                                                                                                                                                                            |
-| ---------------------- | ------------------------- | --------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `schema`               | —                         | `HxFormSchema`              | —                             | Standard Schema (Valibot, Zod…) checking the state. Set as a JS property                                                                                                                                               |
-| `validator`            | —                         | `HxFormValidator`           | —                             | Custom validation, combined with `schema`. Set as a JS property                                                                                                                                                        |
-| `validateOn`           | `validate-on`             | `HxFormValidateOn[]`        | `["blur", "change", "input"]` | Events of a field that validate it, as a space-separated list in the attribute. Validation on `input` waits for the first blur of the field, unless it has `eager-validation` or an error. Submitting always validates |
-| `validateOnInputDelay` | `validate-on-input-delay` | `number`                    | `300`                         | Delay in milliseconds before validating on `input`                                                                                                                                                                     |
-| `disabled`             | `disabled`                | `boolean`                   | `false`                       | Disables all the controls of the form                                                                                                                                                                                  |
-| `submitting`           | `submitting`              | `boolean`                   | `false`                       | Whether a submission is running, from its validation to the end of its `waitUntil` promises (read-only)                                                                                                                |
-| `dirty`                | `dirty`                   | `boolean`                   | `false`                       | Whether the user changed a control since the last reset or assignment of `state` (read-only)                                                                                                                           |
-| `state`                | `state`                   | `HxFormState`               | —                             | Values of the named controls, typed and nested by the dots of their names. The attribute takes the initial values as JSON. The last assigned state is restored on reset                                                |
-| `errors`               | —                         | `HxFormError[]` (read-only) | —                             | Current errors (read-only)                                                                                                                                                                                             |
+| Property               | Attribute                 | Type                         | Default                       | Description                                                                                                                                                                                                            |
+| ---------------------- | ------------------------- | ---------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `schema`               | —                         | `OuiFormSchema`              | —                             | Standard Schema (Valibot, Zod…) checking the state. Set as a JS property                                                                                                                                               |
+| `validator`            | —                         | `OuiFormValidator`           | —                             | Custom validation, combined with `schema`. Set as a JS property                                                                                                                                                        |
+| `validateOn`           | `validate-on`             | `OuiFormValidateOn[]`        | `["blur", "change", "input"]` | Events of a field that validate it, as a space-separated list in the attribute. Validation on `input` waits for the first blur of the field, unless it has `eager-validation` or an error. Submitting always validates |
+| `validateOnInputDelay` | `validate-on-input-delay` | `number`                     | `300`                         | Delay in milliseconds before validating on `input`                                                                                                                                                                     |
+| `disabled`             | `disabled`                | `boolean`                    | `false`                       | Disables all the controls of the form                                                                                                                                                                                  |
+| `submitting`           | `submitting`              | `boolean`                    | `false`                       | Whether a submission is running, from its validation to the end of its `waitUntil` promises (read-only)                                                                                                                |
+| `dirty`                | `dirty`                   | `boolean`                    | `false`                       | Whether the user changed a control since the last reset or assignment of `state` (read-only)                                                                                                                           |
+| `state`                | `state`                   | `OuiFormState`               | —                             | Values of the named controls, typed and nested by the dots of their names. The attribute takes the initial values as JSON. The last assigned state is restored on reset                                                |
+| `errors`               | —                         | `OuiFormError[]` (read-only) | —                             | Current errors (read-only)                                                                                                                                                                                             |
 
 #### Methods
 
@@ -258,10 +258,10 @@ Only controls inside an `hx-form-field` are validated while the user types and d
 
 #### Events
 
-| Name        | Description                                                                                                                                                                                |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `hx-error`  | The state is invalid; `event.detail.errors` lists the errors                                                                                                                               |
-| `hx-submit` | The state is valid; `event.detail.data` is the output of the schema, or the state without schema. A promise given to `event.detail.waitUntil()` keeps the form submitting until it settles |
+| Name         | Description                                                                                                                                                                                |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `oui-error`  | The state is invalid; `event.detail.errors` lists the errors                                                                                                                               |
+| `oui-submit` | The state is valid; `event.detail.data` is the output of the schema, or the state without schema. A promise given to `event.detail.waitUntil()` keeps the form submitting until it settles |
 
 #### Slots
 

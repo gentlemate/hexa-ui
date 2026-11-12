@@ -1,0 +1,78 @@
+import { css, html, nothing } from "lit";
+import { property } from "lit/decorators.js";
+import type { IconNode } from "lucide";
+import "./components/icon/oui-icon.js";
+import { OuiElement } from "./oui-element.js";
+
+export abstract class OuiMenuItemElement extends OuiElement {
+    static override styles = [
+        OuiElement.styles,
+        css`
+            :host {
+                display: block;
+                outline: none;
+            }
+            :host(:focus) [part="base"] {
+                background: var(--oui-accent);
+                color: var(--oui-accent-foreground);
+            }
+            :host([disabled]) {
+                pointer-events: none;
+            }
+            :host([disabled]) [part="base"] {
+                opacity: 0.5;
+            }
+        `,
+    ];
+
+    @property({ reflect: true }) value = "";
+    @property({ type: Boolean, reflect: true }) disabled = false;
+
+    protected internals = this.attachInternals();
+
+    constructor() {
+        super();
+        this.addEventListener("click", (event) => {
+            if (this.disabled && (event.target as Element).closest(this.localName) === this)
+                event.stopImmediatePropagation();
+        });
+    }
+
+    override connectedCallback() {
+        super.connectedCallback();
+        this.tabIndex = -1;
+    }
+
+    get label() {
+        return [...this.childNodes]
+            .filter((node) => !this.excludedFromLabel(node))
+            .map((node) => node.textContent)
+            .join("")
+            .trim();
+    }
+
+    protected excludedFromLabel(node: Node) {
+        return node instanceof Comment || (node instanceof Element && !!node.slot);
+    }
+
+    protected override updated() {
+        this.internals.ariaDisabled = String(this.disabled);
+    }
+
+    protected renderBase(content: unknown, padding: string) {
+        return html`<div
+            part="base"
+            class="${padding} rounded-option min-h-option relative flex cursor-default items-center gap-2 select-none"
+        >
+            ${content}
+        </div>`;
+    }
+
+    protected renderIndicator(icon: IconNode | undefined, side: "left" | "right") {
+        return html`<span
+            part="indicator"
+            class="${side === "left" ? "left-2" : "right-2"} pointer-events-none absolute flex size-3.5 items-center justify-center"
+            >${icon ? html`<oui-icon .icon=${icon}></oui-icon>` : nothing}</span
+        >`;
+    }
+}

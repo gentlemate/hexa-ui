@@ -1,8 +1,8 @@
 ---
-import css from "hexa-ui/theme.css?raw";
+import css from "onent-ui/theme.css?raw";
 import { parseTheme } from "../theme";
 
-const systemFont = parseTheme(css).light["--hx-font-sans"];
+const systemFont = parseTheme(css).light["--oui-font-sans"];
 const fonts: Record<string, { fallback: string; names: string[] }> = {
     Sans: {
         fallback: "sans-serif",
@@ -17,20 +17,20 @@ function familyOf(name: string, fallback: string) {
 }
 ---
 
-<hx-form-field label="Font family">
-    <hx-select data-token="--hx-font-sans" value={systemFont} placeholder="Custom">
-        <hx-select-option value={systemFont}>System UI</hx-select-option>
+<oui-form-field label="Font family">
+    <oui-select data-token="--oui-font-sans" value={systemFont} placeholder="Custom">
+        <oui-select-option value={systemFont}>System UI</oui-select-option>
         {Object.entries(fonts).map(([group, { fallback, names }]) => (
-            <hx-select-group label={group}>
+            <oui-select-group label={group}>
                 {names.map((name) => (
-                    <hx-select-option
+                    <oui-select-option
                         value={familyOf(name, fallback)}
                         style={`font-family: ${familyOf(name, fallback)}`}
                     >
                         {name}
-                    </hx-select-option>
+                    </oui-select-option>
                 ))}
-            </hx-select-group>
+            </oui-select-group>
         ))}
-    </hx-select>
-</hx-form-field>
+    </oui-select>
+</oui-form-field>

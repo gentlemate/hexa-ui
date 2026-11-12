@@ -1,1 +1,1 @@
-export { HxInput } from "./hx-input.js";
+export { OuiInput } from "./oui-input.js";

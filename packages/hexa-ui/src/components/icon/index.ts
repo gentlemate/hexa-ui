@@ -1,2 +1,2 @@
-export { HxIcon } from "./hx-icon.js";
+export { OuiIcon } from "./oui-icon.js";
 export type { IconNode } from "lucide";

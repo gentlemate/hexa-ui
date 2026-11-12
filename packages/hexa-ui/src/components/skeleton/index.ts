@@ -1,1 +1,1 @@
-export { HxSkeleton } from "./hx-skeleton.js";
+export { OuiSkeleton } from "./oui-skeleton.js";

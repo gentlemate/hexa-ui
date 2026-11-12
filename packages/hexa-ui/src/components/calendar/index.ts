@@ -1,1 +1,1 @@
-export { HxCalendar } from "./hx-calendar.js";
+export { OuiCalendar } from "./oui-calendar.js";

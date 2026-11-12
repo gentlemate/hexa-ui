@@ -1,2 +1,2 @@
-export { HxSeparator } from "./hx-separator.js";
-export type { HxSeparatorDirection } from "./hx-separator.js";
+export { OuiSeparator } from "./oui-separator.js";
+export type { OuiSeparatorDirection } from "./oui-separator.js";

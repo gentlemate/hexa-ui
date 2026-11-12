@@ -1,1 +1,1 @@
-export { HxCheckbox } from "./hx-checkbox.js";
+export { OuiCheckbox } from "./oui-checkbox.js";

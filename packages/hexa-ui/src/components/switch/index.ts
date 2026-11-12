@@ -1,1 +1,1 @@
-export { HxSwitch } from "./hx-switch.js";
+export { OuiSwitch } from "./oui-switch.js";

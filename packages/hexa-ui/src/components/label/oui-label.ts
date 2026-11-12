@@ -1,0 +1,62 @@
+import { css, html, nothing } from "lit";
+import { customElement, property } from "lit/decorators.js";
+import { OuiElement } from "../../oui-element.js";
+
+/**
+ * @element oui-label
+ * @property htmlFor - `id` of the control it labels.
+ * @property required - Adds an asterisk after the text.
+ * @slot - The label text.
+ * @csspart base - The inner `<label>` element.
+ */
+@customElement("oui-label")
+export class OuiLabel extends OuiElement {
+    static override styles = [
+        OuiElement.styles,
+        css`
+            :host {
+                display: inline-flex;
+            }
+        `,
+    ];
+
+    @property({ attribute: "for" }) htmlFor = "";
+    @property({ type: Boolean, reflect: true }) required = false;
+
+    constructor() {
+        super();
+        this.addEventListener("click", () => {
+            const control = this.control;
+            if (!control) return;
+            control.focus();
+            control.click();
+        });
+    }
+
+    get control(): HTMLElement | null {
+        if (!this.htmlFor) return null;
+        const root = this.getRootNode() as Document | ShadowRoot;
+        return root.getElementById(this.htmlFor);
+    }
+
+    protected override updated() {
+        const control = this.control;
+        if (!control) return;
+        control.ariaLabelledByElements = [this];
+        control.ariaLabel = this.textContent.trim();
+    }
+
+    override render() {
+        return html`<label part="base" class="text-foreground leading-none select-none">
+            <slot></slot>${
+                this.required ? html`<span class="text-destructive ml-0.5" aria-hidden="true">*</span>` : nothing
+            }
+        </label>`;
+    }
+}
+
+declare global {
+    interface HTMLElementTagNameMap {
+        "oui-label": OuiLabel;
+    }
+}

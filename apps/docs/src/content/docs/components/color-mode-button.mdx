@@ -8,15 +8,15 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/color-mode-button";
+import "onent-ui/color-mode-button";
 ```
 
-<Preview code={`<hx-color-mode-button></hx-color-mode-button>`} />
+<Preview code={`<oui-color-mode-button></oui-color-mode-button>`} />
 
 ## Structure
 
 ```html
-<hx-color-mode-button></hx-color-mode-button>
+<oui-color-mode-button></oui-color-mode-button>
 ```
 
 ## Examples
@@ -24,19 +24,19 @@ import "hexa-ui/color-mode-button";
 ### Variants
 
 <Preview
-    code={`<hx-color-mode-button variant="primary"></hx-color-mode-button>
-<hx-color-mode-button variant="secondary"></hx-color-mode-button>
-<hx-color-mode-button variant="outline"></hx-color-mode-button>
-<hx-color-mode-button variant="ghost"></hx-color-mode-button>`}
+    code={`<oui-color-mode-button variant="primary"></oui-color-mode-button>
+<oui-color-mode-button variant="secondary"></oui-color-mode-button>
+<oui-color-mode-button variant="outline"></oui-color-mode-button>
+<oui-color-mode-button variant="ghost"></oui-color-mode-button>`}
 />
 
 ## Usage
 
-The button toggles the `dark` class on `<html>`, which switches the `--hx-*` tokens, and stores the choice in `localStorage`. Without a stored choice, it follows `prefers-color-scheme`. Several buttons on the same page stay in sync.
+The button toggles the `dark` class on `<html>`, which switches the `--oui-*` tokens, and stores the choice in `localStorage`. Without a stored choice, it follows `prefers-color-scheme`. Several buttons on the same page stay in sync.
 
 ## API
 
-### hx-color-mode-button
+### oui-color-mode-button
 
 #### Properties
 
@@ -46,6 +46,6 @@ The button toggles the `dark` class on `<html>`, which switches the `--hx-*` tok
 
 #### Events
 
-| Name                   | Description                                                          |
-| ---------------------- | -------------------------------------------------------------------- |
-| `hx-color-mode-change` | The color mode changed; `event.detail.mode` is `"light"` or `"dark"` |
+| Name                    | Description                                                          |
+| ----------------------- | -------------------------------------------------------------------- |
+| `oui-color-mode-change` | The color mode changed; `event.detail.mode` is `"light"` or `"dark"` |

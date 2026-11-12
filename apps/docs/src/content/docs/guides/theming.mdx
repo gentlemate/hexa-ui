@@ -1,26 +1,26 @@
 ---
 title: Theming
-description: Customize Hexa UI with design tokens.
+description: Customize Onent UI with design tokens.
 ---
 
 import Preview from "../../../components/Preview.astro";
 
-Every component is styled from `--hx-*` custom properties defined in `hexa-ui/theme.css`. Custom properties inherit through the Shadow DOM, so overriding a token is enough to restyle every component that uses it.
+Every component is styled from `--oui-*` custom properties defined in `onent-ui/theme.css`. Custom properties inherit through the Shadow DOM, so overriding a token is enough to restyle every component that uses it.
 
 ## Global theme
 
-Override tokens on `:root`, in a stylesheet loaded after `hexa-ui/theme.css`. Colors have a light and a dark value: define both, with `:root` for light and `:root.dark` for dark.
+Override tokens on `:root`, in a stylesheet loaded after `onent-ui/theme.css`. Colors have a light and a dark value: define both, with `:root` for light and `:root.dark` for dark.
 
 ```css
 :root {
-    --hx-primary: oklch(0.205 0 0);
-    --hx-primary-foreground: oklch(0.985 0 0);
-    --hx-radius-control: 0px;
+    --oui-primary: oklch(0.205 0 0);
+    --oui-primary-foreground: oklch(0.985 0 0);
+    --oui-radius-control: 0px;
 }
 
 :root.dark {
-    --hx-primary: oklch(0.922 0 0);
-    --hx-primary-foreground: oklch(0.205 0 0);
+    --oui-primary: oklch(0.922 0 0);
+    --oui-primary-foreground: oklch(0.205 0 0);
 }
 ```
 
@@ -37,22 +37,22 @@ Tokens can also be overridden on any element, for the components it contains.
     code={`<div
     class="flex flex-col gap-3"
     style="
-        --hx-primary: oklch(63.7% 0.237 25.331);
-        --hx-primary-foreground: oklch(0.985 0 0);
-        --hx-radius-input: 9999px;
-        --hx-height-input: 3rem;
-        --hx-spacing-input: 1.5rem;
-        --hx-radius-checkbox: 9999px;
-        --hx-radius-button: 9999px;
-        --hx-height-button: 3rem;
-        --hx-spacing-button: 3rem;
+        --oui-primary: oklch(63.7% 0.237 25.331);
+        --oui-primary-foreground: oklch(0.985 0 0);
+        --oui-radius-input: 9999px;
+        --oui-height-input: 3rem;
+        --oui-spacing-input: 1.5rem;
+        --oui-radius-checkbox: 9999px;
+        --oui-radius-button: 9999px;
+        --oui-height-button: 3rem;
+        --oui-spacing-button: 3rem;
     "
 >
-    <hx-input placeholder="Email"></hx-input>
-    <hx-checkbox checked>Remember me</hx-checkbox>
+    <oui-input placeholder="Email"></oui-input>
+    <oui-checkbox checked>Remember me</oui-checkbox>
     <div class="flex gap-3">
-        <hx-button>Log in</hx-button>
-        <hx-button variant="outline">Sign in</hx-button>
+        <oui-button>Log in</oui-button>
+        <oui-button variant="outline">Sign in</oui-button>
     </div>
 </div>`}
 />
@@ -63,50 +63,50 @@ Tokens can also be overridden on any element, for the components it contains.
 
 Each color has a `-foreground` pair for the content placed on it.
 
-| Token                                          | Usage                                                                      |
-| ---------------------------------------------- | -------------------------------------------------------------------------- |
-| `--hx-background` / `--hx-foreground`          | Page background and default text, switch tracks (foreground at 15%)        |
-| `--hx-surface` / `--hx-surface-foreground`     | Cards, modals, drawers, popovers, dropdowns, select and date picker popups |
-| `--hx-primary` / `--hx-primary-foreground`     | Primary actions                                                            |
-| `--hx-secondary` / `--hx-secondary-foreground` | Secondary actions                                                          |
-| `--hx-muted` / `--hx-muted-foreground`         | Subdued backgrounds and text, tab lists, progress and slider tracks        |
-| `--hx-accent` / `--hx-accent-foreground`       | Hovered and highlighted items, skeletons                                   |
-| `--hx-destructive`                             | Destructive actions and errors                                             |
-| `--hx-border`                                  | Borders and separators                                                     |
-| `--hx-field`                                   | Field backgrounds                                                          |
-| `--hx-ring`                                    | Focus rings                                                                |
+| Token                                            | Usage                                                                      |
+| ------------------------------------------------ | -------------------------------------------------------------------------- |
+| `--oui-background` / `--oui-foreground`          | Page background and default text, switch tracks (foreground at 15%)        |
+| `--oui-surface` / `--oui-surface-foreground`     | Cards, modals, drawers, popovers, dropdowns, select and date picker popups |
+| `--oui-primary` / `--oui-primary-foreground`     | Primary actions                                                            |
+| `--oui-secondary` / `--oui-secondary-foreground` | Secondary actions                                                          |
+| `--oui-muted` / `--oui-muted-foreground`         | Subdued backgrounds and text, tab lists, progress and slider tracks        |
+| `--oui-accent` / `--oui-accent-foreground`       | Hovered and highlighted items, skeletons                                   |
+| `--oui-destructive`                              | Destructive actions and errors                                             |
+| `--oui-border`                                   | Borders and separators                                                     |
+| `--oui-field`                                    | Field backgrounds                                                          |
+| `--oui-ring`                                     | Focus rings                                                                |
 
 ### Radius
 
-| Token                 | Default   | Used by                                                                                                                                                                 |
-| --------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--hx-radius-control` | `0.5rem`  | `hx-button`, `hx-tabs`, the days of `hx-calendar` and `hx-range-calendar`, the close button of `hx-modal` and `hx-drawer`                                               |
-| `--hx-radius-field`   | `0.5rem`  | `hx-input`, `hx-textarea`, `hx-select`, `hx-date-field`, `hx-number-field`, `hx-color-field`, `hx-date-picker`, `hx-date-range-picker`, `hx-color-picker`               |
-| `--hx-radius-panel`   | `0.75rem` | `hx-card`, `hx-modal`, `hx-accordion`, `hx-skeleton`                                                                                                                    |
-| `--hx-radius-popup`   | `0.5rem`  | `hx-popover`, `hx-tooltip`, `hx-dropdown`, `hx-select`, `hx-date-picker`, `hx-date-range-picker`, `hx-color-picker`                                                     |
-| `--hx-radius-option`  | `0.25rem` | `hx-dropdown-item`, `hx-select-option`                                                                                                                                  |
-| `--hx-radius-pill`    | `9999px`  | `hx-badge`, `hx-progress`, `hx-slider`, `hx-switch`, the sliders of `hx-color-picker`, the swatches of `hx-color-field`, `hx-color-picker` and `hx-color-swatch-picker` |
+| Token                  | Default   | Used by                                                                                                                                                                         |
+| ---------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--oui-radius-control` | `0.5rem`  | `oui-button`, `oui-tabs`, the days of `oui-calendar` and `oui-range-calendar`, the close button of `oui-modal` and `oui-drawer`                                                 |
+| `--oui-radius-field`   | `0.5rem`  | `oui-input`, `oui-textarea`, `oui-select`, `oui-date-field`, `oui-number-field`, `oui-color-field`, `oui-date-picker`, `oui-date-range-picker`, `oui-color-picker`              |
+| `--oui-radius-panel`   | `0.75rem` | `oui-card`, `oui-modal`, `oui-accordion`, `oui-skeleton`                                                                                                                        |
+| `--oui-radius-popup`   | `0.5rem`  | `oui-popover`, `oui-tooltip`, `oui-dropdown`, `oui-select`, `oui-date-picker`, `oui-date-range-picker`, `oui-color-picker`                                                      |
+| `--oui-radius-option`  | `0.25rem` | `oui-dropdown-item`, `oui-select-option`                                                                                                                                        |
+| `--oui-radius-pill`    | `9999px`  | `oui-badge`, `oui-progress`, `oui-slider`, `oui-switch`, the sliders of `oui-color-picker`, the swatches of `oui-color-field`, `oui-color-picker` and `oui-color-swatch-picker` |
 
 ### Sizes and spacing
 
-| Token                  | Default   | Used by                                                                                                                                                   |
-| ---------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--hx-height-control`  | `2.5rem`  | `hx-button`, `hx-tabs`                                                                                                                                    |
-| `--hx-spacing-control` | `0.75rem` | `hx-button`, `hx-tabs`                                                                                                                                    |
-| `--hx-height-field`    | `2.5rem`  | `hx-input`, `hx-select`, `hx-date-field`, `hx-number-field`, `hx-color-field`, `hx-date-picker`, `hx-date-range-picker`, `hx-color-picker`                |
-| `--hx-spacing-field`   | `0.75rem` | `hx-input`, `hx-textarea`, `hx-select`, `hx-date-field`, `hx-number-field`, `hx-color-field`, `hx-date-picker`, `hx-date-range-picker`, `hx-color-picker` |
-| `--hx-spacing-panel`   | `1.25rem` | `hx-card`, `hx-modal`, `hx-drawer`                                                                                                                        |
-| `--hx-spacing-popup`   | `0.25rem` | `hx-dropdown`, `hx-select`, `hx-date-picker` and `hx-date-range-picker` (via `--hx-spacing-calendar`)                                                     |
-| `--hx-height-option`   | `2rem`    | `hx-dropdown-item`, `hx-select-option`                                                                                                                    |
-| `--hx-spacing-option`  | `0.5rem`  | `hx-dropdown-item`, `hx-select-option`, `hx-dropdown-group`, `hx-select-group`                                                                            |
+| Token                   | Default   | Used by                                                                                                                                                            |
+| ----------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `--oui-height-control`  | `2.5rem`  | `oui-button`, `oui-tabs`                                                                                                                                           |
+| `--oui-spacing-control` | `0.75rem` | `oui-button`, `oui-tabs`                                                                                                                                           |
+| `--oui-height-field`    | `2.5rem`  | `oui-input`, `oui-select`, `oui-date-field`, `oui-number-field`, `oui-color-field`, `oui-date-picker`, `oui-date-range-picker`, `oui-color-picker`                 |
+| `--oui-spacing-field`   | `0.75rem` | `oui-input`, `oui-textarea`, `oui-select`, `oui-date-field`, `oui-number-field`, `oui-color-field`, `oui-date-picker`, `oui-date-range-picker`, `oui-color-picker` |
+| `--oui-spacing-panel`   | `1.25rem` | `oui-card`, `oui-modal`, `oui-drawer`                                                                                                                              |
+| `--oui-spacing-popup`   | `0.25rem` | `oui-dropdown`, `oui-select`, `oui-date-picker` and `oui-date-range-picker` (via `--oui-spacing-calendar`)                                                         |
+| `--oui-height-option`   | `2rem`    | `oui-dropdown-item`, `oui-select-option`                                                                                                                           |
+| `--oui-spacing-option`  | `0.5rem`  | `oui-dropdown-item`, `oui-select-option`, `oui-dropdown-group`, `oui-select-group`                                                                                 |
 
 See [`theme.css`](https://github.com/gentlemate/hexa-ui/blob/master/packages/hexa-ui/theme.css) for the full list and default values.
 
 ### Typography
 
-| Token                                  | Default                           |
-| -------------------------------------- | --------------------------------- |
-| `--hx-font-sans`                       | `system-ui, sans-serif`           |
-| `--hx-text-sm` / `--hx-leading-sm`     | `0.875rem` / `calc(1.25 / 0.875)` |
-| `--hx-text-base` / `--hx-leading-base` | `1rem` / `calc(1.5 / 1)`          |
-| `--hx-text-lg` / `--hx-leading-lg`     | `1.125rem` / `calc(1.75 / 1.125)` |
+| Token                                    | Default                           |
+| ---------------------------------------- | --------------------------------- |
+| `--oui-font-sans`                        | `system-ui, sans-serif`           |
+| `--oui-text-sm` / `--oui-leading-sm`     | `0.875rem` / `calc(1.25 / 0.875)` |
+| `--oui-text-base` / `--oui-leading-base` | `1rem` / `calc(1.5 / 1)`          |
+| `--oui-text-lg` / `--oui-leading-lg`     | `1.125rem` / `calc(1.75 / 1.125)` |

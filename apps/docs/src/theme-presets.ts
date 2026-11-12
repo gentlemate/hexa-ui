@@ -111,38 +111,38 @@ const palettes: Record<string, Record<Shade, string>> = {
 
 const shades: Record<ThemeMode, Record<string, Shade | string>> = {
     light: {
-        "--hx-background": "oklch(1 0 0)",
-        "--hx-foreground": 950,
-        "--hx-surface": "oklch(1 0 0)",
-        "--hx-surface-foreground": 950,
-        "--hx-primary": 900,
-        "--hx-primary-foreground": 50,
-        "--hx-secondary": 100,
-        "--hx-secondary-foreground": 900,
-        "--hx-muted": 100,
-        "--hx-muted-foreground": 500,
-        "--hx-accent": 100,
-        "--hx-accent-foreground": 900,
-        "--hx-border": 300,
-        "--hx-field": 100,
-        "--hx-ring": 400,
+        "--oui-background": "oklch(1 0 0)",
+        "--oui-foreground": 950,
+        "--oui-surface": "oklch(1 0 0)",
+        "--oui-surface-foreground": 950,
+        "--oui-primary": 900,
+        "--oui-primary-foreground": 50,
+        "--oui-secondary": 100,
+        "--oui-secondary-foreground": 900,
+        "--oui-muted": 100,
+        "--oui-muted-foreground": 500,
+        "--oui-accent": 100,
+        "--oui-accent-foreground": 900,
+        "--oui-border": 300,
+        "--oui-field": 100,
+        "--oui-ring": 400,
     },
     dark: {
-        "--hx-background": 950,
-        "--hx-foreground": 50,
-        "--hx-surface": 900,
-        "--hx-surface-foreground": 50,
-        "--hx-primary": 200,
-        "--hx-primary-foreground": 900,
-        "--hx-secondary": 800,
-        "--hx-secondary-foreground": 50,
-        "--hx-muted": 800,
-        "--hx-muted-foreground": 400,
-        "--hx-accent": 800,
-        "--hx-accent-foreground": 50,
-        "--hx-border": "oklch(1 0 0 / 15%)",
-        "--hx-field": "oklch(1 0 0 / 8%)",
-        "--hx-ring": 500,
+        "--oui-background": 950,
+        "--oui-foreground": 50,
+        "--oui-surface": 900,
+        "--oui-surface-foreground": 50,
+        "--oui-primary": 200,
+        "--oui-primary-foreground": 900,
+        "--oui-secondary": 800,
+        "--oui-secondary-foreground": 50,
+        "--oui-muted": 800,
+        "--oui-muted-foreground": 400,
+        "--oui-accent": 800,
+        "--oui-accent-foreground": 50,
+        "--oui-border": "oklch(1 0 0 / 15%)",
+        "--oui-field": "oklch(1 0 0 / 8%)",
+        "--oui-ring": 500,
     },
 };
 
@@ -227,28 +227,28 @@ const accents: Record<string, Record<50 | 500 | 600 | 950, string>> = {
 
 const fontSizes = {
     small: {
-        "--hx-text-sm": "0.75rem",
-        "--hx-leading-sm": "calc(1 / 0.75)",
-        "--hx-text-base": "0.875rem",
-        "--hx-leading-base": "calc(1.25 / 0.875)",
-        "--hx-text-lg": "1rem",
-        "--hx-leading-lg": "calc(1.5 / 1)",
+        "--oui-text-sm": "0.75rem",
+        "--oui-leading-sm": "calc(1 / 0.75)",
+        "--oui-text-base": "0.875rem",
+        "--oui-leading-base": "calc(1.25 / 0.875)",
+        "--oui-text-lg": "1rem",
+        "--oui-leading-lg": "calc(1.5 / 1)",
     },
     medium: {
-        "--hx-text-sm": "0.875rem",
-        "--hx-leading-sm": "calc(1.25 / 0.875)",
-        "--hx-text-base": "1rem",
-        "--hx-leading-base": "calc(1.5 / 1)",
-        "--hx-text-lg": "1.125rem",
-        "--hx-leading-lg": "calc(1.75 / 1.125)",
+        "--oui-text-sm": "0.875rem",
+        "--oui-leading-sm": "calc(1.25 / 0.875)",
+        "--oui-text-base": "1rem",
+        "--oui-leading-base": "calc(1.5 / 1)",
+        "--oui-text-lg": "1.125rem",
+        "--oui-leading-lg": "calc(1.75 / 1.125)",
     },
     large: {
-        "--hx-text-sm": "1rem",
-        "--hx-leading-sm": "calc(1.5 / 1)",
-        "--hx-text-base": "1.125rem",
-        "--hx-leading-base": "calc(1.75 / 1.125)",
-        "--hx-text-lg": "1.25rem",
-        "--hx-leading-lg": "calc(1.75 / 1.25)",
+        "--oui-text-sm": "1rem",
+        "--oui-leading-sm": "calc(1.5 / 1)",
+        "--oui-text-base": "1.125rem",
+        "--oui-leading-base": "calc(1.75 / 1.125)",
+        "--oui-text-lg": "1.25rem",
+        "--oui-leading-lg": "calc(1.75 / 1.25)",
     },
 };
 
@@ -262,13 +262,13 @@ function radiusOf(
     pill: string,
 ) {
     return {
-        "--hx-radius-control": control,
-        "--hx-radius-field": field,
-        "--hx-radius-option": option,
-        "--hx-radius-panel": panel,
-        "--hx-radius-popup": popup,
-        "--hx-radius-checkbox": checkbox,
-        "--hx-radius-pill": pill,
+        "--oui-radius-control": control,
+        "--oui-radius-field": field,
+        "--oui-radius-option": option,
+        "--oui-radius-panel": panel,
+        "--oui-radius-popup": popup,
+        "--oui-radius-checkbox": checkbox,
+        "--oui-radius-pill": pill,
     };
 }
 
@@ -282,13 +282,13 @@ function sizeOf(
     panelSpacing: string,
 ) {
     return {
-        "--hx-height-control": control,
-        "--hx-spacing-control": controlSpacing,
-        "--hx-height-field": field,
-        "--hx-spacing-field": fieldSpacing,
-        "--hx-height-option": option,
-        "--hx-spacing-option": optionSpacing,
-        "--hx-spacing-panel": panelSpacing,
+        "--oui-height-control": control,
+        "--oui-spacing-control": controlSpacing,
+        "--oui-height-field": field,
+        "--oui-spacing-field": fieldSpacing,
+        "--oui-height-option": option,
+        "--oui-spacing-option": optionSpacing,
+        "--oui-spacing-panel": panelSpacing,
     };
 }
 
@@ -320,8 +320,8 @@ export const primaryColors = Object.keys(accents);
 export function primaryColorTheme(name: string): Theme {
     const accent = accents[name];
     const resolve = (shade: 500 | 600) => ({
-        "--hx-primary": `oklch(${accent[shade]})`,
-        "--hx-primary-foreground": `oklch(${accent[parseFloat(accent[shade]) >= 0.64 ? 950 : 50]})`,
+        "--oui-primary": `oklch(${accent[shade]})`,
+        "--oui-primary-foreground": `oklch(${accent[parseFloat(accent[shade]) >= 0.64 ? 950 : 50]})`,
     });
     return { light: resolve(600), dark: resolve(500) };
 }

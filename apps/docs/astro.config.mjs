@@ -10,7 +10,7 @@ export default defineConfig({
     },
     integrations: [
         starlight({
-            title: "Hexa UI",
+            title: "Onent UI",
             locales: { root: { label: "English", lang: "en-GB" } },
             customCss: ["./src/styles/global.css"],
             head: [

@@ -1,2 +1,2 @@
-export { HxDateRangePicker } from "./hx-date-range-picker.js";
-export type { HxDateRangePickerDateStyle, HxDateRangePickerPlacement } from "./hx-date-range-picker.js";
+export { OuiDateRangePicker } from "./oui-date-range-picker.js";
+export type { OuiDateRangePickerDateStyle, OuiDateRangePickerPlacement } from "./oui-date-range-picker.js";

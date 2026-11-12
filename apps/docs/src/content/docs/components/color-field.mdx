@@ -8,23 +8,23 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/color-field";
-import "hexa-ui/form-field";
+import "onent-ui/color-field";
+import "onent-ui/form-field";
 ```
 
-The label, the description, the hint and the error come from [`hx-form-field`](../form-field/).
+The label, the description, the hint and the error come from [`oui-form-field`](../form-field/).
 
 <Preview
     stack
-    code={`<hx-form-field label="Brand">
-    <hx-color-field value="#2b7fff"></hx-color-field>
-</hx-form-field>`}
+    code={`<oui-form-field label="Brand">
+    <oui-color-field value="#2b7fff"></oui-color-field>
+</oui-form-field>`}
 />
 
 ## Structure
 
 ```html
-<hx-color-field></hx-color-field>
+<oui-color-field></oui-color-field>
 ```
 
 ## Examples
@@ -35,18 +35,18 @@ The field accepts hex, `rgb()`, `hsl()` and `oklch()` colors, whatever its `form
 
 <Preview
     stack
-    code={`<hx-form-field label="HEX">
-    <hx-color-field value="#2b7fff"></hx-color-field>
-</hx-form-field>
-<hx-form-field label="RGB">
-    <hx-color-field format="rgb" value="rgb(43 127 255)"></hx-color-field>
-</hx-form-field>
-<hx-form-field label="HSL">
-    <hx-color-field format="hsl" value="hsl(216 100% 58%)"></hx-color-field>
-</hx-form-field>
-<hx-form-field label="OKLCH">
-    <hx-color-field format="oklch" value="oklch(0.623 0.214 259.815)"></hx-color-field>
-</hx-form-field>`}
+    code={`<oui-form-field label="HEX">
+    <oui-color-field value="#2b7fff"></oui-color-field>
+</oui-form-field>
+<oui-form-field label="RGB">
+    <oui-color-field format="rgb" value="rgb(43 127 255)"></oui-color-field>
+</oui-form-field>
+<oui-form-field label="HSL">
+    <oui-color-field format="hsl" value="hsl(216 100% 58%)"></oui-color-field>
+</oui-form-field>
+<oui-form-field label="OKLCH">
+    <oui-color-field format="oklch" value="oklch(0.623 0.214 259.815)"></oui-color-field>
+</oui-form-field>`}
 />
 
 ### Alpha
@@ -55,20 +55,20 @@ Without `alpha`, the transparency of a typed color is dropped.
 
 <Preview
     stack
-    code={`<hx-form-field label="Overlay">
-    <hx-color-field value="#2b7fff80" alpha></hx-color-field>
-</hx-form-field>`}
+    code={`<oui-form-field label="Overlay">
+    <oui-color-field value="#2b7fff80" alpha></oui-color-field>
+</oui-form-field>`}
 />
 
 ### Disabled
 
-<Preview stack code={`<hx-color-field aria-label="Disabled" value="#00c950" disabled></hx-color-field>`} />
+<Preview stack code={`<oui-color-field aria-label="Disabled" value="#00c950" disabled></oui-color-field>`} />
 
 ### Invalid
 
-`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+`invalid` marks the field as invalid, without any message. To display a message, use the `error` of [`oui-form-field`](../form-field/#error).
 
-<Preview stack code={`<hx-color-field aria-label="Invalid" invalid></hx-color-field>`} />
+<Preview stack code={`<oui-color-field aria-label="Invalid" invalid></oui-color-field>`} />
 
 ### Form
 
@@ -77,26 +77,26 @@ Without `alpha`, the transparency of a typed color is dropped.
 <Preview
     stack
     code={`<form onsubmit="event.preventDefault(); this.querySelector('p').textContent = 'brand=' + new FormData(this).get('brand')">
-    <hx-form-field label="Brand">
-        <hx-color-field name="brand" value="#2b7fff"></hx-color-field>
-    </hx-form-field>
-    <hx-button type="submit" class="mt-3">Submit</hx-button>
+    <oui-form-field label="Brand">
+        <oui-color-field name="brand" value="#2b7fff"></oui-color-field>
+    </oui-form-field>
+    <oui-button type="submit" class="mt-3">Submit</oui-button>
     <p class="mt-2 text-sm"></p>
 </form>`}
 />
 
 ### Form field
 
-In a form, [`hx-form-field`](../form-field/) adds the label, the hint and the error message.
+In a form, [`oui-form-field`](../form-field/) adds the label, the hint and the error message.
 
 <Preview
     stack
-    code={`<hx-form-field label="Brand" hint="Hex, rgb(), hsl() or oklch().">
-    <hx-color-field placeholder="#000000"></hx-color-field>
-</hx-form-field>
-<hx-form-field label="Destructive" error="This color is not accessible.">
-    <hx-color-field value="#fb2c36"></hx-color-field>
-</hx-form-field>`}
+    code={`<oui-form-field label="Brand" hint="Hex, rgb(), hsl() or oklch().">
+    <oui-color-field placeholder="#000000"></oui-color-field>
+</oui-form-field>
+<oui-form-field label="Destructive" error="This color is not accessible.">
+    <oui-color-field value="#fb2c36"></oui-color-field>
+</oui-form-field>`}
 />
 
 ## Behavior
@@ -107,7 +107,7 @@ The value changes on blur or with the Enter key, not at each keystroke. A text t
 
 ## API
 
-### hx-color-field
+### oui-color-field
 
 #### Properties
 
@@ -133,13 +133,13 @@ The value changes on blur or with the Enter key, not at each keystroke. A text t
 
 #### CSS custom properties
 
-| Name                       | Default                   | Description                 |
-| -------------------------- | ------------------------- | --------------------------- |
-| `--hx-height-color-field`  | `var(--hx-height-field)`  | Height                      |
-| `--hx-spacing-color-field` | `var(--hx-spacing-field)` | Horizontal padding          |
-| `--hx-radius-color-field`  | `var(--hx-radius-field)`  | Border radius               |
-| `--hx-size-color-swatch`   | `1.25rem`                 | Size of the swatch          |
-| `--hx-radius-color-swatch` | `var(--hx-radius-pill)`   | Border radius of the swatch |
+| Name                        | Default                    | Description                 |
+| --------------------------- | -------------------------- | --------------------------- |
+| `--oui-height-color-field`  | `var(--oui-height-field)`  | Height                      |
+| `--oui-spacing-color-field` | `var(--oui-spacing-field)` | Horizontal padding          |
+| `--oui-radius-color-field`  | `var(--oui-radius-field)`  | Border radius               |
+| `--oui-size-color-swatch`   | `1.25rem`                  | Size of the swatch          |
+| `--oui-radius-color-swatch` | `var(--oui-radius-pill)`   | Border radius of the swatch |
 
 #### CSS parts
 

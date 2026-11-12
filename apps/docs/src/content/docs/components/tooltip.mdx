@@ -8,22 +8,22 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/tooltip";
+import "onent-ui/tooltip";
 ```
 
 <Preview
-    code={`<hx-tooltip content="This is a tooltip">
-    <hx-button variant="outline">Hover me</hx-button>
-</hx-tooltip>`}
+    code={`<oui-tooltip content="This is a tooltip">
+    <oui-button variant="outline">Hover me</oui-button>
+</oui-tooltip>`}
 />
 
 ## Structure
 
 ```html
-<hx-tooltip>
-    <hx-button></hx-button>
+<oui-tooltip>
+    <oui-button></oui-button>
     <span slot="content"></span>
-</hx-tooltip>
+</oui-tooltip>
 ```
 
 ## Examples
@@ -31,18 +31,18 @@ import "hexa-ui/tooltip";
 ### Placement
 
 <Preview
-    code={`<hx-tooltip content="Top">
-    <hx-button variant="outline">Top</hx-button>
-</hx-tooltip>
-<hx-tooltip content="Bottom" placement="bottom">
-    <hx-button variant="outline">Bottom</hx-button>
-</hx-tooltip>
-<hx-tooltip content="Left" placement="left">
-    <hx-button variant="outline">Left</hx-button>
-</hx-tooltip>
-<hx-tooltip content="Right" placement="right">
-    <hx-button variant="outline">Right</hx-button>
-</hx-tooltip>`}
+    code={`<oui-tooltip content="Top">
+    <oui-button variant="outline">Top</oui-button>
+</oui-tooltip>
+<oui-tooltip content="Bottom" placement="bottom">
+    <oui-button variant="outline">Bottom</oui-button>
+</oui-tooltip>
+<oui-tooltip content="Left" placement="left">
+    <oui-button variant="outline">Left</oui-button>
+</oui-tooltip>
+<oui-tooltip content="Right" placement="right">
+    <oui-button variant="outline">Right</oui-button>
+</oui-tooltip>`}
 />
 
 ### Distance
@@ -50,9 +50,9 @@ import "hexa-ui/tooltip";
 `distance` sets the gap in pixels between the trigger and the tooltip (`8` by default).
 
 <Preview
-    code={`<hx-tooltip content="16px away" distance="16">
-    <hx-button variant="outline">Distance</hx-button>
-</hx-tooltip>`}
+    code={`<oui-tooltip content="16px away" distance="16">
+    <oui-button variant="outline">Distance</oui-button>
+</oui-tooltip>`}
 />
 
 ### Open and close delays
@@ -60,26 +60,26 @@ import "hexa-ui/tooltip";
 `open-delay` sets the delay in milliseconds before the tooltip opens on hover (`300` by default), and `close-delay` the delay before it closes once the pointer has left (`100` by default).
 
 <Preview
-    code={`<hx-tooltip content="No delay" open-delay="0" close-delay="0">
-    <hx-button variant="outline">No delay</hx-button>
-</hx-tooltip>`}
+    code={`<oui-tooltip content="No delay" open-delay="0" close-delay="0">
+    <oui-button variant="outline">No delay</oui-button>
+</oui-tooltip>`}
 />
 
 ### Without arrow
 
 <Preview
-    code={`<hx-tooltip content="No arrow" without-arrow>
-    <hx-button variant="outline">Without arrow</hx-button>
-</hx-tooltip>`}
+    code={`<oui-tooltip content="No arrow" without-arrow>
+    <oui-button variant="outline">Without arrow</oui-button>
+</oui-tooltip>`}
 />
 
 ### Rich content
 
 <Preview
-    code={`<hx-tooltip>
-    <hx-button variant="outline">Shortcut</hx-button>
+    code={`<oui-tooltip>
+    <oui-button variant="outline">Shortcut</oui-button>
     <span slot="content">Save <kbd class="bg-background/20 rounded-sm px-1.5 ml-1">Ctrl</kbd> + <kbd class="bg-background/20 rounded-sm px-1.5">S</kbd></span>
-</hx-tooltip>`}
+</oui-tooltip>`}
 />
 
 ### Disabled
@@ -87,9 +87,9 @@ import "hexa-ui/tooltip";
 `disabled` prevents the tooltip from opening.
 
 <Preview
-    code={`<hx-tooltip content="Disabled" disabled>
-    <hx-button variant="outline">Disabled</hx-button>
-</hx-tooltip>`}
+    code={`<oui-tooltip content="Disabled" disabled>
+    <oui-button variant="outline">Disabled</oui-button>
+</oui-tooltip>`}
 />
 
 ## Usage
@@ -98,36 +98,36 @@ The tooltip opens on hover (after `open-delay`) and on keyboard focus. It closes
 
 ## API
 
-### hx-tooltip
+### oui-tooltip
 
 #### Properties
 
-| Property       | Attribute       | Type                                                                                                                                                                 | Default | Description                                                         |
-| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------- |
-| `content`      | `content`       | `string`                                                                                                                                                             | `""`    | Tooltip text; use the `content` slot for rich content               |
-| `placement`    | `placement`     | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"top"` | Position of the tooltip relative to the trigger                     |
-| `distance`     | `distance`      | `number`                                                                                                                                                             | `8`     | Gap in pixels between the trigger and the popup                     |
-| `openDelay`    | `open-delay`    | `number`                                                                                                                                                             | `300`   | Delay in milliseconds before opening on hover                       |
-| `closeDelay`   | `close-delay`   | `number`                                                                                                                                                             | `100`   | Delay in milliseconds before closing on pointer leave               |
-| `disabled`     | `disabled`      | `boolean`                                                                                                                                                            | `false` | Prevents the tooltip from opening                                   |
-| `withoutArrow` | `without-arrow` | `boolean`                                                                                                                                                            | `false` | Hides the arrow                                                     |
-| `open`         | `open`          | `boolean`                                                                                                                                                            | `false` | Whether it is open. Setting it directly skips `hx-show` / `hx-hide` |
+| Property       | Attribute       | Type                                                                                                                                                                 | Default | Description                                                           |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | --------------------------------------------------------------------- |
+| `content`      | `content`       | `string`                                                                                                                                                             | `""`    | Tooltip text; use the `content` slot for rich content                 |
+| `placement`    | `placement`     | `"top" \| "right" \| "bottom" \| "left" \| "top-start" \| "top-end" \| "right-start" \| "right-end" \| "bottom-start" \| "bottom-end" \| "left-start" \| "left-end"` | `"top"` | Position of the tooltip relative to the trigger                       |
+| `distance`     | `distance`      | `number`                                                                                                                                                             | `8`     | Gap in pixels between the trigger and the popup                       |
+| `openDelay`    | `open-delay`    | `number`                                                                                                                                                             | `300`   | Delay in milliseconds before opening on hover                         |
+| `closeDelay`   | `close-delay`   | `number`                                                                                                                                                             | `100`   | Delay in milliseconds before closing on pointer leave                 |
+| `disabled`     | `disabled`      | `boolean`                                                                                                                                                            | `false` | Prevents the tooltip from opening                                     |
+| `withoutArrow` | `without-arrow` | `boolean`                                                                                                                                                            | `false` | Hides the arrow                                                       |
+| `open`         | `open`          | `boolean`                                                                                                                                                            | `false` | Whether it is open. Setting it directly skips `oui-show` / `oui-hide` |
 
 #### Methods
 
-| Name     | Description                 |
-| -------- | --------------------------- |
-| `show()` | Opens it (fires `hx-show`)  |
-| `hide()` | Closes it (fires `hx-hide`) |
+| Name     | Description                  |
+| -------- | ---------------------------- |
+| `show()` | Opens it (fires `oui-show`)  |
+| `hide()` | Closes it (fires `oui-hide`) |
 
 #### Events
 
-| Name            | Description                                           |
-| --------------- | ----------------------------------------------------- |
-| `hx-show`       | The tooltip is about to open. Cancelable              |
-| `hx-after-show` | The tooltip is open and its enter animation finished  |
-| `hx-hide`       | The tooltip is about to close. Cancelable             |
-| `hx-after-hide` | The tooltip is closed and its exit animation finished |
+| Name             | Description                                           |
+| ---------------- | ----------------------------------------------------- |
+| `oui-show`       | The tooltip is about to open. Cancelable              |
+| `oui-after-show` | The tooltip is open and its enter animation finished  |
+| `oui-hide`       | The tooltip is about to close. Cancelable             |
+| `oui-after-hide` | The tooltip is closed and its exit animation finished |
 
 #### Slots
 
@@ -138,10 +138,10 @@ The tooltip opens on hover (after `open-delay`) and on keyboard focus. It closes
 
 #### CSS custom properties
 
-| Name                   | Default                  | Description                                            |
-| ---------------------- | ------------------------ | ------------------------------------------------------ |
-| `--hx-spacing-tooltip` | `0.75rem`                | Horizontal padding. The vertical padding is half of it |
-| `--hx-radius-tooltip`  | `var(--hx-radius-popup)` | Border radius                                          |
+| Name                    | Default                   | Description                                            |
+| ----------------------- | ------------------------- | ------------------------------------------------------ |
+| `--oui-spacing-tooltip` | `0.75rem`                 | Horizontal padding. The vertical padding is half of it |
+| `--oui-radius-tooltip`  | `var(--oui-radius-popup)` | Border radius                                          |
 
 #### CSS parts
 

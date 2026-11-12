@@ -8,32 +8,32 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/skeleton";
+import "onent-ui/skeleton";
 ```
 
 <Preview
     stack
     code={`<div class="flex items-center gap-4">
-    <hx-skeleton circle class="size-12"></hx-skeleton>
+    <oui-skeleton circle class="size-12"></oui-skeleton>
     <div class="flex flex-1 flex-col gap-2">
-        <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
-        <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+        <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
+        <oui-skeleton class="h-4 w-1/2"></oui-skeleton>
     </div>
 </div>
-<hx-skeleton class="h-16"></hx-skeleton>`}
+<oui-skeleton class="h-16"></oui-skeleton>`}
 />
 
 ## Structure
 
 ```html
-<hx-skeleton></hx-skeleton>
+<oui-skeleton></oui-skeleton>
 ```
 
 ## Examples
 
 ### Circle
 
-<Preview code={`<hx-skeleton circle class="size-12"></hx-skeleton>`} />
+<Preview code={`<oui-skeleton circle class="size-12"></oui-skeleton>`} />
 
 ### Composition
 
@@ -42,18 +42,18 @@ The skeleton has no size of its own: set its width and height with CSS.
 <Preview
     stack
     code={`<div class="flex items-center gap-4">
-    <hx-skeleton circle class="size-12"></hx-skeleton>
+    <oui-skeleton circle class="size-12"></oui-skeleton>
     <div class="flex flex-1 flex-col gap-2">
-        <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
-        <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+        <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
+        <oui-skeleton class="h-4 w-1/2"></oui-skeleton>
     </div>
 </div>
-<hx-skeleton class="h-16"></hx-skeleton>`}
+<oui-skeleton class="h-16"></oui-skeleton>`}
 />
 
 ## API
 
-### hx-skeleton
+### oui-skeleton
 
 #### Properties
 
@@ -63,9 +63,9 @@ The skeleton has no size of its own: set its width and height with CSS.
 
 #### CSS custom properties
 
-| Name                   | Default                  | Description   |
-| ---------------------- | ------------------------ | ------------- |
-| `--hx-radius-skeleton` | `var(--hx-radius-panel)` | Border radius |
+| Name                    | Default                   | Description   |
+| ----------------------- | ------------------------- | ------------- |
+| `--oui-radius-skeleton` | `var(--oui-radius-panel)` | Border radius |
 
 #### CSS parts
 

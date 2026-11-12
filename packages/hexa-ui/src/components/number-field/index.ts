@@ -1,2 +1,2 @@
-export { HxNumberField } from "./hx-number-field.js";
-export type { HxNumberFieldVariant } from "./hx-number-field.js";
+export { OuiNumberField } from "./oui-number-field.js";
+export type { OuiNumberFieldVariant } from "./oui-number-field.js";

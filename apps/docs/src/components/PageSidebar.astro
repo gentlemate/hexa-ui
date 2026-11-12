@@ -28,9 +28,9 @@ import ThemeEditor from "./ThemeEditor.astro";
 </style>
 
 <script>
-    import type { HxDrawer } from "hexa-ui";
+    import type { OuiDrawer } from "onent-ui";
 
     document.querySelector(".theme-builder-open")?.addEventListener("click", () => {
-        document.querySelector<HxDrawer>("#theme-drawer")!.show();
+        document.querySelector<OuiDrawer>("#theme-drawer")!.show();
     });
 </script>

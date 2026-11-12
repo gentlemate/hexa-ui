@@ -1,4 +1,4 @@
-# hexa-ui
+# onent-ui
 
 Lit-based Web Component library.
 
@@ -15,15 +15,15 @@ pnpm build     # packages/hexa-ui/dist/ : ESM + .d.ts
 ```
 
 ```ts
-import "hexa-ui";
-import "hexa-ui/button";
+import "onent-ui";
+import "onent-ui/button";
 ```
 
 ## Add a component
 
 In `packages/hexa-ui/`:
 
-1. Create `src/components/<name>/hx-<name>.ts` (extending `HxElement`) and `index.ts`.
+1. Create `src/components/<name>/oui-<name>.ts` (extending `OuiElement`) and `index.ts`.
 2. Export it from `src/index.ts`.
 3. Add an entry to `vite.config.ts` and an export to `package.json` (`./<name>`).
 

@@ -1,2 +1,2 @@
-export { HxBadge } from "./hx-badge.js";
-export type { HxBadgeIconPlacement, HxBadgeVariant } from "./hx-badge.js";
+export { OuiBadge } from "./oui-badge.js";
+export type { OuiBadgeIconPlacement, OuiBadgeVariant } from "./oui-badge.js";

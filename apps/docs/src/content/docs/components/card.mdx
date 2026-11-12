@@ -8,42 +8,42 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/card";
+import "onent-ui/card";
 ```
 
 <Preview
     stack
-    code={`<hx-card>
-    <hx-card-header>
-        <hx-card-title>Create project</hx-card-title>
-        <hx-card-description>Create a new project in one click.</hx-card-description>
-        <hx-card-action>
-            <hx-badge variant="secondary">New</hx-badge>
-        </hx-card-action>
-    </hx-card-header>
-    <hx-card-content>
-        <hx-form-field class="mb-1" label="Name">
-            <hx-input></hx-input>
-        </hx-form-field>
-    </hx-card-content>
-    <hx-card-footer>
-        <hx-button>Create</hx-button>
-    </hx-card-footer>
-</hx-card>`}
+    code={`<oui-card>
+    <oui-card-header>
+        <oui-card-title>Create project</oui-card-title>
+        <oui-card-description>Create a new project in one click.</oui-card-description>
+        <oui-card-action>
+            <oui-badge variant="secondary">New</oui-badge>
+        </oui-card-action>
+    </oui-card-header>
+    <oui-card-content>
+        <oui-form-field class="mb-1" label="Name">
+            <oui-input></oui-input>
+        </oui-form-field>
+    </oui-card-content>
+    <oui-card-footer>
+        <oui-button>Create</oui-button>
+    </oui-card-footer>
+</oui-card>`}
 />
 
 ## Structure
 
 ```html
-<hx-card>
-    <hx-card-header>
-        <hx-card-title></hx-card-title>
-        <hx-card-description></hx-card-description>
-        <hx-card-action></hx-card-action>
-    </hx-card-header>
-    <hx-card-content></hx-card-content>
-    <hx-card-footer></hx-card-footer>
-</hx-card>
+<oui-card>
+    <oui-card-header>
+        <oui-card-title></oui-card-title>
+        <oui-card-description></oui-card-description>
+        <oui-card-action></oui-card-action>
+    </oui-card-header>
+    <oui-card-content></oui-card-content>
+    <oui-card-footer></oui-card-footer>
+</oui-card>
 ```
 
 ## Examples
@@ -52,15 +52,15 @@ import "hexa-ui/card";
 
 <Preview
     stack
-    code={`<hx-card>
-    <hx-card-content>Default card.</hx-card-content>
-</hx-card>
-<hx-card variant="outline">
-    <hx-card-content>Outline card.</hx-card-content>
-</hx-card>
-<hx-card variant="ghost">
-    <hx-card-content>Ghost card.</hx-card-content>
-</hx-card>`}
+    code={`<oui-card>
+    <oui-card-content>Default card.</oui-card-content>
+</oui-card>
+<oui-card variant="outline">
+    <oui-card-content>Outline card.</oui-card-content>
+</oui-card>
+<oui-card variant="ghost">
+    <oui-card-content>Ghost card.</oui-card-content>
+</oui-card>`}
 />
 
 ### Custom header
@@ -69,23 +69,23 @@ The header can hold any layout instead of the title and the description.
 
 <Preview
     stack
-    code={`<hx-card>
-    <hx-card-header>
+    code={`<oui-card>
+    <oui-card-header>
         <div class="flex items-center gap-3">
-            <hx-skeleton circle class="size-10"></hx-skeleton>
+            <oui-skeleton circle class="size-10"></oui-skeleton>
             <div class="flex flex-1 flex-col gap-2">
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/2"></hx-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/2"></oui-skeleton>
             </div>
         </div>
-    </hx-card-header>
-    <hx-card-content>The header can hold a custom layout.</hx-card-content>
-</hx-card>`}
+    </oui-card-header>
+    <oui-card-content>The header can hold a custom layout.</oui-card-content>
+</oui-card>`}
 />
 
 ## API
 
-### hx-card
+### oui-card
 
 #### Properties
 
@@ -95,16 +95,16 @@ The header can hold any layout instead of the title and the description.
 
 #### Slots
 
-| Name      | Description                                                                 |
-| --------- | --------------------------------------------------------------------------- |
-| (default) | The card sections: `hx-card-header`, `hx-card-content` and `hx-card-footer` |
+| Name      | Description                                                                    |
+| --------- | ------------------------------------------------------------------------------ |
+| (default) | The card sections: `oui-card-header`, `oui-card-content` and `oui-card-footer` |
 
 #### CSS custom properties
 
-| Name                | Default                   | Description   |
-| ------------------- | ------------------------- | ------------- |
-| `--hx-spacing-card` | `var(--hx-spacing-panel)` | Padding       |
-| `--hx-radius-card`  | `var(--hx-radius-panel)`  | Border radius |
+| Name                 | Default                    | Description   |
+| -------------------- | -------------------------- | ------------- |
+| `--oui-spacing-card` | `var(--oui-spacing-panel)` | Padding       |
+| `--oui-radius-card`  | `var(--oui-radius-panel)`  | Border radius |
 
 #### CSS parts
 
@@ -112,15 +112,15 @@ The header can hold any layout instead of the title and the description.
 | ------ | ------------------ |
 | `base` | The card container |
 
-### hx-card-header
+### oui-card-header
 
 #### Slots
 
-| Name      | Description                                                                                  |
-| --------- | -------------------------------------------------------------------------------------------- |
-| (default) | The `hx-card-title`, `hx-card-description` and `hx-card-action` elements, or a custom header |
+| Name      | Description                                                                                     |
+| --------- | ----------------------------------------------------------------------------------------------- |
+| (default) | The `oui-card-title`, `oui-card-description` and `oui-card-action` elements, or a custom header |
 
-### hx-card-title
+### oui-card-title
 
 #### Slots
 
@@ -128,7 +128,7 @@ The header can hold any layout instead of the title and the description.
 | --------- | -------------- |
 | (default) | The card title |
 
-### hx-card-description
+### oui-card-description
 
 #### Slots
 
@@ -136,15 +136,15 @@ The header can hold any layout instead of the title and the description.
 | --------- | ---------------------------- |
 | (default) | A short text under the title |
 
-### hx-card-action
+### oui-card-action
 
 #### Slots
 
-| Name      | Description                                                                  |
-| --------- | ---------------------------------------------------------------------------- |
-| (default) | An element aligned to the top right of the `hx-card-header` (button, badge…) |
+| Name      | Description                                                                   |
+| --------- | ----------------------------------------------------------------------------- |
+| (default) | An element aligned to the top right of the `oui-card-header` (button, badge…) |
 
-### hx-card-content
+### oui-card-content
 
 #### Slots
 
@@ -152,7 +152,7 @@ The header can hold any layout instead of the title and the description.
 | --------- | ---------------- |
 | (default) | The card content |
 
-### hx-card-footer
+### oui-card-footer
 
 #### Slots
 

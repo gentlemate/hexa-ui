@@ -1,9 +1,9 @@
-export { HxForm } from "./hx-form.js";
+export { OuiForm } from "./oui-form.js";
 export type {
-    HxFormError,
-    HxFormSchema,
-    HxFormState,
-    HxFormSubmitDetail,
-    HxFormValidateOn,
-    HxFormValidator,
-} from "./hx-form.js";
+    OuiFormError,
+    OuiFormSchema,
+    OuiFormState,
+    OuiFormSubmitDetail,
+    OuiFormValidateOn,
+    OuiFormValidator,
+} from "./oui-form.js";

@@ -8,31 +8,31 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/color-swatch-picker";
-import "hexa-ui/form-field";
+import "onent-ui/color-swatch-picker";
+import "onent-ui/form-field";
 ```
 
-The label, the description, the hint and the error come from [`hx-form-field`](../form-field/).
+The label, the description, the hint and the error come from [`oui-form-field`](../form-field/).
 
 <Preview
     stack
-    code={`<hx-form-field label="Brand">
-    <hx-color-swatch-picker value="#2b7fff">
-        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-        <hx-color-swatch value="#fe9a00"></hx-color-swatch>
-        <hx-color-swatch value="#00c950"></hx-color-swatch>
-        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-        <hx-color-swatch value="#ad46ff"></hx-color-swatch>
-    </hx-color-swatch-picker>
-</hx-form-field>`}
+    code={`<oui-form-field label="Brand">
+    <oui-color-swatch-picker value="#2b7fff">
+        <oui-color-swatch value="#fb2c36"></oui-color-swatch>
+        <oui-color-swatch value="#fe9a00"></oui-color-swatch>
+        <oui-color-swatch value="#00c950"></oui-color-swatch>
+        <oui-color-swatch value="#2b7fff"></oui-color-swatch>
+        <oui-color-swatch value="#ad46ff"></oui-color-swatch>
+    </oui-color-swatch-picker>
+</oui-form-field>`}
 />
 
 ## Structure
 
 ```html
-<hx-color-swatch-picker>
-    <hx-color-swatch></hx-color-swatch>
-</hx-color-swatch-picker>
+<oui-color-swatch-picker>
+    <oui-color-swatch></oui-color-swatch>
+</oui-color-swatch-picker>
 ```
 
 ## Examples
@@ -43,33 +43,33 @@ The label, the description, the hint and the error come from [`hx-form-field`](.
 
 <Preview
     stack
-    code={`<hx-form-field label="Vertical">
-    <hx-color-swatch-picker layout="vertical" value="#2b7fff">
-        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-        <hx-color-swatch value="#fe9a00"></hx-color-swatch>
-        <hx-color-swatch value="#00c950"></hx-color-swatch>
-        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-        <hx-color-swatch value="#ad46ff"></hx-color-swatch>
-    </hx-color-swatch-picker>
-</hx-form-field>
-<hx-form-field label="Grid">
-    <hx-color-swatch-picker layout="grid" value="#2b7fff">
-        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-        <hx-color-swatch value="#ff6900"></hx-color-swatch>
-        <hx-color-swatch value="#fe9a00"></hx-color-swatch>
-        <hx-color-swatch value="#00c950"></hx-color-swatch>
-        <hx-color-swatch value="#00bba7"></hx-color-swatch>
-        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-        <hx-color-swatch value="#615fff"></hx-color-swatch>
-        <hx-color-swatch value="#ad46ff"></hx-color-swatch>
-        <hx-color-swatch value="#f6339a"></hx-color-swatch>
-    </hx-color-swatch-picker>
-</hx-form-field>`}
+    code={`<oui-form-field label="Vertical">
+    <oui-color-swatch-picker layout="vertical" value="#2b7fff">
+        <oui-color-swatch value="#fb2c36"></oui-color-swatch>
+        <oui-color-swatch value="#fe9a00"></oui-color-swatch>
+        <oui-color-swatch value="#00c950"></oui-color-swatch>
+        <oui-color-swatch value="#2b7fff"></oui-color-swatch>
+        <oui-color-swatch value="#ad46ff"></oui-color-swatch>
+    </oui-color-swatch-picker>
+</oui-form-field>
+<oui-form-field label="Grid">
+    <oui-color-swatch-picker layout="grid" value="#2b7fff">
+        <oui-color-swatch value="#fb2c36"></oui-color-swatch>
+        <oui-color-swatch value="#ff6900"></oui-color-swatch>
+        <oui-color-swatch value="#fe9a00"></oui-color-swatch>
+        <oui-color-swatch value="#00c950"></oui-color-swatch>
+        <oui-color-swatch value="#00bba7"></oui-color-swatch>
+        <oui-color-swatch value="#2b7fff"></oui-color-swatch>
+        <oui-color-swatch value="#615fff"></oui-color-swatch>
+        <oui-color-swatch value="#ad46ff"></oui-color-swatch>
+        <oui-color-swatch value="#f6339a"></oui-color-swatch>
+    </oui-color-swatch-picker>
+</oui-form-field>`}
 />
 
 ### Size
 
-`size` sets the size of the swatches: `xs`, `sm`, `md`, `lg` or `xl`. The gap follows the size. Without `size`, `--hx-size-color-swatch-picker` and `--hx-gap-color-swatch-picker` apply.
+`size` sets the size of the swatches: `xs`, `sm`, `md`, `lg` or `xl`. The gap follows the size. Without `size`, `--oui-size-color-swatch-picker` and `--oui-gap-color-swatch-picker` apply.
 
 | Size | Swatch   | Gap        |
 | ---- | -------- | ---------- |
@@ -81,41 +81,41 @@ The label, the description, the hint and the error come from [`hx-form-field`](.
 
 <Preview
     stack
-    code={`<hx-form-field label="xs">
-    <hx-color-swatch-picker size="xs" value="#2b7fff">
-        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-        <hx-color-swatch value="#00c950"></hx-color-swatch>
-        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-    </hx-color-swatch-picker>
-</hx-form-field>
-<hx-form-field label="sm">
-    <hx-color-swatch-picker size="sm" value="#2b7fff">
-        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-        <hx-color-swatch value="#00c950"></hx-color-swatch>
-        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-    </hx-color-swatch-picker>
-</hx-form-field>
-<hx-form-field label="md">
-    <hx-color-swatch-picker size="md" value="#2b7fff">
-        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-        <hx-color-swatch value="#00c950"></hx-color-swatch>
-        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-    </hx-color-swatch-picker>
-</hx-form-field>
-<hx-form-field label="lg">
-    <hx-color-swatch-picker size="lg" value="#2b7fff">
-        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-        <hx-color-swatch value="#00c950"></hx-color-swatch>
-        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-    </hx-color-swatch-picker>
-</hx-form-field>
-<hx-form-field label="xl">
-    <hx-color-swatch-picker size="xl" value="#2b7fff">
-        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-        <hx-color-swatch value="#00c950"></hx-color-swatch>
-        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-    </hx-color-swatch-picker>
-</hx-form-field>`}
+    code={`<oui-form-field label="xs">
+    <oui-color-swatch-picker size="xs" value="#2b7fff">
+        <oui-color-swatch value="#fb2c36"></oui-color-swatch>
+        <oui-color-swatch value="#00c950"></oui-color-swatch>
+        <oui-color-swatch value="#2b7fff"></oui-color-swatch>
+    </oui-color-swatch-picker>
+</oui-form-field>
+<oui-form-field label="sm">
+    <oui-color-swatch-picker size="sm" value="#2b7fff">
+        <oui-color-swatch value="#fb2c36"></oui-color-swatch>
+        <oui-color-swatch value="#00c950"></oui-color-swatch>
+        <oui-color-swatch value="#2b7fff"></oui-color-swatch>
+    </oui-color-swatch-picker>
+</oui-form-field>
+<oui-form-field label="md">
+    <oui-color-swatch-picker size="md" value="#2b7fff">
+        <oui-color-swatch value="#fb2c36"></oui-color-swatch>
+        <oui-color-swatch value="#00c950"></oui-color-swatch>
+        <oui-color-swatch value="#2b7fff"></oui-color-swatch>
+    </oui-color-swatch-picker>
+</oui-form-field>
+<oui-form-field label="lg">
+    <oui-color-swatch-picker size="lg" value="#2b7fff">
+        <oui-color-swatch value="#fb2c36"></oui-color-swatch>
+        <oui-color-swatch value="#00c950"></oui-color-swatch>
+        <oui-color-swatch value="#2b7fff"></oui-color-swatch>
+    </oui-color-swatch-picker>
+</oui-form-field>
+<oui-form-field label="xl">
+    <oui-color-swatch-picker size="xl" value="#2b7fff">
+        <oui-color-swatch value="#fb2c36"></oui-color-swatch>
+        <oui-color-swatch value="#00c950"></oui-color-swatch>
+        <oui-color-swatch value="#2b7fff"></oui-color-swatch>
+    </oui-color-swatch-picker>
+</oui-form-field>`}
 />
 
 ### Labels
@@ -124,13 +124,13 @@ The label, the description, the hint and the error come from [`hx-form-field`](.
 
 <Preview
     stack
-    code={`<hx-form-field label="Brand">
-    <hx-color-swatch-picker>
-        <hx-color-swatch value="#fb2c36" label="Red"></hx-color-swatch>
-        <hx-color-swatch value="#00c950" label="Green"></hx-color-swatch>
-        <hx-color-swatch value="#2b7fff" label="Blue"></hx-color-swatch>
-    </hx-color-swatch-picker>
-</hx-form-field>`}
+    code={`<oui-form-field label="Brand">
+    <oui-color-swatch-picker>
+        <oui-color-swatch value="#fb2c36" label="Red"></oui-color-swatch>
+        <oui-color-swatch value="#00c950" label="Green"></oui-color-swatch>
+        <oui-color-swatch value="#2b7fff" label="Blue"></oui-color-swatch>
+    </oui-color-swatch-picker>
+</oui-form-field>`}
 />
 
 ### Disabled
@@ -139,25 +139,25 @@ The label, the description, the hint and the error come from [`hx-form-field`](.
 
 <Preview
     stack
-    code={`<hx-form-field label="Brand">
-    <hx-color-swatch-picker value="#2b7fff" disabled>
-        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-        <hx-color-swatch value="#00c950"></hx-color-swatch>
-        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-    </hx-color-swatch-picker>
-</hx-form-field>
-<hx-form-field label="Destructive">
-    <hx-color-swatch-picker value="#fb2c36">
-        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-        <hx-color-swatch value="#00c950"></hx-color-swatch>
-        <hx-color-swatch value="#2b7fff" disabled></hx-color-swatch>
-    </hx-color-swatch-picker>
-</hx-form-field>`}
+    code={`<oui-form-field label="Brand">
+    <oui-color-swatch-picker value="#2b7fff" disabled>
+        <oui-color-swatch value="#fb2c36"></oui-color-swatch>
+        <oui-color-swatch value="#00c950"></oui-color-swatch>
+        <oui-color-swatch value="#2b7fff"></oui-color-swatch>
+    </oui-color-swatch-picker>
+</oui-form-field>
+<oui-form-field label="Destructive">
+    <oui-color-swatch-picker value="#fb2c36">
+        <oui-color-swatch value="#fb2c36"></oui-color-swatch>
+        <oui-color-swatch value="#00c950"></oui-color-swatch>
+        <oui-color-swatch value="#2b7fff" disabled></oui-color-swatch>
+    </oui-color-swatch-picker>
+</oui-form-field>`}
 />
 
 ### Invalid
 
-`invalid` marks the field as invalid for assistive technologies, without any message or visual change. To display a message, use the `error` of [`hx-form-field`](../form-field/#error).
+`invalid` marks the field as invalid for assistive technologies, without any message or visual change. To display a message, use the `error` of [`oui-form-field`](../form-field/#error).
 
 ### Form
 
@@ -166,38 +166,38 @@ The label, the description, the hint and the error come from [`hx-form-field`](.
 <Preview
     stack
     code={`<form onsubmit="event.preventDefault(); this.querySelector('p').textContent = 'brand=' + new FormData(this).get('brand')">
-    <hx-form-field label="Brand">
-        <hx-color-swatch-picker name="brand" value="#2b7fff">
-            <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-            <hx-color-swatch value="#00c950"></hx-color-swatch>
-            <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-        </hx-color-swatch-picker>
-    </hx-form-field>
-    <hx-button type="submit" class="mt-3">Submit</hx-button>
+    <oui-form-field label="Brand">
+        <oui-color-swatch-picker name="brand" value="#2b7fff">
+            <oui-color-swatch value="#fb2c36"></oui-color-swatch>
+            <oui-color-swatch value="#00c950"></oui-color-swatch>
+            <oui-color-swatch value="#2b7fff"></oui-color-swatch>
+        </oui-color-swatch-picker>
+    </oui-form-field>
+    <oui-button type="submit" class="mt-3">Submit</oui-button>
     <p class="mt-2 text-sm"></p>
 </form>`}
 />
 
 ### Form field
 
-In a form, [`hx-form-field`](../form-field/) adds the label, the hint and the error message.
+In a form, [`oui-form-field`](../form-field/) adds the label, the hint and the error message.
 
 <Preview
     stack
-    code={`<hx-form-field label="Brand" hint="Used throughout your app.">
-    <hx-color-swatch-picker>
-        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-        <hx-color-swatch value="#00c950"></hx-color-swatch>
-        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-    </hx-color-swatch-picker>
-</hx-form-field>
-<hx-form-field label="Brand" error="This color is not accessible.">
-    <hx-color-swatch-picker value="#fb2c36">
-        <hx-color-swatch value="#fb2c36"></hx-color-swatch>
-        <hx-color-swatch value="#00c950"></hx-color-swatch>
-        <hx-color-swatch value="#2b7fff"></hx-color-swatch>
-    </hx-color-swatch-picker>
-</hx-form-field>`}
+    code={`<oui-form-field label="Brand" hint="Used throughout your app.">
+    <oui-color-swatch-picker>
+        <oui-color-swatch value="#fb2c36"></oui-color-swatch>
+        <oui-color-swatch value="#00c950"></oui-color-swatch>
+        <oui-color-swatch value="#2b7fff"></oui-color-swatch>
+    </oui-color-swatch-picker>
+</oui-form-field>
+<oui-form-field label="Brand" error="This color is not accessible.">
+    <oui-color-swatch-picker value="#fb2c36">
+        <oui-color-swatch value="#fb2c36"></oui-color-swatch>
+        <oui-color-swatch value="#00c950"></oui-color-swatch>
+        <oui-color-swatch value="#2b7fff"></oui-color-swatch>
+    </oui-color-swatch-picker>
+</oui-form-field>`}
 />
 
 ## Behavior
@@ -208,20 +208,20 @@ The group is a single tab stop. The arrow keys move the focus and select the swa
 
 ## API
 
-### hx-color-swatch-picker
+### oui-color-swatch-picker
 
 #### Properties
 
-| Property      | Attribute  | Type                                   | Default        | Description                                                                                                                                                                      |
-| ------------- | ---------- | -------------------------------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`        | `name`     | `string`                               | `""`           | Name submitted with the form                                                                                                                                                     |
-| `value`       | `value`    | `string`                               | `""`           | Value of the selected `hx-color-swatch`                                                                                                                                          |
-| `layout`      | `layout`   | `"horizontal" \| "vertical" \| "grid"` | `"horizontal"` | `horizontal` wraps on several lines if needed, `vertical` stacks the swatches, `grid` arranges them in a square                                                                  |
-| `size`        | `size`     | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | —              | Size of the swatches, from `xs` 1rem to `xl` 3rem. The gap follows, from 0.5rem to 0.75rem. Without it, `--hx-size-color-swatch-picker` and `--hx-gap-color-swatch-picker` apply |
-| `disabled`    | `disabled` | `boolean`                              | `false`        | Prevents user interaction                                                                                                                                                        |
-| `required`    | `required` | `boolean`                              | `false`        | Marks the group as required for form validation                                                                                                                                  |
-| `invalid`     | `invalid`  | `boolean`                              | `false`        | Marks the field as invalid without displaying a message                                                                                                                          |
-| `focusTarget` | —          | — (read-only)                          | —              | The swatch that receives the focus (read-only)                                                                                                                                   |
+| Property      | Attribute  | Type                                   | Default        | Description                                                                                                                                                                        |
+| ------------- | ---------- | -------------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`        | `name`     | `string`                               | `""`           | Name submitted with the form                                                                                                                                                       |
+| `value`       | `value`    | `string`                               | `""`           | Value of the selected `oui-color-swatch`                                                                                                                                           |
+| `layout`      | `layout`   | `"horizontal" \| "vertical" \| "grid"` | `"horizontal"` | `horizontal` wraps on several lines if needed, `vertical` stacks the swatches, `grid` arranges them in a square                                                                    |
+| `size`        | `size`     | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | —              | Size of the swatches, from `xs` 1rem to `xl` 3rem. The gap follows, from 0.5rem to 0.75rem. Without it, `--oui-size-color-swatch-picker` and `--oui-gap-color-swatch-picker` apply |
+| `disabled`    | `disabled` | `boolean`                              | `false`        | Prevents user interaction                                                                                                                                                          |
+| `required`    | `required` | `boolean`                              | `false`        | Marks the group as required for form validation                                                                                                                                    |
+| `invalid`     | `invalid`  | `boolean`                              | `false`        | Marks the field as invalid without displaying a message                                                                                                                            |
+| `focusTarget` | —          | — (read-only)                          | —              | The swatch that receives the focus (read-only)                                                                                                                                     |
 
 #### Events
 
@@ -232,16 +232,16 @@ The group is a single tab stop. The arrow keys move the focus and select the swa
 
 #### Slots
 
-| Name      | Description                    |
-| --------- | ------------------------------ |
-| (default) | The `hx-color-swatch` elements |
+| Name      | Description                     |
+| --------- | ------------------------------- |
+| (default) | The `oui-color-swatch` elements |
 
 #### CSS custom properties
 
-| Name                            | Default    | Description              |
-| ------------------------------- | ---------- | ------------------------ |
-| `--hx-size-color-swatch-picker` | `2rem`     | Size of the swatches     |
-| `--hx-gap-color-swatch-picker`  | `0.625rem` | Gap between the swatches |
+| Name                             | Default    | Description              |
+| -------------------------------- | ---------- | ------------------------ |
+| `--oui-size-color-swatch-picker` | `2rem`     | Size of the swatches     |
+| `--oui-gap-color-swatch-picker`  | `0.625rem` | Gap between the swatches |
 
 #### CSS parts
 
@@ -249,23 +249,23 @@ The group is a single tab stop. The arrow keys move the focus and select the swa
 | ---------- | --------------------------- |
 | `swatches` | The wrapper of the swatches |
 
-### hx-color-swatch
+### oui-color-swatch
 
 #### Properties
 
-| Property   | Attribute  | Type      | Default | Description                                                          |
-| ---------- | ---------- | --------- | ------- | -------------------------------------------------------------------- |
-| `value`    | `value`    | `string`  | `""`    | Color of the swatch, as a hex, `rgb()`, `hsl()` or `oklch()` string  |
-| `label`    | `label`    | `string`  | `""`    | Accessible name of the swatch; defaults to `value`                   |
-| `disabled` | `disabled` | `boolean` | `false` | Prevents selecting the swatch                                        |
-| `selected` | `selected` | `boolean` | `false` | Whether the swatch is selected (set by the `hx-color-swatch-picker`) |
+| Property   | Attribute  | Type      | Default | Description                                                           |
+| ---------- | ---------- | --------- | ------- | --------------------------------------------------------------------- |
+| `value`    | `value`    | `string`  | `""`    | Color of the swatch, as a hex, `rgb()`, `hsl()` or `oklch()` string   |
+| `label`    | `label`    | `string`  | `""`    | Accessible name of the swatch; defaults to `value`                    |
+| `disabled` | `disabled` | `boolean` | `false` | Prevents selecting the swatch                                         |
+| `selected` | `selected` | `boolean` | `false` | Whether the swatch is selected (set by the `oui-color-swatch-picker`) |
 
 #### CSS custom properties
 
-| Name                       | Default                 | Description                 |
-| -------------------------- | ----------------------- | --------------------------- |
-| `--hx-size-color-swatch`   | `1.25rem`               | Size of the swatch          |
-| `--hx-radius-color-swatch` | `var(--hx-radius-pill)` | Border radius of the swatch |
+| Name                        | Default                  | Description                 |
+| --------------------------- | ------------------------ | --------------------------- |
+| `--oui-size-color-swatch`   | `1.25rem`                | Size of the swatch          |
+| `--oui-radius-color-swatch` | `var(--oui-radius-pill)` | Border radius of the swatch |
 
 #### CSS parts
 

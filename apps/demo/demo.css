@@ -5,7 +5,7 @@
 
 @layer base {
     body {
-        font-size: var(--hx-text-base);
-        line-height: var(--hx-leading-base);
+        font-size: var(--oui-text-base);
+        line-height: var(--oui-leading-base);
     }
 }

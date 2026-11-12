@@ -1,11 +1,11 @@
 ---
 title: Installation
-description: Install Hexa UI and render your first component.
+description: Install Onent UI and render your first component.
 ---
 
 import { Code, Steps, Tabs, TabItem } from "@astrojs/starlight/components";
 
-Hexa UI is distributed as ES modules. It is meant to be used with a bundler such as Vite, which resolves its dependencies (`lit`, `lucide`, `@floating-ui/dom`).
+Onent UI is distributed as ES modules. It is meant to be used with a bundler such as Vite, which resolves its dependencies (`lit`, `lucide`, `@floating-ui/dom`).
 
 ## Setup
 
@@ -15,43 +15,43 @@ Hexa UI is distributed as ES modules. It is meant to be used with a bundler such
 
     <Tabs syncKey="pkg">
         <TabItem label="pnpm">
-            <Code code="pnpm add hexa-ui" lang="sh" />
+            <Code code="pnpm add onent-ui" lang="sh" />
         </TabItem>
         <TabItem label="npm">
-            <Code code="npm install hexa-ui" lang="sh" />
+            <Code code="npm install onent-ui" lang="sh" />
         </TabItem>
         <TabItem label="yarn">
-            <Code code="yarn add hexa-ui" lang="sh" />
+            <Code code="yarn add onent-ui" lang="sh" />
         </TabItem>
     </Tabs>
 
-2. Import the design tokens once, at the root of your app. Components read their colors, sizes and fonts from these `--hx-*` custom properties.
+2. Import the design tokens once, at the root of your app. Components read their colors, sizes and fonts from these `--oui-*` custom properties.
 
     ```js
-    import "hexa-ui/theme.css";
+    import "onent-ui/theme.css";
     ```
 
     Or from a stylesheet:
 
     ```css
-    @import "hexa-ui/theme.css";
+    @import "onent-ui/theme.css";
     ```
 
 3. Import the components. Each import registers the custom elements it contains.
 
     ```js
     // Import all the components
-    import "hexa-ui";
+    import "onent-ui";
 
     // Or import only the ones you use
-    import "hexa-ui/button";
-    import "hexa-ui/input";
+    import "onent-ui/button";
+    import "onent-ui/input";
     ```
 
 4. Use them in your markup.
 
     ```html
-    <hx-button>Button</hx-button>
+    <oui-button>Button</oui-button>
     ```
 
 </Steps>

@@ -1,1 +1,1 @@
-export { HxTextarea } from "./hx-textarea.js";
+export { OuiTextarea } from "./oui-textarea.js";

@@ -8,26 +8,26 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/tabs";
+import "onent-ui/tabs";
 ```
 
 <Preview
     stack
-    code={`<hx-tabs value="login">
-    <hx-tab value="login">Log in</hx-tab>
-    <hx-tab value="signin">Sign in</hx-tab>
-    <hx-tab-panel value="login">Log in</hx-tab-panel>
-    <hx-tab-panel value="signin">Sign in</hx-tab-panel>
-</hx-tabs>`}
+    code={`<oui-tabs value="login">
+    <oui-tab value="login">Log in</oui-tab>
+    <oui-tab value="signin">Sign in</oui-tab>
+    <oui-tab-panel value="login">Log in</oui-tab-panel>
+    <oui-tab-panel value="signin">Sign in</oui-tab-panel>
+</oui-tabs>`}
 />
 
 ## Structure
 
 ```html
-<hx-tabs>
-    <hx-tab></hx-tab>
-    <hx-tab-panel></hx-tab-panel>
-</hx-tabs>
+<oui-tabs>
+    <oui-tab></oui-tab>
+    <oui-tab-panel></oui-tab-panel>
+</oui-tabs>
 ```
 
 ## Examples
@@ -36,101 +36,101 @@ import "hexa-ui/tabs";
 
 <Preview
     stack
-    code={`<hx-tabs variant="secondary" value="profile">
-    <hx-tab value="profile">Profile</hx-tab>
-    <hx-tab value="settings">Settings</hx-tab>
-    <hx-tab value="notifications">Notifications</hx-tab>
-    <hx-tab-panel value="profile">Profile</hx-tab-panel>
-    <hx-tab-panel value="settings">Settings</hx-tab-panel>
-    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
-</hx-tabs>
-<hx-separator></hx-separator>
-<hx-tabs variant="button" value="profile">
-    <hx-tab value="profile">Profile</hx-tab>
-    <hx-tab value="settings">Settings</hx-tab>
-    <hx-tab value="notifications">Notifications</hx-tab>
-    <hx-tab-panel value="profile">Profile</hx-tab-panel>
-    <hx-tab-panel value="settings">Settings</hx-tab-panel>
-    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
-</hx-tabs>`}
+    code={`<oui-tabs variant="secondary" value="profile">
+    <oui-tab value="profile">Profile</oui-tab>
+    <oui-tab value="settings">Settings</oui-tab>
+    <oui-tab value="notifications">Notifications</oui-tab>
+    <oui-tab-panel value="profile">Profile</oui-tab-panel>
+    <oui-tab-panel value="settings">Settings</oui-tab-panel>
+    <oui-tab-panel value="notifications">Notifications</oui-tab-panel>
+</oui-tabs>
+<oui-separator></oui-separator>
+<oui-tabs variant="button" value="profile">
+    <oui-tab value="profile">Profile</oui-tab>
+    <oui-tab value="settings">Settings</oui-tab>
+    <oui-tab value="notifications">Notifications</oui-tab>
+    <oui-tab-panel value="profile">Profile</oui-tab-panel>
+    <oui-tab-panel value="settings">Settings</oui-tab-panel>
+    <oui-tab-panel value="notifications">Notifications</oui-tab-panel>
+</oui-tabs>`}
 />
 
 ### Vertical
 
 <Preview
     stack
-    code={`<hx-tabs value="profile" direction="vertical">
-    <hx-tab value="profile">Profile</hx-tab>
-    <hx-tab value="settings">Settings</hx-tab>
-    <hx-tab value="notifications">Notifications</hx-tab>
-    <hx-tab-panel value="profile">Profile</hx-tab-panel>
-    <hx-tab-panel value="settings">Settings</hx-tab-panel>
-    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
-</hx-tabs>
-<hx-separator></hx-separator>
-<hx-tabs variant="secondary" value="profile" direction="vertical">
-    <hx-tab value="profile">Profile</hx-tab>
-    <hx-tab value="settings">Settings</hx-tab>
-    <hx-tab value="notifications">Notifications</hx-tab>
-    <hx-tab-panel value="profile">Profile</hx-tab-panel>
-    <hx-tab-panel value="settings">Settings</hx-tab-panel>
-    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
-</hx-tabs>
-<hx-separator></hx-separator>
-<hx-tabs variant="button" value="profile" direction="vertical">
-    <hx-tab value="profile">Profile</hx-tab>
-    <hx-tab value="settings">Settings</hx-tab>
-    <hx-tab value="notifications">Notifications</hx-tab>
-    <hx-tab-panel value="profile">Profile</hx-tab-panel>
-    <hx-tab-panel value="settings">Settings</hx-tab-panel>
-    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
-</hx-tabs>`}
+    code={`<oui-tabs value="profile" direction="vertical">
+    <oui-tab value="profile">Profile</oui-tab>
+    <oui-tab value="settings">Settings</oui-tab>
+    <oui-tab value="notifications">Notifications</oui-tab>
+    <oui-tab-panel value="profile">Profile</oui-tab-panel>
+    <oui-tab-panel value="settings">Settings</oui-tab-panel>
+    <oui-tab-panel value="notifications">Notifications</oui-tab-panel>
+</oui-tabs>
+<oui-separator></oui-separator>
+<oui-tabs variant="secondary" value="profile" direction="vertical">
+    <oui-tab value="profile">Profile</oui-tab>
+    <oui-tab value="settings">Settings</oui-tab>
+    <oui-tab value="notifications">Notifications</oui-tab>
+    <oui-tab-panel value="profile">Profile</oui-tab-panel>
+    <oui-tab-panel value="settings">Settings</oui-tab-panel>
+    <oui-tab-panel value="notifications">Notifications</oui-tab-panel>
+</oui-tabs>
+<oui-separator></oui-separator>
+<oui-tabs variant="button" value="profile" direction="vertical">
+    <oui-tab value="profile">Profile</oui-tab>
+    <oui-tab value="settings">Settings</oui-tab>
+    <oui-tab value="notifications">Notifications</oui-tab>
+    <oui-tab-panel value="profile">Profile</oui-tab-panel>
+    <oui-tab-panel value="settings">Settings</oui-tab-panel>
+    <oui-tab-panel value="notifications">Notifications</oui-tab-panel>
+</oui-tabs>`}
 />
 
 ### Icon
 
 <Preview
     stack
-    code={`<hx-tabs value="profile">
-    <hx-tab value="profile" data-icon="User">Profile</hx-tab>
-    <hx-tab value="settings" data-icon="Settings">Settings</hx-tab>
-    <hx-tab value="notifications" data-icon="Bell">Notifications</hx-tab>
-    <hx-tab-panel value="profile">Profile</hx-tab-panel>
-    <hx-tab-panel value="settings">Settings</hx-tab-panel>
-    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
-</hx-tabs>
-<hx-separator></hx-separator>
-<hx-tabs variant="secondary" value="profile">
-    <hx-tab value="profile" data-icon="User">Profile</hx-tab>
-    <hx-tab value="settings" data-icon="Settings">Settings</hx-tab>
-    <hx-tab value="notifications" data-icon="Bell">Notifications</hx-tab>
-    <hx-tab-panel value="profile">Profile</hx-tab-panel>
-    <hx-tab-panel value="settings">Settings</hx-tab-panel>
-    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
-</hx-tabs>
-<hx-separator></hx-separator>
-<hx-tabs variant="button" value="profile">
-    <hx-tab value="profile" data-icon="User">Profile</hx-tab>
-    <hx-tab value="settings" data-icon="Settings">Settings</hx-tab>
-    <hx-tab value="notifications" data-icon="Bell">Notifications</hx-tab>
-    <hx-tab-panel value="profile">Profile</hx-tab-panel>
-    <hx-tab-panel value="settings">Settings</hx-tab-panel>
-    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
-</hx-tabs>`}
+    code={`<oui-tabs value="profile">
+    <oui-tab value="profile" data-icon="User">Profile</oui-tab>
+    <oui-tab value="settings" data-icon="Settings">Settings</oui-tab>
+    <oui-tab value="notifications" data-icon="Bell">Notifications</oui-tab>
+    <oui-tab-panel value="profile">Profile</oui-tab-panel>
+    <oui-tab-panel value="settings">Settings</oui-tab-panel>
+    <oui-tab-panel value="notifications">Notifications</oui-tab-panel>
+</oui-tabs>
+<oui-separator></oui-separator>
+<oui-tabs variant="secondary" value="profile">
+    <oui-tab value="profile" data-icon="User">Profile</oui-tab>
+    <oui-tab value="settings" data-icon="Settings">Settings</oui-tab>
+    <oui-tab value="notifications" data-icon="Bell">Notifications</oui-tab>
+    <oui-tab-panel value="profile">Profile</oui-tab-panel>
+    <oui-tab-panel value="settings">Settings</oui-tab-panel>
+    <oui-tab-panel value="notifications">Notifications</oui-tab-panel>
+</oui-tabs>
+<oui-separator></oui-separator>
+<oui-tabs variant="button" value="profile">
+    <oui-tab value="profile" data-icon="User">Profile</oui-tab>
+    <oui-tab value="settings" data-icon="Settings">Settings</oui-tab>
+    <oui-tab value="notifications" data-icon="Bell">Notifications</oui-tab>
+    <oui-tab-panel value="profile">Profile</oui-tab-panel>
+    <oui-tab-panel value="settings">Settings</oui-tab-panel>
+    <oui-tab-panel value="notifications">Notifications</oui-tab-panel>
+</oui-tabs>`}
 />
 
 ### Disabled
 
 <Preview
     stack
-    code={`<hx-tabs value="profile">
-    <hx-tab value="profile">Profile</hx-tab>
-    <hx-tab value="settings">Settings</hx-tab>
-    <hx-tab value="notifications" disabled>Notifications</hx-tab>
-    <hx-tab-panel value="profile">Profile</hx-tab-panel>
-    <hx-tab-panel value="settings">Settings</hx-tab-panel>
-    <hx-tab-panel value="notifications">Notifications</hx-tab-panel>
-</hx-tabs>`}
+    code={`<oui-tabs value="profile">
+    <oui-tab value="profile">Profile</oui-tab>
+    <oui-tab value="settings">Settings</oui-tab>
+    <oui-tab value="notifications" disabled>Notifications</oui-tab>
+    <oui-tab-panel value="profile">Profile</oui-tab-panel>
+    <oui-tab-panel value="settings">Settings</oui-tab-panel>
+    <oui-tab-panel value="notifications">Notifications</oui-tab-panel>
+</oui-tabs>`}
 />
 
 ### Overflow
@@ -139,44 +139,44 @@ A horizontal tab list wider than the component scrolls horizontally.
 
 <Preview
     stack
-    code={`<hx-tabs class="max-w-sm" value="tab-1">
-    <hx-tab value="tab-1">Tab 1</hx-tab>
-    <hx-tab value="tab-2">Tab 2</hx-tab>
-    <hx-tab value="tab-3">Tab 3</hx-tab>
-    <hx-tab value="tab-4">Tab 4</hx-tab>
-    <hx-tab value="tab-5">Tab 5</hx-tab>
-    <hx-tab value="tab-6">Tab 6</hx-tab>
-    <hx-tab value="tab-7">Tab 7</hx-tab>
-    <hx-tab value="tab-8">Tab 8</hx-tab>
-    <hx-tab value="tab-9">Tab 9</hx-tab>
-    <hx-tab value="tab-10">Tab 10</hx-tab>
-</hx-tabs>
-<hx-separator></hx-separator>
-<hx-tabs class="max-w-sm" variant="secondary" value="tab-1">
-    <hx-tab value="tab-1">Tab 1</hx-tab>
-    <hx-tab value="tab-2">Tab 2</hx-tab>
-    <hx-tab value="tab-3">Tab 3</hx-tab>
-    <hx-tab value="tab-4">Tab 4</hx-tab>
-    <hx-tab value="tab-5">Tab 5</hx-tab>
-    <hx-tab value="tab-6">Tab 6</hx-tab>
-    <hx-tab value="tab-7">Tab 7</hx-tab>
-    <hx-tab value="tab-8">Tab 8</hx-tab>
-    <hx-tab value="tab-9">Tab 9</hx-tab>
-    <hx-tab value="tab-10">Tab 10</hx-tab>
-</hx-tabs>
-<hx-separator></hx-separator>
-<hx-tabs class="max-w-sm" variant="button" value="tab-1">
-    <hx-tab value="tab-1">Tab 1</hx-tab>
-    <hx-tab value="tab-2">Tab 2</hx-tab>
-    <hx-tab value="tab-3">Tab 3</hx-tab>
-    <hx-tab value="tab-4">Tab 4</hx-tab>
-    <hx-tab value="tab-5">Tab 5</hx-tab>
-    <hx-tab value="tab-6">Tab 6</hx-tab>
-    <hx-tab value="tab-7">Tab 7</hx-tab>
-    <hx-tab value="tab-8">Tab 8</hx-tab>
-    <hx-tab value="tab-9">Tab 9</hx-tab>
-    <hx-tab value="tab-10">Tab 10</hx-tab>
-</hx-tabs>`}
+    code={`<oui-tabs class="max-w-sm" value="tab-1">
+    <oui-tab value="tab-1">Tab 1</oui-tab>
+    <oui-tab value="tab-2">Tab 2</oui-tab>
+    <oui-tab value="tab-3">Tab 3</oui-tab>
+    <oui-tab value="tab-4">Tab 4</oui-tab>
+    <oui-tab value="tab-5">Tab 5</oui-tab>
+    <oui-tab value="tab-6">Tab 6</oui-tab>
+    <oui-tab value="tab-7">Tab 7</oui-tab>
+    <oui-tab value="tab-8">Tab 8</oui-tab>
+    <oui-tab value="tab-9">Tab 9</oui-tab>
+    <oui-tab value="tab-10">Tab 10</oui-tab>
+</oui-tabs>
+<oui-separator></oui-separator>
+<oui-tabs class="max-w-sm" variant="secondary" value="tab-1">
+    <oui-tab value="tab-1">Tab 1</oui-tab>
+    <oui-tab value="tab-2">Tab 2</oui-tab>
+    <oui-tab value="tab-3">Tab 3</oui-tab>
+    <oui-tab value="tab-4">Tab 4</oui-tab>
+    <oui-tab value="tab-5">Tab 5</oui-tab>
+    <oui-tab value="tab-6">Tab 6</oui-tab>
+    <oui-tab value="tab-7">Tab 7</oui-tab>
+    <oui-tab value="tab-8">Tab 8</oui-tab>
+    <oui-tab value="tab-9">Tab 9</oui-tab>
+    <oui-tab value="tab-10">Tab 10</oui-tab>
+</oui-tabs>
+<oui-separator></oui-separator>
+<oui-tabs class="max-w-sm" variant="button" value="tab-1">
+    <oui-tab value="tab-1">Tab 1</oui-tab>
+    <oui-tab value="tab-2">Tab 2</oui-tab>
+    <oui-tab value="tab-3">Tab 3</oui-tab>
+    <oui-tab value="tab-4">Tab 4</oui-tab>
+    <oui-tab value="tab-5">Tab 5</oui-tab>
+    <oui-tab value="tab-6">Tab 6</oui-tab>
+    <oui-tab value="tab-7">Tab 7</oui-tab>
+    <oui-tab value="tab-8">Tab 8</oui-tab>
+    <oui-tab value="tab-9">Tab 9</oui-tab>
+    <oui-tab value="tab-10">Tab 10</oui-tab>
+</oui-tabs>`}
 />
 
 ## Keyboard
@@ -187,7 +187,7 @@ tabs are skipped. Only the selected tab is in the tab order.
 
 ## API
 
-### hx-tabs
+### oui-tabs
 
 #### Properties
 
@@ -199,46 +199,46 @@ tabs are skipped. Only the selected tab is in the tab order.
 
 #### Events
 
-| Name            | Description                                                 |
-| --------------- | ----------------------------------------------------------- |
-| `hx-tab-change` | The selected tab changed; `event.detail.value` is its value |
+| Name             | Description                                                 |
+| ---------------- | ----------------------------------------------------------- |
+| `oui-tab-change` | The selected tab changed; `event.detail.value` is its value |
 
 #### Slots
 
-| Name      | Description                                                                       |
-| --------- | --------------------------------------------------------------------------------- |
-| (default) | The `hx-tab` and `hx-tab-panel` elements (tabs move to the tab list on their own) |
+| Name      | Description                                                                         |
+| --------- | ----------------------------------------------------------------------------------- |
+| (default) | The `oui-tab` and `oui-tab-panel` elements (tabs move to the tab list on their own) |
 
 #### CSS custom properties
 
-| Name                | Default                                 | Description                    |
-| ------------------- | --------------------------------------- | ------------------------------ |
-| `--hx-height-tabs`  | `var(--hx-height-control)`              | Height of the tab list         |
-| `--hx-spacing-tabs` | `0.25rem`                               | Padding of the tab list        |
-| `--hx-spacing-tab`  | `var(--hx-spacing-control)`             | Horizontal padding of each tab |
-| `--hx-radius-tabs`  | `calc(var(--hx-radius-tab) + 0.125rem)` | Border radius of the tab list  |
-| `--hx-radius-tab`   | `var(--hx-radius-control)`              | Border radius of each tab      |
+| Name                 | Default                                  | Description                    |
+| -------------------- | ---------------------------------------- | ------------------------------ |
+| `--oui-height-tabs`  | `var(--oui-height-control)`              | Height of the tab list         |
+| `--oui-spacing-tabs` | `0.25rem`                                | Padding of the tab list        |
+| `--oui-spacing-tab`  | `var(--oui-spacing-control)`             | Horizontal padding of each tab |
+| `--oui-radius-tabs`  | `calc(var(--oui-radius-tab) + 0.125rem)` | Border radius of the tab list  |
+| `--oui-radius-tab`   | `var(--oui-radius-control)`              | Border radius of each tab      |
 
 #### CSS parts
 
-| Name   | Description                                               |
-| ------ | --------------------------------------------------------- |
-| `nav`  | The tab list                                              |
-| `body` | The panels wrapper (not displayed without `hx-tab-panel`) |
+| Name   | Description                                                |
+| ------ | ---------------------------------------------------------- |
+| `nav`  | The tab list                                               |
+| `body` | The panels wrapper (not displayed without `oui-tab-panel`) |
 
-### hx-tab
+### oui-tab
 
 #### Properties
 
-| Property        | Attribute        | Type                                   | Default        | Description                                                |
-| --------------- | ---------------- | -------------------------------------- | -------------- | ---------------------------------------------------------- |
-| `value`         | `value`          | `string`                               | `""`           | Matches the `value` of its `hx-tab-panel`                  |
-| `selected`      | `selected`       | `boolean`                              | `false`        | Whether the tab is selected (set by the `hx-tabs`)         |
-| `disabled`      | `disabled`       | `boolean`                              | `false`        | Prevents selecting the tab                                 |
-| `variant`       | `variant`        | `"default" \| "secondary" \| "button"` | `"default"`    | Visual style (set by the `hx-tabs`)                        |
-| `direction`     | `direction`      | `"horizontal" \| "vertical"`           | `"horizontal"` | Tab list above or beside the panels (set by the `hx-tabs`) |
-| `icon`          | —                | `IconNode`                             | —              | Lucide icon, set as a JS property                          |
-| `iconPlacement` | `icon-placement` | `"left" \| "right"`                    | `"left"`       | Side of the icon relative to the label                     |
+| Property        | Attribute        | Type                                   | Default        | Description                                                 |
+| --------------- | ---------------- | -------------------------------------- | -------------- | ----------------------------------------------------------- |
+| `value`         | `value`          | `string`                               | `""`           | Matches the `value` of its `oui-tab-panel`                  |
+| `selected`      | `selected`       | `boolean`                              | `false`        | Whether the tab is selected (set by the `oui-tabs`)         |
+| `disabled`      | `disabled`       | `boolean`                              | `false`        | Prevents selecting the tab                                  |
+| `variant`       | `variant`        | `"default" \| "secondary" \| "button"` | `"default"`    | Visual style (set by the `oui-tabs`)                        |
+| `direction`     | `direction`      | `"horizontal" \| "vertical"`           | `"horizontal"` | Tab list above or beside the panels (set by the `oui-tabs`) |
+| `icon`          | —                | `IconNode`                             | —              | Lucide icon, set as a JS property                           |
+| `iconPlacement` | `icon-placement` | `"left" \| "right"`                    | `"left"`       | Side of the icon relative to the label                      |
 
 #### Slots
 
@@ -248,18 +248,18 @@ tabs are skipped. Only the selected tab is in the tab order.
 
 #### CSS parts
 
-| Name   | Description                                     |
-| ------ | ----------------------------------------------- |
-| `base` | The tab wrapper                                 |
-| `icon` | The `hx-icon` rendered from the `icon` property |
+| Name   | Description                                      |
+| ------ | ------------------------------------------------ |
+| `base` | The tab wrapper                                  |
+| `icon` | The `oui-icon` rendered from the `icon` property |
 
-### hx-tab-panel
+### oui-tab-panel
 
 #### Properties
 
-| Property | Attribute | Type     | Default | Description                         |
-| -------- | --------- | -------- | ------- | ----------------------------------- |
-| `value`  | `value`   | `string` | `""`    | Matches the `value` of its `hx-tab` |
+| Property | Attribute | Type     | Default | Description                          |
+| -------- | --------- | -------- | ------- | ------------------------------------ |
+| `value`  | `value`   | `string` | `""`    | Matches the `value` of its `oui-tab` |
 
 #### Slots
 

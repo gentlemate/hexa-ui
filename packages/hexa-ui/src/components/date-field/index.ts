@@ -1,1 +1,1 @@
-export { HxDateField } from "./hx-date-field.js";
+export { OuiDateField } from "./oui-date-field.js";

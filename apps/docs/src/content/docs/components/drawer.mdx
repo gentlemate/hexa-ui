@@ -8,40 +8,40 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/drawer";
+import "onent-ui/drawer";
 ```
 
 <Preview
-    code={`<hx-drawer>
-    <hx-button slot="trigger">Open</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Create project</hx-drawer-title>
-        <hx-drawer-description>Create a new project in one click.</hx-drawer-description>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-form-field label="Name">
-            <hx-input></hx-input>
-        </hx-form-field>
-    </hx-drawer-content>
-    <hx-drawer-footer>
-        <hx-button data-close>Create</hx-button>
-    </hx-drawer-footer>
-</hx-drawer>`}
+    code={`<oui-drawer>
+    <oui-button slot="trigger">Open</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Create project</oui-drawer-title>
+        <oui-drawer-description>Create a new project in one click.</oui-drawer-description>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-form-field label="Name">
+            <oui-input></oui-input>
+        </oui-form-field>
+    </oui-drawer-content>
+    <oui-drawer-footer>
+        <oui-button data-close>Create</oui-button>
+    </oui-drawer-footer>
+</oui-drawer>`}
 />
 
 ## Structure
 
 ```html
-<hx-drawer>
-    <hx-button slot="trigger"></hx-button>
+<oui-drawer>
+    <oui-button slot="trigger"></oui-button>
 
-    <hx-drawer-header>
-        <hx-drawer-title></hx-drawer-title>
-        <hx-drawer-description></hx-drawer-description>
-    </hx-drawer-header>
-    <hx-drawer-content></hx-drawer-content>
-    <hx-drawer-footer></hx-drawer-footer>
-</hx-drawer>
+    <oui-drawer-header>
+        <oui-drawer-title></oui-drawer-title>
+        <oui-drawer-description></oui-drawer-description>
+    </oui-drawer-header>
+    <oui-drawer-content></oui-drawer-content>
+    <oui-drawer-footer></oui-drawer-footer>
+</oui-drawer>
 ```
 
 ## Examples
@@ -49,102 +49,102 @@ import "hexa-ui/drawer";
 ### Placement
 
 <Preview
-    code={`<hx-drawer placement="top">
-    <hx-button slot="trigger">Top</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Top</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-16"></hx-skeleton>
-    </hx-drawer-content>
-    <hx-drawer-footer>
-        <hx-button data-close>Close</hx-button>
-    </hx-drawer-footer>
-</hx-drawer>
-<hx-drawer placement="right">
-    <hx-button slot="trigger">Right</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Right</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-    <hx-drawer-footer>
-        <hx-button data-close>Close</hx-button>
-    </hx-drawer-footer>
-</hx-drawer>
-<hx-drawer placement="bottom">
-    <hx-button slot="trigger">Bottom</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Bottom</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-    <hx-drawer-footer>
-        <hx-button data-close>Close</hx-button>
-    </hx-drawer-footer>
-</hx-drawer>
-<hx-drawer placement="left">
-    <hx-button slot="trigger">Left</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Left</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-    <hx-drawer-footer>
-        <hx-button data-close>Close</hx-button>
-    </hx-drawer-footer>
-</hx-drawer>`}
+    code={`<oui-drawer placement="top">
+    <oui-button slot="trigger">Top</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Top</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-16"></oui-skeleton>
+    </oui-drawer-content>
+    <oui-drawer-footer>
+        <oui-button data-close>Close</oui-button>
+    </oui-drawer-footer>
+</oui-drawer>
+<oui-drawer placement="right">
+    <oui-button slot="trigger">Right</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Right</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+    <oui-drawer-footer>
+        <oui-button data-close>Close</oui-button>
+    </oui-drawer-footer>
+</oui-drawer>
+<oui-drawer placement="bottom">
+    <oui-button slot="trigger">Bottom</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Bottom</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+    <oui-drawer-footer>
+        <oui-button data-close>Close</oui-button>
+    </oui-drawer-footer>
+</oui-drawer>
+<oui-drawer placement="left">
+    <oui-button slot="trigger">Left</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Left</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+    <oui-drawer-footer>
+        <oui-button data-close>Close</oui-button>
+    </oui-drawer-footer>
+</oui-drawer>`}
 />
 
 ### Variant
 
-`secondary` keeps the drawer against its edge but leaves a margin on both sides (`--hx-inset-drawer`, 1rem) and rounds the inner corners (`--hx-radius-drawer`).
+`secondary` keeps the drawer against its edge but leaves a margin on both sides (`--oui-inset-drawer`, 1rem) and rounds the inner corners (`--oui-radius-drawer`).
 
 <Preview
-    code={`<hx-drawer variant="secondary" placement="right">
-    <hx-button slot="trigger">Right</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Right</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>
-<hx-drawer variant="secondary" placement="bottom">
-    <hx-button slot="trigger">Bottom</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Bottom</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-16"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>`}
+    code={`<oui-drawer variant="secondary" placement="right">
+    <oui-button slot="trigger">Right</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Right</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>
+<oui-drawer variant="secondary" placement="bottom">
+    <oui-button slot="trigger">Bottom</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Bottom</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-16"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>`}
 />
 
-With `--hx-inset-drawer: auto`, the drawer takes the size of its content and is centered along its edge.
+With `--oui-inset-drawer: auto`, the drawer takes the size of its content and is centered along its edge.
 
 <Preview
-    code={`<hx-drawer variant="secondary" placement="right" style="--hx-inset-drawer: auto">
-    <hx-button slot="trigger">Right</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Right</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>
-<hx-drawer variant="secondary" placement="bottom" style="--hx-inset-drawer: auto">
-    <hx-button slot="trigger">Bottom</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Bottom</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-16 w-80"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>`}
+    code={`<oui-drawer variant="secondary" placement="right" style="--oui-inset-drawer: auto">
+    <oui-button slot="trigger">Right</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Right</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>
+<oui-drawer variant="secondary" placement="bottom" style="--oui-inset-drawer: auto">
+    <oui-button slot="trigger">Bottom</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Bottom</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-16 w-80"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>`}
 />
 
 ### Size
@@ -160,149 +160,149 @@ With `--hx-inset-drawer: auto`, the drawer takes the size of its content and is 
 | `xl`   | 80rem                   | 80% of the screen        |
 | `full` | 100%                    | 100%                     |
 
-Without `size`, the width is `--hx-width-drawer` (36rem, like `md`) and the height `--hx-height-drawer` (the height of the content). Except for `full`, the drawer stays within `--hx-max-width-drawer` and `--hx-max-height-drawer`.
+Without `size`, the width is `--oui-width-drawer` (36rem, like `md`) and the height `--oui-height-drawer` (the height of the content). Except for `full`, the drawer stays within `--oui-max-width-drawer` and `--oui-max-height-drawer`.
 
 #### Width
 
 <Preview
-    code={`<hx-drawer size="xs">
-    <hx-button slot="trigger">xs</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>xs</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>
-<hx-drawer size="sm">
-    <hx-button slot="trigger">sm</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>sm</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>
-<hx-drawer size="md">
-    <hx-button slot="trigger">md</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>md</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>
-<hx-drawer size="lg">
-    <hx-button slot="trigger">lg</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>lg</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>
-<hx-drawer size="xl">
-    <hx-button slot="trigger">xl</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>xl</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>
-<hx-drawer size="full">
-    <hx-button slot="trigger">full</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>full</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>`}
+    code={`<oui-drawer size="xs">
+    <oui-button slot="trigger">xs</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>xs</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>
+<oui-drawer size="sm">
+    <oui-button slot="trigger">sm</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>sm</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>
+<oui-drawer size="md">
+    <oui-button slot="trigger">md</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>md</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>
+<oui-drawer size="lg">
+    <oui-button slot="trigger">lg</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>lg</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>
+<oui-drawer size="xl">
+    <oui-button slot="trigger">xl</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>xl</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>
+<oui-drawer size="full">
+    <oui-button slot="trigger">full</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>full</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>`}
 />
 
 #### Height
 
 <Preview
-    code={`<hx-drawer placement="bottom" size="xs">
-    <hx-button slot="trigger">xs</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>xs</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-16"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>
-<hx-drawer placement="bottom" size="sm">
-    <hx-button slot="trigger">sm</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>sm</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-16"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>
-<hx-drawer placement="bottom" size="md">
-    <hx-button slot="trigger">md</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>md</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-16"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>
-<hx-drawer placement="bottom" size="lg">
-    <hx-button slot="trigger">lg</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>lg</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-16"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>
-<hx-drawer placement="bottom" size="xl">
-    <hx-button slot="trigger">xl</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>xl</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-16"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>
-<hx-drawer placement="bottom" size="full">
-    <hx-button slot="trigger">full</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>full</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-16"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>`}
+    code={`<oui-drawer placement="bottom" size="xs">
+    <oui-button slot="trigger">xs</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>xs</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-16"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>
+<oui-drawer placement="bottom" size="sm">
+    <oui-button slot="trigger">sm</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>sm</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-16"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>
+<oui-drawer placement="bottom" size="md">
+    <oui-button slot="trigger">md</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>md</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-16"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>
+<oui-drawer placement="bottom" size="lg">
+    <oui-button slot="trigger">lg</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>lg</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-16"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>
+<oui-drawer placement="bottom" size="xl">
+    <oui-button slot="trigger">xl</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>xl</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-16"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>
+<oui-drawer placement="bottom" size="full">
+    <oui-button slot="trigger">full</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>full</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-16"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>`}
 />
 
 ### Resizable
 
-`resizable` adds a handle on the inner edge. Drag it, or focus it and use the arrow keys (<kbd>Home</kbd> and <kbd>End</kbd> jump to the bounds). The size stays between `--hx-min-width-drawer` and `--hx-max-width-drawer` on the sides, `--hx-min-height-drawer` and `--hx-max-height-drawer` at the top and bottom. `hx-resize` gives the new size to save it.
+`resizable` adds a handle on the inner edge. Drag it, or focus it and use the arrow keys (<kbd>Home</kbd> and <kbd>End</kbd> jump to the bounds). The size stays between `--oui-min-width-drawer` and `--oui-max-width-drawer` on the sides, `--oui-min-height-drawer` and `--oui-max-height-drawer` at the top and bottom. `oui-resize` gives the new size to save it.
 
 <Preview
-    code={`<hx-drawer resizable>
-    <hx-button slot="trigger">Right</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Resizable</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>
-<hx-drawer placement="bottom" resizable>
-    <hx-button slot="trigger">Bottom</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Resizable</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>`}
+    code={`<oui-drawer resizable>
+    <oui-button slot="trigger">Right</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Resizable</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>
+<oui-drawer placement="bottom" resizable>
+    <oui-button slot="trigger">Bottom</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Resizable</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>`}
 />
 
 ### Persistent
@@ -310,17 +310,17 @@ Without `size`, the width is `--hx-width-drawer` (36rem, like `md`) and the heig
 `persistent` ignores backdrop clicks and `without-close` removes the close button: the drawer only closes through its actions or <kbd>Escape</kbd>.
 
 <Preview
-    code={`<hx-drawer persistent without-close>
-    <hx-button slot="trigger" variant="destructive">Delete</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Delete project?</hx-drawer-title>
-        <hx-drawer-description>This action cannot be undone.</hx-drawer-description>
-    </hx-drawer-header>
-    <hx-drawer-footer>
-        <hx-button variant="outline" data-close>Cancel</hx-button>
-        <hx-button variant="destructive" data-close>Delete</hx-button>
-    </hx-drawer-footer>
-</hx-drawer>`}
+    code={`<oui-drawer persistent without-close>
+    <oui-button slot="trigger" variant="destructive">Delete</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Delete project?</oui-drawer-title>
+        <oui-drawer-description>This action cannot be undone.</oui-drawer-description>
+    </oui-drawer-header>
+    <oui-drawer-footer>
+        <oui-button variant="outline" data-close>Cancel</oui-button>
+        <oui-button variant="destructive" data-close>Delete</oui-button>
+    </oui-drawer-footer>
+</oui-drawer>`}
 />
 
 ### Modeless
@@ -328,16 +328,16 @@ Without `size`, the width is `--hx-width-drawer` (36rem, like `md`) and the heig
 `modeless` opens the drawer without a backdrop: the rest of the page stays interactive and scrollable, and the drawer only closes through its close button or its actions.
 
 <Preview
-    code={`<hx-drawer modeless>
-    <hx-button slot="trigger">Modeless</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Modeless</hx-drawer-title>
-        <hx-drawer-description>The page behind stays usable.</hx-drawer-description>
-    </hx-drawer-header>
-    <hx-drawer-content>
-        <hx-skeleton class="h-32"></hx-skeleton>
-    </hx-drawer-content>
-</hx-drawer>`}
+    code={`<oui-drawer modeless>
+    <oui-button slot="trigger">Modeless</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Modeless</oui-drawer-title>
+        <oui-drawer-description>The page behind stays usable.</oui-drawer-description>
+    </oui-drawer-header>
+    <oui-drawer-content>
+        <oui-skeleton class="h-32"></oui-skeleton>
+    </oui-drawer-content>
+</oui-drawer>`}
 />
 
 ### Scroll
@@ -345,144 +345,144 @@ Without `size`, the width is `--hx-width-drawer` (36rem, like `md`) and the heig
 The content scrolls when it overflows.
 
 <Preview
-    code={`<hx-drawer>
-    <hx-button slot="trigger">Terms of service</hx-button>
-    <hx-drawer-header>
-        <hx-drawer-title>Terms of service</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-content>
+    code={`<oui-drawer>
+    <oui-button slot="trigger">Terms of service</oui-button>
+    <oui-drawer-header>
+        <oui-drawer-title>Terms of service</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-content>
         <div class="flex flex-col gap-6">
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
             <div class="flex flex-col gap-2">
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4"></hx-skeleton>
-                <hx-skeleton class="h-4 w-2/3"></hx-skeleton>
-                <hx-skeleton class="h-4 w-1/3"></hx-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4"></oui-skeleton>
+                <oui-skeleton class="h-4 w-2/3"></oui-skeleton>
+                <oui-skeleton class="h-4 w-1/3"></oui-skeleton>
             </div>
         </div>
-    </hx-drawer-content>
-    <hx-drawer-footer>
-        <hx-button data-close>Accept</hx-button>
-    </hx-drawer-footer>
-</hx-drawer>`}
+    </oui-drawer-content>
+    <oui-drawer-footer>
+        <oui-button data-close>Accept</oui-button>
+    </oui-drawer-footer>
+</oui-drawer>`}
 />
 
 ### Opening from code
 
 <Preview
-    code={`<hx-drawer id="welcome">
-    <hx-drawer-header>
-        <hx-drawer-title>Welcome</hx-drawer-title>
-    </hx-drawer-header>
-    <hx-drawer-footer>
-        <hx-button data-close>Close</hx-button>
-    </hx-drawer-footer>
-</hx-drawer>
-<hx-button onclick="document.querySelector('#welcome').show()">Open</hx-button>`}
+    code={`<oui-drawer id="welcome">
+    <oui-drawer-header>
+        <oui-drawer-title>Welcome</oui-drawer-title>
+    </oui-drawer-header>
+    <oui-drawer-footer>
+        <oui-button data-close>Close</oui-button>
+    </oui-drawer-footer>
+</oui-drawer>
+<oui-button onclick="document.querySelector('#welcome').show()">Open</oui-button>`}
 />
 
 ## Usage
 
-The drawer closes on <kbd>Escape</kbd>, on a backdrop click (unless `persistent`), with the close button and on a click on any element with a `data-close` attribute. All of them go through `hide()`, so `hx-hide` can cancel them.
+The drawer closes on <kbd>Escape</kbd>, on a backdrop click (unless `persistent`), with the close button and on a click on any element with a `data-close` attribute. All of them go through `hide()`, so `oui-hide` can cancel them.
 
 While open, the rest of the page is inert and does not scroll. On close, the focus returns to the element that had it before opening. The title and the description label and describe the dialog; without a title, `label` does.
 
 ## API
 
-### hx-drawer
+### oui-drawer
 
 #### Properties
 
-| Property       | Attribute       | Type                                             | Default     | Description                                                                                                                                                                                   |
-| -------------- | --------------- | ------------------------------------------------ | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `variant`      | `variant`       | `"default" \| "secondary"`                       | `"default"` | Visual style. `secondary` leaves a margin on both sides along the edge and rounds the inner corners                                                                                           |
-| `placement`    | `placement`     | `"top" \| "right" \| "bottom" \| "left"`         | `"right"`   | Edge of the screen the drawer slides in from                                                                                                                                                  |
-| `size`         | `size`          | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "full"` | —           | Width with `left` and `right` (`xs` 16rem to `xl` 80rem), height with `top` and `bottom` (`xs` 20% to `xl` 80% of the screen). Without it, `--hx-width-drawer` and `--hx-height-drawer` apply |
-| `resizable`    | `resizable`     | `boolean`                                        | `false`     | Adds a handle on the inner edge to resize the drawer with the pointer or the arrow keys                                                                                                       |
-| `label`        | `label`         | `string`                                         | `""`        | Accessible name of the dialog when there is no title                                                                                                                                          |
-| `persistent`   | `persistent`    | `boolean`                                        | `false`     | Ignores backdrop clicks                                                                                                                                                                       |
-| `withoutClose` | `without-close` | `boolean`                                        | `false`     | Hides the close button                                                                                                                                                                        |
-| `modeless`     | `modeless`      | `boolean`                                        | `false`     | Opens without a backdrop and keeps the rest of the page interactive and scrollable                                                                                                            |
-| `open`         | `open`          | `boolean`                                        | `false`     | Whether it is open. Setting it directly skips `hx-show` / `hx-hide`                                                                                                                           |
+| Property       | Attribute       | Type                                             | Default     | Description                                                                                                                                                                                     |
+| -------------- | --------------- | ------------------------------------------------ | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `variant`      | `variant`       | `"default" \| "secondary"`                       | `"default"` | Visual style. `secondary` leaves a margin on both sides along the edge and rounds the inner corners                                                                                             |
+| `placement`    | `placement`     | `"top" \| "right" \| "bottom" \| "left"`         | `"right"`   | Edge of the screen the drawer slides in from                                                                                                                                                    |
+| `size`         | `size`          | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "full"` | —           | Width with `left` and `right` (`xs` 16rem to `xl` 80rem), height with `top` and `bottom` (`xs` 20% to `xl` 80% of the screen). Without it, `--oui-width-drawer` and `--oui-height-drawer` apply |
+| `resizable`    | `resizable`     | `boolean`                                        | `false`     | Adds a handle on the inner edge to resize the drawer with the pointer or the arrow keys                                                                                                         |
+| `label`        | `label`         | `string`                                         | `""`        | Accessible name of the dialog when there is no title                                                                                                                                            |
+| `persistent`   | `persistent`    | `boolean`                                        | `false`     | Ignores backdrop clicks                                                                                                                                                                         |
+| `withoutClose` | `without-close` | `boolean`                                        | `false`     | Hides the close button                                                                                                                                                                          |
+| `modeless`     | `modeless`      | `boolean`                                        | `false`     | Opens without a backdrop and keeps the rest of the page interactive and scrollable                                                                                                              |
+| `open`         | `open`          | `boolean`                                        | `false`     | Whether it is open. Setting it directly skips `oui-show` / `oui-hide`                                                                                                                           |
 
 #### Methods
 
-| Name     | Description                 |
-| -------- | --------------------------- |
-| `show()` | Opens it (fires `hx-show`)  |
-| `hide()` | Closes it (fires `hx-hide`) |
+| Name     | Description                  |
+| -------- | ---------------------------- |
+| `show()` | Opens it (fires `oui-show`)  |
+| `hide()` | Closes it (fires `oui-hide`) |
 
 #### Events
 
-| Name            | Description                                                                                                                                                      |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `hx-show`       | The drawer is about to open. Cancelable                                                                                                                          |
-| `hx-after-show` | The drawer is open and its enter animation finished                                                                                                              |
-| `hx-hide`       | The drawer is about to close (Escape, backdrop, close button, `data-close`…). Cancelable                                                                         |
-| `hx-after-hide` | The drawer is closed and its exit animation finished                                                                                                             |
-| `hx-resize`     | The drawer was resized, once the handle is released or from the keyboard. `detail.size` is the new width (`left`, `right`) or height (`top`, `bottom`) in pixels |
+| Name             | Description                                                                                                                                                      |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `oui-show`       | The drawer is about to open. Cancelable                                                                                                                          |
+| `oui-after-show` | The drawer is open and its enter animation finished                                                                                                              |
+| `oui-hide`       | The drawer is about to close (Escape, backdrop, close button, `data-close`…). Cancelable                                                                         |
+| `oui-after-hide` | The drawer is closed and its exit animation finished                                                                                                             |
+| `oui-resize`     | The drawer was resized, once the handle is released or from the keyboard. `detail.size` is the new width (`left`, `right`) or height (`top`, `bottom`) in pixels |
 
 #### Slots
 
-| Name      | Description                                                                                                  |
-| --------- | ------------------------------------------------------------------------------------------------------------ |
-| `trigger` | The element that opens the drawer on click (e.g. an `hx-button`). Optional: `show()` and `open` also open it |
-| (default) | The drawer sections: `hx-drawer-header`, `hx-drawer-content` and `hx-drawer-footer`                          |
+| Name      | Description                                                                                                   |
+| --------- | ------------------------------------------------------------------------------------------------------------- |
+| `trigger` | The element that opens the drawer on click (e.g. an `oui-button`). Optional: `show()` and `open` also open it |
+| (default) | The drawer sections: `oui-drawer-header`, `oui-drawer-content` and `oui-drawer-footer`                        |
 
 #### CSS custom properties
 
-| Name                     | Default                   | Description                                                                                                                |
-| ------------------------ | ------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `--hx-spacing-drawer`    | `var(--hx-spacing-panel)` | Padding                                                                                                                    |
-| `--hx-radius-drawer`     | `var(--hx-radius-panel)`  | Border radius of the inner corners with `secondary`                                                                        |
-| `--hx-inset-drawer`      | `1rem`                    | Margin on both sides along the edge with `secondary`. `auto` sizes the drawer to its content and centers it along the edge |
-| `--hx-width-drawer`      | `36rem`                   | Width with `left` and `right`                                                                                              |
-| `--hx-min-width-drawer`  | `16rem`                   | Minimum width when resizing                                                                                                |
-| `--hx-max-width-drawer`  | `calc(100% - 3rem)`       | Maximum width                                                                                                              |
-| `--hx-height-drawer`     | `auto`                    | Height with `top` and `bottom`                                                                                             |
-| `--hx-min-height-drawer` | `10rem`                   | Minimum height when resizing                                                                                               |
-| `--hx-max-height-drawer` | `calc(100% - 3rem)`       | Maximum height                                                                                                             |
+| Name                      | Default                    | Description                                                                                                                |
+| ------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `--oui-spacing-drawer`    | `var(--oui-spacing-panel)` | Padding                                                                                                                    |
+| `--oui-radius-drawer`     | `var(--oui-radius-panel)`  | Border radius of the inner corners with `secondary`                                                                        |
+| `--oui-inset-drawer`      | `1rem`                     | Margin on both sides along the edge with `secondary`. `auto` sizes the drawer to its content and centers it along the edge |
+| `--oui-width-drawer`      | `36rem`                    | Width with `left` and `right`                                                                                              |
+| `--oui-min-width-drawer`  | `16rem`                    | Minimum width when resizing                                                                                                |
+| `--oui-max-width-drawer`  | `calc(100% - 3rem)`        | Maximum width                                                                                                              |
+| `--oui-height-drawer`     | `auto`                     | Height with `top` and `bottom`                                                                                             |
+| `--oui-min-height-drawer` | `10rem`                    | Minimum height when resizing                                                                                               |
+| `--oui-max-height-drawer` | `calc(100% - 3rem)`        | Maximum height                                                                                                             |
 
 #### CSS parts
 
@@ -492,15 +492,15 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 | `close-button` | The close button (not rendered with `without-close`)                  |
 | `handle`       | The resize handle (rendered with `resizable`)                         |
 
-### hx-drawer-header
+### oui-drawer-header
 
 #### Slots
 
-| Name      | Description                                                                    |
-| --------- | ------------------------------------------------------------------------------ |
-| (default) | The `hx-drawer-title` and `hx-drawer-description` elements, or a custom header |
+| Name      | Description                                                                      |
+| --------- | -------------------------------------------------------------------------------- |
+| (default) | The `oui-drawer-title` and `oui-drawer-description` elements, or a custom header |
 
-### hx-drawer-title
+### oui-drawer-title
 
 #### Slots
 
@@ -508,7 +508,7 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 | --------- | -------------------------------------- |
 | (default) | The drawer title. It labels the dialog |
 
-### hx-drawer-description
+### oui-drawer-description
 
 #### Slots
 
@@ -516,7 +516,7 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 | --------- | ----------------------------------------------------- |
 | (default) | A short text under the title. It describes the dialog |
 
-### hx-drawer-content
+### oui-drawer-content
 
 #### Slots
 
@@ -524,7 +524,7 @@ While open, the rest of the page is inert and does not scroll. On close, the foc
 | --------- | ------------------------------------------------ |
 | (default) | The drawer content, scrollable when it overflows |
 
-### hx-drawer-footer
+### oui-drawer-footer
 
 #### Slots
 

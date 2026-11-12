@@ -8,28 +8,28 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/form-field";
+import "onent-ui/form-field";
 ```
 
 <Preview
     stack
-    code={`<hx-form-field
+    code={`<oui-form-field
     label="Email"
     description="Your e-mail address."
     help="Used to sign in"
     hint="We never share it."
     required
 >
-    <hx-input type="email" placeholder="you@example.com"></hx-input>
-</hx-form-field>`}
+    <oui-input type="email" placeholder="you@example.com"></oui-input>
+</oui-form-field>`}
 />
 
 ## Structure
 
 ```html
-<hx-form-field>
-    <hx-input></hx-input>
-</hx-form-field>
+<oui-form-field>
+    <oui-input></oui-input>
+</oui-form-field>
 ```
 
 The first form control inside the field receives `name`, `required` and its accessible name. It can be wrapped in other elements.
@@ -42,9 +42,9 @@ The first form control inside the field receives `name`, `required` and its acce
 
 <Preview
     stack
-    code={`<hx-form-field label="Label" description="Description, under the label.">
-    <hx-input></hx-input>
-</hx-form-field>`}
+    code={`<oui-form-field label="Label" description="Description, under the label.">
+    <oui-input></oui-input>
+</oui-form-field>`}
 />
 
 ### Help
@@ -53,9 +53,9 @@ The first form control inside the field receives `name`, `required` and its acce
 
 <Preview
     stack
-    code={`<hx-form-field label="Label" help="Help, in a tooltip">
-    <hx-input></hx-input>
-</hx-form-field>`}
+    code={`<oui-form-field label="Label" help="Help, in a tooltip">
+    <oui-input></oui-input>
+</oui-form-field>`}
 />
 
 ### Hint
@@ -64,20 +64,20 @@ The first form control inside the field receives `name`, `required` and its acce
 
 <Preview
     stack
-    code={`<hx-form-field label="Label" hint="Hint, under the control.">
-    <hx-input></hx-input>
-</hx-form-field>`}
+    code={`<oui-form-field label="Label" hint="Hint, under the control.">
+    <oui-input></oui-input>
+</oui-form-field>`}
 />
 
 ### Error
 
-`error` is displayed under the control, in place of `hint`, and marks the control as invalid. Inside an [`hx-form`](../form/), `error` is set by the validation.
+`error` is displayed under the control, in place of `hint`, and marks the control as invalid. Inside an [`oui-form`](../form/), `error` is set by the validation.
 
 <Preview
     stack
-    code={`<hx-form-field label="Label" error="Error, under the control.">
-    <hx-input></hx-input>
-</hx-form-field>`}
+    code={`<oui-form-field label="Label" error="Error, under the control.">
+    <oui-input></oui-input>
+</oui-form-field>`}
 />
 
 ### Required
@@ -86,9 +86,9 @@ The first form control inside the field receives `name`, `required` and its acce
 
 <Preview
     stack
-    code={`<hx-form-field label="Label" required>
-    <hx-input></hx-input>
-</hx-form-field>`}
+    code={`<oui-form-field label="Label" required>
+    <oui-input></oui-input>
+</oui-form-field>`}
 />
 
 ### Rich content
@@ -97,11 +97,11 @@ The `label`, `description`, `help`, `hint` and `error` slots replace the propert
 
 <Preview
     stack
-    code={`<hx-form-field error="invalid">
-    <span slot="label">Password <hx-badge variant="destructive">Weak</hx-badge></span>
+    code={`<oui-form-field error="invalid">
+    <span slot="label">Password <oui-badge variant="destructive">Weak</oui-badge></span>
     <span slot="error">Too short, see the <a href="#rich-content" class="underline">password rules</a>.</span>
-    <hx-input type="password" value="1234"></hx-input>
-</hx-form-field>`}
+    <oui-input type="password" value="1234"></oui-input>
+</oui-form-field>`}
 />
 
 ### Checkbox and switch
@@ -110,63 +110,63 @@ Without `label`, the field only adds its messages to the control.
 
 <Preview
     stack
-    code={`<hx-form-field error="You must accept the terms.">
-    <hx-checkbox>I accept the terms</hx-checkbox>
-</hx-form-field>
-<hx-form-field label="Notifications" hint="Sent by email.">
-    <hx-switch>Enabled</hx-switch>
-</hx-form-field>`}
+    code={`<oui-form-field error="You must accept the terms.">
+    <oui-checkbox>I accept the terms</oui-checkbox>
+</oui-form-field>
+<oui-form-field label="Notifications" hint="Sent by email.">
+    <oui-switch>Enabled</oui-switch>
+</oui-form-field>`}
 />
 
 ### Slider
 
-The formatted value of an `hx-slider` is displayed at the end of the label row.
+The formatted value of an `oui-slider` is displayed at the end of the label row.
 
 <Preview
     stack
-    code={`<hx-form-field label="Volume" help="Output level">
-    <hx-slider value="50"></hx-slider>
-</hx-form-field>`}
+    code={`<oui-form-field label="Volume" help="Output level">
+    <oui-slider value="50"></oui-slider>
+</oui-form-field>`}
 />
 
 ### Eager validation
 
-Inside an [`hx-form`](../form/), validation on `input` waits for the first blur of the field. `eager-validation` removes this wait.
+Inside an [`oui-form`](../form/), validation on `input` waits for the first blur of the field. `eager-validation` removes this wait.
 
 ```html
-<hx-form-field name="login" label="Login" eager-validation>
-    <hx-input></hx-input>
-</hx-form-field>
+<oui-form-field name="login" label="Login" eager-validation>
+    <oui-input></oui-input>
+</oui-form-field>
 ```
 
 ## Usage
 
 A click on the label focuses the control. The label, the description, the hint and the error are also exposed to assistive technologies through the control.
 
-A control does not need a field. Without one, `aria-label` or an [`hx-label`](../label/) gives it its accessible name, and `invalid` marks it as invalid without any message.
+A control does not need a field. Without one, `aria-label` or an [`oui-label`](../label/) gives it its accessible name, and `invalid` marks it as invalid without any message.
 
-<Preview stack code={`<hx-input aria-label="Search" type="search" placeholder="Search"></hx-input>`} />
+<Preview stack code={`<oui-input aria-label="Search" type="search" placeholder="Search"></oui-input>`} />
 
-An `hx-date-range-picker` has two names: the field displays the errors of `start-name` and `end-name`.
+An `oui-date-range-picker` has two names: the field displays the errors of `start-name` and `end-name`.
 
 ## API
 
-### hx-form-field
+### oui-form-field
 
 #### Properties
 
-| Property          | Attribute          | Type                   | Default | Description                                                                                                   |
-| ----------------- | ------------------ | ---------------------- | ------- | ------------------------------------------------------------------------------------------------------------- |
-| `name`            | `name`             | `string`               | `""`    | Name of the control                                                                                           |
-| `label`           | `label`            | `string`               | `""`    | Label displayed above the control                                                                             |
-| `description`     | `description`      | `string`               | `""`    | Text under the label                                                                                          |
-| `help`            | `help`             | `string`               | `""`    | Text of the tooltip on the help icon, at the end of the label row                                             |
-| `hint`            | `hint`             | `string`               | `""`    | Help text under the control, replaced by `error` when set                                                     |
-| `error`           | `error`            | `string`               | `""`    | Error message under the control; also marks the control as invalid                                            |
-| `required`        | `required`         | `boolean`              | `false` | Adds an asterisk to the label and marks the control as required                                               |
-| `eagerValidation` | `eager-validation` | `boolean`              | `false` | Inside `hx-form`, validates on `input` without waiting for the first blur                                     |
-| `control`         | —                  | `HxFormFieldControl`   | —       | The form control of the field (read-only)                                                                     |
-| `names`           | —                  | `string[]` (read-only) | —       | Names matched against the errors of `hx-form`: `name`, and the names of an `hx-date-range-picker` (read-only) |
+| Property          | Attribute          | Type                   | Default | Description                                                                                                     |
+| ----------------- | ------------------ | ---------------------- | ------- | --------------------------------------------------------------------------------------------------------------- |
+| `name`            | `name`             | `string`               | `""`    | Name of the control                                                                                             |
+| `label`           | `label`            | `string`               | `""`    | Label displayed above the control                                                                               |
+| `description`     | `description`      | `string`               | `""`    | Text under the label                                                                                            |
+| `help`            | `help`             | `string`               | `""`    | Text of the tooltip on the help icon, at the end of the label row                                               |
+| `hint`            | `hint`             | `string`               | `""`    | Help text under the control, replaced by `error` when set                                                       |
+| `error`           | `error`            | `string`               | `""`    | Error message under the control; also marks the control as invalid                                              |
+| `required`        | `required`         | `boolean`              | `false` | Adds an asterisk to the label and marks the control as required                                                 |
+| `eagerValidation` | `eager-validation` | `boolean`              | `false` | Inside `oui-form`, validates on `input` without waiting for the first blur                                      |
+| `control`         | —                  | `OuiFormFieldControl`  | —       | The form control of the field (read-only)                                                                       |
+| `names`           | —                  | `string[]` (read-only) | —       | Names matched against the errors of `oui-form`: `name`, and the names of an `oui-date-range-picker` (read-only) |
 
 #### Methods
 
@@ -176,9 +176,9 @@ An `hx-date-range-picker` has two names: the field displays the errors of `start
 
 #### Events
 
-| Name               | Description                                      |
-| ------------------ | ------------------------------------------------ |
-| `hx-field-connect` | The field found its control and gave it its name |
+| Name                | Description                                      |
+| ------------------- | ------------------------------------------------ |
+| `oui-field-connect` | The field found its control and gave it its name |
 
 #### Slots
 
@@ -193,11 +193,11 @@ An `hx-date-range-picker` has two names: the field displays the errors of `start
 
 #### CSS parts
 
-| Name          | Description                           |
-| ------------- | ------------------------------------- |
-| `label`       | The label                             |
-| `value`       | The formatted value of an `hx-slider` |
-| `help`        | The help button                       |
-| `description` | The description                       |
-| `hint`        | The hint                              |
-| `error`       | The error message                     |
+| Name          | Description                            |
+| ------------- | -------------------------------------- |
+| `label`       | The label                              |
+| `value`       | The formatted value of an `oui-slider` |
+| `help`        | The help button                        |
+| `description` | The description                        |
+| `hint`        | The hint                               |
+| `error`       | The error message                      |

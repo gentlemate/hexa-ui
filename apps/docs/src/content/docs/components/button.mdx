@@ -8,15 +8,15 @@ import Preview from "../../../components/Preview.astro";
 ## Import
 
 ```js
-import "hexa-ui/button";
+import "onent-ui/button";
 ```
 
-<Preview code={`<hx-button>Button</hx-button>`} />
+<Preview code={`<oui-button>Button</oui-button>`} />
 
 ## Structure
 
 ```html
-<hx-button></hx-button>
+<oui-button></oui-button>
 ```
 
 ## Examples
@@ -24,56 +24,56 @@ import "hexa-ui/button";
 ### Variants
 
 <Preview
-    code={`<hx-button>Primary</hx-button>
-<hx-button variant="secondary">Secondary</hx-button>
-<hx-button variant="outline">Outline</hx-button>
-<hx-button variant="ghost">Ghost</hx-button>
-<hx-button variant="destructive">Destructive</hx-button>`}
+    code={`<oui-button>Primary</oui-button>
+<oui-button variant="secondary">Secondary</oui-button>
+<oui-button variant="outline">Outline</oui-button>
+<oui-button variant="ghost">Ghost</oui-button>
+<oui-button variant="destructive">Destructive</oui-button>`}
 />
 
 ### Icon
 
 <Preview
-    code={`<hx-button data-icon="Plus">Add</hx-button>
-<hx-button variant="outline" data-icon="Download" icon-placement="right">Download</hx-button>`}
+    code={`<oui-button data-icon="Plus">Add</oui-button>
+<oui-button variant="outline" data-icon="Download" icon-placement="right">Download</oui-button>`}
 />
 
 ### Square
 
 <Preview
-    code={`<hx-button square>
-    <hx-icon data-icon="Plus" size="20"></hx-icon>
-</hx-button>
-<hx-button variant="outline" square>
-    <hx-icon data-icon="Download" size="20"></hx-icon>
-</hx-button>
-<hx-button variant="destructive" square>
-    <hx-icon data-icon="Trash2" size="20"></hx-icon>
-</hx-button>`}
+    code={`<oui-button square>
+    <oui-icon data-icon="Plus" size="20"></oui-icon>
+</oui-button>
+<oui-button variant="outline" square>
+    <oui-icon data-icon="Download" size="20"></oui-icon>
+</oui-button>
+<oui-button variant="destructive" square>
+    <oui-icon data-icon="Trash2" size="20"></oui-icon>
+</oui-button>`}
 />
 
 ### Loading
 
-`loading` shows a spinner in place of the icon and ignores clicks, while the button stays focusable. [`hx-form`](../form/) sets it on its submit buttons during a submission.
+`loading` shows a spinner in place of the icon and ignores clicks, while the button stays focusable. [`oui-form`](../form/) sets it on its submit buttons during a submission.
 
 <Preview
-    code={`<hx-button loading>Saving</hx-button>
-<hx-button variant="outline" loading>Saving</hx-button>`}
+    code={`<oui-button loading>Saving</oui-button>
+<oui-button variant="outline" loading>Saving</oui-button>`}
 />
 
 ### Disabled
 
 <Preview
-    code={`<hx-button disabled>Primary</hx-button>
-<hx-button variant="secondary" disabled>Secondary</hx-button>
-<hx-button variant="outline" disabled>Outline</hx-button>
-<hx-button variant="ghost" disabled>Ghost</hx-button>
-<hx-button variant="destructive" disabled>Destructive</hx-button>`}
+    code={`<oui-button disabled>Primary</oui-button>
+<oui-button variant="secondary" disabled>Secondary</oui-button>
+<oui-button variant="outline" disabled>Outline</oui-button>
+<oui-button variant="ghost" disabled>Ghost</oui-button>
+<oui-button variant="destructive" disabled>Destructive</oui-button>`}
 />
 
 ## API
 
-### hx-button
+### oui-button
 
 #### Properties
 
@@ -96,15 +96,15 @@ import "hexa-ui/button";
 
 #### CSS custom properties
 
-| Name                  | Default                     | Description        |
-| --------------------- | --------------------------- | ------------------ |
-| `--hx-height-button`  | `var(--hx-height-control)`  | Height             |
-| `--hx-spacing-button` | `var(--hx-spacing-control)` | Horizontal padding |
-| `--hx-radius-button`  | `var(--hx-radius-control)`  | Border radius      |
+| Name                   | Default                      | Description        |
+| ---------------------- | ---------------------------- | ------------------ |
+| `--oui-height-button`  | `var(--oui-height-control)`  | Height             |
+| `--oui-spacing-button` | `var(--oui-spacing-control)` | Horizontal padding |
+| `--oui-radius-button`  | `var(--oui-radius-control)`  | Border radius      |
 
 #### CSS parts
 
-| Name   | Description                                     |
-| ------ | ----------------------------------------------- |
-| `base` | The inner `<button>` element                    |
-| `icon` | The `hx-icon` rendered from the `icon` property |
+| Name   | Description                                      |
+| ------ | ------------------------------------------------ |
+| `base` | The inner `<button>` element                     |
+| `icon` | The `oui-icon` rendered from the `icon` property |
