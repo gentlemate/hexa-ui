@@ -297,7 +297,7 @@ export const tokenPresets: Record<string, Record<string, Record<string, string>>
         square: radiusOf("0rem", "0rem", "0rem", "0rem", "0rem", "0rem", "0rem"),
         default: radiusOf("0.5rem", "0.5rem", "0.25rem", "0.75rem", "0.5rem", "0.375rem", "9999px"),
         soft: radiusOf("0.75rem", "0.75rem", "0.5rem", "1.25rem", "0.75rem", "0.5rem", "0.375rem"),
-        pill: radiusOf("9999px", "9999px", "9999px", "1.5rem", "1rem", "0.5rem", "9999px"),
+        pill: radiusOf("2rem", "2rem", "2rem", "2rem", "1.25rem", "9999px", "9999px"),
     },
     size: {
         compact: { ...sizeOf("2rem", "0.5rem", "2rem", "0.5rem", "1.75rem", "0.375rem", "1rem"), ...fontSizes.small },

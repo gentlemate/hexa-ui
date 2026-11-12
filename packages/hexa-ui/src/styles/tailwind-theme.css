@@ -30,7 +30,7 @@
     --radius-button: var(--oui-radius-button, var(--oui-radius-control));
     --radius-card: var(--oui-radius-card, var(--oui-radius-panel));
     --radius-checkbox: var(--oui-radius-checkbox);
-    --radius-color-area: var(--oui-radius-color-area, var(--oui-radius-field));
+    --radius-color-area: var(--oui-radius-color-area, min(var(--oui-radius-panel), 0.5rem));
     --radius-color-field: var(--oui-radius-color-field, var(--oui-radius-field));
     --radius-color-picker: var(--oui-radius-color-picker, var(--oui-radius-field));
     --radius-color-slider: var(--oui-radius-color-slider, var(--oui-radius-pill));

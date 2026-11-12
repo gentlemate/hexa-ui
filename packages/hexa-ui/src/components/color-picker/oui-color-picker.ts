@@ -75,7 +75,7 @@ function channelOf(control: ColorControl, key: string) {
  * @cssprop [--oui-width-color-popup=16rem] - Width of the popup.
  * @cssprop [--oui-spacing-color-popup=0.75rem] - Padding of the popup.
  * @cssprop [--oui-height-color-area=10rem] - Height of the saturation and brightness area.
- * @cssprop [--oui-radius-color-area=var(--oui-radius-field)] - Border radius of the saturation and brightness area.
+ * @cssprop [--oui-radius-color-area=min(var(--oui-radius-panel), 0.5rem)] - Border radius of the saturation and brightness area.
  * @cssprop [--oui-height-color-slider=0.75rem] - Height of the hue and transparency sliders.
  * @cssprop [--oui-radius-color-slider=var(--oui-radius-pill)] - Border radius of the hue and transparency sliders.
  * @cssprop [--oui-size-color-thumb=1.25rem] - Size of the thumbs.
