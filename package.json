@@ -9,6 +9,7 @@
         "typecheck": "pnpm --filter onent-ui typecheck",
         "docs:api": "pnpm --filter onent-ui analyze && pnpm --filter ./apps/docs api",
         "build:all": "pnpm build && pnpm docs:api",
+        "build:docs": "pnpm build && pnpm --filter ./apps/docs build",
         "format": "prettier --write .",
         "format:check": "prettier --check ."
     },

@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { initTheme, syncColorMode } from "./src/theme.ts";
 
 export default defineConfig({
+    site: "https://onent-ui.vercel.app",
     vite: {
         plugins: [tailwindcss()],
     },
