@@ -54,7 +54,7 @@ function parseNumber(text: string, format: Intl.NumberFormat) {
 @customElement("oui-number-field")
 export class OuiNumberField extends OuiElement {
     static formAssociated = true;
-    static override shadowRootOptions = { ...OuiElement.shadowRootOptions, delegatesFocus: true };
+    static override shadowRootOptions: ShadowRootInit = { ...OuiElement.shadowRootOptions, delegatesFocus: true };
     static override styles = [
         OuiElement.styles,
         css`

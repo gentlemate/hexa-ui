@@ -23,7 +23,7 @@ import { OuiElement } from "../../oui-element.js";
 @customElement("oui-textarea")
 export class OuiTextarea extends OuiElement {
     static formAssociated = true;
-    static override shadowRootOptions = { ...OuiElement.shadowRootOptions, delegatesFocus: true };
+    static override shadowRootOptions: ShadowRootInit = { ...OuiElement.shadowRootOptions, delegatesFocus: true };
     static override styles = [
         OuiElement.styles,
         css`

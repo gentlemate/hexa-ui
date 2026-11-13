@@ -38,7 +38,7 @@ const variants: Record<OuiButtonVariant, string> = {
 @customElement("oui-button")
 export class OuiButton extends OuiElement {
     static formAssociated = true;
-    static override shadowRootOptions = { ...OuiElement.shadowRootOptions, delegatesFocus: true };
+    static override shadowRootOptions: ShadowRootInit = { ...OuiElement.shadowRootOptions, delegatesFocus: true };
     static override styles = [
         OuiElement.styles,
         css`

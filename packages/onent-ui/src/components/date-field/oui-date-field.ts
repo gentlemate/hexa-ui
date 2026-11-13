@@ -62,7 +62,7 @@ function valueOf({ day, month, year }: Segments) {
 @customElement("oui-date-field")
 export class OuiDateField extends OuiElement {
     static formAssociated = true;
-    static override shadowRootOptions = { ...OuiElement.shadowRootOptions, delegatesFocus: true };
+    static override shadowRootOptions: ShadowRootInit = { ...OuiElement.shadowRootOptions, delegatesFocus: true };
     static override styles = [
         OuiElement.styles,
         css`

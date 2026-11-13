@@ -45,7 +45,7 @@ export type OuiSelectPlacement = Placement;
 @customElement("oui-select")
 export class OuiSelect extends OuiOverlayElement {
     static formAssociated = true;
-    static override shadowRootOptions = { ...OuiElement.shadowRootOptions, delegatesFocus: true };
+    static override shadowRootOptions: ShadowRootInit = { ...OuiElement.shadowRootOptions, delegatesFocus: true };
     static override styles = [
         OuiElement.styles,
         css`

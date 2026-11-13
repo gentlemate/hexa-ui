@@ -32,7 +32,7 @@ const variants: Record<OuiAccordionVariant, { hover: string; separator: string }
  */
 @customElement("oui-accordion-item")
 export class OuiAccordionItem extends OuiElement {
-    static override shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+    static override shadowRootOptions: ShadowRootInit = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
     static override styles = [
         OuiElement.styles,

@@ -19,7 +19,7 @@ import { OuiOverlayElement } from "./oui-overlay-element.js";
  */
 export abstract class OuiPickerElement extends OuiOverlayElement {
     static formAssociated = true;
-    static override shadowRootOptions = { ...OuiElement.shadowRootOptions, delegatesFocus: true };
+    static override shadowRootOptions: ShadowRootInit = { ...OuiElement.shadowRootOptions, delegatesFocus: true };
     static override styles = [
         OuiElement.styles,
         css`

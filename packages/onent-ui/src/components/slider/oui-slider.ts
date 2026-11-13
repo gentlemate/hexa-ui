@@ -27,7 +27,7 @@ import { OuiRangeElement } from "../../oui-range-element.js";
 @customElement("oui-slider")
 export class OuiSlider extends OuiRangeElement {
     static formAssociated = true;
-    static override shadowRootOptions = { ...OuiRangeElement.shadowRootOptions, delegatesFocus: true };
+    static override shadowRootOptions: ShadowRootInit = { ...OuiRangeElement.shadowRootOptions, delegatesFocus: true };
     static override styles = [
         OuiRangeElement.styles,
         css`
